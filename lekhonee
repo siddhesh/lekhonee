@@ -1,0 +1,390 @@
+#!/usr/bin/env python
+#####################################################################
+#
+#       Author : Kushal Das
+#       Copyright (c)  2007 Kushal Das
+#       kushal@fedoraproject.org
+#       
+#       Copyright: See COPYING file that comes with this distribution
+#
+#
+#####################################################################
+
+from PyQt4 import QtCore, QtGui
+from PyQt4 import uic
+from mx.DateTime import now
+import sys
+import os
+import xmlrpclib
+import cPickle
+import time
+import tempfile
+from Chotha.syntax import ResourceHighlighter
+from Chotha.ImageDialogUI import ImageDialogUI
+from Chotha.ConfigureWinUI import ConfigureWinUI
+from Chotha.AboutChothaUI import AboutChothaUI
+from Chotha.ServerFactory import serverfactory
+from Chotha.Wordpress import Wordpress
+from Chotha.Livejournal import Livejournal
+from resource import *
+
+#Setup Ui
+#FIXME for RELEASE
+Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','Lekhonee.ui'))
+#Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('ui','Lekhonee.ui'))
+
+class LekhoneeApp(QtGui.QApplication):
+    """Main application class"""
+    def __init__(self,args=None):
+        QtGui.QApplication.__init__(self,args)
+        #FIXME for RELEASE
+        pixmap = QtGui.QPixmap("/usr/share/pixmaps/chothasplash.png",'png')
+        #pixmap = QtGui.QPixmap("pixmaps/chothasplash.png",'png')
+        self.splash = QtGui.QSplashScreen(pixmap)
+        self.splash.show()
+        QtCore.QTimer.singleShot(2000,self.splash,QtCore.SLOT("hide()"))
+        self.mywindow = LekhoneeUI()
+        self.mywindow.show()
+        self.exec_()
+
+class LekhoneeUI(Ui_Lekhonee, QtGui.QMainWindow):
+    """My class"""
+    def __init__(self):
+        QtGui.QMainWindow.__init__(self)
+        self.setupUi(self)
+        #self.boldBttn.setCheckable(True)
+        #self.italicBttn.setCheckable(True)
+        self.stateBttn.setCheckable(True)
+        self.connectslots()
+    #time = unicode(now())
+    #date = time.split(' ')[0].split('-')
+    #date = QtCore.QDateTime(QtCore.QDate(int(date[0]),int(date[1]),int(date[2])))
+    #time = time.split(' ')[1].split(':')
+    #time = QtCore.QTime(int(time[0]),int(time[1]),int(time[2].split('.')[0]))
+    #datetime = QtCore.QDateTime(date)
+    #datetime.setTime(time)
+    #self.timeStamp.setDateTime(datetime)
+        self.filename = ''
+        self.configPrefix = os.path.join(os.path.expanduser('~'), ".chotha")
+        if not os.path.exists(self.configPrefix):
+            os.mkdir(self.configPrefix)
+            tempStr = 'cp /etc/chotha.data ' + self.configPrefix
+            os.popen(tempStr)
+        f = file(os.path.join(self.configPrefix,'chotha.data'))
+        data = cPickle.load(f)
+        f.close()
+        self.username = data['username']
+        self.password = data['password']
+        self.serverType = data['serverType']
+        #Select the proper Tab according to the server
+        if self.serverType == "Wordpress":
+            self.selectTab(0)
+            self.draftBttn.setEnabled(True)
+            self.commentCheckBox.setEnabled(True)
+            self.categoryList.setEnabled(True)
+            self.server = Wordpress(data['server'], self.username, self.password)
+        elif self.serverType == "Livejournal":
+            self.selectTab(1)
+            self.draftBttn.setEnabled(False)
+            self.commentCheckBox.setEnabled(False)
+            self.categoryList.setEnabled(False)
+            self.server = Livejournal('http://livejournal.com', self.username, self.password)
+        
+        self.content = ''
+        self.categoriesDict = {}
+        self.getCategories()
+        self.highlighter = ResourceHighlighter(self.blogTxt.document())
+
+    def connectslots(self):
+        self.connect(self.boldBttn,QtCore.SIGNAL("clicked()"),self.textBold)
+        self.connect(self.italicBttn,QtCore.SIGNAL("clicked()"),self.textItalic)
+        #self.connect(self.blogTxt,QtCore.SIGNAL("currentCharFormatChanged(QTextCharFormat)"),self.currentCharFormatChanged)
+        self.connect(self.publishBttn,QtCore.SIGNAL("clicked()"),self.publishPost)
+        self.connect(self.draftBttn,QtCore.SIGNAL("clicked()"),self.draftPost)
+        self.connect(self.stateBttn,QtCore.SIGNAL("clicked()"),self.changeState)
+        self.connect(self.linkBttn,QtCore.SIGNAL("clicked()"),self.insertLink)
+        self.connect(self.imageBttn,QtCore.SIGNAL("clicked()"),self.insertImage)
+        self.connect(self.addPageBttn,QtCore.SIGNAL("clicked()"),self.addPage)
+        self.connect(self.musicBttn,QtCore.SIGNAL("clicked()"),self.getMusic)
+        self.connect(self.getCategoriesBttn,QtCore.SIGNAL("clicked()"),self.getCategories)
+        self.connect(self.action_Save,QtCore.SIGNAL("triggered()"),self.fileSave)
+        self.connect(self.action_Open,QtCore.SIGNAL("triggered()"),self.fileOpen)
+        self.connect(self.actionBold,QtCore.SIGNAL("triggered()"),self.textBold)
+        self.connect(self.actionItalic,QtCore.SIGNAL("triggered()"),self.textItalic)
+        self.connect(self.actionUnderline,QtCore.SIGNAL("triggered()"),self.textUnderline)
+        self.connect(self.actionSuperscript,QtCore.SIGNAL("triggered()"),self.textSuperscript)
+        self.connect(self.actionSubscript,QtCore.SIGNAL("triggered()"),self.textSubscript)
+        self.connect(self.actionInsert_link,QtCore.SIGNAL("triggered()"),self.insertLink)
+        self.connect(self.actionInsert_Image,QtCore.SIGNAL("triggered()"),self.insertImage)
+        self.connect(self.actionIn_FireFox,QtCore.SIGNAL("triggered()"),self.previewFF)
+        self.connect(self.actionIn_Konqueror,QtCore.SIGNAL("triggered()"),self.previewKq)
+        self.connect(self.actionPreferences,QtCore.SIGNAL("triggered()"),self.configure)
+        self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
+        self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
+        self.connect(self.actionAbout_Chotha,QtCore.SIGNAL("triggered()"),self.showAbout)
+ #           self.connect(self.actionPrevious_Entries,QtCore.SIGNAL("triggered()"),self.previousEntries)
+        
+    def textBold(self):
+        """To make a text BOLD"""
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.insertText('<strong></strong>')
+        else:
+            cur.insertText('<strong>%s</strong>' % (cur.selectedText()))
+    
+    def textItalic(self):
+        """To make a text Italic"""
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.insertText('<i></i>')
+        else:
+            cur.insertText('<i>%s</i>' % (cur.selectedText()))
+        
+    def textUnderline(self):
+        """To make a text Underline"""
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.insertText('<u></u>')
+        else:
+            cur.insertText('<u>%s</u>' % (cur.selectedText()))
+    
+    def textSuperscript(self):
+        """To make a text Superscript"""
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.insertText('<sup></sup>')
+        else:
+            cur.insertText('<sup>%s</sup>' % (cur.selectedText()))
+     
+    def textSubscript(self):
+        """To make a text Subscript"""
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.insertText('<sub></sub>')
+        else:
+            cur.insertText('<sub>%s</sub>' % (cur.selectedText()))
+    
+    def mergeFormatOnWordOrSelection(self,fmt):
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            cur.select(QtGui.QTextCursor.WordUnderCursor)
+        cur.mergeCharFormat(fmt)
+        self.blogTxt.mergeCurrentCharFormat(fmt)
+    
+    #def currentCharFormatChanged(self,fmt):
+        #font = fmt.font()
+        #self.boldBttn.setChecked(font.bold())
+        #self.italicBttn.setChecked(font.italic())
+    
+    def publishPost(self):
+        self.messagePost(True)
+    
+    def draftPost(self):
+        self.messagePost(False)
+        
+    def changeState(self):
+        if self.stateBttn.isChecked():
+            self.stateBttn.setText('Code')
+            self.content = self.blogTxt.toPlainText()
+            self.blogTxt.setHtml(self.content)
+            self.disableBttns()
+        else:
+            self.stateBttn.setText('Visual')
+            self.blogTxt.setHtml('<p></p>')
+            self.blogTxt.setPlainText(self.content)
+            self.enableBttns()
+            
+    def messagePost(self,publish):
+        #print unicode(self.timeStamp.dateTime().toString('yyyy-mm-dd hh:mm:ss'))
+        clist = self.categoryList.selectedItems()
+        categories = []
+        for item in clist:
+            categories.append(unicode(item.text()))
+        if self.commentCheckBox.checkState():
+            comment = 1
+        else:
+            comment = 0
+        #self.content = {'title':unicode(self.titleTxt.text()),'description':unicode(self.blogTxt.toHtml())[214:-14],'categories':categories,'dateCreated': unicode(self.timeStamp.dateTime().toString('yyyymmddThh:mm:ss')),'mt_allow_comments':comment}
+        desc = unicode(self.blogTxt.toPlainText())
+        self.content = {'title':unicode(self.titleTxt.text()),'description':desc,'categories':categories,'mt_allow_comments':comment}
+        
+        try:
+            if self.serverType == 'Wordpress':
+                qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
+            elif self.serverType == 'Livejournal':
+                localcontent = self.content
+                currentMood = str(self.moodTxt.text())
+                currentMusic = str(self.musicTxt.text())
+                prop = {'current_mood':currentMood, 'current_music':currentMusic}
+                localcontent['props'] = prop
+                qm = QtGui.QMessageBox.information(self, 'Done :)',self.server.post(localcontent, publish))
+            self.clearAll()
+        except xmlrpclib.Fault, e:
+            qm = QtGui.QErrorMessage(self)
+            qm.showMessage(e.faultString)
+        
+    def disableBttns(self):
+        self.boldBttn.setEnabled(False)
+        self.italicBttn.setEnabled(False)
+        self.linkBttn.setEnabled(False)
+        self.draftBttn.setEnabled(False)
+        self.publishBttn.setEnabled(False)
+        self.imageBttn.setEnabled(False)
+        
+    def enableBttns(self):
+        self.boldBttn.setEnabled(True)
+        self.italicBttn.setEnabled(True)
+        self.linkBttn.setEnabled(True)
+        if self.serverType != 'Livejournal':
+            self.draftBttn.setEnabled(True)
+        self.publishBttn.setEnabled(True)
+        self.imageBttn.setEnabled(True)
+    
+    def insertLink(self):
+        cur = self.blogTxt.textCursor()
+        if (not cur.hasSelection()):
+            qm = QtGui.QErrorMessage(self)
+            qm.showMessage('Please select some text first')
+        else:
+            result = QtGui.QInputDialog.getText(self,'Insert the link','Link:',QtGui.QLineEdit.Normal,'http://')
+            if result[1]:
+                self.blogTxt.insertPlainText('<a href="%s">%s</a>' %(unicode(result[0]),unicode(cur.selectedText())))
+    
+    def getCategories(self):
+        self.categoryList.clear()
+        try:
+            categories = self.server.getCategories()
+            i = 0
+            for cate in categories:
+                self.categoriesDict[cate['categoryName']] = i
+                i = i + 1
+                self.categoryList.addItem(cate['categoryName'])
+                if cate['categoryName'] == 'Uncategorized':
+                    self.categoryList.setCurrentRow(self.categoryList.count() - 1 )
+        except:
+            self.categoryList.addItem('Uncategorized')
+            self.categoryList.setCurrentRow(self.categoryList.count() - 1 )
+        #We will sort it later, currently too much other work left
+        #self.categoryList.sortItems()
+
+    def fileSaveAs(self):
+        fn = QtGui.QFileDialog.getSaveFileName(self, "Save blog as...",
+                          '', "chotha files (*.chotha);;All Files (*)")
+        if fn.isEmpty():
+            return False
+        self.filename = unicode(fn)
+        return self.fileSave()
+            
+    def fileSave(self):
+        if self.filename == '':
+            return self.fileSaveAs()
+        if self.commentCheckBox.checkState():
+            comment = 1
+        else:
+            comment = 0
+        content = {'title':unicode(self.titleTxt.text()),'description':unicode(self.blogTxt.toPlainText())}
+        f = file(self.filename,'w')
+        cPickle.dump(content,f)
+        f.close()
+        self.blogTxt.document().setModified(False)
+        return True
+     
+    def fileOpen(self):
+        fn = QtGui.QFileDialog.getOpenFileName(self,'Open saved blog...','',"chotha files (*.chotha);;All Files (*)")
+        f = file(unicode(fn))
+        data = cPickle.load(f)
+        f.close()
+        if self.stateBttn.isChecked():
+            self.blogTxt.setHtml(data['description'])
+        else:
+            self.blogTxt.setPlainText(data['description'])
+        self.content = data['description']
+        self.titleTxt.setText(data['title'])
+    
+    def clearAll(self):
+        self.blogTxt.clear()
+        self.titleTxt.clear()
+        
+    def insertImage(self):
+        align = {'-- Not Set --': '', 'Baseline': 'baseline', 'Top': 'top', 'Middle': 'middle', 'Bottom': 'bottom', 'Text Top': 'texttop', 'Absolute Middle': 'absmiddle', 'Absolute bottom': 'abcbttom', 'Left': 'left', 'Right': 'right'}
+        result = ImageDialogUI(self).getValues()
+        if result[0]:
+            src = result[1][0]
+            desc = result[1][1]
+            alignment = align[result[1][2]]
+            x = result[1][3]
+            y = result[1][4]
+            if x ==0 or y == 0:
+                if alignment == '':
+                    imgString = '<img src="%s" title="%s" alt="%s" />' % (src, desc, desc)
+                else:
+                    imgString = '<img src="%s" title="%s" alt="%s" align="%s" />' % (src, desc, desc, alignment)
+            else:
+                if alignment == '':
+                    imgString = '<img src="%s" title="%s" alt="%s" height="%s" width="%s" />' % (src, desc, desc, x, y)
+                else:
+                    imgString = '<img src="%s" title="%s" alt="%s" align="%s" height="%s" width="%s" />' % (src, desc, desc, alignment, x, y)
+            self.blogTxt.insertPlainText(imgString)
+            
+    def previewFF(self):
+        mes = unicode(self.blogTxt.toPlainText())
+        f, name = tempfile.mkstemp()
+        #f = os.fdopen(f)
+        f = file(name,'w')
+        f.write(mes)
+        f.close()
+        os.system('firefox -remote "openurl(file://%s,new-tab)"' % name)
+         
+    def previewKq(self):
+        mes = unicode(self.blogTxt.toPlainText())
+        f = file(os.path.join('/tmp','chothatmp.html'),'w')
+        f.write(mes)
+        f.close()
+        os.system('konqueror file://%s' % (os.path.join('/tmp','chothatmp.html')))
+        
+    def configure(self):
+        conf = ConfigureWinUI(self)
+    #def previousEntries(self):
+        #self.getCategories()
+        #oldEntries = OldEntryDialogUI(self, self.server, self.username, self.password)
+    
+    def exitSlot(self):
+        sys.exit(0)
+    
+    def newPost(self):
+        self.blogTxt.setPlainText('')
+        self.titleTxt.setText('')
+        
+    def showAbout(self):
+        self.about = AboutChothaUI(self)
+        
+    def selectTab(self, index):
+        """Select the proper tab and disable the other tabs"""
+        for i in range(0,2):
+            self.serverTabs.setTabEnabled(i,False)
+        self.serverTabs.setCurrentIndex(index)
+        self.serverTabs.setTabEnabled(index,True)
+        
+    def getMusic(self):
+        """Get the current track name from Amarok"""
+        try:
+            musicname = os.popen('dcop amarok player nowPlaying').readlines()
+        except:
+            musicname.append("call failed")
+        if musicname[0] == "call failed":
+            self.musicTxt.setText('No Amarok')
+        else:
+            self.musicTxt.setText(musicname[0][:-1])
+    
+    def addPage(self):
+        """Add a new page in the server"""
+        desc = unicode(self.blogTxt.toPlainText())
+        self.content = {'title':unicode(self.titleTxt.text()),'description':desc}
+        try:
+            self.server.addPage(self.content, True)
+            self.newPost()
+        except:
+            print "Add page failed"
+        
+if __name__ == '__main__':
+    kApp = LekhoneeApp(sys.argv)

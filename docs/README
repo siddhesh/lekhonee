@@ -1,0 +1,11 @@
+AUTHOR: Kushal Das <kushal@fedoraproject.org>
+Many many thanks to Dave Fancella for the syntax highlighter,
+and the great Oxygen team for the icons.
+INSTALL:
+Do it as root
+
+#python setup.py install 
+
+It requires PyQt4 
+
+Enjoy :)

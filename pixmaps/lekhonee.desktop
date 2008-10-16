@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Lekhonee
+GenericName=A Wordpress blog client
+Comment=A Wordpress blog client
+Icon=lekhonee.png
+TryExec=lekhonee
+Exec=lekhonee
+Terminal=false
+Categories=Application;Network;Qt;

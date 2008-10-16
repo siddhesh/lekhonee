@@ -1,0 +1,18 @@
+Index: README
+===================================================================
+--- README	(revision 51)
++++ README	(working copy)
+@@ -2,10 +2,10 @@
+ Many many thanks to Dave Fancella for the syntax highlighter,
+ and the great Oxygen team for the icons.
+ INSTALL:
+-As root
++Do it as root
+ 
+ #python setup.py install 
+ 
+ It requires PyQt4 
+ 
+-Enjoy :)
+\ No newline at end of file
++Enjoy :)
