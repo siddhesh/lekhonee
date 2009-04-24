@@ -2,7 +2,7 @@
 #####################################################################
 #
 #       Author : Kushal Das
-#       Copyright (c)  2007 Kushal Das
+#       Copyright (c)  2007-2009 Kushal Das
 #       kushal@fedoraproject.org
 #       
 #       Copyright: See COPYING file that comes with this distribution
@@ -33,10 +33,6 @@ from PyKDE4.kdeui import *
 
 
 
-#Setup Ui
-#FIXME for RELEASE
-#Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','Lekhonee.ui'))
-#Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('ui','Lekhonee.ui'))
 
 from Chotha.LekhoneeUI import Ui_Lekhonee
 
@@ -53,15 +49,14 @@ class LekhoneeApp(KApplication):
         text        = ki18n ("none")
         homePage    = "www.fedorahosted.org/lekhonee"
         bugEmail    = "kushaldas@gmail.com"
-        aboutData   = KAboutData (appName, catalog, programName, version, description,\
+        self.aboutData   = KAboutData (appName, catalog, programName, version, description,\
                       license, copyright, text, homePage, bugEmail)
-        KCmdLineArgs.init (sys.argv, aboutData)
+        KCmdLineArgs.init (sys.argv, self.aboutData)
         KApplication.__init__(self)
 
 
         #FIXME for RELEASE
         pixmap = QtGui.QPixmap("/usr/share/pixmaps/chothasplash.png",'png')
-        #pixmap = QtGui.QPixmap("pixmaps/chothasplash.png",'png')
         self.splash = QtGui.QSplashScreen(pixmap)
         self.splash.show()
         QtCore.QTimer.singleShot(2000,self.splash,QtCore.SLOT("hide()"))
@@ -78,17 +73,13 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         #self.italicBttn.setCheckable(True)
         self.stateBttn.setCheckable(True)
 
+        self.kmenu = self.helpMenu()
+        self.menubar.addMenu(self.kmenu)
+
         self.blogTxt.setCheckSpellingEnabledInternal(True)
 
         self.connectslots()
-    #time = unicode(now())
-    #date = time.split(' ')[0].split('-')
-    #date = QtCore.QDateTime(QtCore.QDate(int(date[0]),int(date[1]),int(date[2])))
-    #time = time.split(' ')[1].split(':')
-    #time = QtCore.QTime(int(time[0]),int(time[1]),int(time[2].split('.')[0]))
-    #datetime = QtCore.QDateTime(date)
-    #datetime.setTime(time)
-    #self.timeStamp.setDateTime(datetime)
+
         self.filename = ''
         self.configPrefix = os.path.join(os.path.expanduser('~'), ".chotha")
         if not os.path.exists(self.configPrefix):
@@ -114,7 +105,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.commentCheckBox.setEnabled(False)
             self.categoryList.setEnabled(False)
             self.server = Livejournal('http://livejournal.com', self.username, self.password)
-        
+
         self.content = ''
         self.categoriesDict = {}
         self.getCategories()
@@ -147,8 +138,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
         self.connect(self.actionAbout_Chotha,QtCore.SIGNAL("triggered()"),self.showAbout)
- #           self.connect(self.actionPrevious_Entries,QtCore.SIGNAL("triggered()"),self.previousEntries)
-        #self.connect(self,QtCore.SIGNAL("close()"),self.quit)
 
     def queryClose(self):
         self.hide()
@@ -161,7 +150,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.insertText('<strong></strong>')
         else:
             cur.insertText('<strong>%s</strong>' % (cur.selectedText()))
-    
+
     def textItalic(self):
         """To make a text Italic"""
         cur = self.blogTxt.textCursor()
@@ -169,7 +158,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.insertText('<i></i>')
         else:
             cur.insertText('<i>%s</i>' % (cur.selectedText()))
-        
+
     def textUnderline(self):
         """To make a text Underline"""
         cur = self.blogTxt.textCursor()
@@ -177,7 +166,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.insertText('<u></u>')
         else:
             cur.insertText('<u>%s</u>' % (cur.selectedText()))
-    
+
     def textSuperscript(self):
         """To make a text Superscript"""
         cur = self.blogTxt.textCursor()
@@ -185,7 +174,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.insertText('<sup></sup>')
         else:
             cur.insertText('<sup>%s</sup>' % (cur.selectedText()))
-     
+
     def textSubscript(self):
         """To make a text Subscript"""
         cur = self.blogTxt.textCursor()
@@ -193,25 +182,21 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.insertText('<sub></sub>')
         else:
             cur.insertText('<sub>%s</sub>' % (cur.selectedText()))
-    
+
     def mergeFormatOnWordOrSelection(self,fmt):
         cur = self.blogTxt.textCursor()
         if (not cur.hasSelection()):
             cur.select(QtGui.QTextCursor.WordUnderCursor)
         cur.mergeCharFormat(fmt)
         self.blogTxt.mergeCurrentCharFormat(fmt)
-    
-    #def currentCharFormatChanged(self,fmt):
-        #font = fmt.font()
-        #self.boldBttn.setChecked(font.bold())
-        #self.italicBttn.setChecked(font.italic())
-    
+
+
     def publishPost(self):
         self.messagePost(True)
-    
+
     def draftPost(self):
         self.messagePost(False)
-        
+
     def changeState(self):
         if self.stateBttn.isChecked():
             self.stateBttn.setText('Code')
@@ -223,7 +208,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.blogTxt.setHtml('<p></p>')
             self.blogTxt.setPlainText(self.content)
             self.enableBttns()
-            
+
     def messagePost(self,publish):
         #print unicode(self.timeStamp.dateTime().toString('yyyy-mm-dd hh:mm:ss'))
         clist = self.categoryList.selectedItems()
@@ -237,7 +222,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         #self.content = {'title':unicode(self.titleTxt.text()),'description':unicode(self.blogTxt.toHtml())[214:-14],'categories':categories,'dateCreated': unicode(self.timeStamp.dateTime().toString('yyyymmddThh:mm:ss')),'mt_allow_comments':comment}
         desc = unicode(self.blogTxt.toPlainText())
         self.content = {'title':unicode(self.titleTxt.text()),'description':desc,'categories':categories,'mt_allow_comments':comment}
-        
+
         try:
             if self.serverType == 'Wordpress':
                 qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
@@ -252,7 +237,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         except xmlrpclib.Fault, e:
             qm = QtGui.QErrorMessage(self)
             qm.showMessage(e.faultString)
-        
+
     def disableBttns(self):
         self.boldBttn.setEnabled(False)
         self.italicBttn.setEnabled(False)
@@ -260,7 +245,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.draftBttn.setEnabled(False)
         self.publishBttn.setEnabled(False)
         self.imageBttn.setEnabled(False)
-        
+
     def enableBttns(self):
         self.boldBttn.setEnabled(True)
         self.italicBttn.setEnabled(True)
@@ -269,7 +254,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.draftBttn.setEnabled(True)
         self.publishBttn.setEnabled(True)
         self.imageBttn.setEnabled(True)
-    
+
     def insertLink(self):
         cur = self.blogTxt.textCursor()
         if (not cur.hasSelection()):
@@ -279,7 +264,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             result = QtGui.QInputDialog.getText(self,'Insert the link','Link:',QtGui.QLineEdit.Normal,'http://')
             if result[1]:
                 self.blogTxt.insertPlainText('<a href="%s">%s</a>' %(unicode(result[0]),unicode(cur.selectedText())))
-    
+
     def getCategories(self):
         self.categoryList.clear()
         try:
@@ -304,7 +289,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             return False
         self.filename = unicode(fn)
         return self.fileSave()
-            
+
     def fileSave(self):
         if self.filename == '':
             return self.fileSaveAs()
@@ -318,7 +303,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         f.close()
         self.blogTxt.document().setModified(False)
         return True
-     
+
     def fileOpen(self):
         fn = QtGui.QFileDialog.getOpenFileName(self,'Open saved blog...','',"chotha files (*.chotha);;All Files (*)")
         if not fn:
@@ -332,11 +317,11 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.blogTxt.setPlainText(data['description'])
         self.content = data['description']
         self.titleTxt.setText(data['title'])
-    
+
     def clearAll(self):
         self.blogTxt.clear()
         self.titleTxt.clear()
-        
+
     def insertImage(self):
         align = {'-- Not Set --': '', 'Baseline': 'baseline', 'Top': 'top', 'Middle': 'middle', 'Bottom': 'bottom', 'Text Top': 'texttop', 'Absolute Middle': 'absmiddle', 'Absolute bottom': 'abcbttom', 'Left': 'left', 'Right': 'right'}
         result = ImageDialogUI(self).getValues()
@@ -357,7 +342,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
                 else:
                     imgString = '<img src="%s" title="%s" alt="%s" align="%s" height="%s" width="%s" />' % (src, desc, desc, alignment, x, y)
             self.blogTxt.insertPlainText(imgString)
-            
+
     def previewFF(self):
         mes = unicode(self.blogTxt.toPlainText())
         f, name = tempfile.mkstemp()
@@ -367,37 +352,37 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         f.write(mes)
         f.close()
         os.system('firefox -remote "openurl(file://%s,new-tab)"' % name)
-         
+
     def previewKq(self):
         mes = unicode(self.blogTxt.toPlainText())
         f = file(os.path.join('/tmp','chothatmp.html'),'w')
         f.write(mes)
         f.close()
         os.system('konqueror file://%s' % (os.path.join('/tmp','chothatmp.html')))
-        
+
     def configure(self):
         conf = ConfigureWinUI(self)
     #def previousEntries(self):
         #self.getCategories()
         #oldEntries = OldEntryDialogUI(self, self.server, self.username, self.password)
-    
+
     def exitSlot(self):
         sys.exit(0)
-    
+
     def newPost(self):
         self.blogTxt.setPlainText('')
         self.titleTxt.setText('')
-        
+
     def showAbout(self):
         self.about = AboutChothaUI(self)
-        
+
     def selectTab(self, index):
         """Select the proper tab and disable the other tabs"""
         for i in range(0,2):
             self.serverTabs.setTabEnabled(i,False)
         self.serverTabs.setCurrentIndex(index)
         self.serverTabs.setTabEnabled(index,True)
-        
+
     def getMusic(self):
         """Get the current track name from Amarok"""
         try:
@@ -408,7 +393,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.musicTxt.setText('No Amarok')
         else:
             self.musicTxt.setText(musicname[0][:-1])
-    
+
     def addPage(self):
         """Add a new page in the server"""
         desc = unicode(self.blogTxt.toPlainText())
@@ -418,6 +403,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.newPost()
         except:
             print "Add page failed"
-        
+
 if __name__ == '__main__':
     kApp = LekhoneeApp(sys.argv)
