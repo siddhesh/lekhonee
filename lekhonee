@@ -4,7 +4,7 @@
 #       Author : Kushal Das
 #       Copyright (c)  2007-2009 Kushal Das
 #       kushal@fedoraproject.org
-#       
+#
 #       Copyright: See COPYING file that comes with this distribution
 #
 #
@@ -26,7 +26,7 @@ from Chotha.AboutChothaUI import AboutChothaUI
 from Chotha.ServerFactory import serverfactory
 from Chotha.Wordpress import Wordpress
 from Chotha.Livejournal import Livejournal
-from resource import *
+from Chotha.resource_rc import *
 
 from PyKDE4.kdecore import ki18n, KAboutData, KCmdLineArgs
 from PyKDE4.kdeui import *
@@ -45,10 +45,10 @@ class LekhoneeApp(KApplication):
         version     = "0.3"
         description = ki18n ("Lekhonee , a small blog client")
         license     = KAboutData.License_GPL
-        copyright   = ki18n ("(c) 2009 Kushal Das")
-        text        = ki18n ("none")
+        copyright   = ki18n ("(c) 2007-2009 Kushal Das")
+        text        = ki18n ("A Wordpress desktop client")
         homePage    = "www.fedorahosted.org/lekhonee"
-        bugEmail    = "kushaldas@gmail.com"
+        bugEmail    = "kushal@fedoraproject.org"
         self.aboutData   = KAboutData (appName, catalog, programName, version, description,\
                       license, copyright, text, homePage, bugEmail)
         KCmdLineArgs.init (sys.argv, self.aboutData)
