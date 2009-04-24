@@ -53,7 +53,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_configureDialog):
         f = file(os.path.join(self.configPrefix,'chotha.data'),'w')
         cPickle.dump(data, f)
         """Hide hide hide.... he is not hiding"""
-        self.hide
+        self.hide()
         
     def changeView(self, text):
         """Just change the Server text field according to the server type selected"""
