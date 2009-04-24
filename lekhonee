@@ -362,6 +362,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         mes = unicode(self.blogTxt.toPlainText())
         f, name = tempfile.mkstemp()
         #f = os.fdopen(f)
+        name += '.html'
         f = file(name,'w')
         f.write(mes)
         f.close()
