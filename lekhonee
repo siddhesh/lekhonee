@@ -28,15 +28,37 @@ from Chotha.Wordpress import Wordpress
 from Chotha.Livejournal import Livejournal
 from resource import *
 
+from PyKDE4.kdecore import ki18n, KAboutData, KCmdLineArgs
+from PyKDE4.kdeui import *
+
+
+
 #Setup Ui
 #FIXME for RELEASE
-Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','Lekhonee.ui'))
+#Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','Lekhonee.ui'))
 #Ui_Lekhonee, throwaway = uic.loadUiType(os.path.join('ui','Lekhonee.ui'))
 
-class LekhoneeApp(QtGui.QApplication):
+from Chotha.LekhoneeUI import Ui_Lekhonee
+
+class LekhoneeApp(KApplication):
     """Main application class"""
     def __init__(self,args=None):
-        QtGui.QApplication.__init__(self,args)
+        appName     = "Lekhonee"
+        catalog     = ""
+        programName = ki18n ("Lekhonee")
+        version     = "0.3"
+        description = ki18n ("Lekhonee , a small blog client")
+        license     = KAboutData.License_GPL
+        copyright   = ki18n ("(c) 2009 Kushal Das")
+        text        = ki18n ("none")
+        homePage    = "www.fedorahosted.org/lekhonee"
+        bugEmail    = "kushaldas@gmail.com"
+        aboutData   = KAboutData (appName, catalog, programName, version, description,\
+                      license, copyright, text, homePage, bugEmail)
+        KCmdLineArgs.init (sys.argv, aboutData)
+        KApplication.__init__(self)
+
+
         #FIXME for RELEASE
         pixmap = QtGui.QPixmap("/usr/share/pixmaps/chothasplash.png",'png')
         #pixmap = QtGui.QPixmap("pixmaps/chothasplash.png",'png')
@@ -47,14 +69,17 @@ class LekhoneeApp(QtGui.QApplication):
         self.mywindow.show()
         self.exec_()
 
-class LekhoneeUI(Ui_Lekhonee, QtGui.QMainWindow):
+class LekhoneeUI(Ui_Lekhonee, KMainWindow):
     """My class"""
     def __init__(self):
-        QtGui.QMainWindow.__init__(self)
+        KMainWindow.__init__(self)
         self.setupUi(self)
         #self.boldBttn.setCheckable(True)
         #self.italicBttn.setCheckable(True)
         self.stateBttn.setCheckable(True)
+
+        self.blogTxt.setCheckSpellingEnabledInternal(True)
+
         self.connectslots()
     #time = unicode(now())
     #date = time.split(' ')[0].split('-')
@@ -123,7 +148,12 @@ class LekhoneeUI(Ui_Lekhonee, QtGui.QMainWindow):
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
         self.connect(self.actionAbout_Chotha,QtCore.SIGNAL("triggered()"),self.showAbout)
  #           self.connect(self.actionPrevious_Entries,QtCore.SIGNAL("triggered()"),self.previousEntries)
-        
+        #self.connect(self,QtCore.SIGNAL("close()"),self.quit)
+
+    def queryClose(self):
+        self.hide()
+        sys.exit()
+
     def textBold(self):
         """To make a text BOLD"""
         cur = self.blogTxt.textCursor()
@@ -291,6 +321,8 @@ class LekhoneeUI(Ui_Lekhonee, QtGui.QMainWindow):
      
     def fileOpen(self):
         fn = QtGui.QFileDialog.getOpenFileName(self,'Open saved blog...','',"chotha files (*.chotha);;All Files (*)")
+        if not fn:
+            return
         f = file(unicode(fn))
         data = cPickle.load(f)
         f.close()
