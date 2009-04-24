@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>Lekhonee</class>
- <widget class="QMainWindow" name="Lekhonee" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="Lekhonee">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,38 +10,42 @@
     <height>551</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Lekhonee</string>
   </property>
-  <widget class="QWidget" name="centralwidget" >
-   <layout class="QGridLayout" >
-    <item row="0" column="0" >
-     <layout class="QVBoxLayout" >
+  <property name="windowIcon">
+   <iconset resource="../Chotha/resource.qrc">
+    <normaloff>:/pixmaps/lekhonee.png</normaloff>:/pixmaps/lekhonee.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QHBoxLayout" >
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QLabel" name="label" >
-          <property name="text" >
+         <widget class="QLabel" name="label">
+          <property name="text">
            <string>Title</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="titleTxt" >
-          <property name="toolTip" >
+         <widget class="QLineEdit" name="titleTxt">
+          <property name="toolTip">
            <string>Title of the blog</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QCheckBox" name="commentCheckBox" >
-          <property name="toolTip" >
+         <widget class="QCheckBox" name="commentCheckBox">
+          <property name="toolTip">
            <string>Comments are aloowed in this post or not</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Comment Allowed</string>
           </property>
-          <property name="checked" >
+          <property name="checked">
            <bool>true</bool>
           </property>
          </widget>
@@ -48,26 +53,26 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QPushButton" name="boldBttn" >
-          <property name="font" >
+         <widget class="QPushButton" name="boldBttn">
+          <property name="font">
            <font>
             <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
-          <property name="toolTip" >
+          <property name="toolTip">
            <string>Bold</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset>
-            <normaloff>/usr/share/pixmaps/chotha/bold.png</normaloff>/usr/share/pixmaps/chotha/bold.png</iconset>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/bold.png</normaloff>:/icons/bold.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>20</width>
             <height>20</height>
@@ -76,22 +81,22 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="italicBttn" >
-          <property name="font" >
+         <widget class="QPushButton" name="italicBttn">
+          <property name="font">
            <font>
             <weight>50</weight>
             <italic>true</italic>
             <bold>false</bold>
            </font>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset>
-            <normaloff>/usr/share/pixmaps/chotha/italic.png</normaloff>/usr/share/pixmaps/chotha/italic.png</iconset>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/italic.png</normaloff>:/icons/italic.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>20</width>
             <height>20</height>
@@ -100,28 +105,28 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="linkBttn" >
-          <property name="toolTip" >
+         <widget class="QPushButton" name="linkBttn">
+          <property name="toolTip">
            <string>Insert a link</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Link</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="imageBttn" >
-          <property name="toolTip" >
+         <widget class="QPushButton" name="imageBttn">
+          <property name="toolTip">
            <string>Insert the link of an Image</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string/>
           </property>
-          <property name="icon" >
-           <iconset>
-            <normaloff>/usr/share/pixmaps/chotha/insert-image.png</normaloff>/usr/share/pixmaps/chotha/insert-image.png</iconset>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/insert-image.png</normaloff>:/icons/insert-image.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>20</width>
             <height>20</height>
@@ -131,10 +136,10 @@
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -143,11 +148,11 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="stateBttn" >
-          <property name="toolTip" >
+         <widget class="QPushButton" name="stateBttn">
+          <property name="toolTip">
            <string>Change the mode</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Visual</string>
           </property>
          </widget>
@@ -155,20 +160,16 @@
        </layout>
       </item>
       <item>
-       <widget class="QTextEdit" name="blogTxt" >
-        <property name="toolTip" >
-         <string>Body of the blog</string>
-        </property>
-       </widget>
+       <widget class="KTextEdit" name="blogTxt"/>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
+       <layout class="QHBoxLayout">
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" stdset="0" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>181</width>
             <height>30</height>
@@ -177,18 +178,18 @@
          </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="draftBttn" >
-          <property name="toolTip" >
+         <widget class="QPushButton" name="draftBttn">
+          <property name="toolTip">
            <string>Save the blog entry as a draft on the server</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Draft</string>
           </property>
-          <property name="icon" >
-           <iconset>
-            <normaloff>/usr/share/pixmaps/chotha/draft.png</normaloff>/usr/share/pixmaps/chotha/draft.png</iconset>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/draft.png</normaloff>:/icons/draft.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>20</width>
             <height>20</height>
@@ -197,18 +198,18 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="publishBttn" >
-          <property name="toolTip" >
+         <widget class="QPushButton" name="publishBttn">
+          <property name="toolTip">
            <string>Publish the blog entry on the server</string>
           </property>
-          <property name="text" >
+          <property name="text">
            <string>Publish</string>
           </property>
-          <property name="icon" >
-           <iconset>
-            <normaloff>/usr/share/pixmaps/chotha/internet.png</normaloff>/usr/share/pixmaps/chotha/internet.png</iconset>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/internet.png</normaloff>:/icons/internet.png</iconset>
           </property>
-          <property name="iconSize" >
+          <property name="iconSize">
            <size>
             <width>20</width>
             <height>20</height>
@@ -220,17 +221,17 @@
       </item>
      </layout>
     </item>
-    <item row="0" column="1" >
-     <layout class="QVBoxLayout" >
+    <item row="0" column="1">
+     <layout class="QVBoxLayout">
       <item>
        <spacer>
-        <property name="orientation" >
+        <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
-        <property name="sizeType" >
+        <property name="sizeType">
          <enum>QSizePolicy::Fixed</enum>
         </property>
-        <property name="sizeHint" stdset="0" >
+        <property name="sizeHint" stdset="0">
          <size>
           <width>20</width>
           <height>40</height>
@@ -239,47 +240,47 @@
        </spacer>
       </item>
       <item>
-       <widget class="QLabel" name="label_2" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Fixed" hsizetype="Fixed" >
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Categories</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="categoryList" >
-        <property name="sizePolicy" >
-         <sizepolicy vsizetype="Preferred" hsizetype="Preferred" >
+       <widget class="QListWidget" name="categoryList">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <property name="toolTip" >
+        <property name="toolTip">
          <string>List of categories or tags</string>
         </property>
-        <property name="selectionMode" >
+        <property name="selectionMode">
          <enum>QAbstractItemView::MultiSelection</enum>
         </property>
        </widget>
       </item>
      </layout>
     </item>
-    <item row="1" column="0" colspan="2" >
-     <widget class="QTabWidget" name="serverTabs" >
-      <property name="currentIndex" >
+    <item row="1" column="0" colspan="2">
+     <widget class="QTabWidget" name="serverTabs">
+      <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="tab" >
-       <attribute name="title" >
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
         <string>Wordpress</string>
        </attribute>
-       <widget class="QPushButton" name="getCategoriesBttn" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="getCategoriesBttn">
+        <property name="geometry">
          <rect>
           <x>10</x>
           <y>20</y>
@@ -287,22 +288,22 @@
           <height>30</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Refresh Categories</string>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
-          <normaloff>/usr/share/pixmaps/chotha/get-arrow.png</normaloff>/usr/share/pixmaps/chotha/get-arrow.png</iconset>
+          <normaloff>../../../../../../usr/share/pixmaps/chotha/get-arrow.png</normaloff>../../../../../../usr/share/pixmaps/chotha/get-arrow.png</iconset>
         </property>
-        <property name="iconSize" >
+        <property name="iconSize">
          <size>
           <width>20</width>
           <height>20</height>
          </size>
         </property>
        </widget>
-       <widget class="QPushButton" name="addPageBttn" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="addPageBttn">
+        <property name="geometry">
          <rect>
           <x>10</x>
           <y>60</y>
@@ -310,14 +311,14 @@
           <height>30</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Add Page</string>
         </property>
-        <property name="icon" >
-         <iconset>
-          <normaloff>/usr/share/pixmaps/chotha/addpage.png</normaloff>/usr/share/pixmaps/chotha/addpage.png</iconset>
+        <property name="icon">
+         <iconset resource="../Chotha/resource.qrc">
+          <normaloff>:/icons/addpage.png</normaloff>:/icons/addpage.png</iconset>
         </property>
-        <property name="iconSize" >
+        <property name="iconSize">
          <size>
           <width>20</width>
           <height>20</height>
@@ -325,12 +326,12 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2" >
-       <attribute name="title" >
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
         <string>Livejournal</string>
        </attribute>
-       <widget class="QLabel" name="label_3" >
-        <property name="geometry" >
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
          <rect>
           <x>12</x>
           <y>12</y>
@@ -338,12 +339,12 @@
           <height>18</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Current Mood</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="moodTxt" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="moodTxt">
+        <property name="geometry">
          <rect>
           <x>135</x>
           <y>13</y>
@@ -352,8 +353,8 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="musicBttn" >
-        <property name="geometry" >
+       <widget class="QPushButton" name="musicBttn">
+        <property name="geometry">
          <rect>
           <x>12</x>
           <y>39</y>
@@ -361,22 +362,22 @@
           <height>30</height>
          </rect>
         </property>
-        <property name="text" >
+        <property name="text">
          <string>Music Playing</string>
         </property>
-        <property name="icon" >
+        <property name="icon">
          <iconset>
-          <normaloff>/usr/share/pixmaps/chotha/speaker.png</normaloff>/usr/share/pixmaps/chotha/speaker.png</iconset>
+          <normaloff>../../../../../../usr/share/pixmaps/chotha/speaker.png</normaloff>../../../../../../usr/share/pixmaps/chotha/speaker.png</iconset>
         </property>
-        <property name="iconSize" >
+        <property name="iconSize">
          <size>
           <width>20</width>
           <height>20</height>
          </size>
         </property>
        </widget>
-       <widget class="QLineEdit" name="musicTxt" >
-        <property name="geometry" >
+       <widget class="QLineEdit" name="musicTxt">
+        <property name="geometry">
          <rect>
           <x>135</x>
           <y>44</y>
@@ -390,217 +391,215 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar" >
-   <property name="geometry" >
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
      <width>638</width>
-     <height>31</height>
+     <height>30</height>
     </rect>
    </property>
-   <property name="windowTitle" >
+   <property name="windowTitle">
     <string>Chotha Beta 1</string>
    </property>
-   <widget class="QMenu" name="menu_File" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
      <string>&amp;File</string>
     </property>
-    <addaction name="action_New" />
-    <addaction name="action_Open" />
-    <addaction name="action_Save" />
-    <addaction name="action_Quit" />
+    <addaction name="action_New"/>
+    <addaction name="action_Open"/>
+    <addaction name="action_Save"/>
+    <addaction name="action_Quit"/>
    </widget>
-   <widget class="QMenu" name="menu_Edit" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_Edit">
+    <property name="title">
      <string>&amp;Edit</string>
     </property>
-    <addaction name="actionPrevious_Entries" />
-    <addaction name="actionPreferences" />
+    <addaction name="actionPrevious_Entries"/>
+    <addaction name="actionPreferences"/>
    </widget>
-   <widget class="QMenu" name="menuHTML_Tags" >
-    <property name="title" >
+   <widget class="QMenu" name="menuHTML_Tags">
+    <property name="title">
      <string>HTML Tags</string>
     </property>
-    <addaction name="actionBold" />
-    <addaction name="actionItalic" />
-    <addaction name="actionUnderline" />
-    <addaction name="separator" />
-    <addaction name="actionSuperscript" />
-    <addaction name="actionSubscript" />
-    <addaction name="separator" />
-    <addaction name="actionInsert_Image" />
-    <addaction name="actionInsert_link" />
+    <addaction name="actionBold"/>
+    <addaction name="actionItalic"/>
+    <addaction name="actionUnderline"/>
+    <addaction name="separator"/>
+    <addaction name="actionSuperscript"/>
+    <addaction name="actionSubscript"/>
+    <addaction name="separator"/>
+    <addaction name="actionInsert_Image"/>
+    <addaction name="actionInsert_link"/>
    </widget>
-   <widget class="QMenu" name="menu_Preview" >
-    <property name="title" >
+   <widget class="QMenu" name="menu_Preview">
+    <property name="title">
      <string>&amp;Preview</string>
     </property>
-    <addaction name="actionIn_FireFox" />
-    <addaction name="actionIn_Konqueror" />
+    <addaction name="actionIn_FireFox"/>
+    <addaction name="actionIn_Konqueror"/>
    </widget>
-   <widget class="QMenu" name="menuHelp" >
-    <property name="title" >
-     <string>Help</string>
-    </property>
-    <addaction name="action_Help" />
-    <addaction name="actionAbout_Chotha" />
-   </widget>
-   <addaction name="menu_File" />
-   <addaction name="menu_Edit" />
-   <addaction name="menuHTML_Tags" />
-   <addaction name="menu_Preview" />
-   <addaction name="menuHelp" />
+   <addaction name="menu_File"/>
+   <addaction name="menu_Edit"/>
+   <addaction name="menuHTML_Tags"/>
+   <addaction name="menu_Preview"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar" />
-  <action name="action_Open" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/document-open.png</normaloff>/usr/share/pixmaps/chotha/document-open.png</iconset>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_Open">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/document-open.png</normaloff>:/icons/document-open.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Open</string>
    </property>
   </action>
-  <action name="action_Save" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/document-save.png</normaloff>/usr/share/pixmaps/chotha/document-save.png</iconset>
+  <action name="action_Save">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Save</string>
    </property>
   </action>
-  <action name="actionBold" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/bold.png</normaloff>/usr/share/pixmaps/chotha/bold.png</iconset>
+  <action name="actionBold">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/bold.png</normaloff>:/icons/bold.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Bold</string>
    </property>
   </action>
-  <action name="actionItalic" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/italic.png</normaloff>/usr/share/pixmaps/chotha/italic.png</iconset>
+  <action name="actionItalic">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/italic.png</normaloff>:/icons/italic.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Italic</string>
    </property>
   </action>
-  <action name="actionUnderline" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/underline.png</normaloff>/usr/share/pixmaps/chotha/underline.png</iconset>
+  <action name="actionUnderline">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/underline.png</normaloff>:/icons/underline.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Underline</string>
    </property>
   </action>
-  <action name="actionSuperscript" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/superscript.png</normaloff>/usr/share/pixmaps/chotha/superscript.png</iconset>
+  <action name="actionSuperscript">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/superscript.png</normaloff>:/icons/superscript.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Super&amp;script</string>
    </property>
   </action>
-  <action name="actionSubscript" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/subscript.png</normaloff>/usr/share/pixmaps/chotha/subscript.png</iconset>
+  <action name="actionSubscript">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/subscript.png</normaloff>:/icons/subscript.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Subs&amp;cript</string>
    </property>
   </action>
-  <action name="actionInsert_Image" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/insert-image.png</normaloff>/usr/share/pixmaps/chotha/insert-image.png</iconset>
+  <action name="actionInsert_Image">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/insert-image.png</normaloff>:/icons/insert-image.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Insert I&amp;mage</string>
    </property>
   </action>
-  <action name="actionInsert_link" >
-   <property name="text" >
+  <action name="actionInsert_link">
+   <property name="text">
     <string>Insert &amp;link</string>
    </property>
   </action>
-  <action name="actionIn_FireFox" >
-   <property name="text" >
+  <action name="actionIn_FireFox">
+   <property name="text">
     <string>In &amp;FireFox</string>
    </property>
   </action>
-  <action name="actionIn_Konqueror" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/konqueror.png</normaloff>/usr/share/pixmaps/chotha/konqueror.png</iconset>
+  <action name="actionIn_Konqueror">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/konqueror.png</normaloff>:/icons/konqueror.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>In &amp;Konqueror</string>
    </property>
   </action>
-  <action name="actionPrevious_Entries" >
-   <property name="enabled" >
+  <action name="actionPrevious_Entries">
+   <property name="enabled">
     <bool>false</bool>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Previous &amp;Entries</string>
    </property>
   </action>
-  <action name="actionPreferences" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/configure.png</normaloff>/usr/share/pixmaps/chotha/configure.png</iconset>
+  <action name="actionPreferences">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/configure.png</normaloff>:/icons/configure.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Preferences</string>
    </property>
   </action>
-  <action name="action_Quit" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/application-exit.png</normaloff>/usr/share/pixmaps/chotha/application-exit.png</iconset>
+  <action name="action_Quit">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/application-exit.png</normaloff>:/icons/application-exit.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Quit</string>
    </property>
   </action>
-  <action name="action_New" >
-   <property name="icon" >
-    <iconset>
-     <normaloff>/usr/share/pixmaps/chotha/document-new.png</normaloff>/usr/share/pixmaps/chotha/document-new.png</iconset>
+  <action name="action_New">
+   <property name="icon">
+    <iconset resource="../Chotha/resource.qrc">
+     <normaloff>:/icons/document-new.png</normaloff>:/icons/document-new.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;New</string>
    </property>
   </action>
-  <action name="action_Help" >
-   <property name="enabled" >
+  <action name="action_Help">
+   <property name="enabled">
     <bool>false</bool>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>&amp;Help</string>
    </property>
   </action>
-  <action name="actionAbout_Chotha" >
-   <property name="icon" >
+  <action name="actionAbout_Chotha">
+   <property name="icon">
     <iconset>
-     <normaloff>/usr/share/pixmaps/chotha.png</normaloff>/usr/share/pixmaps/chotha.png</iconset>
+     <normaloff>../../../../../../usr/share/pixmaps/chotha.png</normaloff>../../../../../../usr/share/pixmaps/chotha.png</iconset>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>About Chotha</string>
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>KTextEdit</class>
+   <extends>QTextEdit</extends>
+   <header>ktextedit.h</header>
+  </customwidget>
+ </customwidgets>
  <tabstops>
   <tabstop>titleTxt</tabstop>
   <tabstop>commentCheckBox</tabstop>
-  <tabstop>blogTxt</tabstop>
   <tabstop>publishBttn</tabstop>
   <tabstop>draftBttn</tabstop>
   <tabstop>boldBttn</tabstop>
@@ -609,6 +608,8 @@
   <tabstop>stateBttn</tabstop>
   <tabstop>categoryList</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../Chotha/resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
