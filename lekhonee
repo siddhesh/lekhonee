@@ -55,8 +55,7 @@ class LekhoneeApp(KApplication):
         KApplication.__init__(self)
 
 
-        #FIXME for RELEASE
-        pixmap = QtGui.QPixmap("/usr/share/pixmaps/chothasplash.png",'png')
+        pixmap = QtGui.QPixmap(":/pixmaps/chothasplash.png")
         self.splash = QtGui.QSplashScreen(pixmap)
         self.splash.show()
         QtCore.QTimer.singleShot(2000,self.splash,QtCore.SLOT("hide()"))
