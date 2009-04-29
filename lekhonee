@@ -55,10 +55,12 @@ class LekhoneeApp(KApplication):
         KApplication.__init__(self)
 
 
-        pixmap = QtGui.QPixmap(":/pixmaps/chothasplash.png")
-        self.splash = QtGui.QSplashScreen(pixmap)
-        self.splash.show()
-        QtCore.QTimer.singleShot(2000,self.splash,QtCore.SLOT("hide()"))
+        #pixmap = QtGui.QPixmap(":/pixmaps/chothasplash.png")
+        #self.splash = QtGui.QSplashScreen(pixmap)
+        #self.splash.show()
+        #QtCore.QTimer.singleShot(2000,self.splash,QtCore.SLOT("hide()"))
+
+
         self.mywindow = LekhoneeUI()
         self.mywindow.show()
         self.exec_()
@@ -79,31 +81,40 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
         self.connectslots()
 
-        self.filename = ''
-        self.configPrefix = os.path.join(os.path.expanduser('~'), ".chotha")
-        if not os.path.exists(self.configPrefix):
-            os.mkdir(self.configPrefix)
-            tempStr = 'cp /etc/chotha.data ' + self.configPrefix
-            os.popen(tempStr)
-        f = file(os.path.join(self.configPrefix,'chotha.data'))
-        data = cPickle.load(f)
-        f.close()
-        self.username = data['username']
-        self.password = data['password']
-        self.serverType = data['serverType']
-        #Select the proper Tab according to the server
-        if self.serverType == "Wordpress":
-            self.selectTab(0)
-            self.draftBttn.setEnabled(True)
-            self.commentCheckBox.setEnabled(True)
-            self.categoryList.setEnabled(True)
-            self.server = Wordpress(data['server'], self.username, self.password)
-        elif self.serverType == "Livejournal":
-            self.selectTab(1)
-            self.draftBttn.setEnabled(False)
-            self.commentCheckBox.setEnabled(False)
-            self.categoryList.setEnabled(False)
-            self.server = Livejournal('http://livejournal.com', self.username, self.password)
+
+        self.wallet = KWallet.Wallet.openWallet("kdewallet", self.winId())
+
+        if not self.wallet.setFolder('lekhonee'):
+            self.wallet.createFolder('lekhonee')
+            self.wallet.setFolder('lekhonee')
+            self.wallet.writeEntry('username','admin')
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
+
+        x = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('username',x)
+        except:
+            self.wallet.writeEntry('username','admin')
+            self.wallet.readEntry('username',x)
+        self.username = str(x)
+        server = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('site',server)
+        except:
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.readEntry('site',server)
+        self.server = str(server)
+        self.password = ''
+        self.wallet.readPassword(self.server,self.password)
+
+        self.conf = ConfigureWinUI(self, self.wallet)
+
+        self.selectTab(0)
+        self.draftBttn.setEnabled(True)
+        self.commentCheckBox.setEnabled(True)
+        self.categoryList.setEnabled(True)
+        self.server = Wordpress(self.server, self.username, self.password)
 
         self.content = ''
         self.categoriesDict = {}
@@ -120,7 +131,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.linkBttn,QtCore.SIGNAL("clicked()"),self.insertLink)
         self.connect(self.imageBttn,QtCore.SIGNAL("clicked()"),self.insertImage)
         self.connect(self.addPageBttn,QtCore.SIGNAL("clicked()"),self.addPage)
-        self.connect(self.musicBttn,QtCore.SIGNAL("clicked()"),self.getMusic)
         self.connect(self.getCategoriesBttn,QtCore.SIGNAL("clicked()"),self.getCategories)
         self.connect(self.action_Save,QtCore.SIGNAL("triggered()"),self.fileSave)
         self.connect(self.action_Open,QtCore.SIGNAL("triggered()"),self.fileOpen)
@@ -136,7 +146,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.actionPreferences,QtCore.SIGNAL("triggered()"),self.configure)
         self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
-        self.connect(self.actionAbout_Chotha,QtCore.SIGNAL("triggered()"),self.showAbout)
 
     def queryClose(self):
         self.hide()
@@ -223,15 +232,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.content = {'title':unicode(self.titleTxt.text()),'description':desc,'categories':categories,'mt_allow_comments':comment}
 
         try:
-            if self.serverType == 'Wordpress':
-                qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
-            elif self.serverType == 'Livejournal':
-                localcontent = self.content
-                currentMood = str(self.moodTxt.text())
-                currentMusic = str(self.musicTxt.text())
-                prop = {'current_mood':currentMood, 'current_music':currentMusic}
-                localcontent['props'] = prop
-                qm = QtGui.QMessageBox.information(self, 'Done :)',self.server.post(localcontent, publish))
+            qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
             self.clearAll()
         except xmlrpclib.Fault, e:
             qm = QtGui.QErrorMessage(self)
@@ -249,8 +250,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.boldBttn.setEnabled(True)
         self.italicBttn.setEnabled(True)
         self.linkBttn.setEnabled(True)
-        if self.serverType != 'Livejournal':
-            self.draftBttn.setEnabled(True)
+        self.draftBttn.setEnabled(True)
         self.publishBttn.setEnabled(True)
         self.imageBttn.setEnabled(True)
 
@@ -360,7 +360,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         os.system('konqueror file://%s' % (os.path.join('/tmp','chothatmp.html')))
 
     def configure(self):
-        conf = ConfigureWinUI(self)
+        self.conf.show()
     #def previousEntries(self):
         #self.getCategories()
         #oldEntries = OldEntryDialogUI(self, self.server, self.username, self.password)

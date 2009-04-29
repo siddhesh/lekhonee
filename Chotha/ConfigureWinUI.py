@@ -13,52 +13,56 @@ from PyQt4 import QtCore, QtGui
 from PyQt4 import uic
 import os
 import cPickle
+from resource_rc import *
+from ConfigureWinui import *
 
 #Setup dialogs
-Ui_configureDialog, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','ConfigureWin.ui'))
+#Ui_configureDialog, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','ConfigureWin.ui'))
 
 
-class ConfigureWinUI(QtGui.QDialog, Ui_configureDialog):
-    def __init__(self,parent):
+class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
+    def __init__(self,parent, wallet):
         QtGui.QDialog.__init__(self)
         self.setupUi(self)
-        self.configPrefix = os.path.join(os.path.expanduser('~'), ".chotha")
-        f = file(os.path.join(self.configPrefix,'chotha.data'))
-        data = cPickle.load(f)
-        f.close()
+        self.wallet = wallet
+
         self.connect(self.saveBttn,QtCore.SIGNAL("clicked()"),self.save)
         self.connect(self.cancelBttn,QtCore.SIGNAL("clicked()"),self.hide)
-        self.connect(self.typeBox,QtCore.SIGNAL("currentIndexChanged(QString)"),self.changeView)
-        self.username = data['username']
-        self.password = data['password']
-        self.server = data['server']
-        self.serverType = data['serverType']
-        if self.serverType == 'Wordpress':
-            self.typeBox.setCurrentIndex(0)
-        elif self.serverType == 'Livejournal':
-            self.typeBox.setCurrentIndex(1)
+
+        if not self.wallet.setFolder('lekhonee'):
+            self.wallet.createFolder('lekhonee')
+            self.wallet.setFolder('lekhonee')
+            self.wallet.writeEntry('username','admin')
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
+
+        x = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('username',x)
+        except:
+            self.wallet.writeEntry('username','admin')
+            self.wallet.readEntry('username',x)
+        self.username = str(x)
+        server = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('site',server)
+        except:
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.readEntry('site',server)
+        self.server = str(server)
+        self.password = ''
+        self.wallet.readPassword(self.server,self.password)
         self.serverTxt.setText(self.server)
         self.usernameTxt.setText(self.username)
         self.passwordTxt.setText(self.password)
-        self.show()
-        self.exec_()
-    
+
     def save(self):
         """Don't know why this method is doing what it supposed to do"""
         self.username = str(self.usernameTxt.text())
         self.password = str(self.passwordTxt.text())
         self.server = str(self.serverTxt.text())
-        self.serverType = str(self.typeBox.currentText())
-        data = {'username': self.username, 'password': self.password, 'serverType': self.serverType, 'server': self.server}
-        f = file(os.path.join(self.configPrefix,'chotha.data'),'w')
-        cPickle.dump(data, f)
-        """Hide hide hide.... he is not hiding"""
+        self.wallet.writeEntry('username',self.username)
+        self.wallet.writeEntry('site',self.server)
+        self.wallet.writePassword(self.server,self.password)
+
         self.hide()
-        
-    def changeView(self, text):
-        """Just change the Server text field according to the server type selected"""
-        if text == "Wordpress":
-            self.serverTxt.setEnabled(True)
-        elif text == 'Livejournal':
-            self.serverTxt.setEnabled(False)
-            self.serverTxt.setText('http://livejournal.com')

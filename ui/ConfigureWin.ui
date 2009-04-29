@@ -1,49 +1,47 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ConfigureWin</class>
- <widget class="QDialog" name="ConfigureWin" >
-  <property name="windowModality" >
+ <widget class="QDialog" name="ConfigureWin">
+  <property name="windowModality">
    <enum>Qt::ApplicationModal</enum>
   </property>
-  <property name="geometry" >
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>427</width>
-    <height>209</height>
+    <width>443</width>
+    <height>153</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Configure Lekhonee</string>
   </property>
-  <layout class="QGridLayout" >
-   <item row="0" column="0" >
-    <layout class="QHBoxLayout" >
+  <property name="windowIcon">
+   <iconset resource="../Chotha/resource.qrc">
+    <normaloff>:/pixmaps/lekhonee.png</normaloff>:/pixmaps/lekhonee.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout">
      <item>
-      <layout class="QVBoxLayout" >
+      <layout class="QVBoxLayout">
        <item>
-        <widget class="QLabel" name="label_4" >
-         <property name="text" >
-          <string>Type</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label" >
-         <property name="text" >
+        <widget class="QLabel" name="label">
+         <property name="text">
           <string>Server</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_2" >
-         <property name="text" >
+        <widget class="QLabel" name="label_2">
+         <property name="text">
           <string>Username</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="label_3" >
-         <property name="text" >
+        <widget class="QLabel" name="label_3">
+         <property name="text">
           <string>Password</string>
          </property>
         </widget>
@@ -51,33 +49,19 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" >
+      <layout class="QVBoxLayout">
        <item>
-        <widget class="QComboBox" name="typeBox" >
-         <item>
-          <property name="text" >
-           <string>Wordpress</string>
-          </property>
-         </item>
-         <item>
-          <property name="text" >
-           <string>Livejournal</string>
-          </property>
-         </item>
-        </widget>
+        <widget class="QLineEdit" name="serverTxt"/>
        </item>
        <item>
-        <widget class="QLineEdit" name="serverTxt" />
+        <widget class="QLineEdit" name="usernameTxt"/>
        </item>
        <item>
-        <widget class="QLineEdit" name="usernameTxt" />
-       </item>
-       <item>
-        <widget class="QLineEdit" name="passwordTxt" >
-         <property name="text" >
+        <widget class="QLineEdit" name="passwordTxt">
+         <property name="text">
           <string/>
          </property>
-         <property name="echoMode" >
+         <property name="echoMode">
           <enum>QLineEdit::Password</enum>
          </property>
         </widget>
@@ -86,25 +70,25 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
+   <item>
+    <layout class="QHBoxLayout">
      <item>
-      <widget class="QPushButton" name="saveBttn" >
-       <property name="text" >
+      <widget class="QPushButton" name="saveBttn">
+       <property name="text">
         <string>Save</string>
        </property>
-       <property name="icon" >
-        <iconset>
-         <normaloff>/usr/share/pixmaps/chotha/document-save.png</normaloff>/usr/share/pixmaps/chotha/document-save.png</iconset>
+       <property name="icon">
+        <iconset resource="../Chotha/resource.qrc">
+         <normaloff>:/icons/document-save.png</normaloff>:/icons/document-save.png</iconset>
        </property>
       </widget>
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
          <height>20</height>
@@ -113,13 +97,13 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="cancelBttn" >
-       <property name="text" >
+      <widget class="QPushButton" name="cancelBttn">
+       <property name="text">
         <string>Cancel</string>
        </property>
-       <property name="icon" >
-        <iconset>
-         <normaloff>/usr/share/pixmaps/chotha/dialog-cancel.png</normaloff>/usr/share/pixmaps/chotha/dialog-cancel.png</iconset>
+       <property name="icon">
+        <iconset resource="../Chotha/resource.qrc">
+         <normaloff>:/icons/dialog-cancel.png</normaloff>:/icons/dialog-cancel.png</iconset>
        </property>
       </widget>
      </item>
@@ -127,6 +111,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Chotha/resource.qrc"/>
+ </resources>
  <connections/>
 </ui>
