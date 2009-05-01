@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>638</width>
-    <height>551</height>
+    <width>722</width>
+    <height>577</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -268,6 +268,52 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="getCategoriesBttn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../Chotha/resource.qrc">
+          <normaloff>:/icons/get-arrow.png</normaloff>:/icons/get-arrow.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="addCategoryTxt">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addCategoryBttn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Add Category</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
     <item row="1" column="0" colspan="2">
@@ -279,34 +325,11 @@
        <attribute name="title">
         <string>Wordpress</string>
        </attribute>
-       <widget class="QPushButton" name="getCategoriesBttn">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>145</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Refresh Categories</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../usr/share/pixmaps/chotha/get-arrow.png</normaloff>../../../../../../usr/share/pixmaps/chotha/get-arrow.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
        <widget class="QPushButton" name="addPageBttn">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>60</y>
+          <x>0</x>
+          <y>0</y>
           <width>141</width>
           <height>30</height>
          </rect>
@@ -328,64 +351,8 @@
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Livejournal</string>
+        <string>Future Work</string>
        </attribute>
-       <widget class="QLabel" name="label_3">
-        <property name="geometry">
-         <rect>
-          <x>12</x>
-          <y>12</y>
-          <width>115</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Current Mood</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="moodTxt">
-        <property name="geometry">
-         <rect>
-          <x>135</x>
-          <y>13</y>
-          <width>127</width>
-          <height>23</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="musicBttn">
-        <property name="geometry">
-         <rect>
-          <x>12</x>
-          <y>39</y>
-          <width>115</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Music Playing</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../../../../../../usr/share/pixmaps/chotha/speaker.png</normaloff>../../../../../../usr/share/pixmaps/chotha/speaker.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="musicTxt">
-        <property name="geometry">
-         <rect>
-          <x>135</x>
-          <y>44</y>
-          <width>127</width>
-          <height>23</height>
-         </rect>
-        </property>
-       </widget>
       </widget>
      </widget>
     </item>
@@ -396,7 +363,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>638</width>
+     <width>722</width>
      <height>30</height>
     </rect>
    </property>

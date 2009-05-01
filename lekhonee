@@ -25,7 +25,6 @@ from Chotha.ConfigureWinUI import ConfigureWinUI
 from Chotha.AboutChothaUI import AboutChothaUI
 from Chotha.ServerFactory import serverfactory
 from Chotha.Wordpress import Wordpress
-from Chotha.Livejournal import Livejournal
 from Chotha.resource_rc import *
 
 from PyKDE4.kdecore import ki18n, KAboutData, KCmdLineArgs
@@ -105,10 +104,8 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
             self.wallet.readEntry('site',server)
         self.server = str(server)
-        self.password = ''
+        self.password = QtCore.QString()
         self.wallet.readPassword(self.server,self.password)
-
-        self.conf = ConfigureWinUI(self, self.wallet)
 
         self.selectTab(0)
         self.draftBttn.setEnabled(True)
@@ -131,6 +128,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.linkBttn,QtCore.SIGNAL("clicked()"),self.insertLink)
         self.connect(self.imageBttn,QtCore.SIGNAL("clicked()"),self.insertImage)
         self.connect(self.addPageBttn,QtCore.SIGNAL("clicked()"),self.addPage)
+        self.connect(self.addCategoryBttn,QtCore.SIGNAL("clicked()"),self.addCategory)
         self.connect(self.getCategoriesBttn,QtCore.SIGNAL("clicked()"),self.getCategories)
         self.connect(self.action_Save,QtCore.SIGNAL("triggered()"),self.fileSave)
         self.connect(self.action_Open,QtCore.SIGNAL("triggered()"),self.fileOpen)
@@ -360,7 +358,9 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         os.system('konqueror file://%s' % (os.path.join('/tmp','chothatmp.html')))
 
     def configure(self):
+        self.conf = ConfigureWinUI(self, self.wallet)
         self.conf.show()
+
     #def previousEntries(self):
         #self.getCategories()
         #oldEntries = OldEntryDialogUI(self, self.server, self.username, self.password)
@@ -392,6 +392,12 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.musicTxt.setText('No Amarok')
         else:
             self.musicTxt.setText(musicname[0][:-1])
+
+    def addCategory(self):
+        """This will add the new category"""
+        newcategory = unicode(self.addCategoryTxt.toPlainText())
+
+        self.getCategories()
 
     def addPage(self):
         """Add a new page in the server"""

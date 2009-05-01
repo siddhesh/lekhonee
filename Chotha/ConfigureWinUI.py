@@ -50,7 +50,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
             self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
             self.wallet.readEntry('site',server)
         self.server = str(server)
-        self.password = ''
+        self.password = QtCore.QString()
         self.wallet.readPassword(self.server,self.password)
         self.serverTxt.setText(self.server)
         self.usernameTxt.setText(self.username)
