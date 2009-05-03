@@ -29,3 +29,7 @@ class Wordpress(BlogServer):
     def addPage(self, content, publish):
         """Add a new page with content"""
         self.server.wp.newPage(1, self.username, self.password, content, publish)
+
+    def addCategory(self,category):
+        """Add a new category"""
+        self.server.wp.newCategory(1,self.username, self.password, category)
