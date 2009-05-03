@@ -12,9 +12,7 @@
 from PyQt4 import QtCore, QtGui
 from PyQt4 import uic
 import os
-
-#Setup dialogs
-Ui_imageDialog, throwaway = uic.loadUiType(os.path.join('/usr/share/chotha','ui','ImageDialog.ui'))
+from ImageDialogui import Ui_imageDialog
 
 class ImageDialogUI(QtGui.QDialog, Ui_imageDialog):
        def __init__(self,parent):
