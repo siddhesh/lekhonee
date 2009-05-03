@@ -25,7 +25,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
         QtGui.QDialog.__init__(self)
         self.setupUi(self)
         self.wallet = wallet
-
+        self.parent = parent
         self.connect(self.saveBttn,QtCore.SIGNAL("clicked()"),self.save)
         self.connect(self.cancelBttn,QtCore.SIGNAL("clicked()"),self.hide)
 
@@ -64,5 +64,6 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
         self.wallet.writeEntry('username',self.username)
         self.wallet.writeEntry('site',self.server)
         self.wallet.writePassword(self.server,self.password)
+        self.parent.reloadInfo()
 
         self.hide()
