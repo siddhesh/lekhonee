@@ -76,42 +76,21 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.kmenu = self.helpMenu()
         self.menubar.addMenu(self.kmenu)
 
+        self.webview = QWebView(self)
+        self.webview.hide()
+
         self.blogTxt.setCheckSpellingEnabledInternal(True)
 
         self.connectslots()
 
 
         self.wallet = KWallet.Wallet.openWallet("kdewallet", self.winId())
-
-        if not self.wallet.setFolder('lekhonee'):
-            self.wallet.createFolder('lekhonee')
-            self.wallet.setFolder('lekhonee')
-            self.wallet.writeEntry('username','admin')
-            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
-            self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
-
-        x = QtCore.QByteArray()
-        try:
-            self.wallet.readEntry('username',x)
-        except:
-            self.wallet.writeEntry('username','admin')
-            self.wallet.readEntry('username',x)
-        self.username = str(x)
-        server = QtCore.QByteArray()
-        try:
-            self.wallet.readEntry('site',server)
-        except:
-            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
-            self.wallet.readEntry('site',server)
-        self.server = str(server)
-        self.password = QtCore.QString()
-        self.wallet.readPassword(self.server,self.password)
+        self.reloadInfo()
 
         self.selectTab(0)
         self.draftBttn.setEnabled(True)
         self.commentCheckBox.setEnabled(True)
         self.categoryList.setEnabled(True)
-        self.server = Wordpress(self.server, self.username, self.password)
 
         self.content = ''
         self.categoriesDict = {}
@@ -144,6 +123,35 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.actionPreferences,QtCore.SIGNAL("triggered()"),self.configure)
         self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
+
+    def reloadInfo(self):
+        """Reload server and username, password"""
+        if not self.wallet.setFolder('lekhonee'):
+            self.wallet.createFolder('lekhonee')
+            self.wallet.setFolder('lekhonee')
+            self.wallet.writeEntry('username','admin')
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
+
+        x = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('username',x)
+        except:
+            self.wallet.writeEntry('username','admin')
+            self.wallet.readEntry('username',x)
+        self.username = str(x)
+        server = QtCore.QByteArray()
+        try:
+            self.wallet.readEntry('site',server)
+        except:
+            self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
+            self.wallet.readEntry('site',server)
+        self.server = str(server)
+        self.password = QtCore.QString()
+        self.wallet.readPassword(self.server,self.password)
+        self.server = Wordpress(self.server, self.username, str(self.password))
+
+
 
     def queryClose(self):
         self.hide()
