@@ -403,9 +403,11 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
     def addCategory(self):
         """This will add the new category"""
-        newcategory = unicode(self.addCategoryTxt.toPlainText())
+        newcategory = unicode(self.addCategoryTxt.text())
+        self.server.addCategory(newcategory)
+        self.categoryList.addItem(newcategory)
+        self.categoryList.setCurrentRow(self.categoryList.count() - 1 )
 
-        self.getCategories()
 
     def addPage(self):
         """Add a new page in the server"""
