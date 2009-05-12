@@ -22,7 +22,6 @@ import tempfile
 from Chotha.syntax import ResourceHighlighter
 from Chotha.ImageDialogUI import ImageDialogUI
 from Chotha.ConfigureWinUI import ConfigureWinUI
-from Chotha.AboutChothaUI import AboutChothaUI
 from Chotha.ServerFactory import serverfactory
 from Chotha.Wordpress import Wordpress
 from Chotha.resource_rc import *
@@ -75,9 +74,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
         self.kmenu = self.helpMenu()
         self.menubar.addMenu(self.kmenu)
-
-        self.webview = QWebView(self)
-        self.webview.hide()
 
         self.blogTxt.setCheckSpellingEnabledInternal(True)
 
