@@ -75,14 +75,21 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.kmenu = self.helpMenu()
         self.menubar.addMenu(self.kmenu)
 
-        self.blogTxt.setCheckSpellingEnabledInternal(True)
+        #self.blogTxt.setCheckSpellingEnabledInternal(True)
 
         self.connectslots()
 
-
+        self.Server = "http://yoursite.com/xmlrpc.php"
+        self.password = ""
+        self.username = ""
         self.wallet = KWallet.Wallet.openWallet("kdewallet", self.winId())
-        self.reloadInfo()
+        if self.wallet:
+            self.reloadInfo()
+        else:
+            self.conf = ConfigureWinUI(self, self.wallet, start=1)
+            self.conf.show()
 
+        self.makeServer()
         self.selectTab(0)
         self.draftBttn.setEnabled(True)
         self.commentCheckBox.setEnabled(True)
@@ -142,12 +149,12 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         except:
             self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
             self.wallet.readEntry('site',server)
-        self.server = str(server)
+        self.Server = str(server)
         self.password = QtCore.QString()
-        self.wallet.readPassword(self.server,self.password)
-        self.server = Wordpress(self.server, self.username, str(self.password))
+        self.wallet.readPassword(self.Server,self.password)
 
-
+    def makeServer(self):
+        self.server = Wordpress(self.Server, self.username, str(self.password))
 
     def queryClose(self):
         self.hide()
