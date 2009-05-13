@@ -1,5 +1,11 @@
 Change Log:
 
+	Version 0.3:
+	    * Removed Livejournal support
+	    * Moved PyKDE4
+	    * Add category support
+	    * Spell checking (for en_US only)
+
 	Version 0.2:
 	    * Livejournal support added
 	    * You can create pages in wordpress

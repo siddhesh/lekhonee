@@ -6,6 +6,6 @@ Do it as root
 
 #python setup.py install 
 
-It requires PyQt4 
+It requires PyKDE4 
 
 Enjoy :)
