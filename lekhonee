@@ -89,6 +89,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.conf.show()
 
         self.entry = None
+        self.editFlag = False
         self.makeServer()
         self.selectTab(0)
         self.draftBttn.setEnabled(True)
@@ -237,7 +238,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             myitems = self.categoryList.findItems(category, QtCore.Qt.MatchExactly)
             for eachitem in myitems:
                 self.categoryList.setCurrentItem(eachitem, QtGui.QItemSelectionModel.Select)
-
+        self.editFlag = True
 
 
     def publishPost(self):
@@ -273,7 +274,10 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.content = {'title':unicode(self.titleTxt.text()),'description':desc,'categories':categories,'mt_allow_comments':comment}
 
         try:
-            qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
+            if not self.editFlag:
+                qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.post(self.content, publish))
+            else:
+                qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.edit(self.entry['postid'],self.content, publish))
             self.clearAll()
         except xmlrpclib.Fault, e:
             qm = QtGui.QErrorMessage(self)
@@ -361,6 +365,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
     def clearAll(self):
         self.blogTxt.clear()
         self.titleTxt.clear()
+        self.getCategories()
 
     def insertImage(self):
         align = {'-- Not Set --': '', 'Baseline': 'baseline', 'Top': 'top', 'Middle': 'middle', 'Bottom': 'bottom', 'Text Top': 'texttop', 'Absolute Middle': 'absmiddle', 'Absolute bottom': 'abcbttom', 'Left': 'left', 'Right': 'right'}
