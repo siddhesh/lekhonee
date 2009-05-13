@@ -18,6 +18,6 @@ setup(name='lekhonee',
 		  ('/usr/bin',['lekhonee']),
 		  ('/usr/share/pixmaps',['pixmaps/lekhonee.png', 'pixmaps/chothasplash.png']),
 		  ('/usr/share/chotha/docs',['docs/README','docs/LICENSE','docs/COPYING','docs/ChangeLog']),
-          ('/usr/share/chotha/ui',['ui/ConfigureWin.ui', 'ui/ImageDialog.ui', 'ui/Lekhonee.ui', 'ui/OldEntryDialog.ui', 'ui/AboutChothaUI.ui']),
+          ('/usr/share/chotha/ui',['ui/ConfigureWin.ui', 'ui/ImageDialog.ui', 'ui/Lekhonee.ui', 'ui/OldEntryDialog.ui' ]),
           ('/usr/share/pixmaps/chotha',['icons/application-exit.png', 'icons/bold.png', 'icons/configure.png', 'icons/dialog-cancel.png', 'icons/document-open.png', 'icons/document-save.png', 'icons/draft.png', 'icons/insert-image.png', 'icons/internet.png', 'icons/italic.png', 'icons/konqueror.png', 'icons/ok.png', 'icons/subscript.png', 'icons/superscript.png', 'icons/underline.png', 'icons/document-new.png', 'icons/addpage.png'])]
       )
