@@ -75,7 +75,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.kmenu = self.helpMenu()
         self.menubar.addMenu(self.kmenu)
 
-        #self.blogTxt.setCheckSpellingEnabledInternal(True)
 
         self.connectslots()
 
@@ -89,6 +88,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.conf = ConfigureWinUI(self, self.wallet, start=1)
             self.conf.show()
 
+        self.entry = None
         self.makeServer()
         self.selectTab(0)
         self.draftBttn.setEnabled(True)
@@ -126,6 +126,8 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.actionPreferences,QtCore.SIGNAL("triggered()"),self.configure)
         self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
+        self.connect(self.actionLast_Entry,QtCore.SIGNAL("triggered()"),self.loadLastEntry)
+        self.connect(self.spellCheckBox,QtCore.SIGNAL("stateChanged(int)"),self.changeSpellCheck)
 
     def reloadInfo(self):
         """Reload server and username, password"""
@@ -158,7 +160,20 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
     def queryClose(self):
         self.hide()
+        self.disableSpellCheck()
         sys.exit()
+
+    def changeSpellCheck(self, state):
+        if state == 2:
+            self.enableSpellCheck()
+        else:
+            self.disableSpellCheck()
+
+    def enableSpellCheck(self):
+        self.blogTxt.setCheckSpellingEnabledInternal(True)
+
+    def disableSpellCheck(self):
+        self.blogTxt.setCheckSpellingEnabledInternal(False)
 
     def textBold(self):
         """To make a text BOLD"""
@@ -206,6 +221,23 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             cur.select(QtGui.QTextCursor.WordUnderCursor)
         cur.mergeCharFormat(fmt)
         self.blogTxt.mergeCurrentCharFormat(fmt)
+
+    def loadLastEntry(self):
+        self.entry = self.server.getLastPost()[0]
+        self.blogTxt.setPlainText(self.entry['description'])
+        self.titleTxt.setText(self.entry['title'])
+        if self.entry['mt_allow_comments'] == 1:
+            self.commentCheckBox.setCheckState(2)
+        else:
+            self.commentCheckBox.setCheckState(0)
+        categories = self.entry['categories']
+        self.getCategories()
+        self.categoryList.setCurrentRow(self.categoryList.currentRow(),QtGui.QItemSelectionModel.Clear)
+        for category in categories:
+            myitems = self.categoryList.findItems(category, QtCore.Qt.MatchExactly)
+            for eachitem in myitems:
+                self.categoryList.setCurrentItem(eachitem, QtGui.QItemSelectionModel.Select)
+
 
 
     def publishPost(self):
