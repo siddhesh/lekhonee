@@ -1,5 +1,9 @@
 Change Log:
 
+	Version 0.3.1:
+	    * Added SpellCheck as an option
+	    * One can now edit the last entry
+
 	Version 0.3:
 	    * Removed Livejournal support
 	    * Moved PyKDE4
