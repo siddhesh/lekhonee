@@ -19,7 +19,10 @@ class Wordpress(BlogServer):
     def post(self, content, publish):
         """Post the content"""
         postid = self.server.metaWeblog.newPost(1, self.username, self.password, content, publish)
-        res = "The blog is updated with postid " + str(postid)
+        if publish:
+            res = "The blog is updated with postid " + str(postid)
+        else:
+            res = "New draft saved with postid " + str(postid)
         return res
 
     def edit(self, postid, content, publish):

@@ -289,6 +289,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             else:
                 qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.edit(self.entry['postid'],self.content, publish))
             self.clearAll()
+            self.editFlag = False
         except xmlrpclib.Fault, e:
             qm = QtGui.QErrorMessage(self)
             qm.showMessage(e.faultString)
