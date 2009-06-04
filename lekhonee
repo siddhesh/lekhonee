@@ -76,16 +76,15 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.menubar.addMenu(self.kmenu)
 
 
-        self.connectslots()
 
         self.Server = "http://yoursite.com/xmlrpc.php"
         self.password = ""
         self.username = ""
         self.wallet = KWallet.Wallet.openWallet("kdewallet", self.winId())
+        self.conf = ConfigureWinUI(self, self.wallet, start=1)
         if self.wallet:
             self.reloadInfo()
         else:
-            self.conf = ConfigureWinUI(self, self.wallet, start=1)
             self.conf.show()
 
         self.entry = None
@@ -100,6 +99,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.categoriesDict = {}
         self.getCategories()
         self.highlighter = ResourceHighlighter(self.blogTxt.document())
+        self.connectslots()
 
     def connectslots(self):
         self.connect(self.boldBttn,QtCore.SIGNAL("clicked()"),self.textBold)
@@ -129,6 +129,16 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
         self.connect(self.actionLast_Entry,QtCore.SIGNAL("triggered()"),self.loadLastEntry)
         self.connect(self.spellCheckBox,QtCore.SIGNAL("stateChanged(int)"),self.changeSpellCheck)
+        self.connect(self.conf,QtCore.SIGNAL("saved()"),self.reloadServer)
+
+    def reloadServer(self):
+        """
+        Reload all info from server
+        """
+        self.reloadInfo()
+        self.makeServer()
+        self.getCategories()
+
 
     def reloadInfo(self):
         """Reload server and username, password"""
@@ -137,7 +147,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.wallet.setFolder('lekhonee')
             self.wallet.writeEntry('username','admin')
             self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
-            self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
+            self.wallet.writePassword('password','changeme')
 
         x = QtCore.QByteArray()
         try:
@@ -154,7 +164,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             self.wallet.readEntry('site',server)
         self.Server = str(server)
         self.password = QtCore.QString()
-        self.wallet.readPassword(self.Server,self.password)
+        self.wallet.readPassword('password',self.password)
 
     def makeServer(self):
         self.server = Wordpress(self.Server, self.username, str(self.password))
@@ -406,7 +416,6 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         os.system('konqueror file://%s' % (os.path.join('/tmp','chothatmp.html')))
 
     def configure(self):
-        self.conf = ConfigureWinUI(self, self.wallet)
         self.conf.show()
 
     #def previousEntries(self):

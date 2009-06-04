@@ -36,7 +36,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
                 self.wallet.setFolder('lekhonee')
                 self.wallet.writeEntry('username','admin')
                 self.wallet.writeEntry('site','http://yoursite.com/xmlrpc.php')
-                self.wallet.writePassword('http://yoursite.com/xmlrpc.php','changeme')
+                self.wallet.writePassword('password','changeme')
 
             x = QtCore.QByteArray()
             try:
@@ -53,7 +53,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
                 self.wallet.readEntry('site',server)
             self.server = str(server)
             self.password = QtCore.QString()
-            self.wallet.readPassword(self.server,self.password)
+            self.wallet.readPassword('password',self.password)
             self.serverTxt.setText(self.server)
             self.usernameTxt.setText(self.username)
             self.passwordTxt.setText(self.password)
@@ -71,7 +71,7 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
         if self.wallet:
             self.wallet.writeEntry('username',self.username)
             self.wallet.writeEntry('site',self.server)
-            self.wallet.writePassword(self.server,self.password)
+            self.wallet.writePassword('password',self.password)
             self.parent.reloadInfo()
         else:
             self.parent.username = self.username
@@ -81,3 +81,4 @@ class ConfigureWinUI(QtGui.QDialog, Ui_ConfigureWin):
             self.parent.getCategories()
 
         self.hide()
+        self.emit(QtCore.SIGNAL("saved()"))
