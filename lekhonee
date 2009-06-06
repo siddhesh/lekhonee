@@ -100,6 +100,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.getCategories()
         self.highlighter = ResourceHighlighter(self.blogTxt.document())
         self.connectslots()
+        self.blogTxt.setPlainText("""\n\nThis post is brought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a>""")
 
     def connectslots(self):
         self.connect(self.boldBttn,QtCore.SIGNAL("clicked()"),self.textBold)
@@ -376,6 +377,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
     def clearAll(self):
         self.blogTxt.clear()
         self.titleTxt.clear()
+        self.blogTxt.setPlainText("""\n\nThis post is brought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a>""")
         self.getCategories()
 
     def insertImage(self):
