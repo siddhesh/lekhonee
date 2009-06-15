@@ -145,7 +145,7 @@
 		      <signal name="activate" handler="on_bold_activate" last_modification_time="Wed, 10 Jun 2009 19:30:43 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image45">
+			<widget class="GtkImage" id="image54">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-bold</property>
 			  <property name="icon_size">1</property>
@@ -166,7 +166,7 @@
 		      <signal name="activate" handler="on_italic_activate" last_modification_time="Wed, 10 Jun 2009 19:39:29 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image46">
+			<widget class="GtkImage" id="image55">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-italic</property>
 			  <property name="icon_size">1</property>
@@ -187,30 +187,9 @@
 		      <signal name="activate" handler="on_underline_activate" last_modification_time="Wed, 10 Jun 2009 19:41:47 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image47">
+			<widget class="GtkImage" id="image56">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-underline</property>
-			  <property name="icon_size">1</property>
-			  <property name="xalign">0.5</property>
-			  <property name="yalign">0.5</property>
-			  <property name="xpad">0</property>
-			  <property name="ypad">0</property>
-			</widget>
-		      </child>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkImageMenuItem" id="strike_through">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Strike Through</property>
-		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_strike_through_activate" last_modification_time="Wed, 10 Jun 2009 19:40:48 GMT"/>
-
-		      <child internal-child="image">
-			<widget class="GtkImage" id="image48">
-			  <property name="visible">True</property>
-			  <property name="stock">gtk-strikethrough</property>
 			  <property name="icon_size">1</property>
 			  <property name="xalign">0.5</property>
 			  <property name="yalign">0.5</property>
@@ -235,11 +214,11 @@
 		<widget class="GtkMenu" id="menuitem4_menu">
 
 		  <child>
-		    <widget class="GtkMenuItem" id="about1">
+		    <widget class="GtkMenuItem" id="about">
 		      <property name="visible">True</property>
 		      <property name="label" translatable="yes">_About</property>
 		      <property name="use_underline">True</property>
-		      <signal name="activate" handler="on_about1_activate" last_modification_time="Wed, 10 Jun 2009 16:13:09 GMT"/>
+		      <signal name="activate" handler="on_about_activate" last_modification_time="Mon, 15 Jun 2009 10:13:19 GMT"/>
 		    </widget>
 		  </child>
 		</widget>
@@ -1354,7 +1333,7 @@
 		  <property name="editable">True</property>
 		  <property name="visibility">True</property>
 		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
+		  <property name="text" translatable="yes">http://yourserver.com/xmlrpc.php</property>
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">●</property>
 		  <property name="activates_default">False</property>
@@ -1373,7 +1352,7 @@
 		  <property name="editable">True</property>
 		  <property name="visibility">True</property>
 		  <property name="max_length">0</property>
-		  <property name="text" translatable="yes"></property>
+		  <property name="text" translatable="yes">Username</property>
 		  <property name="has_frame">True</property>
 		  <property name="invisible_char">●</property>
 		  <property name="activates_default">False</property>

@@ -58,6 +58,7 @@ class LekhoneeGTK:
                'on_last_entry_activate':self.lastEntry_cb,
                'on_lekhonee_msg_activate': self.advertise_cb,
                'on_quit_activate':gtk.main_quit,
+               'on_about_activate':self.show_about,
                'on_preference_activate':self.preference_cb,
                'on_previewBttn_toggled': self.previewBttn_cb,
                'on_spellCheckBox_toggled': self.spellCheck_cb,
@@ -120,6 +121,19 @@ class LekhoneeGTK:
                     widget.set_active(False)
             except:
                 pass
+
+    def show_about(self, widget):
+        """
+        Show the about dialog
+        """
+        dialog = gtk.AboutDialog()
+        dialog.set_name('lekhonee')
+        dialog.set_copyright('(c) 2009 Kushal Das')
+        dialog.set_website('http://fedorahosted.org/lekhonee')
+        dialog.set_authors(['Kushal Das kushal@fedoraproject.org',])
+        dialog.set_program_name('lekhonee')
+        dialog.run()
+        dialog.destroy()
 
     def advertise_cb(self, widget):
         if widget.get_active():
