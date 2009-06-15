@@ -1,10 +1,10 @@
 setup.py
-lekhonee-gnome/lekhonee-gnome.py
-lekhonee-gnome/lekhonee-gnome.glade
-lekhonee-gnome/lekhonee-gnome.gladep
-lekhonee-gnome/draft.png
-lekhonee-gnome/internet.png
-lekhonee-gnome/insert-image.png
+gnome-frontend/lekhonee-gnome.py
+gnome-frontend/lekhonee-gnome.glade
+gnome-frontend/lekhonee-gnome.gladep
+gnome-frontend/draft.png
+gnome-frontend/internet.png
+gnome-frontend/insert-image.png
 Chotha/__init__.py
 Chotha/ConfigureWinUI.py
 Chotha/ConfigureWinui.py
@@ -29,6 +29,7 @@ pixmaps/chothasplash.png
 pixmaps/lekhonee.png
 pixmaps/chotha.svg
 pixmaps/lekhonee.desktop
+pixmaps/lekhonee-gnome.desktop
 docs/LICENSE
 docs/COPYING
 docs/README
