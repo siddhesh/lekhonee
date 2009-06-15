@@ -25,6 +25,7 @@ ui/Lekhonee.ui
 ui/OldEntryDialog.ui
 Chotha/chotha.data
 lekhonee
+lekhonee-gnome
 pixmaps/chothasplash.png
 pixmaps/lekhonee.png
 pixmaps/chotha.svg
