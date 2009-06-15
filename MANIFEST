@@ -1,4 +1,10 @@
 setup.py
+lekhonee-gnome/lekhonee-gnome.py
+lekhonee-gnome/lekhonee-gnome.glade
+lekhonee-gnome/lekhonee-gnome.gladep
+lekhonee-gnome/draft.png
+lekhonee-gnome/internet.png
+lekhonee-gnome/insert-image.png
 Chotha/__init__.py
 Chotha/ConfigureWinUI.py
 Chotha/ConfigureWinui.py
