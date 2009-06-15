@@ -194,7 +194,14 @@ class LekhoneeGTK:
         """
         show the last entry
         """
-        self.entry = self.server.getLastPost()[0]
+        try:
+            self.entry = self.server.getLastPost()[0]
+        except Exception, e:
+            dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, e.faultString)
+            dm.run()
+            dm.destroy()
+            return
+
         self.blogTxt.set_text(self.entry['description'])
         self.titleTxt.set_text(self.entry['title'])
         categories = self.entry['categories']
