@@ -22,6 +22,8 @@ import gobject
 import gtksourceview2
 import webkit
 import cPickle
+import xmlrpclib
+import gtkspell
 from Chotha.Wordpress import Wordpress
 
 
@@ -46,15 +48,19 @@ class LekhoneeGTK:
                'on_boldBttn_clicked':self.boldBttn_cb,
                'on_linkBttn_clicked':self.linkBttn_cb,
                'on_imageBttn_clicked':self.imageBttn_cb,
+               'on_publishBttn_clicked':self.publishBttn_cb,
                'on_bold_activate':self.boldBttn_cb,
                'on_underline_activate':self.underlineBttn_cb,
                'on_italic_activate':self.italicBttn_cb,
                'on_save_activate':self.save_cb,
                'on_new_activate':self.new_cb,
                'on_open_activate':self.open_cb,
+               'on_last_entry_activate':self.lastEntry_cb,
+               'on_lekhonee_msg_activate': self.advertise_cb,
                'on_quit_activate':gtk.main_quit,
                'on_preference_activate':self.preference_cb,
                'on_previewBttn_toggled': self.previewBttn_cb,
+               'on_spellCheckBox_toggled': self.spellCheck_cb,
                'on_italicBttn_clicked':self.italicBttn_cb}
 
         self.wTree.signal_autoconnect(dic)
@@ -80,6 +86,9 @@ class LekhoneeGTK:
 
         self.filename = ''
         self.server = None
+        self.editFlag = False
+        self.entry = None
+        self.advertisement = True
 
         self.window.show_all()
 
@@ -92,6 +101,9 @@ class LekhoneeGTK:
         self.imageDialog = self.wTree.get_widget('imageDialog')
         self.imageDialog.connect('response',self.image_dialog_cb)
 
+        #for spell checking
+        self.spell = None
+
         self.configurepath = os.path.join(os.path.expanduser("~"),'.lekhonee')
         if os.path.exists(self.configurepath):
             f = file(self.configurepath)
@@ -99,6 +111,29 @@ class LekhoneeGTK:
             f.close()
             self.wTree.get_widget('serverTxt').set_text(data['server'])
             self.wTree.get_widget('usernameTxt').set_text(data['username'])
+            try:
+                if data['advertisement']:
+                    print "There"
+                else:
+                    print "Not there"
+                    widget = self.wTree.get_widget('lekhonee_msg')
+                    widget.set_active(False)
+            except:
+                pass
+
+    def advertise_cb(self, widget):
+        if widget.get_active():
+            self.advertisement = True
+        else:
+            self.advertisement = False
+        f = file(self.configurepath)
+        data = cPickle.load(f)
+        f.close()
+        data['advertisement'] = self.advertisement
+        f = file(self.configurepath,'w')
+        cPickle.dump(data,f)
+        f.close()
+
 
     def save_cb(self, widget):
         """
@@ -125,7 +160,7 @@ class LekhoneeGTK:
         start, end = self.blogTxt.get_bounds()
         text = unicode(self.blogTxt.get_text(start, end))
         title = unicode(self.titleTxt.get_text())
-        content = {'title':title,'description':text}
+        content = {'title':title,'description':text, 'advertisement':self.advertisement}
         f = file(self.filename,'w')
         cPickle.dump(content,f)
         f.close()
@@ -154,6 +189,28 @@ class LekhoneeGTK:
 
         chooser.destroy()
 
+
+    def lastEntry_cb(self, widget):
+        """
+        show the last entry
+        """
+        self.entry = self.server.getLastPost()[0]
+        self.blogTxt.set_text(self.entry['description'])
+        self.titleTxt.set_text(self.entry['title'])
+        categories = self.entry['categories']
+        self.getCategories()
+
+        ts = self.categoryList.get_selection()
+        for category in categories:
+            for x in range(0,len(self.liststore)):
+                iter = self.liststore.get_iter(str(x))
+                if category == self.liststore.get_value(iter,0):
+                    ts.select_iter(iter)
+                    print category
+        self.editFlag = True
+
+
+
     def new_cb(self, widget):
         """
         clear
@@ -161,6 +218,8 @@ class LekhoneeGTK:
         self.blogTxt.set_text('')
         self.titleTxt.set_text('')
         self.filename = ''
+        self.editFlag = False
+        self.getCategories()
 
 
     def configure_cb(self, widget, response_id):
@@ -176,9 +235,9 @@ class LekhoneeGTK:
             f.close()
             password = self.wTree.get_widget('passwordTxt').get_text()
             self.server = Wordpress(data['server'], data['username'], password)
-            self.getCatergories()
+            self.getCategories()
 
-    def getCatergories(self):
+    def getCategories(self):
         """
         Get categories from wordpress
         """
@@ -299,6 +358,59 @@ class LekhoneeGTK:
         else:
             self.scw2.hide_all()
             self.scw.show_all()
+
+    def spellCheck_cb(self, widget):
+        """
+        Enable/Disable the spellchecking
+        """
+        if widget.get_active():
+            self.spell = gtkspell.Spell(self.sourceview)
+            self.spell.recheck_all()
+        else:
+            self.spell.detach()
+
+    def publishBttn_cb(self, widget):
+        self.messagePost(True)
+
+
+    def draftBttn_cb(self, widget):
+        self.messagePost(False)
+
+
+    def messagePost(self, publish):
+        """
+        Post the message to the server
+        """
+        selection = self.categoryList.get_selection()
+        model, selected = selection.get_selected_rows()
+        categories = [model[sec][0] for sec in selected]
+        if self.wTree.get_widget("commentCheckBox").get_active():
+            comment = 1
+        else:
+            comment = 0
+        start, end = self.blogTxt.get_bounds()
+        desc = unicode(self.blogTxt.get_text(start, end))
+        title = unicode(self.titleTxt.get_text())
+        if self.advertisement:
+            mes = 'The post is bought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a>'
+            if desc.find(mes) != -1:
+                desc += '\n\n' + mes
+        content = {'title':unicode(self.titleTxt.get_text()),'description':desc, 'categories':categories, 'mt_allow_comments':comment}
+        try:
+            if not self.editFlag:
+                mes = self.server.post(content, publish)
+            else:
+                mes = self.server.edit(self.entry['postid'], content, publish)
+            self.editFlag = False
+            self.clearAll()
+            dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_OK, mes)
+        except Exception, e:
+            dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, e.faultString)
+        dm.run()
+        dm.destroy()
+
+    def clearAll(self):
+        self.new_cb(True)
 
     def dirBttn_cb(self,widget):
         """

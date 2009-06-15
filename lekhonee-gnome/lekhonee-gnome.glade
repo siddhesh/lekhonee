@@ -106,37 +106,20 @@
 		  </child>
 
 		  <child>
-		    <widget class="GtkImageMenuItem" id="cut1">
+		    <widget class="GtkCheckMenuItem" id="lekhonee_msg">
 		      <property name="visible">True</property>
-		      <property name="label">gtk-cut</property>
-		      <property name="use_stock">True</property>
-		      <signal name="activate" handler="on_cut1_activate" last_modification_time="Wed, 10 Jun 2009 16:13:09 GMT"/>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkImageMenuItem" id="copy1">
-		      <property name="visible">True</property>
-		      <property name="label">gtk-copy</property>
-		      <property name="use_stock">True</property>
-		      <signal name="activate" handler="on_copy1_activate" last_modification_time="Wed, 10 Jun 2009 16:13:09 GMT"/>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkImageMenuItem" id="paste1">
-		      <property name="visible">True</property>
-		      <property name="label">gtk-paste</property>
-		      <property name="use_stock">True</property>
-		      <signal name="activate" handler="on_paste1_activate" last_modification_time="Wed, 10 Jun 2009 16:13:09 GMT"/>
-		    </widget>
-		  </child>
-
-		  <child>
-		    <widget class="GtkMenuItem" id="preference">
-		      <property name="visible">True</property>
-		      <property name="label" translatable="yes">Preference</property>
+		      <property name="label" translatable="yes">lekhonee msg</property>
 		      <property name="use_underline">True</property>
+		      <property name="active">True</property>
+		      <signal name="activate" handler="on_lekhonee_msg_activate" last_modification_time="Fri, 12 Jun 2009 16:56:41 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
+		    <widget class="GtkImageMenuItem" id="preference">
+		      <property name="visible">True</property>
+		      <property name="label">gtk-preferences</property>
+		      <property name="use_stock">True</property>
 		      <signal name="activate" handler="on_preference_activate" last_modification_time="Fri, 12 Jun 2009 10:33:34 GMT"/>
 		    </widget>
 		  </child>
@@ -162,7 +145,7 @@
 		      <signal name="activate" handler="on_bold_activate" last_modification_time="Wed, 10 Jun 2009 19:30:43 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image30">
+			<widget class="GtkImage" id="image45">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-bold</property>
 			  <property name="icon_size">1</property>
@@ -183,7 +166,7 @@
 		      <signal name="activate" handler="on_italic_activate" last_modification_time="Wed, 10 Jun 2009 19:39:29 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image31">
+			<widget class="GtkImage" id="image46">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-italic</property>
 			  <property name="icon_size">1</property>
@@ -204,7 +187,7 @@
 		      <signal name="activate" handler="on_underline_activate" last_modification_time="Wed, 10 Jun 2009 19:41:47 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image32">
+			<widget class="GtkImage" id="image47">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-underline</property>
 			  <property name="icon_size">1</property>
@@ -225,7 +208,7 @@
 		      <signal name="activate" handler="on_strike_through_activate" last_modification_time="Wed, 10 Jun 2009 19:40:48 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image33">
+			<widget class="GtkImage" id="image48">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-strikethrough</property>
 			  <property name="icon_size">1</property>
@@ -689,13 +672,13 @@
 		  <child>
 		    <widget class="GtkCheckButton" id="spellCheckBox">
 		      <property name="visible">True</property>
-		      <property name="sensitive">False</property>
 		      <property name="can_focus">True</property>
 		      <property name="relief">GTK_RELIEF_NORMAL</property>
 		      <property name="focus_on_click">True</property>
 		      <property name="active">False</property>
 		      <property name="inconsistent">False</property>
 		      <property name="draw_indicator">True</property>
+		      <signal name="toggled" handler="on_spellCheckBox_toggled" last_modification_time="Sun, 14 Jun 2009 20:18:45 GMT"/>
 
 		      <child>
 			<widget class="GtkAlignment" id="alignment4">
@@ -854,6 +837,7 @@
 			  <property name="can_focus">True</property>
 			  <property name="relief">GTK_RELIEF_NORMAL</property>
 			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_publishBttn_clicked" last_modification_time="Fri, 12 Jun 2009 12:27:38 GMT"/>
 
 			  <child>
 			    <widget class="GtkAlignment" id="alignment7">
