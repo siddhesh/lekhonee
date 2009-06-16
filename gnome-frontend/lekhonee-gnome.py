@@ -79,6 +79,7 @@ class LekhoneeGTK:
         self.blogTxt.set_language(lang)
         self.sourceview = gtksourceview2.View(self.blogTxt)
         self.scw.add(self.sourceview)
+        self.sourceview.set_wrap_mode(gtk.WRAP_WORD)
 
         #Add webkit for preview
         self.web = webkit.WebView()
@@ -291,7 +292,13 @@ class LekhoneeGTK:
         if response_id == gtk.RESPONSE_OK:
             link = self.linkTxt.get_text()
             if link:
-                self.blogTxt.insert_at_cursor(link)
+                iter = self.blogTxt.get_selection_bounds()
+                if iter:
+                    text =  self.blogTxt.get_text(iter[0],iter[1])
+                    self.blogTxt.delete(iter[0],iter[1])
+                else:
+                    text = ''
+                self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
 
     def image_dialog_cb(self, widget, response_id):
         """
