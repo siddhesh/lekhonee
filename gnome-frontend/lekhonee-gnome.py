@@ -115,9 +115,9 @@ class LekhoneeGTK:
             self.wTree.get_widget('usernameTxt').set_text(data['username'])
             try:
                 if data['advertisement']:
-                    print "There"
+                    pass
                 else:
-                    print "Not there"
+                    pass
                     widget = self.wTree.get_widget('lekhonee_msg')
                     widget.set_active(False)
             except:
