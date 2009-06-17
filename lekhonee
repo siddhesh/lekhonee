@@ -87,11 +87,14 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             f.close()
             self.Server = data['server']
             self.username = data['username']
-            self.advertisement = data['advertisement']
-            if self.advertisement:
-                self.actionLekhonee_msg.setChecked(True)
-            else:
-                self.actionLekhonee_msg.setChecked(False)
+            try:
+                self.advertisement = data['advertisement']
+                if self.advertisement:
+                    self.actionLekhonee_msg.setChecked(True)
+                else:
+                    self.actionLekhonee_msg.setChecked(False)
+            except:
+                print "Config file missing advertisement value"
 
         self.conf = ConfigureWinUI(self, start=1)
         self.conf.show()
