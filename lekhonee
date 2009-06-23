@@ -291,7 +291,7 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         #self.content = {'title':unicode(self.titleTxt.text()),'description':unicode(self.blogTxt.toHtml())[214:-14],'categories':categories,'dateCreated': unicode(self.timeStamp.dateTime().toString('yyyymmddThh:mm:ss')),'mt_allow_comments':comment}
         desc = unicode(self.blogTxt.toPlainText())
         if self.advertisement:
-            mes = 'The post is bought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a> v0.4'
+            mes = 'The post is brought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a> v0.4'
             if not self.editFlag:
                 desc += '\n\n' + mes
 

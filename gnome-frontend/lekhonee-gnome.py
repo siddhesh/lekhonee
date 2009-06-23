@@ -420,7 +420,7 @@ class LekhoneeGTK:
         desc = unicode(self.blogTxt.get_text(start, end))
         title = unicode(self.titleTxt.get_text())
         if self.advertisement:
-            mes = 'The post is bought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a> v0.4'
+            mes = 'The post is brought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a> v0.4'
             if not self.editFlag:
                 desc += '\n\n' + mes
         content = {'title':unicode(self.titleTxt.get_text()),'description':desc, 'categories':categories, 'mt_allow_comments':comment}
