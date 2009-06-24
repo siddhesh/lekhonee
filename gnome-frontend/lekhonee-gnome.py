@@ -290,6 +290,7 @@ class LekhoneeGTK:
         Get the link
         """
         self.linkDialog.hide()
+        self.linkTxt.set_text('')
         if response_id == gtk.RESPONSE_OK:
             link = self.linkTxt.get_text()
             if link:
