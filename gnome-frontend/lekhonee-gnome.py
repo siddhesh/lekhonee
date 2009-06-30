@@ -41,6 +41,7 @@ class LekhoneeGTK:
         self.window = self.wTree.get_widget("MainWindow")
         self.categoryList = self.wTree.get_widget("categoryList")
         self.titleTxt = self.wTree.get_widget("titleTxt")
+        self.tagsTxt = self.wTree.get_widget("tagsTxt")
         self.draftBttn = self.wTree.get_widget("draftBttn")
         self.publishBttn = self.wTree.get_widget("publishBttn")
         self.scw = self.wTree.get_widget("scw")
@@ -222,6 +223,7 @@ class LekhoneeGTK:
 
         self.blogTxt.set_text(self.entry['description'])
         self.titleTxt.set_text(self.entry['title'])
+        self.tagsTxt.set_text(self.entry['mt_keywords'])
         categories = self.entry['categories']
         self.getCategories()
 
@@ -244,6 +246,7 @@ class LekhoneeGTK:
         """
         self.blogTxt.set_text('')
         self.titleTxt.set_text('')
+        self.tagsTxt.set_text('')
         self.filename = ''
         if self.editFlag:
             self.draftBttn.set_sensitive(True)
@@ -432,7 +435,8 @@ class LekhoneeGTK:
             mes = 'The post is brought to you by <a href="http://fedorahosted.org/lekhonee">lekhonee</a> v%s' % (__version__)
             if not self.editFlag:
                 desc += '\n\n' + mes
-        content = {'title':unicode(self.titleTxt.get_text()),'description':desc, 'categories':categories, 'mt_allow_comments':comment}
+        tags = unicode(self.tagsTxt.get_text()).split(",")
+        content = {'title':unicode(self.titleTxt.get_text()),'description':desc, 'categories':categories, 'mt_keywords':tags, 'mt_allow_comments':comment}
         try:
             if not self.editFlag:
                 mes = self.server.post(content, publish)

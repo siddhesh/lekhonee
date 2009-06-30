@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>781</width>
-    <height>580</height>
+    <width>945</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -172,6 +172,19 @@
          </widget>
         </item>
         <item>
+         <widget class="QLineEdit" name="tagsTxt">
+          <property name="toolTip">
+           <string>Tags separated by commas</string>
+          </property>
+          <property name="statusTip">
+           <string/>
+          </property>
+          <property name="text">
+           <string>Tags</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -323,7 +336,7 @@
       </item>
      </layout>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="1" column="0">
      <widget class="QTabWidget" name="serverTabs">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -376,7 +389,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>781</width>
+     <width>945</width>
      <height>30</height>
     </rect>
    </property>
