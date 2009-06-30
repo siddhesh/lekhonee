@@ -12,13 +12,13 @@ Chotha/ImageDialogUI.py
 Chotha/ImageDialogui.py
 Chotha/OldEntryDialogUI.py
 Chotha/LekhoneeUI.py
-Chotha/ServerFactory.py
-Chotha/Wordpress.py
-Chotha/Livejournal.py
+lekhoneeblog/__init__.py
+lekhoneeblog/ServerFactory.py
+lekhoneeblog/Wordpress.py
+lekhoneeblog/BlogServer.py
 Chotha/syntax.py
 Chotha/resource_rc.py
 Chotha/resource.qrc
-Chotha/BlogServer.py
 ui/ConfigureWin.ui
 ui/ImageDialog.ui
 ui/Lekhonee.ui
