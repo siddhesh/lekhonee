@@ -246,7 +246,7 @@ class LekhoneeGTK:
         """
         self.blogTxt.set_text('')
         self.titleTxt.set_text('')
-        self.tagsTxt.set_text('')
+        self.tagsTxt.set_text('Tags')
         self.filename = ''
         if self.editFlag:
             self.draftBttn.set_sensitive(True)
@@ -436,6 +436,8 @@ class LekhoneeGTK:
             if not self.editFlag:
                 desc += '\n\n' + mes
         tags = unicode(self.tagsTxt.get_text()).split(",")
+        if tags[0] == u'Tags':
+            tags = []
         content = {'title':unicode(self.titleTxt.get_text()),'description':desc, 'categories':categories, 'mt_keywords':tags, 'mt_allow_comments':comment}
         try:
             if not self.editFlag:
