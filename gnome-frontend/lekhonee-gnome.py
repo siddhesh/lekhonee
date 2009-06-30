@@ -41,6 +41,8 @@ class LekhoneeGTK:
         self.window = self.wTree.get_widget("MainWindow")
         self.categoryList = self.wTree.get_widget("categoryList")
         self.titleTxt = self.wTree.get_widget("titleTxt")
+        self.draftBttn = self.wTree.get_widget("draftBttn")
+        self.publishBttn = self.wTree.get_widget("publishBttn")
         self.scw = self.wTree.get_widget("scw")
         self.scw2 = self.wTree.get_widget("scw2")
 
@@ -230,6 +232,8 @@ class LekhoneeGTK:
                 if category == self.liststore.get_value(iter,0):
                     ts.select_iter(iter)
                     print category
+        self.draftBttn.set_sensitive(False)
+        self.publishBttn.set_label('Update')
         self.editFlag = True
 
 
@@ -241,6 +245,9 @@ class LekhoneeGTK:
         self.blogTxt.set_text('')
         self.titleTxt.set_text('')
         self.filename = ''
+        if self.editFlag:
+            self.draftBttn.set_sensitive(True)
+            self.publishBttn.set_label('Publish')
         self.editFlag = False
         self.getCategories()
 
@@ -431,6 +438,9 @@ class LekhoneeGTK:
                 mes = self.server.post(content, publish)
             else:
                 mes = self.server.edit(self.entry['postid'], content, publish)
+            if self.editFlag:
+                self.draftBttn.set_sensitive(True)
+                self.publishBttn.set_label('Publish')
             self.editFlag = False
             self.clearAll()
             dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_OK, mes)
