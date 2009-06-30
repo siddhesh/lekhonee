@@ -40,7 +40,7 @@ class LekhoneeApp(KApplication):
         appName     = "Lekhonee"
         catalog     = ""
         programName = ki18n ("Lekhonee")
-        version     = "0.3"
+        version     = __version__
         description = ki18n ("Lekhonee , a small blog client")
         license     = KAboutData.License_GPL
         copyright   = ki18n ("(c) 2007-2009 Kushal Das")
@@ -259,6 +259,9 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
                 self.categoryList.setCurrentItem(eachitem, QtGui.QItemSelectionModel.Select)
         self.editFlag = True
 
+        self.publishBttn.setText('Update')
+        self.draftBttn.setEnabled(False)
+
 
     def publishPost(self):
         self.messagePost(True)
@@ -303,6 +306,9 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
             else:
                 qm = QtGui.QMessageBox.information(self, 'Done :)', self.server.edit(self.entry['postid'],self.content, publish))
             self.clearAll()
+            if self.editFlag:
+                self.publishBttn.setText('Publish')
+                self.draftBttn.setEnabled(True)
             self.editFlag = False
         except xmlrpclib.Fault, e:
             qm = QtGui.QErrorMessage(self)
@@ -443,7 +449,10 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
     def newPost(self):
         self.blogTxt.setPlainText('')
         self.titleTxt.setText('')
-        self.editFlag = False
+        if self.editFlag:
+            self.publishBttn.setText('Publish')
+            self.draftBttn.setEnabled(True)
+            self.editFlag = False
 
     def showAbout(self):
         self.about = AboutChothaUI(self)
