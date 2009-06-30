@@ -15,7 +15,7 @@ setup(name='lekhonee',
       packages=['Chotha', 'lekhoneeblog'],
       data_files=[('/usr/share/applications',['pixmaps/lekhonee.desktop','pixmaps/lekhonee-gnome.desktop']),
 		  ('/usr/bin',['lekhonee','lekhonee-gnome']),
-		  ('/usr/share/pixmaps',['pixmaps/lekhonee.png','pixmaps/lekhonee-gnome.png', 'pixmaps/chothasplash.png']),
+		  ('/usr/share/pixmaps',['pixmaps/lekhonee.png','pixmaps/lekhonee-gnome.png']),
           ('/usr/share/pixmaps/chotha',['icons/application-exit.png', 'icons/bold.png', 'icons/configure.png', 'icons/dialog-cancel.png', 'icons/document-open.png', 'icons/document-save.png', 'icons/draft.png', 'icons/insert-image.png', 'icons/internet.png', 'icons/italic.png', 'icons/konqueror.png', 'icons/ok.png', 'icons/subscript.png', 'icons/superscript.png', 'icons/underline.png', 'icons/document-new.png', 'icons/addpage.png']),
           ('/usr/share/chotha/gnome-frontend',['gnome-frontend/lekhonee-gnome.py','gnome-frontend/lekhonee-gnome.glade','gnome-frontend/lekhonee-gnome.gladep','gnome-frontend/draft.png','gnome-frontend/insert-image.png','gnome-frontend/internet.png'])]
       )
