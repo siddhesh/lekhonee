@@ -24,10 +24,10 @@ import webkit
 import cPickle
 import xmlrpclib
 import gtkspell
-from Chotha.Wordpress import Wordpress
+from lekhoneeblog.Wordpress import Wordpress
 
 
-__version__ = '0.4.1'
+__version__ = '0.5'
 
 class LekhoneeGTK:
     """GUI for gnome"""

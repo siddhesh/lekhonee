@@ -22,15 +22,14 @@ import tempfile
 from Chotha.syntax import ResourceHighlighter
 from Chotha.ImageDialogUI import ImageDialogUI
 from Chotha.ConfigureWinUI import ConfigureWinUI
-from Chotha.ServerFactory import serverfactory
-from Chotha.Wordpress import Wordpress
+from lekhoneeblog.Wordpress import Wordpress
 from Chotha.resource_rc import *
 
 from PyKDE4.kdecore import ki18n, KAboutData, KCmdLineArgs
 from PyKDE4.kdeui import *
 
 
-__version__ = '0.4.1'
+__version__ = '0.5'
 
 from Chotha.LekhoneeUI import Ui_Lekhonee
 
