@@ -356,7 +356,6 @@ class LekhoneeGTK:
         Get the link
         """
         self.linkDialog.hide()
-        self.linkTxt.set_text('')
         if response_id == gtk.RESPONSE_OK:
             link = self.linkTxt.get_text()
             if link:
@@ -367,6 +366,7 @@ class LekhoneeGTK:
                 else:
                     text = ''
                 self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
+            self.linkTxt.set_text('')
 
     def image_dialog_cb(self, widget, response_id):
         """
