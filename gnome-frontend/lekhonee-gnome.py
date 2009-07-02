@@ -504,6 +504,7 @@ class LekhoneeGTK:
                 self.draftBttn.set_sensitive(True)
                 self.publishBttn.set_label('Publish')
             self.editFlag = False
+            self.getEntries()
             self.clearAll()
             dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_OK, mes)
         except Exception, e:
