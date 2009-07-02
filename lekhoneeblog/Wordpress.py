@@ -49,3 +49,7 @@ class Wordpress(BlogServer):
     def getLastPost(self):
         """Get the last post"""
         return self.server.metaWeblog.getRecentPosts(1,self.username,self.password,1)
+
+    def getEntries(self):
+        """Get the last post"""
+        return self.server.metaWeblog.getRecentPosts(1,self.username,self.password, 10)
