@@ -40,12 +40,14 @@ class LekhoneeGTK:
         #Get the Main Window, and connect the "destroy" event
         self.window = self.wTree.get_widget("MainWindow")
         self.categoryList = self.wTree.get_widget("categoryList")
+        self.entriesList = self.wTree.get_widget("entriesList")
         self.titleTxt = self.wTree.get_widget("titleTxt")
         self.tagsTxt = self.wTree.get_widget("tagsTxt")
         self.draftBttn = self.wTree.get_widget("draftBttn")
         self.publishBttn = self.wTree.get_widget("publishBttn")
         self.scw = self.wTree.get_widget("scw")
         self.scw2 = self.wTree.get_widget("scw2")
+        self.scw3 = self.wTree.get_widget("scw3")
 
 
         dic = {'on_MainWindow_destroy': gtk.main_quit,
@@ -60,6 +62,9 @@ class LekhoneeGTK:
                'on_new_activate':self.new_cb,
                'on_open_activate':self.open_cb,
                'on_last_entry_activate':self.lastEntry_cb,
+               'on_old_posts_activate':self.oldPost_cb,
+               'on_entriesList_key_press_event': self.backtoediting_cb,
+               'on_entriesList_button_press_event': self.editPost,
                'on_lekhonee_msg_activate': self.advertise_cb,
                'on_quit_activate':gtk.main_quit,
                'on_about_activate':self.show_about,
@@ -75,6 +80,14 @@ class LekhoneeGTK:
         self.categoryList.set_model(self.liststore)
         treeselection = self.categoryList.get_selection()
         treeselection.set_mode(gtk.SELECTION_MULTIPLE)
+
+
+        #self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+        #self.entriesList.append_column(self.id_column)
+        self.entries_column = gtk.TreeViewColumn("Post Titles", gtk.CellRendererText(), text=0)
+        self.entriesList.append_column(self.entries_column)
+        self.liststore2 = gtk.ListStore(gobject.TYPE_STRING,gobject.TYPE_PYOBJECT)
+        self.entriesList.set_model(self.liststore2)
 
         #Add the gtksourceview2 for editing
         self.blogTxt =  gtksourceview2.Buffer()
@@ -99,6 +112,7 @@ class LekhoneeGTK:
         self.window.show_all()
 
         self.scw2.hide_all()
+        self.scw3.hide_all()
         self.configureDialog = self.wTree.get_widget('configureDialog')
         self.configureDialog.connect('response',self.configure_cb)
         self.linkDialog = self.wTree.get_widget('getlinksDialog')
@@ -209,6 +223,33 @@ class LekhoneeGTK:
         chooser.destroy()
 
 
+    def backtoediting_cb(self, widget, key):
+        if key.keyval == 65307:
+            self.scw3.hide_all()
+            self.scw.show_all()
+
+    def editPost(self,widget, event):
+        """
+        get a post to edit
+        """
+        if event.type == gtk.gdk._2BUTTON_PRESS:
+            model, iter = self.entriesList.get_selection().get_selected()
+            entry = model[iter][1]
+            self.entry = entry
+            self.load_entry_details()
+            self.scw3.hide_all()
+            self.scw.show_all()
+
+
+    def oldPost_cb(self, widget):
+        """
+        Show all posts
+        """
+        self.scw.hide_all()
+        self.scw.hide_all()
+        self.scw3.show_all()
+
+
     def lastEntry_cb(self, widget):
         """
         show the last entry
@@ -220,12 +261,14 @@ class LekhoneeGTK:
             dm.run()
             dm.destroy()
             return
+        self.load_entry_details()
 
+    def load_entry_details(self):
         self.blogTxt.set_text(self.entry['description'])
         self.titleTxt.set_text(self.entry['title'])
         self.tagsTxt.set_text(self.entry['mt_keywords'])
         categories = self.entry['categories']
-        self.getCategories()
+        #self.getCategories()
 
         ts = self.categoryList.get_selection()
         for category in categories:
@@ -269,6 +312,19 @@ class LekhoneeGTK:
             password = self.wTree.get_widget('passwordTxt').get_text()
             self.server = Wordpress(data['server'], data['username'], password)
             self.getCategories()
+            self.getEntries()
+
+    def getEntries(self):
+        """
+        Get all entries from the server
+        """
+        self.liststore2.clear()
+        #try:
+        entries = self.server.getEntries()
+        for entry in entries:
+            self.liststore2.append((entry['title'].strip(),entry))
+        #except:
+        #    print "Error getting old posts"
 
     def getCategories(self):
         """
