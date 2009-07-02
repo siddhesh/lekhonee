@@ -271,14 +271,14 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
     def changeState(self):
         if self.stateBttn.isChecked():
-            self.stateBttn.setText('Code')
-            self.content = self.blogTxt.toPlainText()
-            self.blogTxt.setHtml(self.content)
+            self.stack.setCurrentIndex(1)
+            text = """<html><head><title>%s</title></head><body>%s</body></html>"""
+            text = text % (self.titleTxt.text(),self.blogTxt.toPlainText())
+            text = text.replace('\n','<br>')
+            self.webView.setHtml(text)
             self.disableBttns()
         else:
-            self.stateBttn.setText('Visual')
-            self.blogTxt.setHtml('<p></p>')
-            self.blogTxt.setPlainText(self.content)
+            self.stack.setCurrentIndex(0)
             self.enableBttns()
 
     def messagePost(self,publish):
