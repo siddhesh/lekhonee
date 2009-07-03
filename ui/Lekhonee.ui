@@ -148,6 +148,16 @@
          </spacer>
         </item>
         <item>
+         <widget class="QPushButton" name="oldPostBttn">
+          <property name="text">
+           <string>Old Posts</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="stateBttn">
           <property name="toolTip">
            <string>Change the mode</string>
@@ -181,6 +191,13 @@
              </url>
             </property>
            </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="page_3">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QListWidget" name="entryList"/>
           </item>
          </layout>
         </widget>
@@ -435,7 +452,6 @@
     </property>
     <addaction name="actionLast_Entry"/>
     <addaction name="actionLekhonee_msg"/>
-    <addaction name="actionPrevious_Entries"/>
     <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuHTML_Tags">
@@ -614,6 +630,11 @@
    </property>
    <property name="text">
     <string>Lekhonee msg</string>
+   </property>
+  </action>
+  <action name="actionOld_Posts">
+   <property name="text">
+    <string>Old Posts</string>
    </property>
   </action>
  </widget>
