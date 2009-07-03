@@ -62,6 +62,15 @@ class LekhoneeApp(KApplication):
         self.mywindow.show()
         self.exec_()
 
+
+class PostDetails(QtGui.QListWidgetItem):
+    """ Entry """
+    def __init__(self, entry,parent=None):
+        QtGui.QListWidgetItem.__init__(self, entry['title'])
+        self.entry = entry
+
+
+
 class LekhoneeUI(Ui_Lekhonee, KMainWindow):
     """My class"""
     def __init__(self):
@@ -135,13 +144,13 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.connect(self.actionSubscript,QtCore.SIGNAL("triggered()"),self.textSubscript)
         self.connect(self.actionInsert_link,QtCore.SIGNAL("triggered()"),self.insertLink)
         self.connect(self.actionInsert_Image,QtCore.SIGNAL("triggered()"),self.insertImage)
-        self.connect(self.actionIn_FireFox,QtCore.SIGNAL("triggered()"),self.previewFF)
-        self.connect(self.actionIn_Konqueror,QtCore.SIGNAL("triggered()"),self.previewKq)
         self.connect(self.actionPreferences,QtCore.SIGNAL("triggered()"),self.configure)
         self.connect(self.actionLekhonee_msg,QtCore.SIGNAL("triggered()"),self.advertisement_msg)
         self.connect(self.action_Quit,QtCore.SIGNAL("triggered()"),self.exitSlot)
         self.connect(self.action_New,QtCore.SIGNAL("triggered()"),self.newPost)
         self.connect(self.actionLast_Entry,QtCore.SIGNAL("triggered()"),self.loadLastEntry)
+        self.connect(self.oldPostBttn,QtCore.SIGNAL("clicked()"),self.oldPost)
+        self.connect(self.entryList,QtCore.SIGNAL(" itemDoubleClicked ( QListWidgetItem *)"),self.editPost)
         self.connect(self.spellCheckBox,QtCore.SIGNAL("stateChanged(int)"),self.changeSpellCheck)
         self.connect(self.conf,QtCore.SIGNAL("saved()"),self.reloadServer)
 
@@ -152,7 +161,24 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         self.reloadInfo()
         self.makeServer()
         self.getCategories()
+        self.getEntries()
 
+    def getEntries(self):
+        """
+        Reload post details
+        """
+        self.entryList.clear()
+        entries = self.server.getEntries()
+        for entry in entries:
+            myentry = PostDetails(entry)
+            self.entryList.addItem(myentry)
+
+    def editPost(self, item):
+        self.entry = item.entry
+        self.stack.setCurrentIndex(0)
+        self.oldPostBttn.setChecked(False)
+        self.enableBttns()
+        self.loadEntryDetails()
 
     def reloadInfo(self):
         """Reload server and username, password"""
@@ -176,6 +202,14 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         f = file(self.configurepath, 'w')
         cPickle.dump(data, f)
         f.close()
+
+    def oldPost(self):
+        if self.oldPostBttn.isChecked():
+            self.disableBttns()
+            self.stack.setCurrentIndex(2)
+        else:
+            self.enableBttns()
+            self.stack.setCurrentIndex(0)
 
     def queryClose(self):
         self.hide()
@@ -243,6 +277,9 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
 
     def loadLastEntry(self):
         self.entry = self.server.getLastPost()[0]
+        self.loadEntryDetails()
+
+    def loadEntryDetails(self):
         self.blogTxt.setPlainText(self.entry['description'])
         self.titleTxt.setText(self.entry['title'])
         self.tagsTxt.setText(self.entry['mt_keywords'])
