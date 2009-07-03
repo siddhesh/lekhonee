@@ -42,6 +42,7 @@ class LekhoneeGTK:
         self.categoryList = self.wTree.get_widget("categoryList")
         self.entriesList = self.wTree.get_widget("entriesList")
         self.titleTxt = self.wTree.get_widget("titleTxt")
+        self.addCategoryTxt = self.wTree.get_widget('addCategoryTxt')
         self.tagsTxt = self.wTree.get_widget("tagsTxt")
         self.draftBttn = self.wTree.get_widget("draftBttn")
         self.publishBttn = self.wTree.get_widget("publishBttn")
@@ -55,6 +56,7 @@ class LekhoneeGTK:
                'on_linkBttn_clicked':self.linkBttn_cb,
                'on_imageBttn_clicked':self.imageBttn_cb,
                'on_publishBttn_clicked':self.publishBttn_cb,
+               'on_draftBttn_clicked':self.draftBttn_cb,
                'on_bold_activate':self.boldBttn_cb,
                'on_underline_activate':self.underlineBttn_cb,
                'on_italic_activate':self.italicBttn_cb,
@@ -63,6 +65,7 @@ class LekhoneeGTK:
                'on_open_activate':self.open_cb,
                'on_last_entry_activate':self.lastEntry_cb,
                'on_old_posts_activate':self.oldPost_cb,
+               'on_addCategoryBttn_clicked': self.addCategory_cb,
                'on_entriesList_key_press_event': self.backtoediting_cb,
                'on_entriesList_button_press_event': self.editPost,
                'on_lekhonee_msg_activate': self.advertise_cb,
@@ -276,10 +279,24 @@ class LekhoneeGTK:
                 iter = self.liststore.get_iter(str(x))
                 if category == self.liststore.get_value(iter,0):
                     ts.select_iter(iter)
-                    print category
         self.draftBttn.set_sensitive(False)
         self.publishBttn.set_label('Update')
         self.editFlag = True
+
+    def addCategory_cb(self, widget):
+        """
+        Add a new category
+        """
+        try:
+            text = unicode(self.addCategoryTxt.get_text())
+            if text:
+                self.server.addCategory(text)
+                ts = self.categoryList.get_selection()
+                iter = self.liststore.append((text,))
+                ts.select_iter(iter)
+                self.addCategoryTxt.set_text('')
+        except:
+            print "Error adding a new category"
 
 
 
