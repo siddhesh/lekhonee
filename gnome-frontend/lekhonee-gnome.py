@@ -27,7 +27,7 @@ import gtkspell
 from lekhoneeblog.Wordpress import Wordpress
 
 
-__version__ = '0.5'
+__version__ = '0.6'
 
 class LekhoneeGTK:
     """GUI for gnome"""
