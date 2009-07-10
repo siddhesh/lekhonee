@@ -24,6 +24,7 @@ import webkit
 import cPickle
 import xmlrpclib
 import gtkspell
+import magic
 from lekhoneeblog.Wordpress import Wordpress
 
 
@@ -44,6 +45,7 @@ class LekhoneeGTK:
         self.titleTxt = self.wTree.get_widget("titleTxt")
         self.addCategoryTxt = self.wTree.get_widget('addCategoryTxt')
         self.tagsTxt = self.wTree.get_widget("tagsTxt")
+        self.fileTxt = self.wTree.get_widget("fileTxt")
         self.draftBttn = self.wTree.get_widget("draftBttn")
         self.publishBttn = self.wTree.get_widget("publishBttn")
         self.scw = self.wTree.get_widget("scw")
@@ -66,6 +68,10 @@ class LekhoneeGTK:
                'on_last_entry_activate':self.lastEntry_cb,
                'on_old_posts_activate':self.oldPost_cb,
                'on_addCategoryBttn_clicked': self.addCategory_cb,
+               'on_upload_file_activate': self.showUpload_cb,
+               'on_fileBttn_clicked': self.selectFile_cb,
+               'on_uploadBttn_clicked':self.uploadFile_cb,
+               'on_cancelBttn_clicked': self.hideUpload_cb,
                'on_entriesList_key_press_event': self.backtoediting_cb,
                'on_entriesList_button_press_event': self.editPost,
                'on_lekhonee_msg_activate': self.advertise_cb,
@@ -106,6 +112,9 @@ class LekhoneeGTK:
         self.scw2.add(self.web)
 
 
+        self.vbox8 = self.wTree.get_widget("vbox8")
+
+
         self.filename = ''
         self.server = None
         self.editFlag = False
@@ -116,6 +125,7 @@ class LekhoneeGTK:
 
         self.scw2.hide_all()
         self.scw3.hide_all()
+        self.vbox8.hide_all()
         self.configureDialog = self.wTree.get_widget('configureDialog')
         self.configureDialog.connect('response',self.configure_cb)
         self.linkDialog = self.wTree.get_widget('getlinksDialog')
@@ -170,6 +180,39 @@ class LekhoneeGTK:
         cPickle.dump(data,f)
         f.close()
 
+    def showUpload_cb(self, widget):
+        self.vbox8.show_all()
+
+    def hideUpload_cb(self, widget):
+        self.fileTxt.set_text('')
+        self.vbox8.hide_all()
+
+    def selectFile_cb(self, widget):
+        """
+        Select a file to upload
+        """
+        chooser = gtk.FileChooserDialog(title='Upload File',action=gtk.FILE_CHOOSER_ACTION_OPEN,
+            buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
+        response = chooser.run()
+
+        if  response == gtk.RESPONSE_OK:
+            filename = chooser.get_filename()
+            self.fileTxt.set_text(filename)
+
+        chooser.destroy()
+
+    def uploadFile_cb(self, widget):
+        filename = self.fileTxt.get_text()
+        f = open(filename, "rb")
+        file_data = f.read()
+        f.close()
+        ms = magic.open(magic.MAGIC_MIME)
+        ms.load()
+        type = ms.file(filename)
+        ms.close()
+        data = {'name':os.path.basename(filename),'type':type,'bits':xmlrpclib.Binary(file_data)}
+        mes = self.server.uploadFile(data)
+        self.blogTxt.insert_at_cursor('<img src="%s">' % mes['url'])
 
     def save_cb(self, widget):
         """

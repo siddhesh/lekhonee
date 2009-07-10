@@ -125,6 +125,15 @@
 		  </child>
 
 		  <child>
+		    <widget class="GtkMenuItem" id="upload_file">
+		      <property name="visible">True</property>
+		      <property name="label" translatable="yes">Upload File</property>
+		      <property name="use_underline">True</property>
+		      <signal name="activate" handler="on_upload_file_activate" last_modification_time="Tue, 07 Jul 2009 08:15:54 GMT"/>
+		    </widget>
+		  </child>
+
+		  <child>
 		    <widget class="GtkImageMenuItem" id="preference">
 		      <property name="visible">True</property>
 		      <property name="label">gtk-preferences</property>
@@ -154,7 +163,7 @@
 		      <signal name="activate" handler="on_bold_activate" last_modification_time="Wed, 10 Jun 2009 19:30:43 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image62">
+			<widget class="GtkImage" id="image68">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-bold</property>
 			  <property name="icon_size">1</property>
@@ -175,7 +184,7 @@
 		      <signal name="activate" handler="on_italic_activate" last_modification_time="Wed, 10 Jun 2009 19:39:29 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image63">
+			<widget class="GtkImage" id="image69">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-italic</property>
 			  <property name="icon_size">1</property>
@@ -196,7 +205,7 @@
 		      <signal name="activate" handler="on_underline_activate" last_modification_time="Wed, 10 Jun 2009 19:41:47 GMT"/>
 
 		      <child internal-child="image">
-			<widget class="GtkImage" id="image64">
+			<widget class="GtkImage" id="image70">
 			  <property name="visible">True</property>
 			  <property name="stock">gtk-underline</property>
 			  <property name="icon_size">1</property>
@@ -642,6 +651,123 @@
 
 		  <child>
 		    <placeholder/>
+		  </child>
+		</widget>
+		<packing>
+		  <property name="padding">0</property>
+		  <property name="expand">True</property>
+		  <property name="fill">True</property>
+		</packing>
+	      </child>
+
+	      <child>
+		<widget class="GtkVBox" id="vbox8">
+		  <property name="homogeneous">False</property>
+		  <property name="spacing">0</property>
+
+		  <child>
+		    <widget class="GtkHBox" id="hbox20">
+		      <property name="visible">True</property>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkEntry" id="fileTxt">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="editable">True</property>
+			  <property name="visibility">True</property>
+			  <property name="max_length">0</property>
+			  <property name="text" translatable="yes"></property>
+			  <property name="has_frame">True</property>
+			  <property name="invisible_char">●</property>
+			  <property name="activates_default">False</property>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkButton" id="fileBttn">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Select File to Upload</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_fileBttn_clicked" last_modification_time="Tue, 07 Jul 2009 09:46:29 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
+		  </child>
+
+		  <child>
+		    <widget class="GtkHBox" id="hbox21">
+		      <property name="visible">True</property>
+		      <property name="homogeneous">False</property>
+		      <property name="spacing">0</property>
+
+		      <child>
+			<widget class="GtkButton" id="cancelBttn">
+			  <property name="visible">True</property>
+			  <property name="can_focus">True</property>
+			  <property name="label" translatable="yes">Cancel</property>
+			  <property name="use_underline">True</property>
+			  <property name="relief">GTK_RELIEF_NORMAL</property>
+			  <property name="focus_on_click">True</property>
+			  <signal name="clicked" handler="on_cancelBttn_clicked" last_modification_time="Tue, 07 Jul 2009 08:45:58 GMT"/>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">False</property>
+			  <property name="fill">False</property>
+			</packing>
+		      </child>
+
+		      <child>
+			<widget class="GtkHButtonBox" id="hbuttonbox3">
+			  <property name="visible">True</property>
+			  <property name="layout_style">GTK_BUTTONBOX_END</property>
+			  <property name="spacing">0</property>
+
+			  <child>
+			    <widget class="GtkButton" id="uploadBttn">
+			      <property name="visible">True</property>
+			      <property name="can_default">True</property>
+			      <property name="can_focus">True</property>
+			      <property name="label" translatable="yes">Upload</property>
+			      <property name="use_underline">True</property>
+			      <property name="relief">GTK_RELIEF_NORMAL</property>
+			      <property name="focus_on_click">True</property>
+			      <signal name="clicked" handler="on_uploadBttn_clicked" last_modification_time="Tue, 07 Jul 2009 10:56:38 GMT"/>
+			    </widget>
+			  </child>
+			</widget>
+			<packing>
+			  <property name="padding">0</property>
+			  <property name="expand">True</property>
+			  <property name="fill">True</property>
+			</packing>
+		      </child>
+		    </widget>
+		    <packing>
+		      <property name="padding">0</property>
+		      <property name="expand">True</property>
+		      <property name="fill">True</property>
+		    </packing>
 		  </child>
 		</widget>
 		<packing>
