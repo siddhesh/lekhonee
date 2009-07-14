@@ -4,7 +4,7 @@ and the great Oxygen team for the icons.
 INSTALL:
 Do it as root
 
-#python setup.py install 
+#python setup.py install
 
 It requires PyKDE4 for the KDE frontend.
 
