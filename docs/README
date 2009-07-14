@@ -7,5 +7,6 @@ Do it as root
 #python setup.py install
 
 It requires PyKDE4 for the KDE frontend.
+Requirements for the PyGtk based frontend:
 
 Enjoy :)
