@@ -212,7 +212,17 @@ class LekhoneeGTK:
         ms.close()
         data = {'name':os.path.basename(filename),'type':type,'bits':xmlrpclib.Binary(file_data)}
         mes = self.server.uploadFile(data)
-        self.blogTxt.insert_at_cursor('<img src="%s">' % mes['url'])
+        if type.startswith('image'):
+            self.blogTxt.insert_at_cursor('<img src="%s">' % mes['url'])
+        else:
+            iter = self.blogTxt.get_selection_bounds()
+            if iter:
+                text =  self.blogTxt.get_text(iter[0],iter[1])
+                self.blogTxt.delete(iter[0],iter[1])
+            else:
+                text = ''
+            self.blogTxt.insert_at_cursor('<a href="'+mes+'">'+text+'</a>')
+
 
     def save_cb(self, widget):
         """
