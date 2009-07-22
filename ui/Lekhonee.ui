@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1111</width>
-    <height>576</height>
+    <width>1001</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <normaloff>:/pixmaps/lekhonee.png</normaloff>:/pixmaps/lekhonee.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_3">
+   <layout class="QGridLayout" name="gridLayout_5">
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
@@ -201,6 +201,63 @@
           </item>
          </layout>
         </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="uploadframe">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLineEdit" name="fileTxt"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="selectUploadBttn">
+             <property name="text">
+              <string>Select File to Upload</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QPushButton" name="uploadCancelBttn">
+             <property name="text">
+              <string>Cancel</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>328</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QPushButton" name="uploadBttn">
+             <property name="text">
+              <string>Upload</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </item>
       <item>
@@ -392,29 +449,31 @@
        <attribute name="title">
         <string>Wordpress</string>
        </attribute>
-       <widget class="QPushButton" name="addPageBttn">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>141</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Add Page</string>
-        </property>
-        <property name="icon">
-         <iconset resource="../Chotha/resource.qrc">
-          <normaloff>:/icons/addpage.png</normaloff>:/icons/addpage.png</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="addPageBttn">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Add Page</string>
+          </property>
+          <property name="icon">
+           <iconset resource="../Chotha/resource.qrc">
+            <normaloff>:/icons/addpage.png</normaloff>:/icons/addpage.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -430,8 +489,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1111</width>
-     <height>30</height>
+     <width>1001</width>
+     <height>28</height>
     </rect>
    </property>
    <property name="windowTitle">
@@ -452,6 +511,7 @@
     </property>
     <addaction name="actionLast_Entry"/>
     <addaction name="actionLekhonee_msg"/>
+    <addaction name="actionUpload_File"/>
     <addaction name="actionPreferences"/>
    </widget>
    <widget class="QMenu" name="menuHTML_Tags">
@@ -635,6 +695,11 @@
   <action name="actionOld_Posts">
    <property name="text">
     <string>Old Posts</string>
+   </property>
+  </action>
+  <action name="actionUpload_File">
+   <property name="text">
+    <string>Upload File</string>
    </property>
   </action>
  </widget>
