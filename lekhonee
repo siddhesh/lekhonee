@@ -31,7 +31,7 @@ from PyKDE4.kdecore import ki18n, KAboutData, KCmdLineArgs
 from PyKDE4.kdeui import *
 
 
-__version__ = '0.6'
+__version__ = '0.7'
 
 from Chotha.LekhoneeUI import Ui_Lekhonee
 
