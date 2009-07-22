@@ -249,6 +249,14 @@ class LekhoneeUI(Ui_Lekhonee, KMainWindow):
         data = {'name':os.path.basename(filename),'type':type,'bits':xmlrpclib.Binary(file_data)}
         try:
             mes = self.server.uploadFile(data)
+            cur = self.blogTxt.textCursor()
+            if type.startswith('image'):
+                cur.insertText('<IMG src="%s">' % (mes['url']))
+            else:
+                if (not cur.hasSelection()):
+                    cur.insertText('<a href="%s"></a>' % (mes['url']))
+                else:
+                    cur.insertText('<a href="%s">%s</a>' % (mes['url'],cur.selectedText()))
         except Exception, e:
             qm = QtGui.QErrorMessage(self)
             qm.showMessage(e.faultString)

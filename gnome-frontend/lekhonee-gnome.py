@@ -228,7 +228,7 @@ class LekhoneeGTK:
                 self.blogTxt.delete(iter[0],iter[1])
             else:
                 text = ''
-            self.blogTxt.insert_at_cursor('<a href="'+mes+'">'+text+'</a>')
+            self.blogTxt.insert_at_cursor('<a href="'+mes['url']+'">'+text+'</a>')
 
 
     def save_cb(self, widget):
