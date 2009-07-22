@@ -211,7 +211,14 @@ class LekhoneeGTK:
         type = ms.file(filename)
         ms.close()
         data = {'name':os.path.basename(filename),'type':type,'bits':xmlrpclib.Binary(file_data)}
-        mes = self.server.uploadFile(data)
+        try:
+            mes = self.server.uploadFile(data)
+        except Exception, e:
+            dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, e.faultString)
+            dm.run()
+            dm.destroy()
+            return
+
         if type.startswith('image'):
             self.blogTxt.insert_at_cursor('<img src="%s">' % mes['url'])
         else:
