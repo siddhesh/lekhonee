@@ -53,3 +53,6 @@ class Wordpress(BlogServer):
     def getEntries(self):
         """Get the last post"""
         return self.server.metaWeblog.getRecentPosts(1,self.username,self.password, 10)
+
+    def uploadFile(self, data):
+        return self.server.wp.uploadFile(1,self.username,self.password,data)
