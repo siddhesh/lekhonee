@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 #####################################################################
 #
 #       Author : Kushal Das
@@ -6,6 +8,19 @@
 #
 #####################################################################
 
+## This program is free software; you can redistribute it and/or modify
+## it under the terms of the GNU General Public License as published by
+## the Free Software Foundation; either version 2 of the License, or
+## (at your option) any later version.
+
+## This program is distributed in the hope that it will be useful,
+## but WITHOUT ANY WARRANTY; without even the implied warranty of
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+## GNU General Public License for more details.
+
+## You should have received a copy of the GNU General Public License
+## along with this program; if not, write to the Free Software
+## Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 import sys
 import os
@@ -25,7 +40,12 @@ import cPickle
 import xmlrpclib
 import gtkspell
 import magic
+from gettext import gettext as _
 from lekhoneeblog.Wordpress import Wordpress
+import locale
+locale.setlocale(locale.LC_ALL, '')
+import gettext
+gettext.bindtextdomain('lekhonee-gnome')
 
 
 __version__ = '0.7'
@@ -83,7 +103,7 @@ class LekhoneeGTK:
                'on_italicBttn_clicked':self.italicBttn_cb}
 
         self.wTree.signal_autoconnect(dic)
-        self.column = gtk.TreeViewColumn("Categories", gtk.CellRendererText(), text=0)
+        self.column = gtk.TreeViewColumn(_("Categories"), gtk.CellRendererText(), text=0)
         self.categoryList.append_column(self.column)
         self.liststore = gtk.ListStore(gobject.TYPE_STRING)
         self.categoryList.set_model(self.liststore)
@@ -93,7 +113,7 @@ class LekhoneeGTK:
 
         #self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
         #self.entriesList.append_column(self.id_column)
-        self.entries_column = gtk.TreeViewColumn("Post Titles", gtk.CellRendererText(), text=0)
+        self.entries_column = gtk.TreeViewColumn(_("Post Titles"), gtk.CellRendererText(), text=0)
         self.entriesList.append_column(self.entries_column)
         self.liststore2 = gtk.ListStore(gobject.TYPE_STRING,gobject.TYPE_PYOBJECT)
         self.entriesList.set_model(self.liststore2)
@@ -160,7 +180,7 @@ class LekhoneeGTK:
         """
         dialog = gtk.AboutDialog()
         dialog.set_name('lekhonee')
-        dialog.set_copyright('(c) 2009 Kushal Das')
+        dialog.set_copyright(_('(c) 2009 Kushal Das'))
         dialog.set_website('http://fedorahosted.org/lekhonee')
         dialog.set_authors(['Kushal Das kushal@fedoraproject.org',])
         dialog.set_program_name('lekhonee')
@@ -191,7 +211,7 @@ class LekhoneeGTK:
         """
         Select a file to upload
         """
-        chooser = gtk.FileChooserDialog(title='Upload File',action=gtk.FILE_CHOOSER_ACTION_OPEN,
+        chooser = gtk.FileChooserDialog(title=_('Upload File'),action=gtk.FILE_CHOOSER_ACTION_OPEN,
             buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
         response = chooser.run()
 
@@ -239,10 +259,10 @@ class LekhoneeGTK:
             self.save()
             return True
 
-        chooser = gtk.FileChooserDialog(title='Save Blog',action=gtk.FILE_CHOOSER_ACTION_SAVE,
+        chooser = gtk.FileChooserDialog(title=_('Save Blog'),action=gtk.FILE_CHOOSER_ACTION_SAVE,
             buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_SAVE,gtk.RESPONSE_OK))
         filter = gtk.FileFilter()
-        filter.set_name("Lekhonee files")
+        filter.set_name(_("Lekhonee files"))
         filter.add_pattern("*.chotha")
         chooser.add_filter(filter)
         response = chooser.run()
@@ -267,10 +287,10 @@ class LekhoneeGTK:
         """
         Open an old blog entry from disk
         """
-        chooser = gtk.FileChooserDialog(title='Open Blog',action=gtk.FILE_CHOOSER_ACTION_OPEN,
+        chooser = gtk.FileChooserDialog(title=_('Open Blog'),action=gtk.FILE_CHOOSER_ACTION_OPEN,
             buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
         filter = gtk.FileFilter()
-        filter.set_name("Lekhonee files")
+        filter.set_name(_("Lekhonee files"))
         filter.add_pattern("*.chotha")
         chooser.add_filter(filter)
         response = chooser.run()
@@ -340,7 +360,7 @@ class LekhoneeGTK:
                 if category == self.liststore.get_value(iter,0):
                     ts.select_iter(iter)
         self.draftBttn.set_sensitive(False)
-        self.publishBttn.set_label('Update')
+        self.publishBttn.set_label(_('Update'))
         self.editFlag = True
 
     def addCategory_cb(self, widget):
@@ -370,7 +390,7 @@ class LekhoneeGTK:
         self.filename = ''
         if self.editFlag:
             self.draftBttn.set_sensitive(True)
-            self.publishBttn.set_label('Publish')
+            self.publishBttn.set_label(_('Publish'))
         self.editFlag = False
         self.getCategories()
 
@@ -579,7 +599,7 @@ class LekhoneeGTK:
                 mes = self.server.edit(self.entry['postid'], content, publish)
             if self.editFlag:
                 self.draftBttn.set_sensitive(True)
-                self.publishBttn.set_label('Publish')
+                self.publishBttn.set_label(_('Publish'))
             self.editFlag = False
             self.getEntries()
             self.clearAll()
@@ -592,62 +612,6 @@ class LekhoneeGTK:
     def clearAll(self):
         self.new_cb(True)
 
-    def dirBttn_cb(self,widget):
-        """
-        Open a dir chooser and get the directory name
-        """
-        self.chooser = gtk.FileChooserDialog(title='Select Folder',action=gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER,
-            buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
-        response = self.chooser.run()
-        if  response == gtk.RESPONSE_OK:
-            self.path = self.chooser.get_filename()
-
-        self.chooser.destroy()
-
-    def selectBttn_cb(self, widget):
-        """
-        To handle selectBttn callback
-        """
-        dialog = gtk.FileChooserDialog("Open..",None,
-                gtk.FILE_CHOOSER_ACTION_OPEN,
-                buttons=(gtk.STOCK_CANCEL,gtk.RESPONSE_CANCEL,gtk.STOCK_OPEN,gtk.RESPONSE_OK))
-        dialog.set_default_response(gtk.RESPONSE_OK)
-
-        filter = gtk.FileFilter()
-        filter.set_name("Po files")
-        filter.add_pattern("*.po")
-        dialog.add_filter(filter)
-
-        response = dialog.run()
-        if response == gtk.RESPONSE_OK:
-            filename = dialog.get_filename()
-            self.filepath.set_text(filename)
-        dialog.destroy()
-
-
-    def addBttn_cb(self, widget):
-        """
-        To handle addBttn callback
-        """
-        path = self.filepath.get_text()
-        path = path.strip()
-        if path:
-            self.liststore.append((path,))
-            self.filepath.set_text('')
-            self.pofilesave()
-            self.dirBttn.set_sensitive(False)
-
-
-    def removeBttn_cb(self, widget):
-        """
-        To handle removeBttn callback
-        """
-        x, y = self.listbox.get_selection().get_selected()
-        if y:
-            self.liststore.remove(y)
-            self.pofilesave()
-            if len(self.liststore) == 0:
-                self.dirBttn.set_sensitive(True)
 
 
 
