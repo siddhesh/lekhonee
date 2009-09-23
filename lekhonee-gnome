@@ -1,3 +1,0 @@
-#!/bin/sh
-cd /usr/share/chotha/gnome-frontend
-python -tt lekhonee-gnome.py
