@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 18:10+0530\n"
+"POT-Creation-Date: 2009-09-23 12:59+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,8 +98,8 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:393
-#: ../lekhonee-gnome.py:602
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:607
 msgid "Publish"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:214
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
 msgid "Upload File"
 msgstr ""
 
@@ -195,32 +195,32 @@ msgstr ""
 msgid "lekhonee msg"
 msgstr ""
 
-#: ../lekhonee-gnome.py:106
+#: ../lekhonee-gnome.py:111
 msgid "Categories"
 msgstr ""
 
 #. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
 #. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:116
+#: ../lekhonee-gnome.py:121
 msgid "Post Titles"
 msgstr ""
 
-#: ../lekhonee-gnome.py:183
+#: ../lekhonee-gnome.py:188
 msgid "(c) 2009 Kushal Das"
 msgstr ""
 
-#: ../lekhonee-gnome.py:262
+#: ../lekhonee-gnome.py:267
 msgid "Save Blog"
 msgstr ""
 
-#: ../lekhonee-gnome.py:265 ../lekhonee-gnome.py:293
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
 msgid "Lekhonee files"
 msgstr ""
 
-#: ../lekhonee-gnome.py:290
+#: ../lekhonee-gnome.py:295
 msgid "Open Blog"
 msgstr ""
 
-#: ../lekhonee-gnome.py:363
+#: ../lekhonee-gnome.py:368
 msgid "Update"
 msgstr ""
