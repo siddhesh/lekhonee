@@ -45,7 +45,12 @@ from lekhoneeblog.Wordpress import Wordpress
 import locale
 locale.setlocale(locale.LC_ALL, '')
 import gettext
-gettext.bindtextdomain('lekhonee-gnome')
+
+APP_NAME = 'lekhonee-gnome'
+
+for module in (gettext, gtk.glade):
+    module.bindtextdomain(APP_NAME, '/usr/share/locale')
+    module.textdomain(APP_NAME)
 
 
 __version__ = '0.7'
