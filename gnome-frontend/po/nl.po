@@ -1,0 +1,237 @@
+# Dutch translation of lekhonee
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+# Geert Warrink <geert.warrink@onsnet.nu>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: lekhonee\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-23 13:48+0530\n"
+"PO-Revision-Date: 2009-09-24 19:22+0200\n"
+"Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
+"Language-Team: nl <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding:  \n"
+
+#: ../lekhonee-gnome.glade.h:1
+msgid ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"Right"
+msgstr ""
+"-- Niet ingesteld --\n"
+"Basislijn\n"
+"Boven\n"
+"Midden\n"
+"Onder\n"
+"Tekst top\n"
+"Absoluut midden\n"
+"Absoluut onder\n"
+"Links\n"
+"Rechts"
+
+#: ../lekhonee-gnome.glade.h:11
+msgid "Add Categories"
+msgstr "Catergorieën toevoegen"
+
+#: ../lekhonee-gnome.glade.h:12
+msgid "Alignment"
+msgstr "Uitlijnen"
+
+#: ../lekhonee-gnome.glade.h:13
+msgid "Bold"
+msgstr "Vet"
+
+#: ../lekhonee-gnome.glade.h:14
+msgid "Cancel"
+msgstr "Annuleer"
+
+#: ../lekhonee-gnome.glade.h:15
+msgid "Comments Allowed"
+msgstr "Commentaar toegestaan"
+
+#: ../lekhonee-gnome.glade.h:16
+msgid "Configure"
+msgstr "Configureren"
+
+#: ../lekhonee-gnome.glade.h:17
+msgid "Dimentions\n"
+msgstr "Afmetingen\n"
+
+#: ../lekhonee-gnome.glade.h:19
+msgid "For Future Use"
+msgstr "Voor toekomstig gebruik"
+
+#: ../lekhonee-gnome.glade.h:20
+msgid "Image"
+msgstr "Afbeelding"
+
+#: ../lekhonee-gnome.glade.h:21
+msgid "Image Description"
+msgstr "Beschrijving van afbeelding"
+
+#: ../lekhonee-gnome.glade.h:22
+msgid "Image URL"
+msgstr "URL van afbeelding"
+
+#: ../lekhonee-gnome.glade.h:23
+msgid "Insert Image"
+msgstr "Afbeelding tussenvoegen"
+
+#: ../lekhonee-gnome.glade.h:24
+msgid "Last Post"
+msgstr "Laaste bericht"
+
+#: ../lekhonee-gnome.glade.h:25
+msgid "Link"
+msgstr "Verwijzing"
+
+#: ../lekhonee-gnome.glade.h:26
+msgid "Old Posts"
+msgstr "Oude berichten"
+
+#: ../lekhonee-gnome.glade.h:27
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: ../lekhonee-gnome.glade.h:28
+msgid "Preview"
+msgstr "Voorvertoning"
+
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:607
+msgid "Publish"
+msgstr "Uitgeven"
+
+#: ../lekhonee-gnome.glade.h:30
+msgid "Refresh"
+msgstr "Verversen"
+
+#: ../lekhonee-gnome.glade.h:31
+msgid "Save Draft"
+msgstr "Concept opslaan"
+
+#: ../lekhonee-gnome.glade.h:32
+msgid "Select File to Upload"
+msgstr "Selecteer bestand om te uploaden"
+
+#: ../lekhonee-gnome.glade.h:33
+msgid "Server"
+msgstr "Server"
+
+#: ../lekhonee-gnome.glade.h:34
+msgid "Spell Check"
+msgstr "Controle van spelling"
+
+#: ../lekhonee-gnome.glade.h:35
+msgid "Tags"
+msgstr "Label"
+
+#: ../lekhonee-gnome.glade.h:36
+msgid "Tags separated by commas"
+msgstr "Labels gescheiden door komma&#39;s"
+
+#: ../lekhonee-gnome.glade.h:37
+msgid "Title"
+msgstr "Titel"
+
+#: ../lekhonee-gnome.glade.h:38
+msgid "Underline"
+msgstr "Onderstrepen"
+
+#: ../lekhonee-gnome.glade.h:39
+msgid "Upload"
+msgstr "Uploaden"
+
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+msgid "Upload File"
+msgstr "Bestand uploaden"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: ../lekhonee-gnome.glade.h:42
+msgid "Wordpress"
+msgstr "Wordpress"
+
+#: ../lekhonee-gnome.glade.h:43
+msgid "X"
+msgstr "X"
+
+#: ../lekhonee-gnome.glade.h:44
+msgid "_About"
+msgstr "_Over"
+
+#: ../lekhonee-gnome.glade.h:45
+msgid "_Edit"
+msgstr "Be_werken"
+
+#: ../lekhonee-gnome.glade.h:46
+msgid "_File"
+msgstr "_Bestand"
+
+#: ../lekhonee-gnome.glade.h:47
+msgid "_Help"
+msgstr "_Hulp"
+
+#: ../lekhonee-gnome.glade.h:48
+msgid "_Html Tags"
+msgstr "_Html labels"
+
+#: ../lekhonee-gnome.glade.h:49
+msgid "http://yourserver.com/xmlrpc.php"
+msgstr "http://jouwserver.com/xmlrpc.php"
+
+#: ../lekhonee-gnome.glade.h:50
+msgid "italic"
+msgstr "cursief"
+
+#: ../lekhonee-gnome.glade.h:51
+msgid "lekhonee"
+msgstr "lekhonee"
+
+#: ../lekhonee-gnome.glade.h:52
+msgid "lekhonee msg"
+msgstr "lekhonee bericht"
+
+#: ../lekhonee-gnome.py:111
+msgid "Categories"
+msgstr "Categorieën"
+
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.entriesList.append_column(self.id_column)
+#: ../lekhonee-gnome.py:121
+msgid "Post Titles"
+msgstr "Bericht-titel"
+
+#: ../lekhonee-gnome.py:188
+msgid "(c) 2009 Kushal Das"
+msgstr "(c) 2009 Kushal Das"
+
+#: ../lekhonee-gnome.py:267
+msgid "Save Blog"
+msgstr "Blog opslaan"
+
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+msgid "Lekhonee files"
+msgstr "Lekhonee bestanden"
+
+#: ../lekhonee-gnome.py:295
+msgid "Open Blog"
+msgstr "Blog openen"
+
+#: ../lekhonee-gnome.py:368
+msgid "Update"
+msgstr "Vernieuwen"
