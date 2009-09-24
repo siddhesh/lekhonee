@@ -1,0 +1,238 @@
+# translation of lekhonee-gnome.po to Hindi
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Rajesh Ranjan <rajesh672@gmail.com>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: lekhonee-gnome\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-23 13:48+0530\n"
+"PO-Revision-Date: 2009-09-24 14:17+0530\n"
+"Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
+"Language-Team: Hindi <hindi.sf.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+
+#: ../lekhonee-gnome.glade.h:1
+msgid ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"Right"
+msgstr ""
+"-- Not Set --\n"
+"मूल रेखा\n"
+"शीर्ष\n"
+"मध्य\n"
+"तल\n"
+"पाठ शीर्ष\n"
+"निरपेक्ष मध्य\n"
+"निरपेक्ष तल\n"
+"बायाँ\n"
+"दाहिना"
+
+#: ../lekhonee-gnome.glade.h:11
+msgid "Add Categories"
+msgstr "श्रेणी जोड़ें"
+
+#: ../lekhonee-gnome.glade.h:12
+msgid "Alignment"
+msgstr "संरेखण"
+
+#: ../lekhonee-gnome.glade.h:13
+msgid "Bold"
+msgstr "गहरा"
+
+#: ../lekhonee-gnome.glade.h:14
+msgid "Cancel"
+msgstr "रद्द करे"
+
+#: ../lekhonee-gnome.glade.h:15
+msgid "Comments Allowed"
+msgstr "टिप्पणी स्वीकार्य"
+
+#: ../lekhonee-gnome.glade.h:16
+msgid "Configure"
+msgstr "विन्यस्त करें"
+
+#: ../lekhonee-gnome.glade.h:17
+msgid "Dimentions\n"
+msgstr "आयाम\n"
+
+#: ../lekhonee-gnome.glade.h:19
+msgid "For Future Use"
+msgstr "भविष्य के प्रयोग के लिए"
+
+#: ../lekhonee-gnome.glade.h:20
+msgid "Image"
+msgstr "छवि"
+
+#: ../lekhonee-gnome.glade.h:21
+msgid "Image Description"
+msgstr "छवि विवरण"
+
+#: ../lekhonee-gnome.glade.h:22
+msgid "Image URL"
+msgstr "छवि यूआरएल"
+
+#: ../lekhonee-gnome.glade.h:23
+msgid "Insert Image"
+msgstr "छवि डालें"
+
+#: ../lekhonee-gnome.glade.h:24
+msgid "Last Post"
+msgstr "अंतिम पोस्ट"
+
+#: ../lekhonee-gnome.glade.h:25
+msgid "Link"
+msgstr "कड़ी"
+
+#: ../lekhonee-gnome.glade.h:26
+msgid "Old Posts"
+msgstr "पुराना पोस्ट"
+
+#: ../lekhonee-gnome.glade.h:27
+msgid "Password"
+msgstr "कूटशब्द"
+
+#: ../lekhonee-gnome.glade.h:28
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:607
+msgid "Publish"
+msgstr "प्रकाशित करें"
+
+#: ../lekhonee-gnome.glade.h:30
+msgid "Refresh"
+msgstr "ताज़ा करें"
+
+#: ../lekhonee-gnome.glade.h:31
+msgid "Save Draft"
+msgstr "मसौदा सहेजें"
+
+#: ../lekhonee-gnome.glade.h:32
+msgid "Select File to Upload"
+msgstr "अपलोड करने के लिए फ़ाइल चुनें"
+
+#: ../lekhonee-gnome.glade.h:33
+msgid "Server"
+msgstr "सर्वर"
+
+#: ../lekhonee-gnome.glade.h:34
+msgid "Spell Check"
+msgstr "वर्तनी जाँच"
+
+#: ../lekhonee-gnome.glade.h:35
+msgid "Tags"
+msgstr "टैग"
+
+#: ../lekhonee-gnome.glade.h:36
+msgid "Tags separated by commas"
+msgstr "अल्पविराम से पृथक टैग"
+
+#: ../lekhonee-gnome.glade.h:37
+msgid "Title"
+msgstr "शीर्षक"
+
+#: ../lekhonee-gnome.glade.h:38
+msgid "Underline"
+msgstr "रेखांकन"
+
+#: ../lekhonee-gnome.glade.h:39
+msgid "Upload"
+msgstr "अपलोड"
+
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+msgid "Upload File"
+msgstr "फ़ाइल अपलोड करें"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "Username"
+msgstr "उपयोक्तानाम"
+
+#: ../lekhonee-gnome.glade.h:42
+msgid "Wordpress"
+msgstr "वर्डप्रेस"
+
+#: ../lekhonee-gnome.glade.h:43
+msgid "X"
+msgstr "X"
+
+#: ../lekhonee-gnome.glade.h:44
+msgid "_About"
+msgstr "परिचय (_A)"
+
+#: ../lekhonee-gnome.glade.h:45
+msgid "_Edit"
+msgstr "संपादन (_E)"
+
+#: ../lekhonee-gnome.glade.h:46
+msgid "_File"
+msgstr "फ़ाइल (_F)"
+
+#: ../lekhonee-gnome.glade.h:47
+msgid "_Help"
+msgstr "मदद (_H)"
+
+#: ../lekhonee-gnome.glade.h:48
+msgid "_Html Tags"
+msgstr "एचटीएमएल टैग (_H)"
+
+#: ../lekhonee-gnome.glade.h:49
+msgid "http://yourserver.com/xmlrpc.php"
+msgstr "http://yourserver.com/xmlrpc.php"
+
+#: ../lekhonee-gnome.glade.h:50
+msgid "italic"
+msgstr "तिरछा"
+
+#: ../lekhonee-gnome.glade.h:51
+msgid "lekhonee"
+msgstr "लेखोनी"
+
+#: ../lekhonee-gnome.glade.h:52
+msgid "lekhonee msg"
+msgstr "लेखोनी msg"
+
+#: ../lekhonee-gnome.py:111
+msgid "Categories"
+msgstr "श्रेणी"
+
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.entriesList.append_column(self.id_column)
+#: ../lekhonee-gnome.py:121
+msgid "Post Titles"
+msgstr "पोस्ट शीर्षक"
+
+#: ../lekhonee-gnome.py:188
+msgid "(c) 2009 Kushal Das"
+msgstr "(c) 2009 कुशल दास"
+
+#: ../lekhonee-gnome.py:267
+msgid "Save Blog"
+msgstr "ब्लॉग सहेजें"
+
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+msgid "Lekhonee files"
+msgstr "लेखोनी फ़ाइल"
+
+#: ../lekhonee-gnome.py:295
+msgid "Open Blog"
+msgstr "ब्लॉग खोलें"
+
+#: ../lekhonee-gnome.py:368
+msgid "Update"
+msgstr "अद्यतन करें"
+
