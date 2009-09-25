@@ -1,15 +1,15 @@
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# translation of zh_CN.po to Chinese, Traditional
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Tom K. C. Chiu <tomchiukc@gmail.com>, 2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: zh_TW\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-09-23 13:48+0530\n"
-"PO-Revision-Date: 2009-09-25 22:21+0800\n"
+"PO-Revision-Date: 2009-09-25 22:41+0800\n"
 "Last-Translator: Tom K. C. Chiu <tomchiukc@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Chinese <fedora-trans-zh@redhat.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -66,7 +66,7 @@ msgstr "設定"
 
 #: ../lekhonee-gnome.glade.h:17
 msgid "Dimentions\n"
-msgstr ""
+msgstr "Dimentions\n"
 
 #: ../lekhonee-gnome.glade.h:19
 msgid "For Future Use"
@@ -116,7 +116,7 @@ msgstr "出版"
 
 #: ../lekhonee-gnome.glade.h:30
 msgid "Refresh"
-msgstr ""
+msgstr "更新"
 
 #: ../lekhonee-gnome.glade.h:31
 msgid "Save Draft"
@@ -201,11 +201,11 @@ msgstr "斜體"
 
 #: ../lekhonee-gnome.glade.h:51
 msgid "lekhonee"
-msgstr ""
+msgstr "lekhonee"
 
 #: ../lekhonee-gnome.glade.h:52
 msgid "lekhonee msg"
-msgstr ""
+msgstr "lekhonee信息"
 
 #: ../lekhonee-gnome.py:111
 msgid "Categories"
@@ -219,7 +219,7 @@ msgstr "貼文標題"
 
 #: ../lekhonee-gnome.py:188
 msgid "(c) 2009 Kushal Das"
-msgstr ""
+msgstr "(c) 2009 Kushal Das"
 
 #: ../lekhonee-gnome.py:267
 msgid "Save Blog"
@@ -228,7 +228,7 @@ msgstr "儲存部落格"
 #: ../lekhonee-gnome.py:270
 #: ../lekhonee-gnome.py:298
 msgid "Lekhonee files"
-msgstr ""
+msgstr "Lekhonee檔案"
 
 #: ../lekhonee-gnome.py:295
 msgid "Open Blog"
