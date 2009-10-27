@@ -474,12 +474,12 @@ class LekhoneeGTK:
         """
         Get the imade details
         """
-        align = {None: '','-- Not Set --': '', 'Baseline': 'baseline', 'Top': 'top', 'Middle': 'middle', 'Bottom': 'bottom', 'Text Top': 'texttop', 'Absolute Middle': 'absmiddle', 'Absolute bottom': 'abcbttom', 'Left': 'left', 'Right': 'right'}
+        align = {-1: '',0: '', 1: 'baseline', 2: 'top', 3: 'middle', 4: 'bottom', 5: 'texttop', 6: 'absmiddle', 7: 'abcbttom', 8: 'left', 9: 'right'}
         self.imageDialog.hide()
         if response_id == gtk.RESPONSE_OK:
             src = self.wTree.get_widget('imageurlTxt').get_text()
             desc = self.wTree.get_widget('imagedescriptionTxt').get_text()
-            alignment = align[self.wTree.get_widget('imagealignmentBox').get_active_text()]
+            alignment = align[self.wTree.get_widget('imagealignmentBox').get_active()]
             x = self.wTree.get_widget('xspin').get_value()
             y = self.wTree.get_widget('yspin').get_value()
             if x ==0 or y == 0:
