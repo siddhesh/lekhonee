@@ -413,8 +413,13 @@ class LekhoneeGTK:
             f.close()
             password = self.wTree.get_widget('passwordTxt').get_text()
             self.server = Wordpress(data['server'], data['username'], password)
-            self.getCategories()
-            self.getEntries()
+            try:
+                self.getCategories()
+                self.getEntries()
+            except Exception, e:
+                dm = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK, str(e))
+                dm.run()
+                dm.destroy()
 
     def getEntries(self):
         """
