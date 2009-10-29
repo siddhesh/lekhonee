@@ -1,0 +1,229 @@
+# Pashto translation for lekhonee gnome UI
+# Copyright (C) 2009 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Zabeeh Khan <zabeehkhan@gmail.com>, 2009.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: lekhonee\n"
+"Report-Msgid-Bugs-To: zabeehkhan@gmail.com\n"
+"POT-Creation-Date: 2009-09-23 13:48+0530\n"
+"PO-Revision-Date: 2009-09-25 09:17+0500\n"
+"Last-Translator: Zabeeh Khan <zabeehkhan@gmail.com>\n"
+"Language-Team: Pashto <pathanisation@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Pashto, Pushto\n"
+"X-Poedit-Country: PAKISTAN\n"
+"X-Language: ps_AF\n"
+
+#: ../lekhonee-gnome.glade.h:1
+#, fuzzy
+msgid ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"Right"
+msgstr ""
+
+#: ../lekhonee-gnome.glade.h:11
+msgid "Add Categories"
+msgstr "ډلې ډېرول"
+
+#: ../lekhonee-gnome.glade.h:12
+msgid "Alignment"
+msgstr "لورموندنه"
+
+#: ../lekhonee-gnome.glade.h:13
+msgid "Bold"
+msgstr "ډبل"
+
+#: ../lekhonee-gnome.glade.h:14
+msgid "Cancel"
+msgstr "بندول"
+
+#: ../lekhonee-gnome.glade.h:15
+msgid "Comments Allowed"
+msgstr "د څرګندونو د ليکلو اجازه شته"
+
+#: ../lekhonee-gnome.glade.h:16
+msgid "Configure"
+msgstr "سازول"
+
+#: ../lekhonee-gnome.glade.h:17
+msgid "Dimentions\n"
+msgstr "ډډې\n"
+
+#: ../lekhonee-gnome.glade.h:19
+msgid "For Future Use"
+msgstr "د وروسته کارولو دپاره"
+
+#: ../lekhonee-gnome.glade.h:20
+msgid "Image"
+msgstr "انځور"
+
+#: ../lekhonee-gnome.glade.h:21
+msgid "Image Description"
+msgstr "د انځور سپړاوی"
+
+#: ../lekhonee-gnome.glade.h:22
+msgid "Image URL"
+msgstr "URLد انځور"
+
+#: ../lekhonee-gnome.glade.h:23
+msgid "Insert Image"
+msgstr "انځور ننويستل"
+
+#: ../lekhonee-gnome.glade.h:24
+msgid "Last Post"
+msgstr "وروستۍ ليکنه"
+
+#: ../lekhonee-gnome.glade.h:25
+msgid "Link"
+msgstr "تړنه"
+
+#: ../lekhonee-gnome.glade.h:26
+msgid "Old Posts"
+msgstr "زړې ليکنې"
+
+#: ../lekhonee-gnome.glade.h:27
+msgid "Password"
+msgstr "تېرنويې"
+
+#: ../lekhonee-gnome.glade.h:28
+msgid "Preview"
+msgstr "مخکوت"
+
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:607
+msgid "Publish"
+msgstr "خپرول"
+
+#: ../lekhonee-gnome.glade.h:30
+msgid "Refresh"
+msgstr "تاندول"
+
+#: ../lekhonee-gnome.glade.h:31
+msgid "Save Draft"
+msgstr "ليکنه ساتل"
+
+#: ../lekhonee-gnome.glade.h:32
+msgid "Select File to Upload"
+msgstr "د ورلېښلو دپاره دوتنه وټاکﺉ"
+
+#: ../lekhonee-gnome.glade.h:33
+msgid "Server"
+msgstr "پالنګر"
+
+#: ../lekhonee-gnome.glade.h:34
+msgid "Spell Check"
+msgstr "لیکدود کتل"
+
+#: ../lekhonee-gnome.glade.h:35
+msgid "Tags"
+msgstr "نښې"
+
+#: ../lekhonee-gnome.glade.h:36
+msgid "Tags separated by commas"
+msgstr "نښې په ويرګول سره بېليږي"
+
+#: ../lekhonee-gnome.glade.h:37
+msgid "Title"
+msgstr "سرليک"
+
+#: ../lekhonee-gnome.glade.h:38
+msgid "Underline"
+msgstr "لاندکرښه"
+
+#: ../lekhonee-gnome.glade.h:39
+msgid "Upload"
+msgstr "ورلېښل"
+
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+msgid "Upload File"
+msgstr "دوتنه ورلېښل"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "Username"
+msgstr "کاروونکي نوم"
+
+#: ../lekhonee-gnome.glade.h:42
+msgid "Wordpress"
+msgstr "ورډپرېس"
+
+#: ../lekhonee-gnome.glade.h:43
+msgid "X"
+msgstr "X"
+
+#: ../lekhonee-gnome.glade.h:44
+msgid "_About"
+msgstr "په اړه_"
+
+#: ../lekhonee-gnome.glade.h:45
+msgid "_Edit"
+msgstr "سمون_"
+
+#: ../lekhonee-gnome.glade.h:46
+msgid "_File"
+msgstr "دوتنه_"
+
+#: ../lekhonee-gnome.glade.h:47
+msgid "_Help"
+msgstr "مرسته_"
+
+#: ../lekhonee-gnome.glade.h:48
+msgid "_Html Tags"
+msgstr "نښې Html_"
+
+#: ../lekhonee-gnome.glade.h:49
+msgid "http://yourserver.com/xmlrpc.php"
+msgstr "http://yourserver.com/xmlrpc.php"
+
+#: ../lekhonee-gnome.glade.h:50
+msgid "italic"
+msgstr "کوږ"
+
+#: ../lekhonee-gnome.glade.h:51
+msgid "lekhonee"
+msgstr "ليکوني"
+
+#: ../lekhonee-gnome.glade.h:52
+msgid "lekhonee msg"
+msgstr "ليکوني استوزه"
+
+#: ../lekhonee-gnome.py:111
+msgid "Categories"
+msgstr "ډلې"
+
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.entriesList.append_column(self.id_column)
+#: ../lekhonee-gnome.py:121
+msgid "Post Titles"
+msgstr "د ليکنې سرليکونه"
+
+#: ../lekhonee-gnome.py:188
+msgid "(c) 2009 Kushal Das"
+msgstr "چاپرښتې ۲۰۰۹ - کوشال داس"
+
+#: ../lekhonee-gnome.py:267
+msgid "Save Blog"
+msgstr "بلاګ ساتل"
+
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+msgid "Lekhonee files"
+msgstr "د ليکوني دوتنې"
+
+#: ../lekhonee-gnome.py:295
+msgid "Open Blog"
+msgstr "بلاګ پرانيستل"
+
+#: ../lekhonee-gnome.py:368
+msgid "Update"
+msgstr "اوسمهالول"
