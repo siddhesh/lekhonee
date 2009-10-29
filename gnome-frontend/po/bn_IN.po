@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# sankarshan mukhopadhyay <sankarshan@fedoraproject.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-06 12:07+0530\n"
+"PO-Revision-Date: 2009-10-06 12:37+0530\n"
+"Last-Translator: sankarshan mukhopadhyay <sankarshan@fedoraproject.org>\n"
+"Language-Team: anubad@lists.ankur.org.in\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.4.0\n"
+
+#: ../lekhonee-gnome.glade.h:1
+msgid ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"Right"
+msgstr ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"ডানদিক"
+
+#: ../lekhonee-gnome.glade.h:11
+msgid "Add Categories"
+msgstr "বিভিন্ন বিভাগ যোগ করুন"
+
+#: ../lekhonee-gnome.glade.h:12
+msgid "Alignment"
+msgstr "দিশা"
+
+#: ../lekhonee-gnome.glade.h:13
+msgid "Bold"
+msgstr "গাঢ়"
+
+#: ../lekhonee-gnome.glade.h:14
+msgid "Cancel"
+msgstr "বাতিল"
+
+#: ../lekhonee-gnome.glade.h:15
+msgid "Comments Allowed"
+msgstr "অনুমোদিত বক্তব্য"
+
+#: ../lekhonee-gnome.glade.h:16
+msgid "Configure"
+msgstr "কনফিগার করুন"
+
+#: ../lekhonee-gnome.glade.h:17
+msgid "Dimentions\n"
+msgstr "ডাইমেনশন\n"
+
+#: ../lekhonee-gnome.glade.h:19
+msgid "For Future Use"
+msgstr "ভবিষৎ-এ ব্যবহারের জন্য"
+
+#: ../lekhonee-gnome.glade.h:20
+msgid "Image"
+msgstr "ছবি"
+
+#: ../lekhonee-gnome.glade.h:21
+msgid "Image Description"
+msgstr "ছবির বর্ণনা"
+
+#: ../lekhonee-gnome.glade.h:22
+msgid "Image URL"
+msgstr "ছবির URL"
+
+#: ../lekhonee-gnome.glade.h:23
+msgid "Insert Image"
+msgstr "ছবি সংযোজন করুন"
+
+#: ../lekhonee-gnome.glade.h:24
+msgid "Last Post"
+msgstr "সর্বশেষ ব্লগ"
+
+#: ../lekhonee-gnome.glade.h:25
+msgid "Link"
+msgstr "লিংক"
+
+#: ../lekhonee-gnome.glade.h:26
+msgid "Old Posts"
+msgstr "পুরানো ব্লগ"
+
+#: ../lekhonee-gnome.glade.h:27
+msgid "Password"
+msgstr "পাসওয়ার্ড"
+
+#: ../lekhonee-gnome.glade.h:28
+msgid "Preview"
+msgstr "পূর্বপ্রদর্শন"
+
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:607
+msgid "Publish"
+msgstr "ব্লগ করুন"
+
+#: ../lekhonee-gnome.glade.h:30
+msgid "Refresh"
+msgstr "নতুন করে প্রদর্শন করুন"
+
+#: ../lekhonee-gnome.glade.h:31
+msgid "Save Draft"
+msgstr "খসড়া সংরক্ষণ করুন"
+
+#: ../lekhonee-gnome.glade.h:32
+msgid "Select File to Upload"
+msgstr "আপলোড করার জন্য ফাইল নির্বাচন করুন"
+
+#: ../lekhonee-gnome.glade.h:33
+msgid "Server"
+msgstr "সার্ভার"
+
+#: ../lekhonee-gnome.glade.h:34
+msgid "Spell Check"
+msgstr "বানান পরীক্ষা করুন"
+
+#: ../lekhonee-gnome.glade.h:35
+msgid "Tags"
+msgstr "ট্যাগ"
+
+#: ../lekhonee-gnome.glade.h:36
+msgid "Tags separated by commas"
+msgstr "কমা চিহ্ন দ্বারা বিভাজিত ট্যাগ"
+
+#: ../lekhonee-gnome.glade.h:37
+msgid "Title"
+msgstr "শিরোনাম"
+
+#: ../lekhonee-gnome.glade.h:38
+msgid "Underline"
+msgstr "নিম্নরেখাঙ্কন"
+
+#: ../lekhonee-gnome.glade.h:39
+msgid "Upload"
+msgstr "আপলোড"
+
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+msgid "Upload File"
+msgstr "ফাইল আপলোড করুন"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "Username"
+msgstr "ব্যবহারকারীর নাম"
+
+#: ../lekhonee-gnome.glade.h:42
+msgid "Wordpress"
+msgstr "Wordpress"
+
+#: ../lekhonee-gnome.glade.h:43
+msgid "X"
+msgstr "X"
+
+#: ../lekhonee-gnome.glade.h:44
+msgid "_About"
+msgstr "পরিচিতি(_A)"
+
+#: ../lekhonee-gnome.glade.h:45
+msgid "_Edit"
+msgstr "সম্পাদন করুন(_E)"
+
+#: ../lekhonee-gnome.glade.h:46
+msgid "_File"
+msgstr "ফাইল(_F)"
+
+#: ../lekhonee-gnome.glade.h:47
+msgid "_Help"
+msgstr "সহায়িকা(_H)"
+
+#: ../lekhonee-gnome.glade.h:48
+msgid "_Html Tags"
+msgstr "_Html Tags"
+
+#: ../lekhonee-gnome.glade.h:49
+msgid "http://yourserver.com/xmlrpc.php"
+msgstr "http://yourserver.com/xmlrpc.php"
+
+#: ../lekhonee-gnome.glade.h:50
+msgid "italic"
+msgstr "তেরছা"
+
+#: ../lekhonee-gnome.glade.h:51
+msgid "lekhonee"
+msgstr "lekhonee"
+
+#: ../lekhonee-gnome.glade.h:52
+msgid "lekhonee msg"
+msgstr "lekhonee msg"
+
+#: ../lekhonee-gnome.py:111
+msgid "Categories"
+msgstr "বিভাগ"
+
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.entriesList.append_column(self.id_column)
+#: ../lekhonee-gnome.py:121
+msgid "Post Titles"
+msgstr "ব্লগের শিরোনাম"
+
+#: ../lekhonee-gnome.py:188
+msgid "(c) 2009 Kushal Das"
+msgstr "(c) 2009 Kushal Das"
+
+#: ../lekhonee-gnome.py:267
+msgid "Save Blog"
+msgstr "ব্লগ সংরক্ষণ করুন"
+
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+msgid "Lekhonee files"
+msgstr "Lekhonee ফাইল"
+
+#: ../lekhonee-gnome.py:295
+msgid "Open Blog"
+msgstr "ব্লগ খুলুন"
+
+#: ../lekhonee-gnome.py:368
+msgid "Update"
+msgstr "আপডেট করুন"
