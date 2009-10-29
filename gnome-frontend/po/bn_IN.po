@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-06 12:07+0530\n"
-"PO-Revision-Date: 2009-10-06 12:37+0530\n"
+"PO-Revision-Date: 2009-10-29 12:04+0530\n"
 "Last-Translator: sankarshan mukhopadhyay <sankarshan@fedoraproject.org>\n"
 "Language-Team: anubad@lists.ankur.org.in\n"
 "Language: en\n"
@@ -30,16 +30,14 @@ msgid ""
 "Left\n"
 "Right"
 msgstr ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"ডানদিক"
+"বেসলাইন\n"
+"উপরে\n"
+"মাঝামাঝি\n"
+"টেক্সটের উপরের দিকে\n"
+"একদম মাঝামাঝি\n"
+"একদম নীচে\n"
+"বাঁদিকে\n"
+"ডানদিকে"
 
 #: ../lekhonee-gnome.glade.h:11
 msgid "Add Categories"
@@ -59,7 +57,7 @@ msgstr "বাতিল"
 
 #: ../lekhonee-gnome.glade.h:15
 msgid "Comments Allowed"
-msgstr "অনুমোদিত বক্তব্য"
+msgstr "বক্তব্য যোগ করার অনুমতি প্রদান"
 
 #: ../lekhonee-gnome.glade.h:16
 msgid "Configure"
@@ -204,7 +202,7 @@ msgstr "lekhonee"
 
 #: ../lekhonee-gnome.glade.h:52
 msgid "lekhonee msg"
-msgstr "lekhonee msg"
+msgstr "lekhonee পরিচিতি"
 
 #: ../lekhonee-gnome.py:111
 msgid "Categories"
