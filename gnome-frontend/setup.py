@@ -17,7 +17,7 @@ setup(name='lekhonee-gnome',
       data_files=[('/usr/share/applications',['pixmaps/lekhonee-gnome.desktop']),
 		  ('/usr/bin',['lekhonee-gnome']),
 		  ('/usr/share/pixmaps',['pixmaps/lekhonee-gnome.png']),
-          ('/usr/share/chotha/gnome-frontend',['lekhonee-gnome.py','lekhonee-gnome.glade','lekhonee-gnome.gladep','draft.png','insert-image.png','internet.png'])],
+          ('/usr/share/lekhonee-gnome/gnome-frontend',['lekhonee-gnome.py','lekhonee-gnome.glade','lekhonee-gnome.gladep','draft.png','insert-image.png','internet.png'])],
 
         cmdclass = { "build" : build_extra.build_extra,
                      "build_i18n" : build_i18n.build_i18n },
