@@ -11,4 +11,12 @@ pixmaps/lekhonee-gnome.desktop
 po/POTFILES.in
 po/lekhonee-gnome.pot
 po/bn_IN.po
-
+po/es.po
+po/ps.po
+po/pl.po
+po/zh_TW.po
+po/bb.po
+po/nl.po
+po/de.po
+po/zh_CN.po
+po/hi.po
