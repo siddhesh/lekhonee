@@ -105,7 +105,11 @@ class LekhoneeGTK:
                'on_preference_activate':self.preference_cb,
                'on_previewBttn_toggled': self.previewBttn_cb,
                'on_spellCheckBox_toggled': self.spellCheck_cb,
-               'on_italicBttn_clicked':self.italicBttn_cb}
+               'on_italicBttn_clicked':self.italicBttn_cb,
+               'on_bold_clicked':self.on_action,
+               'on_italic_clicked':self.on_action,
+               'on_underline_clicked':self.on_action,
+               'on_insertunorderedlist_clicked':self.on_action}
 
         self.wTree.signal_autoconnect(dic)
         self.column = gtk.TreeViewColumn(_("Categories"), gtk.CellRendererText(), text=0)
@@ -133,9 +137,13 @@ class LekhoneeGTK:
         self.sourceview.set_wrap_mode(gtk.WRAP_WORD)
 
         #Add webkit for preview
-        self.web = webkit.WebView()
-        self.scw2.add(self.web)
+        self.editor = webkit.WebView()
+        self.editor.set_editable(True)
+        self.editor.load_string("",'text/html','utf-8','preview')
+        self.scw2.add(self.editor)
 
+        self.hbuttonbox1 = self.wTree.get_widget("hbuttonbox1")
+        self.toolbar1 = self.wTree.get_widget("toolbar1")
 
         self.vbox8 = self.wTree.get_widget("vbox8")
 
@@ -148,8 +156,9 @@ class LekhoneeGTK:
 
         self.window.show_all()
 
-        self.scw2.hide_all()
+        self.scw.hide_all()
         self.scw3.hide_all()
+        self.hbuttonbox1.hide_all()
         self.vbox8.hide_all()
         self.configureDialog = self.wTree.get_widget('configureDialog')
         self.configureDialog.connect('response',self.configure_cb)
@@ -255,6 +264,9 @@ class LekhoneeGTK:
                 text = ''
             self.blogTxt.insert_at_cursor('<a href="'+mes['url']+'">'+text+'</a>')
 
+    def on_action(self, action):
+        self.editor.execute_script(
+        "document.execCommand('%s', false, false);" % action.get_name())
 
     def save_cb(self, widget):
         """
@@ -546,21 +558,32 @@ class LekhoneeGTK:
         text = '<strong>%s</strong>' % text
         self.blogTxt.insert_at_cursor(text)
 
+    def get_source(self):
+        """
+        Get source from editor
+        """
+        self.editor.execute_script("document.title=document.documentElement.innerHTML;")
+        return self.editor.get_main_frame().get_title()
+
     def previewBttn_cb(self, widget):
         """
         Show or hide preview button accordingly
         """
-        text = """<html><head><title>%s</title></head><body>%s</body></html>"""
         if widget.get_active():
+            self.scw2.hide_all()
+            self.blogTxt.set_text(self.get_source())
+            self.scw.show_all()
+            self.hbuttonbox1.show_all()
+            self.toolbar1.hide_all()
+        else:
             self.scw.hide_all()
             start, end = self.blogTxt.get_bounds()
-            text = text % (self.titleTxt.get_text(), self.blogTxt.get_text(start, end))
+            text = self.blogTxt.get_text(start, end)
             text = text.replace('\n','<br>')
-            self.web.load_string(text,'text/html','utf-8','preview')
+            self.editor.load_string(text,'text/html','utf-8','preview')
+            self.hbuttonbox1.hide_all()
+            self.toolbar1.show_all()
             self.scw2.show_all()
-        else:
-            self.scw2.hide_all()
-            self.scw.show_all()
 
     def spellCheck_cb(self, widget):
         """
