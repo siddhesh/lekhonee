@@ -571,7 +571,7 @@ class LekhoneeGTK:
         """
         if widget.get_active():
             self.scw2.hide_all()
-            self.blogTxt.set_text(self.get_source())
+            self.blogTxt.set_text(self.get_source()[19:-7])
             self.scw.show_all()
             self.hbuttonbox1.show_all()
             self.toolbar1.hide_all()
