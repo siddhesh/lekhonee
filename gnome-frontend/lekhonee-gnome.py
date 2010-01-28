@@ -81,6 +81,7 @@ class LekhoneeGTK:
         dic = {'on_MainWindow_destroy': gtk.main_quit,
                'on_boldBttn_clicked':self.boldBttn_cb,
                'on_linkBttn_clicked':self.linkBttn_cb,
+               'on_ilinkBttn_clicked':self.linkBttn_cb,
                'on_imageBttn_clicked':self.imageBttn_cb,
                'on_publishBttn_clicked':self.publishBttn_cb,
                'on_draftBttn_clicked':self.draftBttn_cb,
@@ -168,6 +169,7 @@ class LekhoneeGTK:
         self.imageDialog = self.wTree.get_widget('imageDialog')
         self.imageDialog.connect('response',self.image_dialog_cb)
 
+        self.previewbttn = self.wTree.get_widget('previewBttn')
         #for spell checking
         self.spell = None
 
@@ -478,13 +480,17 @@ class LekhoneeGTK:
         if response_id == gtk.RESPONSE_OK:
             link = self.linkTxt.get_text()
             if link:
-                iter = self.blogTxt.get_selection_bounds()
-                if iter:
-                    text =  self.blogTxt.get_text(iter[0],iter[1])
-                    self.blogTxt.delete(iter[0],iter[1])
+                if self.previewbttn.get_active():
+                    iter = self.blogTxt.get_selection_bounds()
+                    if iter:
+                        text =  self.blogTxt.get_text(iter[0],iter[1])
+                        self.blogTxt.delete(iter[0],iter[1])
+                    else:
+                        text = ''
+                    self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
                 else:
-                    text = ''
-                self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
+                    self.editor.execute_script(
+                        "document.execCommand('createLink', true, '%s');" % link)
             self.linkTxt.set_text('')
 
     def image_dialog_cb(self, widget, response_id):
