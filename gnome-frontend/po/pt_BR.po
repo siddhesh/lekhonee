@@ -90,7 +90,7 @@ msgstr "Ultima Publicação"
 
 #: ../lekhonee-gnome.glade.h:25
 msgid "Link"
-msgstr "Enlace"
+msgstr "Link"
 
 #: ../lekhonee-gnome.glade.h:26
 msgid "Old Posts"
@@ -120,7 +120,7 @@ msgstr "Salvar Rascunho"
 
 #: ../lekhonee-gnome.glade.h:32
 msgid "Select File to Upload"
-msgstr "Seleccionar Archivo a Subir"
+msgstr "Selecionar Arquivo para Enviar"
 
 #: ../lekhonee-gnome.glade.h:33
 msgid "Server"
@@ -148,12 +148,12 @@ msgstr "Sublinhado"
 
 #: ../lekhonee-gnome.glade.h:39
 msgid "Upload"
-msgstr "Subir"
+msgstr "Enviar"
 
 #: ../lekhonee-gnome.glade.h:40
 #: ../lekhonee-gnome.py:219
 msgid "Upload File"
-msgstr "Subir Archivo"
+msgstr "Enviar Arquivo"
 
 #: ../lekhonee-gnome.glade.h:41
 msgid "Username"
@@ -161,7 +161,7 @@ msgstr "Nome de Usuário"
 
 #: ../lekhonee-gnome.glade.h:42
 msgid "Wordpress"
-msgstr "Wordpresa"
+msgstr "Wordpress"
 
 #: ../lekhonee-gnome.glade.h:43
 msgid "X"
@@ -201,7 +201,7 @@ msgstr "lekhonee"
 
 #: ../lekhonee-gnome.glade.h:52
 msgid "lekhonee msg"
-msgstr "msg de lekhonee"
+msgstr "msg do lekhonee"
 
 #: ../lekhonee-gnome.py:111
 msgid "Categories"
