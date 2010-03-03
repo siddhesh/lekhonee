@@ -60,6 +60,7 @@ class LekhoneeGTK:
 
     def __init__(self):
         gobject.threads_init()
+        self.view_status = True
         #Set the Glade file
         self.gladefile = "lekhonee-gnome.glade"
         self.wTree = gtk.glade.XML(self.gladefile)
@@ -292,6 +293,12 @@ class LekhoneeGTK:
         chooser.destroy()
 
     def save(self):
+        """
+        This saves the message
+        """
+        #If the user is not in source view
+        if self.view_status:
+            self.blogTxt.set_text(self.get_source()[19:-7])
         start, end = self.blogTxt.get_bounds()
         text = unicode(self.blogTxt.get_text(start, end))
         title = unicode(self.titleTxt.get_text())
@@ -576,12 +583,14 @@ class LekhoneeGTK:
         Show or hide preview button accordingly
         """
         if widget.get_active():
+            self.view_status = False
             self.scw2.hide_all()
             self.blogTxt.set_text(self.get_source()[19:-7])
             self.scw.show_all()
             self.hbuttonbox1.show_all()
             self.toolbar1.hide_all()
         else:
+            self.view_source = True
             self.scw.hide_all()
             start, end = self.blogTxt.get_bounds()
             text = self.blogTxt.get_text(start, end)
@@ -613,6 +622,10 @@ class LekhoneeGTK:
         """
         Post the message to the server
         """
+        #If the user is not in source view
+        if self.view_status:
+            self.blogTxt.set_text(self.get_source()[19:-7])
+
         selection = self.categoryList.get_selection()
         model, selected = selection.get_selected_rows()
         categories = [model[sec][0] for sec in selected]
