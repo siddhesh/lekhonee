@@ -3,7 +3,7 @@
 #####################################################################
 #
 #       Author : Kushal Das
-#       Copyright (c)  2009 Kushal Das
+#       Copyright (c)  2009-2010 Kushal Das
 #       kushal@fedoraproject.org
 #
 #####################################################################
@@ -60,6 +60,7 @@ class LekhoneeGTK:
 
     def __init__(self):
         gobject.threads_init()
+        self.view_status = True
         #Set the Glade file
         self.gladefile = "lekhonee-gnome.glade"
         self.wTree = gtk.glade.XML(self.gladefile)
@@ -81,6 +82,7 @@ class LekhoneeGTK:
         dic = {'on_MainWindow_destroy': gtk.main_quit,
                'on_boldBttn_clicked':self.boldBttn_cb,
                'on_linkBttn_clicked':self.linkBttn_cb,
+               'on_ilinkBttn_clicked':self.linkBttn_cb,
                'on_imageBttn_clicked':self.imageBttn_cb,
                'on_publishBttn_clicked':self.publishBttn_cb,
                'on_draftBttn_clicked':self.draftBttn_cb,
@@ -105,7 +107,11 @@ class LekhoneeGTK:
                'on_preference_activate':self.preference_cb,
                'on_previewBttn_toggled': self.previewBttn_cb,
                'on_spellCheckBox_toggled': self.spellCheck_cb,
-               'on_italicBttn_clicked':self.italicBttn_cb}
+               'on_italicBttn_clicked':self.italicBttn_cb,
+               'on_bold_clicked':self.on_action,
+               'on_italic_clicked':self.on_action,
+               'on_underline_clicked':self.on_action,
+               'on_insertunorderedlist_clicked':self.on_action}
 
         self.wTree.signal_autoconnect(dic)
         self.column = gtk.TreeViewColumn(_("Categories"), gtk.CellRendererText(), text=0)
@@ -133,9 +139,13 @@ class LekhoneeGTK:
         self.sourceview.set_wrap_mode(gtk.WRAP_WORD)
 
         #Add webkit for preview
-        self.web = webkit.WebView()
-        self.scw2.add(self.web)
+        self.editor = webkit.WebView()
+        self.editor.set_editable(True)
+        self.editor.load_string("",'text/html','utf-8','preview')
+        self.scw2.add(self.editor)
 
+        self.hbuttonbox1 = self.wTree.get_widget("hbuttonbox1")
+        self.toolbar1 = self.wTree.get_widget("toolbar1")
 
         self.vbox8 = self.wTree.get_widget("vbox8")
 
@@ -148,8 +158,9 @@ class LekhoneeGTK:
 
         self.window.show_all()
 
-        self.scw2.hide_all()
+        self.scw.hide_all()
         self.scw3.hide_all()
+        self.hbuttonbox1.hide_all()
         self.vbox8.hide_all()
         self.configureDialog = self.wTree.get_widget('configureDialog')
         self.configureDialog.connect('response',self.configure_cb)
@@ -159,6 +170,7 @@ class LekhoneeGTK:
         self.imageDialog = self.wTree.get_widget('imageDialog')
         self.imageDialog.connect('response',self.image_dialog_cb)
 
+        self.previewbttn = self.wTree.get_widget('previewBttn')
         #for spell checking
         self.spell = None
 
@@ -255,6 +267,9 @@ class LekhoneeGTK:
                 text = ''
             self.blogTxt.insert_at_cursor('<a href="'+mes['url']+'">'+text+'</a>')
 
+    def on_action(self, action):
+        self.editor.execute_script(
+        "document.execCommand('%s', false, false);" % action.get_name())
 
     def save_cb(self, widget):
         """
@@ -278,6 +293,12 @@ class LekhoneeGTK:
         chooser.destroy()
 
     def save(self):
+        """
+        This saves the message
+        """
+        #If the user is not in source view
+        if self.view_status:
+            self.blogTxt.set_text(self.get_source()[19:-7])
         start, end = self.blogTxt.get_bounds()
         text = unicode(self.blogTxt.get_text(start, end))
         title = unicode(self.titleTxt.get_text())
@@ -466,13 +487,17 @@ class LekhoneeGTK:
         if response_id == gtk.RESPONSE_OK:
             link = self.linkTxt.get_text()
             if link:
-                iter = self.blogTxt.get_selection_bounds()
-                if iter:
-                    text =  self.blogTxt.get_text(iter[0],iter[1])
-                    self.blogTxt.delete(iter[0],iter[1])
+                if self.previewbttn.get_active():
+                    iter = self.blogTxt.get_selection_bounds()
+                    if iter:
+                        text =  self.blogTxt.get_text(iter[0],iter[1])
+                        self.blogTxt.delete(iter[0],iter[1])
+                    else:
+                        text = ''
+                    self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
                 else:
-                    text = ''
-                self.blogTxt.insert_at_cursor('<a href="'+link+'">'+text+'</a>')
+                    self.editor.execute_script(
+                        "document.execCommand('createLink', true, '%s');" % link)
             self.linkTxt.set_text('')
 
     def image_dialog_cb(self, widget, response_id):
@@ -546,21 +571,34 @@ class LekhoneeGTK:
         text = '<strong>%s</strong>' % text
         self.blogTxt.insert_at_cursor(text)
 
+    def get_source(self):
+        """
+        Get source from editor
+        """
+        self.editor.execute_script("document.title=document.documentElement.innerHTML;")
+        return self.editor.get_main_frame().get_title()
+
     def previewBttn_cb(self, widget):
         """
         Show or hide preview button accordingly
         """
-        text = """<html><head><title>%s</title></head><body>%s</body></html>"""
         if widget.get_active():
+            self.view_status = False
+            self.scw2.hide_all()
+            self.blogTxt.set_text(self.get_source()[19:-7])
+            self.scw.show_all()
+            self.hbuttonbox1.show_all()
+            self.toolbar1.hide_all()
+        else:
+            self.view_source = True
             self.scw.hide_all()
             start, end = self.blogTxt.get_bounds()
-            text = text % (self.titleTxt.get_text(), self.blogTxt.get_text(start, end))
+            text = self.blogTxt.get_text(start, end)
             text = text.replace('\n','<br>')
-            self.web.load_string(text,'text/html','utf-8','preview')
+            self.editor.load_string(text,'text/html','utf-8','preview')
+            self.hbuttonbox1.hide_all()
+            self.toolbar1.show_all()
             self.scw2.show_all()
-        else:
-            self.scw2.hide_all()
-            self.scw.show_all()
 
     def spellCheck_cb(self, widget):
         """
@@ -584,6 +622,10 @@ class LekhoneeGTK:
         """
         Post the message to the server
         """
+        #If the user is not in source view
+        if self.view_status:
+            self.blogTxt.set_text(self.get_source()[19:-7])
+
         selection = self.categoryList.get_selection()
         model, selected = selection.get_selected_rows()
         categories = [model[sec][0] for sec in selected]
