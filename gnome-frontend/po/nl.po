@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Geert Warrink <geert.warrink@onsnet.nu>, 2009.
 #
+# Geert Warrink <geert.warrink@onsnet.nu>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: lekhonee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-23 13:48+0530\n"
-"PO-Revision-Date: 2009-09-24 19:22+0200\n"
+"POT-Creation-Date: 2010-03-11 11:33+0530\n"
+"PO-Revision-Date: 2010-03-11 19:28+0100\n"
 "Last-Translator: Geert Warrink <geert.warrink@onsnet.nu>\n"
 "Language-Team: nl <nl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -105,62 +105,62 @@ msgstr "Oude berichten"
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "Voorvertoning"
-
-#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:607
+#: ../lekhonee-gnome.glade.h:28 ../lekhonee-gnome.py:419
+#: ../lekhonee-gnome.py:654
 msgid "Publish"
 msgstr "Uitgeven"
 
-#: ../lekhonee-gnome.glade.h:30
+#: ../lekhonee-gnome.glade.h:29
 msgid "Refresh"
 msgstr "Verversen"
 
-#: ../lekhonee-gnome.glade.h:31
+#: ../lekhonee-gnome.glade.h:30
 msgid "Save Draft"
 msgstr "Concept opslaan"
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../lekhonee-gnome.glade.h:31
 msgid "Select File to Upload"
 msgstr "Selecteer bestand om te uploaden"
 
-#: ../lekhonee-gnome.glade.h:33
+#: ../lekhonee-gnome.glade.h:32
 msgid "Server"
 msgstr "Server"
 
-#: ../lekhonee-gnome.glade.h:34
+#: ../lekhonee-gnome.glade.h:33
 msgid "Spell Check"
 msgstr "Controle van spelling"
 
-#: ../lekhonee-gnome.glade.h:35
+#: ../lekhonee-gnome.glade.h:34
 msgid "Tags"
 msgstr "Label"
 
-#: ../lekhonee-gnome.glade.h:36
+#: ../lekhonee-gnome.glade.h:35
 msgid "Tags separated by commas"
 msgstr "Labels gescheiden door komma&#39;s"
 
-#: ../lekhonee-gnome.glade.h:37
+#: ../lekhonee-gnome.glade.h:36
 msgid "Title"
 msgstr "Titel"
 
-#: ../lekhonee-gnome.glade.h:38
+#: ../lekhonee-gnome.glade.h:37
 msgid "Underline"
 msgstr "Onderstrepen"
 
-#: ../lekhonee-gnome.glade.h:39
+#: ../lekhonee-gnome.glade.h:38
 msgid "Upload"
 msgstr "Uploaden"
 
-#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+#: ../lekhonee-gnome.glade.h:39 ../lekhonee-gnome.py:231
 msgid "Upload File"
 msgstr "Bestand uploaden"
 
-#: ../lekhonee-gnome.glade.h:41
+#: ../lekhonee-gnome.glade.h:40
 msgid "Username"
 msgstr "Gebruikersnaam"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "View Source"
+msgstr "Bekijk bron"
 
 #: ../lekhonee-gnome.glade.h:42
 msgid "Wordpress"
@@ -206,32 +206,35 @@ msgstr "lekhonee"
 msgid "lekhonee msg"
 msgstr "lekhonee bericht"
 
-#: ../lekhonee-gnome.py:111
+#: ../lekhonee-gnome.py:117
 msgid "Categories"
 msgstr "Categorieën"
 
 #. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
 #. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
+#: ../lekhonee-gnome.py:127
 msgid "Post Titles"
 msgstr "Bericht-titel"
 
-#: ../lekhonee-gnome.py:188
+#: ../lekhonee-gnome.py:200
 msgid "(c) 2009 Kushal Das"
 msgstr "(c) 2009 Kushal Das"
 
-#: ../lekhonee-gnome.py:267
+#: ../lekhonee-gnome.py:282
 msgid "Save Blog"
 msgstr "Blog opslaan"
 
-#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+#: ../lekhonee-gnome.py:285 ../lekhonee-gnome.py:319
 msgid "Lekhonee files"
 msgstr "Lekhonee bestanden"
 
-#: ../lekhonee-gnome.py:295
+#: ../lekhonee-gnome.py:316
 msgid "Open Blog"
 msgstr "Blog openen"
 
-#: ../lekhonee-gnome.py:368
+#: ../lekhonee-gnome.py:389
 msgid "Update"
 msgstr "Vernieuwen"
+
+#~ msgid "Preview"
+#~ msgstr "Voorvertoning"
