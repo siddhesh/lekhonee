@@ -1,0 +1,234 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Andrew Zaytsev <andzaytsev@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-29 10:14+0530\n"
+"PO-Revision-Date: 2010-02-18 18:06+0300\n"
+"Last-Translator: Andrew Zaytsev <andzaytsev@gmail.com>\n"
+"Language-Team: Russian <fedora-trans-ru@redhat.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: ../lekhonee-gnome.glade.h:1
+msgid ""
+"-- Not Set --\n"
+"Baseline\n"
+"Top\n"
+"Middle\n"
+"Bottom\n"
+"Text Top\n"
+"Absolute Middle\n"
+"Absolute bottom\n"
+"Left\n"
+"Right"
+msgstr ""
+"-- Не установлено --\n"
+"Основание\n"
+"Верх\n"
+"Середина\n"
+"Низ\n"
+"Верх текста\n"
+"Абсолютная середина\n"
+"Абсолютный низ\n"
+"Лево\n"
+"Право"
+
+#: ../lekhonee-gnome.glade.h:11
+msgid "Add Categories"
+msgstr "Добавить категории"
+
+#: ../lekhonee-gnome.glade.h:12
+msgid "Alignment"
+msgstr "Выравнивание"
+
+#: ../lekhonee-gnome.glade.h:13
+msgid "Bold"
+msgstr "Полужирный"
+
+#: ../lekhonee-gnome.glade.h:14
+msgid "Cancel"
+msgstr "Отмена"
+
+#: ../lekhonee-gnome.glade.h:15
+msgid "Comments Allowed"
+msgstr "Коментарии разрешены"
+
+#: ../lekhonee-gnome.glade.h:16
+msgid "Configure"
+msgstr "Настроить"
+
+#: ../lekhonee-gnome.glade.h:17
+msgid "Dimentions\n"
+msgstr "Измерения\n"
+
+#: ../lekhonee-gnome.glade.h:19
+msgid "For Future Use"
+msgstr "Для использования в будущем"
+
+#: ../lekhonee-gnome.glade.h:20
+msgid "Image"
+msgstr "Изображение"
+
+#: ../lekhonee-gnome.glade.h:21
+msgid "Image Description"
+msgstr "Описание изображения"
+
+#: ../lekhonee-gnome.glade.h:22
+msgid "Image URL"
+msgstr "URL изображения"
+
+#: ../lekhonee-gnome.glade.h:23
+msgid "Insert Image"
+msgstr "Вставить изображение"
+
+#: ../lekhonee-gnome.glade.h:24
+msgid "Last Post"
+msgstr "Последняя публикация"
+
+#: ../lekhonee-gnome.glade.h:25
+msgid "Link"
+msgstr "Ссылка"
+
+#: ../lekhonee-gnome.glade.h:26
+msgid "Old Posts"
+msgstr "Старые публикации"
+
+#: ../lekhonee-gnome.glade.h:27
+msgid "Password"
+msgstr "Пароль"
+
+#: ../lekhonee-gnome.glade.h:28
+msgid "Preview"
+msgstr "Предварительный просмотр"
+
+#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
+#: ../lekhonee-gnome.py:612
+msgid "Publish"
+msgstr "Опубликовать"
+
+#: ../lekhonee-gnome.glade.h:30
+msgid "Refresh"
+msgstr "Обновить"
+
+#: ../lekhonee-gnome.glade.h:31
+msgid "Save Draft"
+msgstr "Сохранить набросок"
+
+#: ../lekhonee-gnome.glade.h:32
+msgid "Select File to Upload"
+msgstr "Выберите файл для загрузки"
+
+#: ../lekhonee-gnome.glade.h:33
+msgid "Server"
+msgstr "Сервер"
+
+#: ../lekhonee-gnome.glade.h:34
+msgid "Spell Check"
+msgstr "Проверка орфографии"
+
+#: ../lekhonee-gnome.glade.h:35
+msgid "Tags"
+msgstr "Теги"
+
+#: ../lekhonee-gnome.glade.h:36
+msgid "Tags separated by commas"
+msgstr "Теги, разделенные запятыми"
+
+#: ../lekhonee-gnome.glade.h:37
+msgid "Title"
+msgstr "Заголовок"
+
+#: ../lekhonee-gnome.glade.h:38
+msgid "Underline"
+msgstr "Подчеркнуть"
+
+#: ../lekhonee-gnome.glade.h:39
+msgid "Upload"
+msgstr "Загрузить"
+
+#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+msgid "Upload File"
+msgstr "Загрузить файл"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: ../lekhonee-gnome.glade.h:42
+msgid "Wordpress"
+msgstr "Wordpress"
+
+#: ../lekhonee-gnome.glade.h:43
+msgid "X"
+msgstr "X"
+
+#: ../lekhonee-gnome.glade.h:44
+msgid "_About"
+msgstr "О п_рограмме"
+
+#: ../lekhonee-gnome.glade.h:45
+msgid "_Edit"
+msgstr "_Правка"
+
+#: ../lekhonee-gnome.glade.h:46
+msgid "_File"
+msgstr "_Файл"
+
+#: ../lekhonee-gnome.glade.h:47
+msgid "_Help"
+msgstr "_Справка"
+
+#: ../lekhonee-gnome.glade.h:48
+msgid "_Html Tags"
+msgstr "_Html теги"
+
+#: ../lekhonee-gnome.glade.h:49
+msgid "http://yourserver.com/xmlrpc.php"
+msgstr "http://yourserver.com/xmlrpc.php"
+
+#: ../lekhonee-gnome.glade.h:50
+msgid "italic"
+msgstr "курсив"
+
+#: ../lekhonee-gnome.glade.h:51
+msgid "lekhonee"
+msgstr "lekhonee"
+
+#: ../lekhonee-gnome.glade.h:52
+msgid "lekhonee msg"
+msgstr "lekhonee msg"
+
+#: ../lekhonee-gnome.py:111
+msgid "Categories"
+msgstr "Категории"
+
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.entriesList.append_column(self.id_column)
+#: ../lekhonee-gnome.py:121
+msgid "Post Titles"
+msgstr "Отправить заголовки"
+
+#: ../lekhonee-gnome.py:188
+msgid "(c) 2009 Kushal Das"
+msgstr "(c) 2009 Kushal Das"
+
+#: ../lekhonee-gnome.py:267
+msgid "Save Blog"
+msgstr "Сохранить Блог"
+
+#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+msgid "Lekhonee files"
+msgstr "Файлы Lekhonee"
+
+#: ../lekhonee-gnome.py:295
+msgid "Open Blog"
+msgstr "Открыть Блог"
+
+#: ../lekhonee-gnome.py:368
+msgid "Update"
+msgstr "Обновить"
