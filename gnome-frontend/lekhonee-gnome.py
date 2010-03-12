@@ -197,7 +197,7 @@ class LekhoneeGTK:
         """
         dialog = gtk.AboutDialog()
         dialog.set_name('lekhonee')
-        dialog.set_copyright(_('(c) 2009 Kushal Das'))
+        dialog.set_copyright(_('(c) 2009-2010 Kushal Das'))
         dialog.set_website('http://fedorahosted.org/lekhonee')
         dialog.set_authors(['Kushal Das kushal@fedoraproject.org',])
         dialog.set_program_name('lekhonee')
