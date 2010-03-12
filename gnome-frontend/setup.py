@@ -6,18 +6,18 @@ from DistUtilsExtra.command import *
 
 doclines = __doc__.split("\n")
 setup(name='lekhonee-gnome',
-      version='0.8',
+      version='0.8.1',
       description=doclines[0],
       long_description = "\n".join(doclines[:]),
       platforms = ["Linux"],
       author='Kushal Das',
       author_email='kushal@fedoraproject.org',
-      url='http://fedorahosted.org/lekhonee',
+      url='https://fedorahosted.org/lekhonee',
       license = 'http://www.gnu.org/copyleft/gpl.html',
       data_files=[('/usr/share/applications',['pixmaps/lekhonee-gnome.desktop']),
 		  ('/usr/bin',['lekhonee-gnome']),
 		  ('/usr/share/pixmaps',['pixmaps/lekhonee-gnome.png']),
-          ('/usr/share/lekhonee-gnome/gnome-frontend',['lekhonee-gnome.py','lekhonee-gnome.glade','lekhonee-gnome.gladep','draft.png','insert-image.png','internet.png'])],
+          ('/usr/share/lekhonee-gnome/gnome-frontend',['lekhonee-gnome.py','lekhonee-gnome.glade','lekhonee-gnome.gladep','draft.png','insert-image.png','internet.png','list.png','link.png'])],
 
         cmdclass = { "build" : build_extra.build_extra,
                      "build_i18n" : build_i18n.build_i18n },
