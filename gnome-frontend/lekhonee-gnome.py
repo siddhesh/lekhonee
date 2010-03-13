@@ -413,6 +413,7 @@ class LekhoneeGTK:
         self.blogTxt.set_text('')
         self.titleTxt.set_text('')
         self.tagsTxt.set_text('Tags')
+        self.editor.load_string("",'text/html','utf-8','preview')
         self.filename = ''
         if self.editFlag:
             self.draftBttn.set_sensitive(True)
