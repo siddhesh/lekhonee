@@ -347,7 +347,7 @@ class LekhoneeGTK:
             self.entry = entry
             self.load_entry_details()
             self.scw3.hide_all()
-            self.scw.show_all()
+            #self.scw.show_all()
 
 
     def oldPost_cb(self, widget):
@@ -374,6 +374,7 @@ class LekhoneeGTK:
 
     def load_entry_details(self):
         self.blogTxt.set_text(self.entry['description'])
+        self.editor.load_string(self.entry['description'],'text/html','utf-8','preview')
         self.titleTxt.set_text(self.entry['title'])
         self.tagsTxt.set_text(self.entry['mt_keywords'])
         categories = self.entry['categories']
