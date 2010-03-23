@@ -1,4 +1,0 @@
-#!/bin/sh
-export PYTHONPATH=/usr/share/lekhonee-gnome/gnome-frontend
-cd /usr/share/lekhonee-gnome/gnome-frontend
-exec /usr/bin/python -tt /usr/share/lekhonee-gnome/gnome-frontend/lekhonee-gnome.py
