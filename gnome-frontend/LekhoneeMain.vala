@@ -32,6 +32,7 @@ public class LekhoneeMain: GLib.Object {
     public ScrolledWindow scw2;
     public ScrolledWindow scw3;
     public HButtonBox hbuttonbox1;
+    public Toolbar toolbar;
     public VBox vbox3;
     
     public SourceBuffer blog_txt;
@@ -67,6 +68,7 @@ public class LekhoneeMain: GLib.Object {
         //Show/hide correct things
         window.show_all ();
         scw.hide_all();
+        toolbar = builder.get_object("toolbar") as Toolbar;
         hbuttonbox1 = builder.get_object("hbuttonbox1") as HButtonBox;
         hbuttonbox1.hide_all();
         //For the upload file area in the UI
@@ -109,14 +111,47 @@ public class LekhoneeMain: GLib.Object {
         italic.clicked.connect(on_action);
         underline.clicked.connect(on_action);
         insertunorderedlist.clicked.connect(on_action);
+        
+        var source_bttn = builder.get_object("source_bttn") as ToggleButton;
+        source_bttn.toggled.connect(change_view);
+        
     }
 
     public void on_action(ToolButton button){
         string name = button.get_name();
         editor.execute_script(@"document.execCommand('$name', false, false);");
-    
+        
     }
 
+    public string get_source(){
+        editor.execute_script("document.title=document.documentElement.innerHTML;");
+        return editor.get_main_frame().get_title();
+    }
+    
+    public void change_view(ToggleButton button){
+        if (button.get_active()) {
+            string blog = get_source()[19:-7];
+            blog_txt.set_text(blog,(int)blog.size());
+            scw2.hide_all();
+            scw.show_all();
+            hbuttonbox1.show_all();
+            toolbar.hide_all();
+        }
+        else{
+            scw.hide_all();
+            scw2.show_all();
+            toolbar.show_all();
+            hbuttonbox1.hide_all();
+            TextIter start,end;
+            blog_txt.get_bounds(out start, out end);
+            string text = blog_txt.get_text(start, end,false);
+            text = text.replace("\n","<br>");
+            editor.load_string(text,"text/html","utf-8","preview");
+            
+        }
+    }
+    
+    
 
     public static int main (string[] args) {     
         
