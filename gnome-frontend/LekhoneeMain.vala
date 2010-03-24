@@ -106,6 +106,9 @@ public class LekhoneeMain: GLib.Object {
         var underline = builder.get_object("underline") as ToolButton;
         var insertunorderedlist = builder.get_object("insertunorderedlist") as ToolButton;
         bold.clicked.connect(on_action);
+        italic.clicked.connect(on_action);
+        underline.clicked.connect(on_action);
+        insertunorderedlist.clicked.connect(on_action);
     }
 
     public void on_action(ToolButton button){
