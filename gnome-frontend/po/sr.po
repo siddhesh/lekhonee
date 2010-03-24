@@ -7,15 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lekhonee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 10:14+0530\n"
+"POT-Creation-Date: 2010-03-11 11:33+0530\n"
 "PO-Revision-Date: 2010-02-18 21:59+0100\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian <trans-sr@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../lekhonee-gnome.glade.h:1
 msgid ""
@@ -105,60 +104,56 @@ msgstr "Старе поруке"
 msgid "Password"
 msgstr "Лозинка"
 
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "Преглед"
-
-#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:612
+#: ../lekhonee-gnome.glade.h:28 ../lekhonee-gnome.py:419
+#: ../lekhonee-gnome.py:654
 msgid "Publish"
 msgstr "Објави"
 
-#: ../lekhonee-gnome.glade.h:30
+#: ../lekhonee-gnome.glade.h:29
 msgid "Refresh"
 msgstr "Освежи"
 
-#: ../lekhonee-gnome.glade.h:31
+#: ../lekhonee-gnome.glade.h:30
 msgid "Save Draft"
 msgstr "Сачувај нацрт"
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../lekhonee-gnome.glade.h:31
 msgid "Select File to Upload"
 msgstr "Изаберите датотеку за отпремање"
 
-#: ../lekhonee-gnome.glade.h:33
+#: ../lekhonee-gnome.glade.h:32
 msgid "Server"
 msgstr "Сервер"
 
-#: ../lekhonee-gnome.glade.h:34
+#: ../lekhonee-gnome.glade.h:33
 msgid "Spell Check"
 msgstr "Провера писања"
 
-#: ../lekhonee-gnome.glade.h:35
+#: ../lekhonee-gnome.glade.h:34
 msgid "Tags"
 msgstr "Ознаке"
 
-#: ../lekhonee-gnome.glade.h:36
+#: ../lekhonee-gnome.glade.h:35
 msgid "Tags separated by commas"
 msgstr "Ознаке раздвојене зарезима"
 
-#: ../lekhonee-gnome.glade.h:37
+#: ../lekhonee-gnome.glade.h:36
 msgid "Title"
 msgstr "Наслов"
 
-#: ../lekhonee-gnome.glade.h:38
+#: ../lekhonee-gnome.glade.h:37
 msgid "Underline"
 msgstr "Подвучено"
 
-#: ../lekhonee-gnome.glade.h:39
+#: ../lekhonee-gnome.glade.h:38
 msgid "Upload"
 msgstr "Отпремање"
 
-#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+#: ../lekhonee-gnome.glade.h:39 ../lekhonee-gnome.py:231
 msgid "Upload File"
 msgstr "Отпреми датотеку"
 
-#: ../lekhonee-gnome.glade.h:41
+#: ../lekhonee-gnome.glade.h:40
 msgid "Username"
 msgstr "Корисничко име"
 
@@ -206,32 +201,40 @@ msgstr "lekhonee"
 msgid "lekhonee msg"
 msgstr "lekhonee порука"
 
-#: ../lekhonee-gnome.py:111
+#: ../lekhonee-gnome.py:117
 msgid "Categories"
 msgstr "Категорије"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
+#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(),
+#. text=0)
 #. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
+#: ../lekhonee-gnome.py:127
 msgid "Post Titles"
 msgstr "Наслови порука"
 
-#: ../lekhonee-gnome.py:188
+#: ../lekhonee-gnome.py:200
 msgid "(c) 2009 Kushal Das"
 msgstr "Ауторска права 2009 Kushal Das"
 
-#: ../lekhonee-gnome.py:267
+#: ../lekhonee-gnome.py:282
 msgid "Save Blog"
 msgstr "Сачувај блог"
 
-#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
+#: ../lekhonee-gnome.py:285 ../lekhonee-gnome.py:319
 msgid "Lekhonee files"
 msgstr "Lekhonee датотеке"
 
-#: ../lekhonee-gnome.py:295
+#: ../lekhonee-gnome.py:316
 msgid "Open Blog"
 msgstr "Отвори блог"
 
-#: ../lekhonee-gnome.py:368
+#: ../lekhonee-gnome.py:389
 msgid "Update"
 msgstr "Освежи"
+
+#: ../lekhonee-gnome.glade.h:41
+msgid "View Source"
+msgstr "Погледај извор"
+
+#~ msgid "Preview"
+#~ msgstr "Преглед"
