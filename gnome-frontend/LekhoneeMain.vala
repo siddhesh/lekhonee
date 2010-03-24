@@ -25,9 +25,11 @@ using WebKit;
 
 public class LekhoneeMain: GLib.Object {
     
+    public Wordpress wp;
     public Builder builder;
     public Window window;
     public TreeView category_list;
+    public ListStore liststore;
     public ScrolledWindow scw;
     public ScrolledWindow scw2;
     public ScrolledWindow scw3;
@@ -42,6 +44,9 @@ public class LekhoneeMain: GLib.Object {
 
     public LekhoneeMain() {
         try {
+        
+        wp = new Wordpress();
+        
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
@@ -65,6 +70,14 @@ public class LekhoneeMain: GLib.Object {
         scw2.add(editor);
         
         
+        liststore = new ListStore(1, typeof(string));
+        category_list = builder.get_object("category_list") as TreeView;
+        category_list.insert_column_with_attributes (-1, "Categories", new CellRendererText (), "text", 0);
+        category_list.set_model(liststore);
+        var selection = category_list.get_selection();
+        selection.set_mode(Gtk.SelectionMode.MULTIPLE);
+        
+        
         //Show/hide correct things
         window.show_all ();
         scw.hide_all();
@@ -78,10 +91,13 @@ public class LekhoneeMain: GLib.Object {
         scw3 = builder.get_object("scw3") as ScrolledWindow;
         scw3.hide_all();
         
+        
+        
+        
         window.destroy.connect (Gtk.main_quit);
         
         create_connections();
-
+        get_categories();
         
         }
         catch (Error e) {
@@ -151,7 +167,14 @@ public class LekhoneeMain: GLib.Object {
         }
     }
     
-    
+    public void get_categories(){
+        string[] result = wp.get_categories();
+        foreach(string val in result){
+            TreeIter iter = {};
+            liststore.append(out iter);
+            liststore.set(iter,0,val);
+        }
+    }
 
     public static int main (string[] args) {     
         
