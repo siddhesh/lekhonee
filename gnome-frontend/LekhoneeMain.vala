@@ -33,8 +33,6 @@ public class LekhoneeMain: GLib.Object {
     public ScrolledWindow scw;
     public ScrolledWindow scw2;
     public ScrolledWindow scw3;
-    public HButtonBox hbuttonbox1;
-    public Toolbar toolbar;
     public VBox vbox3;
     public Button refresh_bttn;
     public bool source_flag;
@@ -49,7 +47,7 @@ public class LekhoneeMain: GLib.Object {
         try {
         
         wp = new Wordpress();
-        wp.set_details("kushaldas","");
+        wp.set_details("kushaldas","momo1");
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
@@ -89,9 +87,7 @@ public class LekhoneeMain: GLib.Object {
         //Show/hide correct things
         window.show_all ();
         scw.hide_all();
-        toolbar = builder.get_object("toolbar") as Toolbar;
-        hbuttonbox1 = builder.get_object("hbuttonbox1") as HButtonBox;
-        hbuttonbox1.hide_all();
+
         //For the upload file area in the UI
         vbox3 = builder.get_object("vbox3") as VBox;
         vbox3.hide_all();
@@ -100,7 +96,7 @@ public class LekhoneeMain: GLib.Object {
         scw3.hide_all();
         
         
-        
+        window.resize(700,400);        
         source_flag = false;
         window.destroy.connect (Gtk.main_quit);
         
@@ -150,15 +146,24 @@ public class LekhoneeMain: GLib.Object {
         
         var source_bttn = builder.get_object("source_bttn") as ToggleButton;
         source_bttn.toggled.connect(change_view);
-        
-        var link_bttn = builder.get_object("link_bttn") as Button;
-        link_bttn.clicked.connect(link_bttn_cb);
-
 
         var link_ui_bttn = builder.get_object("link_ui_bttn") as ToolButton;
         link_ui_bttn.clicked.connect(link_bttn_cb);
+        
+        var image_ui_bttn = builder.get_object("image_ui_bttn") as ToolButton;
+        image_ui_bttn.clicked.connect(image_bttn_cb);
 
         refresh_bttn.clicked.connect(get_categories);
+        
+        //Errors
+        wp.password_error.connect(show_error);
+        
+    }
+    
+    public void show_error(string message){
+        var dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, message);
+        dm.run();
+        dm.destroy();
     }
 
     public void on_action(ToolButton button){
@@ -201,7 +206,6 @@ public class LekhoneeMain: GLib.Object {
             TextIter start,end;
             blog_txt.get_bounds(out start, out end);
             string text = blog_txt.get_text(start, end,false);
-            debug("TEXT: " + text);
             text = text.replace("\n","<br>");
             string html = @"<html><title></title><body>$text</body</html>";
             editor.load_string(html,"text/html","utf-8","preview");
@@ -214,11 +218,13 @@ public class LekhoneeMain: GLib.Object {
     public void get_categories(Button b){
         liststore.clear();
         string[] result = wp.get_categories();
+        
         foreach(string val in result){
             TreeIter iter = {};
             liststore.append(out iter);
             liststore.set(iter,0,val);
         }
+
     }
     
     public void bold_bttn_cb(){
@@ -251,6 +257,28 @@ public class LekhoneeMain: GLib.Object {
         blog_txt.insert_at_cursor(result,(int)result.size());
     }
     
+    public void image_bttn_cb(Gtk.Object b){
+        GenericDialog d = new GenericDialog("Insert Image");
+        d.show_all();
+        d.send_link.connect(insert_image);
+    }
+    
+    public void insert_image(string mes){
+        if (source_flag){
+            TextIter start={};
+            TextIter end={};
+            blog_txt.get_selection_bounds(out start, out end);
+            string text = blog_txt.get_text(start,end,false);
+            blog_txt.delete(start,end);
+            string result = @"<image src=\"$mes\">$text";
+            blog_txt.insert_at_cursor(result,(int)result.size());
+        }
+        else{
+            string result = @"document.execCommand('insertImage', null, '$mes');";
+            editor.execute_script(result);  
+        }
+    }
+
     public void link_bttn_cb(Gtk.Object b){
         GenericDialog d = new GenericDialog("Link");
         d.show_all();
