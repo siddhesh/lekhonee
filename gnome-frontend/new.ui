@@ -110,6 +110,13 @@
                         <property name="use_underline">True</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkMenuItem" id="pre_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">pre</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
