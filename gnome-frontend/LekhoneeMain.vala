@@ -38,6 +38,7 @@ public class LekhoneeMain: GLib.Object {
     public VBox vbox3;
     public Button refresh_bttn;
     public bool source_flag;
+    public MenuItem htmltags;
     
     public SourceBuffer blog_txt;
     public SourceView sourceview;
@@ -48,7 +49,7 @@ public class LekhoneeMain: GLib.Object {
         try {
         
         wp = new Wordpress();
-        wp.set_details("kushaldas","mamaD1");
+        wp.set_details("kushaldas","");
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
@@ -72,6 +73,9 @@ public class LekhoneeMain: GLib.Object {
 
         scw2 = builder.get_object("scw2") as ScrolledWindow;
         scw2.add(editor);
+        
+        htmltags = builder.get_object("menuitem3") as MenuItem;
+        htmltags.set_sensitive(false);
         
         
         liststore = new ListStore(1, typeof(string));
@@ -134,21 +138,19 @@ public class LekhoneeMain: GLib.Object {
         underline.clicked.connect(on_action);
         insertunorderedlist.clicked.connect(on_action);
         
+        //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
         blockquote_menuitem.activate.connect(on_blockquote_cb);
+        var code_menuitem = builder.get_object("code_menuitem") as MenuItem;
+        code_menuitem.activate.connect(on_code_cb);        
+        var pre_menuitem = builder.get_object("pre_menuitem") as MenuItem;
+        pre_menuitem.activate.connect(on_pre_cb);        
+
+        
         
         var source_bttn = builder.get_object("source_bttn") as ToggleButton;
         source_bttn.toggled.connect(change_view);
         
-        var bold_bttn = builder.get_object("bold_bttn") as Button;
-        bold_bttn.clicked.connect(bold_bttn_cb);
-        
-        var italic_bttn = builder.get_object("italic_bttn") as Button;
-        italic_bttn.clicked.connect(italic_bttn_cb);
-
-        var underline_bttn = builder.get_object("underline_bttn") as Button;
-        underline_bttn.clicked.connect(underline_bttn_cb);        
-
         var link_bttn = builder.get_object("link_bttn") as Button;
         link_bttn.clicked.connect(link_bttn_cb);
 
@@ -161,17 +163,26 @@ public class LekhoneeMain: GLib.Object {
 
     public void on_action(ToolButton button){
         string name = button.get_name();
-        editor.execute_script(@"document.execCommand('$name', false, false);");
+        if (!source_flag){
+            editor.execute_script(@"document.execCommand('$name', false, false);");
+        }
+        else {
+            if(name == "bold")
+                bold_bttn_cb();
+            else if(name == "italic")
+                italic_bttn_cb();
+            else if(name == "underline")
+                underline_bttn_cb();
+        }
         
     }
 
     public string get_source(){
         editor.execute_script("document.title=document.documentElement.innerHTML;");
-        string message =  editor.get_main_frame().get_title();
-        
-        string[] odds = message.split("<body>");
-        debug(odds[1]);
+        string mes = editor.get_main_frame().get_title();
+        string[] odds = mes.split("<body>");
         return odds[1];
+        
     }
     
     public void change_view(ToggleButton button){
@@ -181,15 +192,12 @@ public class LekhoneeMain: GLib.Object {
             blog_txt.set_text(blog,(int)blog.size());
             scw2.hide_all();
             scw.show_all();
-            hbuttonbox1.show_all();
-            toolbar.hide_all();
             source_flag = true;
+            htmltags.set_sensitive(true);
         }
         else{
             scw.hide_all();
             scw2.show_all();
-            toolbar.show_all();
-            hbuttonbox1.hide_all();
             TextIter start,end;
             blog_txt.get_bounds(out start, out end);
             string text = blog_txt.get_text(start, end,false);
@@ -198,6 +206,7 @@ public class LekhoneeMain: GLib.Object {
             string html = @"<html><title></title><body>$text</body</html>";
             editor.load_string(html,"text/html","utf-8","preview");
             source_flag = false;
+            htmltags.set_sensitive(false);
             
         }
     }
@@ -212,7 +221,7 @@ public class LekhoneeMain: GLib.Object {
         }
     }
     
-    public void bold_bttn_cb(Button b){
+    public void bold_bttn_cb(){
         TextIter start={};
         TextIter end={};
         blog_txt.get_selection_bounds(out start, out end);
@@ -222,7 +231,7 @@ public class LekhoneeMain: GLib.Object {
         blog_txt.insert_at_cursor(result,(int)result.size());
     }
     
-    public void italic_bttn_cb(Button b){
+    public void italic_bttn_cb(){
         TextIter start={};
         TextIter end={};
         blog_txt.get_selection_bounds(out start, out end);
@@ -232,7 +241,7 @@ public class LekhoneeMain: GLib.Object {
         blog_txt.insert_at_cursor(result,(int)result.size());
     }
     
-    public void underline_bttn_cb(Button b){
+    public void underline_bttn_cb(){
         TextIter start={};
         TextIter end={};
         blog_txt.get_selection_bounds(out start, out end);
@@ -274,15 +283,39 @@ public class LekhoneeMain: GLib.Object {
             string result = @"<blockquote>$text</blockquote>";
             blog_txt.insert_at_cursor(result,(int)result.size());
         }
-        else{
-            string result = @"document.execCommand('blockquote', false, false);";
-            editor.execute_script(result);  
-        }
-        
+
     }
     
+    public void on_code_cb(MenuItem i){
+        if (source_flag){
+            TextIter start={};
+            TextIter end={};
+            blog_txt.get_selection_bounds(out start, out end);
+            string text = blog_txt.get_text(start,end,false);
+            blog_txt.delete(start,end);
+            string result = @"<code>$text</code>";
+            blog_txt.insert_at_cursor(result,(int)result.size());
+        }
+    }
+    
+    public void on_pre_cb(MenuItem i){
+        if (source_flag){
+            TextIter start={};
+            TextIter end={};
+            blog_txt.get_selection_bounds(out start, out end);
+            string text = blog_txt.get_text(start,end,false);
+            blog_txt.delete(start,end);
+            string result = @"<pre>$text</pre>";
+            blog_txt.insert_at_cursor(result,(int)result.size());
+        }
+    }
+    
+    
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
-        //empty
+        string uri = p1.get_uri();
+        if (uri == "preview")
+            return false;
+
         return true;
     }
 
