@@ -478,7 +478,7 @@ public class LekhoneeMain: GLib.Object {
         }
     }
 
-    public bool on_delete_event (Gtk.Window w, Gdk.Event e){
+    public bool on_delete_event (Gtk.Widget w, Gdk.Event e){
         quit(refresh_bttn);
         return true;
     }
