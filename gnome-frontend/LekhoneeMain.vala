@@ -39,6 +39,7 @@ public class LekhoneeMain: GLib.Object {
     public bool edit_flag;
     public MenuItem htmltags;
     
+    
     public SourceBuffer blog_txt;
     public SourceView sourceview;
     
@@ -112,7 +113,7 @@ public class LekhoneeMain: GLib.Object {
         
         window.resize(700,400);        
         source_flag = false;
-        window.destroy.connect (Gtk.main_quit);
+        //window.delete_event.connect();
         
         refresh_bttn = builder.get_object("refresh_bttn") as Button;
         create_connections();
@@ -150,6 +151,8 @@ public class LekhoneeMain: GLib.Object {
         
         var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
         new_menuitem.activate.connect(on_new_cb);
+        var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
+        quit_menuitem.activate.connect(quit);
         
         //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
@@ -447,6 +450,8 @@ public class LekhoneeMain: GLib.Object {
         }
         get_categories(refresh_bttn);
     }
+    
+
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
         if (uri == "preview")
@@ -455,6 +460,24 @@ public class LekhoneeMain: GLib.Object {
         return true;
     }
 
+    public void quit(Gtk.Object o){
+        if(check_exit()){
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to clear the currect post?");
+            dm.response.connect (on_quit_response);
+            dm.run();
+            dm.destroy();
+        }else
+            Gtk.main_quit();
+    }
+    
+    public void on_quit_response(Dialog source, int response_id){
+        switch (response_id) {
+        case ResponseType.OK:
+            Gtk.main_quit();
+            break;
+        }   
+    }    
+    
     public static int main (string[] args) {     
         
         
