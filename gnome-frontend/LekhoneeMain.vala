@@ -414,10 +414,10 @@ public class LekhoneeMain: GLib.Object {
         if(text.length == 0)
             return false;
         else
-            return true;    
-        
+            return true;
+
     }
-    
+
     public void on_new_cb(MenuItem i){
         if(check_exit()){
             MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to clear the currect post?");
@@ -426,16 +426,16 @@ public class LekhoneeMain: GLib.Object {
             dm.destroy();
         }
     }
-    
+
     public void on_newcb_response(Dialog source, int response_id){
         switch (response_id) {
         case ResponseType.OK:
             //clear_it();
             clear_it();
             break;
-        }   
+        }
     }
-    
+
     public void clear_it(){
         TextIter start,end;
         blog_txt.get_bounds(out start, out end);
@@ -469,26 +469,26 @@ public class LekhoneeMain: GLib.Object {
         }else
             Gtk.main_quit();
     }
-    
+
     public void on_quit_response(Dialog source, int response_id){
         switch (response_id) {
         case ResponseType.OK:
             Gtk.main_quit();
             break;
-        }   
-    }    
-    
-    public static int main (string[] args) {     
-        
-        
+        }
+    }
+
+    public static int main (string[] args) {
+
+
         Gtk.init (ref args);
 
- 
+
         LekhoneeMain lh = new LekhoneeMain();
 
-            
+
         Gtk.main ();
-             
+
 
         return 0;
     }
