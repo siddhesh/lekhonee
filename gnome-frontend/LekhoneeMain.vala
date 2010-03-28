@@ -113,7 +113,7 @@ public class LekhoneeMain: GLib.Object {
         
         window.resize(700,400);        
         source_flag = false;
-        //window.delete_event.connect();
+        window.delete_event.connect(on_delete_event);
         
         refresh_bttn = builder.get_object("refresh_bttn") as Button;
         create_connections();
@@ -476,6 +476,10 @@ public class LekhoneeMain: GLib.Object {
             Gtk.main_quit();
             break;
         }   
+    }
+    public bool on_delete_event (Gtk.Window w, Gdk.Event e){
+        quit(refresh_bttn);
+        return true;
     }    
     
     public static int main (string[] args) {     
