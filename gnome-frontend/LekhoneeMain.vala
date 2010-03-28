@@ -36,23 +36,37 @@ public class LekhoneeMain: GLib.Object {
     public VBox vbox3;
     public Button refresh_bttn;
     public bool source_flag;
+    public bool edit_flag;
     public MenuItem htmltags;
     
     public SourceBuffer blog_txt;
     public SourceView sourceview;
     
     public WebView editor;
+    
+    
+    public Entry title_entry;
+    public Entry tags_entry;
+    public Button draft_bttn;
+    public Button publish_bttn;
 
     public LekhoneeMain() {
         try {
         
         wp = new Wordpress();
-        wp.set_details("kushaldas","momo1");
+        wp.set_details("kushaldas","momo1@","http://kushaldas.wordpress.com/xmlrpc.php");
+
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
         window = builder.get_object ("MainWindow") as Window;
         category_list = builder.get_object("category_list") as TreeView;
+        title_entry = builder.get_object("titleTxt") as Entry;
+        tags_entry = builder.get_object("tags_entry") as Entry;
+        draft_bttn = builder.get_object("draft_bttn") as Button;
+        publish_bttn = builder.get_object("publish_bttn") as Button;
+        edit_flag = false;
+        
         
         //For the sourceview
         SourceLanguageManager langm = new SourceLanguageManager();
@@ -134,13 +148,19 @@ public class LekhoneeMain: GLib.Object {
         underline.clicked.connect(on_action);
         insertunorderedlist.clicked.connect(on_action);
         
+        var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
+        new_menuitem.activate.connect(on_new_cb);
+        
         //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
         blockquote_menuitem.activate.connect(on_blockquote_cb);
         var code_menuitem = builder.get_object("code_menuitem") as MenuItem;
         code_menuitem.activate.connect(on_code_cb);        
         var pre_menuitem = builder.get_object("pre_menuitem") as MenuItem;
-        pre_menuitem.activate.connect(on_pre_cb);        
+        pre_menuitem.activate.connect(on_pre_cb);
+        
+        var last_entry_menuitem = builder.get_object("last_entry") as MenuItem;
+        last_entry_menuitem.activate.connect(on_last_entry_cb);    
 
         
         
@@ -257,7 +277,7 @@ public class LekhoneeMain: GLib.Object {
         blog_txt.insert_at_cursor(result,(int)result.size());
     }
     
-    public void image_bttn_cb(Gtk.Object b){
+    public void image_bttn_cb(ToolButton b){
         GenericDialog d = new GenericDialog("Insert Image");
         d.show_all();
         d.send_link.connect(insert_image);
@@ -279,7 +299,7 @@ public class LekhoneeMain: GLib.Object {
         }
     }
 
-    public void link_bttn_cb(Gtk.Object b){
+    public void link_bttn_cb(ToolButton b){
         GenericDialog d = new GenericDialog("Link");
         d.show_all();
         d.send_link.connect(insert_link);
@@ -338,7 +358,95 @@ public class LekhoneeMain: GLib.Object {
         }
     }
     
+    public void on_last_entry_cb(MenuItem i){
+        HashTable<string,Value?> hash = wp.get_last_post();
+        if ((int)hash.size() == 0)
+            return;
+            
+        var title = hash.lookup("title");
+        string s_title = title.get_string();
+        title_entry.set_text(s_title);
+        
+        var desc = hash.lookup("description");
+        string s_desc = desc.get_string();
+        if(source_flag){
+            blog_txt.set_text(s_desc,(int)s_desc.size());;        
+        }
+        else
+            editor.load_string(s_desc,"text/html","utf-8","preview");
+            
+        var tags = hash.lookup("mt_keywords");
+        string s_tags = tags.get_string();
+        tags_entry.set_text(s_tags);
+        
+        var ts = category_list.get_selection();
+        unowned ValueArray categories = (ValueArray)hash.lookup("categories");
+        foreach(var cate in categories){
+            for(int ii=0;ii<liststore.length;ii++){
+                TreeIter iter = {};
+                TreePath path = new TreePath.from_string(ii.to_string());
+                liststore.get_iter(out iter,path);
+                Value V = Value(typeof(string));
+                liststore.get_value(iter,0, out V);
+                if(cate.get_string() == V.get_string())
+                    ts.select_iter(iter);
+            }
+        }
+        edit_flag = true;
+        draft_bttn.set_sensitive(false);
+        publish_bttn.set_label("Update");
+        
+        
+    }
     
+    public bool check_exit(){
+        string text;
+        if(source_flag){
+            TextIter start,end;
+            blog_txt.get_bounds(out start, out end);
+            text = blog_txt.get_text(start, end,false);
+        }else
+            text = get_source()[0:-7];
+            
+        if(text.length == 0)
+            return false;
+        else
+            return true;    
+        
+    }
+    
+    public void on_new_cb(MenuItem i){
+        if(check_exit()){
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to clear the currect post?");
+            dm.response.connect (on_newcb_response);
+            dm.run();
+            dm.destroy();
+        }
+    }
+    
+    public void on_newcb_response(Dialog source, int response_id){
+        switch (response_id) {
+        case ResponseType.OK:
+            //clear_it();
+            clear_it();
+            break;
+        }   
+    }
+    
+    public void clear_it(){
+        TextIter start,end;
+        blog_txt.get_bounds(out start, out end);
+        blog_txt.set_text("",0);
+        title_entry.set_text("");
+        tags_entry.set_text("");
+        editor.load_string("","text/html","utf-8","preview");
+        if (edit_flag){
+            edit_flag = true;
+            publish_bttn.set_label("Publish");
+            draft_bttn.set_sensitive(false);
+        }
+        get_categories(refresh_bttn);
+    }
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
         if (uri == "preview")
