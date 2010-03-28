@@ -3,15 +3,17 @@ using Soup;
 public class Wordpress: Object {
     public string username {get;set;}
     public string password;
-     
+    public string server;
+    public signal void password_error(string mesaage);
 
-    public void set_details(string name, string pass) {
+    public void set_details(string name, string pass, string serv) {
         this.username = name;
         this.password = pass;
+        this.server = serv;
     }
 
     public string post(HashTable content, bool publish) {
-        var message = xmlrpc_request_new("http://kushaldas.wordpress.com/xmlrpc.php","metaWeblog.newPost",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),content, typeof(bool), publish);
+        var message = xmlrpc_request_new(server,"metaWeblog.newPost",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),content, typeof(bool), publish);
         var session = new SessionSync();
         session.send_message(message);
         
@@ -21,13 +23,14 @@ public class Wordpress: Object {
     }
     
     public void add_category(string category) {
-        var message = xmlrpc_request_new("http://kushaldas.wordpress.com/xmlrpc.php","wp.newCategory",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(string),category);
+        var message = xmlrpc_request_new(server,"wp.newCategory",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(string),category);
         var session = new SessionSync();
         session.send_message(message);
+
     }
     
-    public void get_last_post(){
-        var message = xmlrpc_request_new("http://kushaldas.in/xmlrpc.php","metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),1);
+    public HashTable get_last_post(){
+        var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),1);
         var session = new SessionSync();
         session.send_message(message);
         
@@ -35,23 +38,33 @@ public class Wordpress: Object {
         //stdout.printf("%d\n",(int)data.length);
         unowned ValueArray v3;
         Value v = Value(typeof(ValueArray));
-        xmlrpc_parse_method_response(data, -1,v);
+        try{
+            xmlrpc_parse_method_response(data, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return new HashTable<string, string>.full (str_hash, str_equal, g_free, g_free)
+;
+        }
         v3 = (ValueArray)v;
         var hash = (HashTable<string,Value?>)v3.get_nth(0);
-        var x = hash.lookup("description");
-        stdout.printf("%s\n",x.get_string());
+        return hash;
 
     }
 
     public string[] get_categories(){
-        var message = xmlrpc_request_new("http://kushaldas.wordpress.com/xmlrpc.php","wp.getCategories",typeof(int),1,typeof(string),this.username,typeof(string),this.password);
+        var message = xmlrpc_request_new(server,"wp.getCategories",typeof(int),1,typeof(string),this.username,typeof(string),this.password);
         var session = new SessionSync();
         session.send_message(message);
         
         string data = message.response_body.flatten().data;
         unowned ValueArray v3;
         Value v = Value(typeof(ValueArray));
-        xmlrpc_parse_method_response(data, -1,v);
+        try {
+            xmlrpc_parse_method_response(data, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return {};
+        }
         v3 = (ValueArray)v;
         string[] result = {};
         for(int i = 0; i < v3.n_values; i++) {
