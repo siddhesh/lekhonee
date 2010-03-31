@@ -55,7 +55,7 @@ public class LekhoneeMain: GLib.Object {
         try {
         
         wp = new Wordpress();
-        wp.set_details("kushaldas","","http://kushaldas.wordpress.com/xmlrpc.php");
+
 
         builder = new Builder ();
         builder.add_from_file ("new.ui");
@@ -119,7 +119,8 @@ public class LekhoneeMain: GLib.Object {
         
         refresh_bttn = builder.get_object("refresh_bttn") as Button;
         create_connections();
-        get_categories(refresh_bttn);
+        
+        
         editor.realize();
         editor.grab_focus();
         
@@ -129,6 +130,18 @@ public class LekhoneeMain: GLib.Object {
         }
     }
 
+    public void show_config_dialog(MenuItem i){
+        var dm = new ConfigDialog();
+        dm.config_done.connect(store_config);
+        dm.show_all();
+        dm.run();   
+    }
+    
+    public void store_config(string server,string user, string password){
+        wp.set_details(user,password,server);
+        get_categories(refresh_bttn);
+    }
+    
     public void show_dialog(MenuItem w){
         var dialog = new AboutDialog();
         dialog.set_name("lekhonee-gnome");
@@ -157,6 +170,11 @@ public class LekhoneeMain: GLib.Object {
         new_menuitem.activate.connect(on_new_cb);
         var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
         quit_menuitem.activate.connect(quit);
+        var p_menuitem = builder.get_object("preferences_menuitem") as ImageMenuItem;
+        p_menuitem.activate.connect(show_config_dialog);
+        
+        
+        
         
         //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
@@ -181,7 +199,7 @@ public class LekhoneeMain: GLib.Object {
         image_ui_bttn.clicked.connect(image_bttn_cb);
 
         refresh_bttn.clicked.connect(get_categories);
-        
+        show_config_dialog(p_menuitem);
         //Errors
         wp.password_error.connect(show_error);
         
