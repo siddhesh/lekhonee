@@ -84,6 +84,15 @@
                         <property name="use_underline">True</property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkImageMenuItem" id="preferences_menuitem">
+                        <property name="label">gtk-preferences</property>
+                        <property name="visible">True</property>
+                        <property name="use_underline">True</property>
+                        <property name="use_stock">True</property>
+                        <property name="always_show_image">True</property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
@@ -240,6 +249,7 @@
                         <child>
                           <object class="GtkToolButton" id="insertunorderedlist">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Insert unordered list</property>
                             <property name="use_underline">True</property>
                             <property name="icon_widget">image1</property>
                           </object>
@@ -251,6 +261,7 @@
                         <child>
                           <object class="GtkToolButton" id="link_ui_bttn">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Insert Link</property>
                             <property name="use_underline">True</property>
                             <property name="icon_widget">image2</property>
                           </object>
@@ -262,6 +273,7 @@
                         <child>
                           <object class="GtkToolButton" id="image_ui_bttn">
                             <property name="visible">True</property>
+                            <property name="tooltip_text" translatable="yes">Insert an Image</property>
                             <property name="label" translatable="yes">toolbutton1</property>
                             <property name="use_underline">True</property>
                             <property name="icon_widget">image3</property>
@@ -301,8 +313,8 @@
                   <object class="GtkScrolledWindow" id="scw">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="has_focus">True</property>
                     <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
                     <child>
                       <placeholder/>
                     </child>
@@ -316,7 +328,7 @@
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="hscrollbar_policy">automatic</property>
-                    <property name="vscrollbar_policy">automatic</property>
+                    <property name="shadow_type">etched-in</property>
                     <child>
                       <placeholder/>
                     </child>
@@ -461,6 +473,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Save the post as draft in the server</property>
                         <property name="image">image4</property>
                       </object>
                       <packing>
@@ -475,6 +488,7 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">True</property>
+                        <property name="tooltip_text" translatable="yes">Publish the post in the server</property>
                         <property name="image">image5</property>
                       </object>
                       <packing>
