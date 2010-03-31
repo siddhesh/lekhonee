@@ -55,7 +55,7 @@ public class LekhoneeMain: GLib.Object {
         try {
         
         wp = new Wordpress();
-        wp.set_details("kushaldas","momo1@","http://kushaldas.wordpress.com/xmlrpc.php");
+        wp.set_details("kushaldas","","http://kushaldas.wordpress.com/xmlrpc.php");
 
         builder = new Builder ();
         builder.add_from_file ("new.ui");
@@ -81,11 +81,13 @@ public class LekhoneeMain: GLib.Object {
         //For the Webkit editor
         editor = new WebView();
         editor.set_editable(true);
-        editor.load_string("Vala rocks!","text/html","utf-8","preview");
+        editor.load_string("","text/html","utf-8","preview");
         editor.navigation_policy_decision_requested.connect(navigation_requested);
+
 
         scw2 = builder.get_object("scw2") as ScrolledWindow;
         scw2.add(editor);
+        scw2.vscrollbar.set_visible(true);
         
         htmltags = builder.get_object("menuitem3") as MenuItem;
         htmltags.set_sensitive(false);
@@ -118,6 +120,8 @@ public class LekhoneeMain: GLib.Object {
         refresh_bttn = builder.get_object("refresh_bttn") as Button;
         create_connections();
         get_categories(refresh_bttn);
+        editor.realize();
+        editor.grab_focus();
         
         }
         catch (Error e) {
@@ -281,7 +285,7 @@ public class LekhoneeMain: GLib.Object {
     }
     
     public void image_bttn_cb(ToolButton b){
-        GenericDialog d = new GenericDialog("Insert Image");
+        GenericDialog d = new GenericDialog("Insert URL of the image");
         d.show_all();
         d.send_link.connect(insert_image);
     }
@@ -303,7 +307,7 @@ public class LekhoneeMain: GLib.Object {
     }
 
     public void link_bttn_cb(ToolButton b){
-        GenericDialog d = new GenericDialog("Link");
+        GenericDialog d = new GenericDialog("Insert URL");
         d.show_all();
         d.send_link.connect(insert_link);
     }
@@ -446,7 +450,7 @@ public class LekhoneeMain: GLib.Object {
         if (edit_flag){
             edit_flag = true;
             publish_bttn.set_label("Publish");
-            draft_bttn.set_sensitive(false);
+            draft_bttn.set_sensitive(true);
         }
         get_categories(refresh_bttn);
     }
@@ -462,7 +466,7 @@ public class LekhoneeMain: GLib.Object {
 
     public void quit(Gtk.Object o){
         if(check_exit()){
-            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to clear the currect post?");
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to quit lekhonee-gnome without posting the current post?");
             dm.response.connect (on_quit_response);
             dm.run();
             dm.destroy();
