@@ -29,7 +29,9 @@ public class LekhoneeMain: GLib.Object {
     public Builder builder;
     public Window window;
     public TreeView category_list;
+    public TreeView entries_list;
     public ListStore liststore;
+    public ListStore liststore2;
     public ScrolledWindow scw;
     public ScrolledWindow scw2;
     public ScrolledWindow scw3;
@@ -55,8 +57,6 @@ public class LekhoneeMain: GLib.Object {
         try {
         
         wp = new Wordpress();
-
-
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
@@ -99,6 +99,13 @@ public class LekhoneeMain: GLib.Object {
         category_list.set_model(liststore);
         var selection = category_list.get_selection();
         selection.set_mode(Gtk.SelectionMode.MULTIPLE);
+        
+        
+        liststore2 = new ListStore(2, typeof(string),typeof(HashTable));
+        entries_list = builder.get_object("entries_list") as TreeView;
+        entries_list.insert_column_with_attributes (-1, "Post Title", new CellRendererText (), "text", 0);
+        entries_list.set_model(liststore2);
+        
         
         
         //Show/hide correct things
