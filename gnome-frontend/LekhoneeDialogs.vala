@@ -59,6 +59,7 @@ public class ConfigDialog: Dialog {
     public string filename;
     public string server;
     public string username;
+    public KeyFile keyf;
     
     public signal void config_done(string ss, string uu, string pp);
     
@@ -70,7 +71,7 @@ public class ConfigDialog: Dialog {
         username = "";
         
         filename = Environment.get_home_dir() + "/.lekhonee.config";
-        KeyFile keyf = new KeyFile();
+        keyf = new KeyFile();
         try{
             keyf.load_from_file(filename,KeyFileFlags.NONE);
             server = keyf.get_string("details","server");
@@ -138,6 +139,18 @@ public class ConfigDialog: Dialog {
         case ResponseType.OK:
             server = server_entry.get_text();
             username = user_entry.get_text();
+            keyf.set_string("details","server",server);
+            keyf.set_string("details","username",username);
+            size_t length;
+            Error e;
+            string data = keyf.to_data(out length, out e);
+            File fcon = File.new_for_path(filename);
+            fcon.delete(null);
+            var file_stream = fcon.create (FileCreateFlags.REPLACE_DESTINATION, null);
+            var data_stream = new DataOutputStream (file_stream);
+            data_stream.put_string (data, null);
+
+            
             string password = pass_entry.get_text();
             config_done(server,username,password);
             destroy();
