@@ -85,6 +85,13 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="old_posts_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Old Posts</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkImageMenuItem" id="preferences_menuitem">
                         <property name="label">gtk-preferences</property>
                         <property name="visible">True</property>
