@@ -5,6 +5,7 @@ public class Wordpress: Object {
     public string password;
     public string server;
     public signal void password_error(string mesaage);
+    public signal void get_old_posts(ValueArray v);
 
     public void set_details(string name, string pass, string serv) {
         this.username = name;
@@ -48,6 +49,29 @@ public class Wordpress: Object {
         v3 = (ValueArray)v;
         var hash = (HashTable<string,Value?>)v3.get_nth(0);
         return hash;
+
+    }
+
+    public void get_posts(){
+        var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),10);
+        var session = new SessionSync();
+        session.send_message(message);
+        
+        string data =message.response_body.flatten().data;
+        //stdout.printf("%d\n",(int)data.length);
+        unowned ValueArray v3;
+        Value v = Value(typeof(ValueArray));
+        try{
+            xmlrpc_parse_method_response(data, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return;
+;
+        }
+        v3 = (ValueArray)v;
+        get_old_posts(v3);
+        //return v3;
+        //var hash = (HashTable<string,Value?>)v3.get_nth(0);
 
     }
 
