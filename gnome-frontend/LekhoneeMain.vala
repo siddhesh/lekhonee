@@ -408,7 +408,16 @@ public class LekhoneeMain: GLib.Object {
     }
     
     public void on_last_entry_cb(MenuItem i){
+    
+        vid = Timeout.add(100,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching the last post from server");
+        
         HashTable<string,Value?> hash = wp.get_last_post();
+        
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        
         if ((int)hash.size() == 0)
             return;
             

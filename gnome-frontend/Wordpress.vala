@@ -32,7 +32,7 @@ public class Wordpress: Object {
     
     public HashTable get_last_post(){
         var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),1);
-        var session = new SessionSync();
+        var session = new SessionAsync();
         session.send_message(message);
         
         string data =message.response_body.flatten().data;
