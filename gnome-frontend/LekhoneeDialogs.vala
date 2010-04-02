@@ -170,13 +170,9 @@ public class ConfigDialog: Dialog {
             var data_stream = new DataOutputStream (file_stream);
             data_stream.put_string (data, null);
 
-            
+            hide_all();
             string password = pass_entry.get_text();
             config_done(server,username,password);
-            destroy();
-            break;
-        case ResponseType.CANCEL:
-            destroy();
             break;
         }
     }
