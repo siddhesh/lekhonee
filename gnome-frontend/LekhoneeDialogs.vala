@@ -147,7 +147,7 @@ public class ConfigDialog: Dialog {
         this.vbox.pack_start (hbox2, false, true, 0);
         this.vbox.spacing = 10;
         
-        add_button (STOCK_CANCEL, ResponseType.CANCEL);
+        //add_button (STOCK_CANCEL, ResponseType.CANCEL);
         this.apply_bttn = add_button (STOCK_OK, ResponseType.OK);
         this.response.connect (on_response);
 
