@@ -77,7 +77,7 @@ public class Wordpress: Object {
 
     public string[] get_categories(){
         var message = xmlrpc_request_new(server,"wp.getCategories",typeof(int),1,typeof(string),this.username,typeof(string),this.password);
-        var session = new SessionSync();
+        var session = new SessionAsync();
         session.send_message(message);
         
         string data = message.response_body.flatten().data;
