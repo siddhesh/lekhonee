@@ -195,6 +195,11 @@ public class LekhoneeMain: GLib.Object {
         last_entry_menuitem.activate.connect(on_last_entry_cb);    
 
         
+        var old_posts_menuitem = builder.get_object("old_posts_menuitem") as MenuItem;
+        old_posts_menuitem.activate.connect(on_old_posts_menuitem_cb);
+        //Get if user is pressing Escape in the old posts view
+        entries_list.key_press_event.connect(on_oldposts_button_cb);
+        
         
         var source_bttn = builder.get_object("source_bttn") as ToggleButton;
         source_bttn.toggled.connect(change_view);
@@ -209,6 +214,7 @@ public class LekhoneeMain: GLib.Object {
         show_config_dialog(p_menuitem);
         //Errors
         wp.password_error.connect(show_error);
+        wp.get_old_posts.connect(populate_posts);
         
     }
     
@@ -429,6 +435,36 @@ public class LekhoneeMain: GLib.Object {
         publish_bttn.set_label("Update");
         
         
+    }
+
+    public void on_old_posts_menuitem_cb(MenuItem i){
+        //Gets the details from the server
+        liststore2.clear();
+        wp.get_posts();
+        scw3.show_all();
+        entries_list.grab_focus();
+
+    }
+    
+    public bool on_oldposts_button_cb(Gdk.EventKey event){
+        if (event.keyval == 65307)
+            scw3.hide_all();
+        
+        return true;
+    
+    }
+    
+    public void populate_posts(ValueArray values){
+        // Connected with the server and gets the details from there
+        for(int i=0;i<values.n_values;i++){
+            var hash = (HashTable<string,Value?>)values.get_nth(i);
+            var val = hash.lookup("title");
+            TreeIter iter = {};
+            liststore2.append(out iter);
+            liststore2.set(iter,0,val.get_string());
+            liststore2.set(iter,1,hash);
+        }
+    
     }
     
     public bool check_exit(){
