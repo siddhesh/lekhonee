@@ -144,7 +144,8 @@ public class LekhoneeMain: GLib.Object {
         var dm = new ConfigDialog();
         dm.config_done.connect(store_config);
         dm.show_all();
-        dm.run();   
+        dm.run();
+        dm.destroy();
     }
     
     public void store_config(string server,string user, string password){
@@ -278,6 +279,9 @@ public class LekhoneeMain: GLib.Object {
     
     public void get_categories(Button b){
         liststore.clear();
+        vid = Timeout.add(100,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching categories from server");
+        
         string[] result = wp.get_categories();
         
         foreach(string val in result){
@@ -285,7 +289,11 @@ public class LekhoneeMain: GLib.Object {
             liststore.append(out iter);
             liststore.set(iter,0,val);
         }
-
+        
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        
     }
     
     public void bold_bttn_cb(){
@@ -444,6 +452,7 @@ public class LekhoneeMain: GLib.Object {
         //Gets the details from the server
         liststore2.clear();
         vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching posts from server");
         wp.get_posts();
         
         scw3.show_all();
@@ -475,6 +484,7 @@ public class LekhoneeMain: GLib.Object {
         }
         Source.remove(vid);
         progressbar.set_fraction(0.0);
+        progressbar.set_text("");
     }
     
     public bool check_exit(){
