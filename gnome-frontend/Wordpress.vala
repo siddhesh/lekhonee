@@ -54,7 +54,7 @@ public class Wordpress: Object {
 
     public void get_posts(){
         var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),10);
-        var session = new SessionSync();
+        var session = new SessionAsync();
         session.send_message(message);
         
         string data =message.response_body.flatten().data;
