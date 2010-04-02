@@ -40,6 +40,8 @@ public class LekhoneeMain: GLib.Object {
     public bool source_flag;
     public bool edit_flag;
     public MenuItem htmltags;
+    public ProgressBar progressbar;
+    public uint vid;
     
     
     public SourceBuffer blog_txt;
@@ -62,6 +64,7 @@ public class LekhoneeMain: GLib.Object {
         //builder.connect_signals (null);
         window = builder.get_object ("MainWindow") as Window;
         category_list = builder.get_object("category_list") as TreeView;
+        progressbar = builder.get_object("progressbar") as ProgressBar;
         title_entry = builder.get_object("titleTxt") as Entry;
         tags_entry = builder.get_object("tags_entry") as Entry;
         draft_bttn = builder.get_object("draft_bttn") as Button;
@@ -440,10 +443,16 @@ public class LekhoneeMain: GLib.Object {
     public void on_old_posts_menuitem_cb(MenuItem i){
         //Gets the details from the server
         liststore2.clear();
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
         wp.get_posts();
+        
         scw3.show_all();
         entries_list.grab_focus();
-
+    }
+    
+    public bool update_bar(){
+        progressbar.pulse();
+        return true;
     }
     
     public bool on_oldposts_button_cb(Gdk.EventKey event){
@@ -464,7 +473,8 @@ public class LekhoneeMain: GLib.Object {
             liststore2.set(iter,0,val.get_string());
             liststore2.set(iter,1,hash);
         }
-    
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
     }
     
     public bool check_exit(){
