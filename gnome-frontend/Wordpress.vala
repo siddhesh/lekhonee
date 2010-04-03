@@ -33,7 +33,11 @@ public class Wordpress: Object {
     public HashTable get_last_post(){
         var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),1);
         var session = new SessionAsync();
-        session.send_message(message);
+        var return_code = session.send_message(message);
+        if (return_code == 2){
+            password_error("Please check your network");
+            return new HashTable<string, string>.full (str_hash, str_equal, g_free, g_free);
+        }
         
         string data =message.response_body.flatten().data;
         //stdout.printf("%d\n",(int)data.length);
@@ -43,8 +47,7 @@ public class Wordpress: Object {
             xmlrpc_parse_method_response(data, -1,v);
         }catch (Error e){ 
             password_error(e.message);
-            return new HashTable<string, string>.full (str_hash, str_equal, g_free, g_free)
-;
+            return new HashTable<string, string>.full (str_hash, str_equal, g_free, g_free);
         }
         v3 = (ValueArray)v;
         var hash = (HashTable<string,Value?>)v3.get_nth(0);
@@ -55,7 +58,12 @@ public class Wordpress: Object {
     public void get_posts(){
         var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),10);
         var session = new SessionAsync();
-        session.send_message(message);
+        var return_code = session.send_message(message);
+        
+        if (return_code == 2){
+            password_error("Please check your network");
+            
+        }
         
         string data =message.response_body.flatten().data;
         //stdout.printf("%d\n",(int)data.length);
@@ -78,9 +86,13 @@ public class Wordpress: Object {
     public string[] get_categories(){
         var message = xmlrpc_request_new(server,"wp.getCategories",typeof(int),1,typeof(string),this.username,typeof(string),this.password);
         var session = new SessionAsync();
-        session.send_message(message);
-        
+        var return_code = session.send_message(message);
+        if (return_code == 2){
+            password_error("Please check your network");
+            return {};
+        }
         string data = message.response_body.flatten().data;
+        
         unowned ValueArray v3;
         Value v = Value(typeof(ValueArray));
         try {
