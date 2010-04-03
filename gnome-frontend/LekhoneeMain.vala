@@ -216,6 +216,11 @@ public class LekhoneeMain: GLib.Object {
         var file_upload_bttn = builder.get_object("file_upload_bttn") as Button;
         file_upload_bttn.clicked.connect(on_uploadfile_cb);
 
+        var publish_bttn = builder.get_object("publish_bttn") as Button;
+        publish_bttn.clicked.connect(on_publish_cb);
+        
+        var draft_bttn = builder.get_object("draft_bttn") as Button;
+        draft_bttn.clicked.connect(on_draft_cb);
         
         var old_posts_menuitem = builder.get_object("old_posts_menuitem") as MenuItem;
         old_posts_menuitem.activate.connect(on_old_posts_menuitem_cb);
@@ -665,7 +670,60 @@ public class LekhoneeMain: GLib.Object {
         
         
     }
+    
+    public void on_publish_cb(Button b){
+        message_post(true);
+        return;
+    }
+    
+    public void on_draft_cb(Button b){
+        message_post(false);
+        return;
+    }
+    
+    public void message_post(bool publish){
+        Value desc;
+        if(source_flag){
+            TextIter start,end;
+            blog_txt.get_bounds(out start, out end);
+            desc = (string)blog_txt.get_text(start, end,false);
+        }else{
+            desc = (string)get_source()[0:-7];
+        }
 
+        Value title = (string)title_entry.get_text();
+        HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
+        string[] tags = tags_entry.get_text().split(",");
+        ValueArray mtags = new ValueArray(1);
+        foreach(string x in tags){
+            mtags.append(x.strip());
+        }
+        ValueArray cats = new ValueArray(1);
+        TreeSelection sect = category_list.get_selection();
+        
+        TreeModel model;
+        TreeIter iter;
+        
+        var slist = sect.get_selected_rows(out model);
+        foreach(var sec in slist){
+            model.get_iter(out iter, sec);
+            Value v = Value(typeof(string));
+            liststore.get_value(iter,0, out v);
+            cats.append(v.get_string());
+        
+        }
+        var comment_box = builder.get_object("comment_box") as CheckButton;
+        Value comments = comment_box.get_active();
+        hash.insert("title",title);
+        hash.insert("description",desc);
+        hash.insert("mt_keywords",mtags);
+        hash.insert("categories",cats);
+        hash.insert("mt_allow_comments",comments);
+        
+        //debug(wp.post(hash,publish));
+        
+    }
+    
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
         if (uri == "preview")
