@@ -42,6 +42,7 @@ public class LekhoneeMain: GLib.Object {
     public MenuItem htmltags;
     public ProgressBar progressbar;
     public uint vid;
+    public Entry file_txt;
     
     
     public SourceBuffer blog_txt;
@@ -122,6 +123,9 @@ public class LekhoneeMain: GLib.Object {
         //For the upload file area in the UI
         vbox3 = builder.get_object("vbox3") as VBox;
         vbox3.hide_all();
+        file_txt = builder.get_object("file_txt") as Entry;
+        
+        
         //For the entries_list treeview
         scw3 = builder.get_object("scw3") as ScrolledWindow;
         scw3.hide_all();
@@ -201,6 +205,16 @@ public class LekhoneeMain: GLib.Object {
         
         var last_entry_menuitem = builder.get_object("last_entry") as MenuItem;
         last_entry_menuitem.activate.connect(on_last_entry_cb);    
+        var upload_menuitem = builder.get_object("upload_menuitem") as MenuItem;
+        upload_menuitem.activate.connect(on_upload_cb); 
+        
+        //Connected all upload file stuff
+        var cancel_bttn = builder.get_object("file_cancel_bttn") as Button;
+        cancel_bttn.clicked.connect(on_cancel_cb);
+        var file_select_bttn = builder.get_object("file_select_bttn") as Button;
+        file_select_bttn.clicked.connect(on_select_cb);
+        var file_upload_bttn = builder.get_object("file_upload_bttn") as Button;
+        file_upload_bttn.clicked.connect(on_uploadfile_cb);
 
         
         var old_posts_menuitem = builder.get_object("old_posts_menuitem") as MenuItem;
@@ -573,6 +587,84 @@ public class LekhoneeMain: GLib.Object {
         //get_categories(refresh_bttn);
     }
     
+    public void on_upload_cb(MenuItem i){
+        vbox3.show_all();
+    }
+
+    public void on_cancel_cb(Button b){
+        vbox3.hide_all();
+    }
+    
+    public void on_select_cb(Button b){
+        FileChooserDialog chooser = new Gtk.FileChooserDialog(("Select File"),
+        window, Gtk.FileChooserAction.OPEN, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT, null);
+        
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) {
+            string name = chooser.get_filename();
+            file_txt.set_text(name);
+        }
+        chooser.destroy();
+    }
+    
+    public void on_uploadfile_cb(Button b){
+        File file = File.new_for_path(file_txt.get_text());
+        if (!file.query_exists (null)) 
+            return;
+        string raw_data;
+        size_t l;
+        try{
+            FileUtils.get_contents(file_txt.get_text(),out raw_data, out l);
+        }catch(FileError e){
+            debug(e.message);
+            return;
+        }
+        //string datum = Base64.encode((uchar[])raw_data.to_utf8());
+        bool t;
+        string content_type = g_content_type_guess(file_txt.get_text(),(uchar[])raw_data.to_utf8(),out t);
+        HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
+        Value type = content_type;
+        Value name = GLib.Filename.display_basename(file_txt.get_text());
+        
+        string output;
+        string error;
+        int exit_status;
+        try{
+            Process.spawn_command_line_sync("base64" + " " + file_txt.get_text(), out output, out error, out exit_status);
+        }catch(SpawnError e){
+            debug(e.message);
+            vbox3.hide_all();
+            return;
+        }
+        
+        hash.insert("name",name);
+        hash.insert("type",type);
+        hash.insert("bits",output);
+        //debug(content_type);
+        
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("Uploading file to the server");
+        string mes = wp.upload_file(hash);
+        if (source_flag){
+            TextIter start={};
+            TextIter end={};
+            blog_txt.get_selection_bounds(out start, out end);
+            string text = blog_txt.get_text(start,end,false);
+            blog_txt.delete(start,end);
+            string result = @"<a href=\"$mes\">$text</a>";
+            blog_txt.insert_at_cursor(result,(int)result.size());
+        }
+        else{
+            string result = @"document.execCommand('createLink', true, '$mes');";
+            editor.execute_script(result);  
+        }
+        vbox3.hide_all();
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        
+        
+    }
 
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
