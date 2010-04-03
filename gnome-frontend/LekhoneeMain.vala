@@ -54,11 +54,13 @@ public class LekhoneeMain: GLib.Object {
     public Entry tags_entry;
     public Button draft_bttn;
     public Button publish_bttn;
+    public Value entry;
 
     public LekhoneeMain() {
         try {
         
         wp = new Wordpress();
+        wp.password_error.connect(show_error);
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
@@ -108,7 +110,9 @@ public class LekhoneeMain: GLib.Object {
         entries_list = builder.get_object("entries_list") as TreeView;
         entries_list.insert_column_with_attributes (-1, "Post Title", new CellRendererText (), "text", 0);
         entries_list.set_model(liststore2);
-        
+        var selection2 = entries_list.get_selection();
+        selection2.set_mode(Gtk.SelectionMode.SINGLE);
+        entry = Value(typeof(HashTable));
         
         
         //Show/hide correct things
@@ -133,7 +137,7 @@ public class LekhoneeMain: GLib.Object {
         
         editor.realize();
         editor.grab_focus();
-        
+
         }
         catch (Error e) {
             stderr.printf ("Could not load UI: %s\n", e.message);
@@ -202,8 +206,8 @@ public class LekhoneeMain: GLib.Object {
         var old_posts_menuitem = builder.get_object("old_posts_menuitem") as MenuItem;
         old_posts_menuitem.activate.connect(on_old_posts_menuitem_cb);
         //Get if user is pressing Escape in the old posts view
-        entries_list.key_press_event.connect(on_oldposts_button_cb);
-        
+        entries_list.key_press_event.connect(on_oldposts_key_cb);
+        entries_list.button_press_event.connect(on_oldposts_button_cb);
         
         var source_bttn = builder.get_object("source_bttn") as ToggleButton;
         source_bttn.toggled.connect(change_view);
@@ -217,7 +221,7 @@ public class LekhoneeMain: GLib.Object {
         refresh_bttn.clicked.connect(get_categories);
         show_config_dialog(p_menuitem);
         //Errors
-        wp.password_error.connect(show_error);
+
         wp.get_old_posts.connect(populate_posts);
         
     }
@@ -412,12 +416,16 @@ public class LekhoneeMain: GLib.Object {
         vid = Timeout.add(100,update_bar,Priority.HIGH);
         progressbar.set_text("Fetching the last post from server");
         
-        HashTable<string,Value?> hash = wp.get_last_post();
+        entry = wp.get_last_post();
         
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.set_text("");
-        
+        load_post_details();
+    }
+    
+    public void load_post_details(){
+        HashTable<string,Value?> hash = (HashTable<string,Value?>)entry; 
         if ((int)hash.size() == 0)
             return;
             
@@ -466,6 +474,9 @@ public class LekhoneeMain: GLib.Object {
         
         scw3.show_all();
         entries_list.grab_focus();
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        
     }
     
     public bool update_bar(){
@@ -473,11 +484,27 @@ public class LekhoneeMain: GLib.Object {
         return true;
     }
     
-    public bool on_oldposts_button_cb(Gdk.EventKey event){
+    public bool on_oldposts_key_cb(Gdk.EventKey event){
         if (event.keyval == 65307)
             scw3.hide_all();
         
         return true;
+    
+    }
+    
+    public bool on_oldposts_button_cb(Gdk.EventButton event){
+        //Load the selected entry
+        if (event.type == Gdk.EventType.2BUTTON_PRESS){
+            TreeSelection sect = entries_list.get_selection();
+            TreeModel model;
+            TreeIter iter;
+            sect.get_selected(out model, out iter);
+            
+            model.get_value(iter,1,out entry);
+            load_post_details();
+            scw3.hide_all();
+        }
+        return false;
     
     }
     
@@ -542,7 +569,8 @@ public class LekhoneeMain: GLib.Object {
             publish_bttn.set_label("Publish");
             draft_bttn.set_sensitive(true);
         }
-        get_categories(refresh_bttn);
+        //Not refreshing the categories, if required user will click refresh
+        //get_categories(refresh_bttn);
     }
     
 
