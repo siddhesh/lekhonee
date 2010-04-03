@@ -23,6 +23,26 @@ public class Wordpress: Object {
         
     }
     
+    public string upload_file(HashTable data) {
+        var message = xmlrpc_request_new(server,"wp.uploadFile",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),data);
+        var session = new SessionAsync();
+        session.send_message(message);
+        
+        string returndata =message.response_body.flatten().data;
+        Value v = Value(typeof(HashTable));
+        try{
+            xmlrpc_parse_method_response(returndata, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return "";
+        }
+        HashTable<string, Value?> hash = (HashTable)v;
+        var x = hash.lookup("url");
+        
+        return (string)x;
+    }
+    
+    
     public void add_category(string category) {
         var message = xmlrpc_request_new(server,"wp.newCategory",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(string),category);
         var session = new SessionSync();
