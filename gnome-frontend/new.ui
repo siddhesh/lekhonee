@@ -92,6 +92,13 @@
                       </object>
                     </child>
                     <child>
+                      <object class="GtkMenuItem" id="upload_menuitem">
+                        <property name="visible">True</property>
+                        <property name="label" translatable="yes">Upload File</property>
+                        <property name="use_underline">True</property>
+                      </object>
+                    </child>
+                    <child>
                       <object class="GtkImageMenuItem" id="preferences_menuitem">
                         <property name="label">gtk-preferences</property>
                         <property name="visible">True</property>
@@ -424,6 +431,8 @@
                     </child>
                   </object>
                   <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">False</property>
                     <property name="position">4</property>
                   </packing>
                 </child>
