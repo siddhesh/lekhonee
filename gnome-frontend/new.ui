@@ -201,7 +201,7 @@
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkCheckButton" id="commentCheckBox">
+                      <object class="GtkCheckButton" id="comment_box">
                         <property name="label" translatable="yes">Comments Allowed</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
