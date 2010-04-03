@@ -15,7 +15,7 @@ public class Wordpress: Object {
 
     public string post(HashTable content, bool publish) {
         var message = xmlrpc_request_new(server,"metaWeblog.newPost",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),content, typeof(bool), publish);
-        var session = new SessionSync();
+        var session = new SessionAsync();
         session.send_message(message);
         
         string data =message.response_body.flatten().data;
