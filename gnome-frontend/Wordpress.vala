@@ -19,8 +19,14 @@ public class Wordpress: Object {
         session.send_message(message);
         
         string data =message.response_body.flatten().data;
-        return data;
-        
+        Value v = Value(typeof(string));
+                try{
+            xmlrpc_parse_method_response(data, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return "None";
+        }
+        return v.get_string();
     }
     
     public string upload_file(HashTable data) {
