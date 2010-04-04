@@ -26,8 +26,29 @@ public class Wordpress: Object {
             password_error(e.message);
             return "None";
         }
-        return v.get_string();
+        return "Message posted with ID " + v.get_string();
     }
+    
+    public string update(string pid,HashTable content, bool publish) {
+        var message = xmlrpc_request_new(server,"metaWeblog.editPost",typeof(string),pid,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),content, typeof(bool), publish);
+        var session = new SessionAsync();
+        session.send_message(message);
+        
+        string data =message.response_body.flatten().data;
+
+        Value v = Value(typeof(bool));
+                try{
+            xmlrpc_parse_method_response(data, -1,v);
+        }catch (Error e){ 
+            password_error(e.message);
+            return "None";
+        }
+        if (v.get_boolean())
+            return "Post updated";
+        else
+            return "None";
+    }
+    
     
     public string upload_file(HashTable data) {
         var message = xmlrpc_request_new(server,"wp.uploadFile",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(HashTable),data);
