@@ -720,8 +720,19 @@ public class LekhoneeMain: GLib.Object {
         hash.insert("categories",cats);
         hash.insert("mt_allow_comments",comments);
         
-        //debug(wp.post(hash,publish));
-        
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("posting to the server");
+        string pid = wp.post(hash,publish);
+        if(pid != "None"){
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Message posted with ID " + pid);
+            dm.run();
+            dm.destroy();
+        }
+        Source.remove(vid);
+        progressbar.set_text("");
+        progressbar.set_fraction(0.0);
+        clear_it();
+        edit_flag = false;
     }
     
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
