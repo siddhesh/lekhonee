@@ -184,16 +184,19 @@ public class LekhoneeMain: GLib.Object {
         italic.clicked.connect(on_action);
         underline.clicked.connect(on_action);
         insertunorderedlist.clicked.connect(on_action);
-        
-        var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
-        new_menuitem.activate.connect(on_new_cb);
-        var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
-        quit_menuitem.activate.connect(quit);
+
         var p_menuitem = builder.get_object("preferences_menuitem") as ImageMenuItem;
         p_menuitem.activate.connect(show_config_dialog);
         
-        
-        
+        //File menu
+        var save_menuitem = builder.get_object("save_menuitem") as ImageMenuItem;
+        save_menuitem.activate.connect(save_file_cb);
+        var open_menuitem = builder.get_object("open_menuitem") as ImageMenuItem;
+        open_menuitem.activate.connect(open_file_cb);
+        var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
+        new_menuitem.activate.connect(on_new_cb);
+        var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
+        quit_menuitem.activate.connect(quit);        
         
         //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
@@ -742,6 +745,74 @@ public class LekhoneeMain: GLib.Object {
         clear_it();
         edit_flag = false;
     }
+    
+    public void open_file_cb(MenuItem i) {
+        string title = "";
+        string desc = "";
+        string tags = "";
+        
+        Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog(("Open Post"),
+        window, Gtk.FileChooserAction.OPEN, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT, null);
+        chooser.set_do_overwrite_confirmation(true);
+        chooser.set_current_folder(Environment.get_home_dir());
+        var filter = new FileFilter();
+        filter.set_name("Lekhonee files");
+        filter.add_pattern("*.lekhonee");
+        chooser.add_filter(filter);
+        
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) { 
+            string filename = chooser.get_filename();
+            xml_open_file(filename, out title, out desc, out tags);
+        }
+        title_entry.set_text(title);
+        tags_entry.set_text(tags);
+        editor.load_string(desc,"text/html","utf-8","preview");
+        chooser.destroy();
+    }
+    
+    public void save_file_cb(MenuItem i){
+         Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog(("Save Post"),
+        window, Gtk.FileChooserAction.SAVE, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.ACCEPT, null);
+        chooser.set_do_overwrite_confirmation(true);
+        chooser.set_current_folder(Environment.get_home_dir());
+        var filter = new FileFilter();
+        filter.set_name("Lekhonee files");
+        filter.add_pattern("*.lekhonee");
+        chooser.add_filter(filter);
+        
+
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) {      
+        
+            string title = title_entry.get_text();
+            string desc;
+            if(source_flag){
+                TextIter start,end;
+                blog_txt.get_bounds(out start, out end);
+                desc = blog_txt.get_text(start, end,false);
+            }else
+                desc = get_source()[0:-7];
+            
+            string tags = tags_entry.get_text();
+            string filename;
+            string? oldname; 
+            oldname = chooser.get_filename();
+            if(oldname != null){
+                filename = (!) oldname;
+                if(!filename.has_suffix(".lekhonee"))
+                    filename = filename + ".lekhonee";
+                
+            }else{
+                chooser.destroy();
+                return;
+            }
+
+            xml_save_file(filename,title,desc,tags);
+        }
+        chooser.destroy();
+    }
+    
     
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
