@@ -722,9 +722,17 @@ public class LekhoneeMain: GLib.Object {
         
         vid = Timeout.add(200,update_bar,Priority.HIGH);
         progressbar.set_text("posting to the server");
-        string pid = wp.post(hash,publish);
+        string pid;
+        if (edit_flag){
+            string postid;
+            HashTable<string,Value?> oldhash = (HashTable<string,Value?>)entry;
+            Value val = oldhash.lookup("postid");
+            postid= val.get_string();
+            pid = wp.update(postid,hash,publish);
+        }else
+            pid = wp.post(hash,publish);
         if(pid != "None"){
-            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK, "Message posted with ID " + pid);
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK,  pid);
             dm.run();
             dm.destroy();
         }
