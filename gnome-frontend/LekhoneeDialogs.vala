@@ -76,12 +76,14 @@ public class ConfigDialog: Dialog {
     public Entry user_entry;
     public Entry server_entry;
     public Entry pass_entry;
+    public CheckButton advert;
     public string filename;
     public string server;
     public string username;
+    public bool ad;
     public KeyFile keyf;
     
-    public signal void config_done(string ss, string uu, string pp);
+    public signal void config_done(string ss, string uu, string pp, bool aa);
     
     public ConfigDialog() {
         this.title = "Preferences";
@@ -138,13 +140,14 @@ public class ConfigDialog: Dialog {
         hbox2.pack_start (pass_label, false, true, 0);
         hbox2.pack_start (pass_entry, true, true, 0);
 
-        
-        
-        
+        advert = new CheckButton();
+        advert.set_label("Show the lekhonee message in the posts");
+        advert.set_active(true);
         
         this.vbox.pack_start (hbox, false, true, 0);
         this.vbox.pack_start (hbox1, false, true, 0);
         this.vbox.pack_start (hbox2, false, true, 0);
+        this.vbox.pack_start (advert, false, true, 0);
         this.vbox.spacing = 10;
         
         //add_button (STOCK_CANCEL, ResponseType.CANCEL);
@@ -159,8 +162,10 @@ public class ConfigDialog: Dialog {
         case ResponseType.OK:
             server = server_entry.get_text();
             username = user_entry.get_text();
+            ad = advert.get_active();
             keyf.set_string("details","server",server);
             keyf.set_string("details","username",username);
+            //keyf.set_boolean("details","ad",ad);
             size_t length;
             Error e;
             string data = keyf.to_data(out length, out e);
@@ -174,7 +179,8 @@ public class ConfigDialog: Dialog {
 
             hide_all();
             string password = pass_entry.get_text();
-            config_done(server,username,password);
+            
+            config_done(server,username,password,ad);
             break;
         }
     }

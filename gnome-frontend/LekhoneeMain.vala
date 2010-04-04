@@ -41,8 +41,9 @@ public class LekhoneeMain: GLib.Object {
     public bool edit_flag;
     public MenuItem htmltags;
     public ProgressBar progressbar;
-    public uint vid;
     public Entry file_txt;
+    public uint vid;
+    public bool advert;
     
     
     public SourceBuffer blog_txt;
@@ -63,7 +64,7 @@ public class LekhoneeMain: GLib.Object {
         wp = new Wordpress();
         wp.password_error.connect(show_error);
         builder = new Builder ();
-        builder.add_from_file ("new.ui");
+        builder.add_from_file ("/home/kdas/code/git/lekhonee/gnome-frontend/new.ui");
         //builder.connect_signals (null);
         window = builder.get_object ("MainWindow") as Window;
         category_list = builder.get_object("category_list") as TreeView;
@@ -156,7 +157,8 @@ public class LekhoneeMain: GLib.Object {
         dm.destroy();
     }
     
-    public void store_config(string server,string user, string password){
+    public void store_config(string server,string user, string password,bool ad){
+        advert = ad;
         wp.set_details(user,password,server);
         get_categories(refresh_bttn);
     }
@@ -686,14 +688,21 @@ public class LekhoneeMain: GLib.Object {
     
     public void message_post(bool publish){
         Value desc;
+        string inter_desc = "";
         if(source_flag){
             TextIter start,end;
             blog_txt.get_bounds(out start, out end);
-            desc = (string)blog_txt.get_text(start, end,false);
+            inter_desc = (string)blog_txt.get_text(start, end,false);
         }else{
-            desc = (string)get_source()[0:-7];
+            inter_desc = (string)get_source()[0:-7];
         }
-
+        
+        if(!edit_flag){
+            if(advert)
+                inter_desc = inter_desc + "<br>The post is brought to you by <a href=\"http://fedorahosted.org/lekhonee\">lekhonee-gnome</a> v0.9";
+        }
+        desc = inter_desc;
+        
         Value title = (string)title_entry.get_text();
         HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
         string[] tags = tags_entry.get_text().split(",");
