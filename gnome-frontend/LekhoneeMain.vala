@@ -56,7 +56,10 @@ public class LekhoneeMain: GLib.Object {
     public Entry tags_entry;
     public Button draft_bttn;
     public Button publish_bttn;
+    public CheckButton spell_box;
     public Value entry;
+    
+    public Spell spell;
 
     public LekhoneeMain() {
         try {
@@ -242,12 +245,27 @@ public class LekhoneeMain: GLib.Object {
         var image_ui_bttn = builder.get_object("image_ui_bttn") as ToolButton;
         image_ui_bttn.clicked.connect(image_bttn_cb);
 
+        //For spell check
+        spell_box = builder.get_object("spell_box") as CheckButton;
+        spell_box.toggled.connect(on_spell_cb);
+        spell_box.set_active(false);
+
         refresh_bttn.clicked.connect(get_categories);
         show_config_dialog(p_menuitem);
         //Errors
 
         wp.get_old_posts.connect(populate_posts);
         
+    }
+    
+    public void on_spell_cb(ToggleButton b){
+        if(b.get_active()){
+            spell = new Spell.attach(sourceview,null);
+            spell.recheck_all();
+        }else{
+            spell.detach();
+        }
+
     }
     
     public void show_error(string message){
@@ -289,6 +307,7 @@ public class LekhoneeMain: GLib.Object {
             scw.show_all();
             source_flag = true;
             htmltags.set_sensitive(true);
+            spell_box.set_active(true);
         }
         else{
             scw.hide_all();
@@ -301,7 +320,7 @@ public class LekhoneeMain: GLib.Object {
             editor.load_string(html,"text/html","utf-8","preview");
             source_flag = false;
             htmltags.set_sensitive(false);
-            
+            spell_box.set_active(false);
         }
     }
     
