@@ -165,7 +165,9 @@ public class ConfigDialog: Dialog {
             Error e;
             string data = keyf.to_data(out length, out e);
             File fcon = File.new_for_path(filename);
-            fcon.delete(null);
+            if(fcon.query_exists (null)){
+                fcon.delete(null);
+            }
             var file_stream = fcon.create (FileCreateFlags.REPLACE_DESTINATION, null);
             var data_stream = new DataOutputStream (file_stream);
             data_stream.put_string (data, null);
