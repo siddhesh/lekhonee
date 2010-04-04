@@ -147,7 +147,7 @@ public class ConfigDialog: Dialog {
         this.vbox.pack_start (hbox2, false, true, 0);
         this.vbox.spacing = 10;
         
-        add_button (STOCK_CANCEL, ResponseType.CANCEL);
+        //add_button (STOCK_CANCEL, ResponseType.CANCEL);
         this.apply_bttn = add_button (STOCK_OK, ResponseType.OK);
         this.response.connect (on_response);
 
@@ -165,18 +165,16 @@ public class ConfigDialog: Dialog {
             Error e;
             string data = keyf.to_data(out length, out e);
             File fcon = File.new_for_path(filename);
-            fcon.delete(null);
+            if(fcon.query_exists (null)){
+                fcon.delete(null);
+            }
             var file_stream = fcon.create (FileCreateFlags.REPLACE_DESTINATION, null);
             var data_stream = new DataOutputStream (file_stream);
             data_stream.put_string (data, null);
 
-            
+            hide_all();
             string password = pass_entry.get_text();
             config_done(server,username,password);
-            destroy();
-            break;
-        case ResponseType.CANCEL:
-            destroy();
             break;
         }
     }

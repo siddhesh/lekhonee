@@ -40,6 +40,9 @@ public class LekhoneeMain: GLib.Object {
     public bool source_flag;
     public bool edit_flag;
     public MenuItem htmltags;
+    public ProgressBar progressbar;
+    public uint vid;
+    public Entry file_txt;
     
     
     public SourceBuffer blog_txt;
@@ -52,16 +55,19 @@ public class LekhoneeMain: GLib.Object {
     public Entry tags_entry;
     public Button draft_bttn;
     public Button publish_bttn;
+    public Value entry;
 
     public LekhoneeMain() {
         try {
         
         wp = new Wordpress();
+        wp.password_error.connect(show_error);
         builder = new Builder ();
         builder.add_from_file ("new.ui");
         //builder.connect_signals (null);
         window = builder.get_object ("MainWindow") as Window;
         category_list = builder.get_object("category_list") as TreeView;
+        progressbar = builder.get_object("progressbar") as ProgressBar;
         title_entry = builder.get_object("titleTxt") as Entry;
         tags_entry = builder.get_object("tags_entry") as Entry;
         draft_bttn = builder.get_object("draft_bttn") as Button;
@@ -105,7 +111,9 @@ public class LekhoneeMain: GLib.Object {
         entries_list = builder.get_object("entries_list") as TreeView;
         entries_list.insert_column_with_attributes (-1, "Post Title", new CellRendererText (), "text", 0);
         entries_list.set_model(liststore2);
-        
+        var selection2 = entries_list.get_selection();
+        selection2.set_mode(Gtk.SelectionMode.SINGLE);
+        entry = Value(typeof(HashTable));
         
         
         //Show/hide correct things
@@ -115,6 +123,9 @@ public class LekhoneeMain: GLib.Object {
         //For the upload file area in the UI
         vbox3 = builder.get_object("vbox3") as VBox;
         vbox3.hide_all();
+        file_txt = builder.get_object("file_txt") as Entry;
+        
+        
         //For the entries_list treeview
         scw3 = builder.get_object("scw3") as ScrolledWindow;
         scw3.hide_all();
@@ -130,7 +141,7 @@ public class LekhoneeMain: GLib.Object {
         
         editor.realize();
         editor.grab_focus();
-        
+
         }
         catch (Error e) {
             stderr.printf ("Could not load UI: %s\n", e.message);
@@ -141,7 +152,8 @@ public class LekhoneeMain: GLib.Object {
         var dm = new ConfigDialog();
         dm.config_done.connect(store_config);
         dm.show_all();
-        dm.run();   
+        dm.run();
+        dm.destroy();
     }
     
     public void store_config(string server,string user, string password){
@@ -172,16 +184,19 @@ public class LekhoneeMain: GLib.Object {
         italic.clicked.connect(on_action);
         underline.clicked.connect(on_action);
         insertunorderedlist.clicked.connect(on_action);
-        
-        var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
-        new_menuitem.activate.connect(on_new_cb);
-        var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
-        quit_menuitem.activate.connect(quit);
+
         var p_menuitem = builder.get_object("preferences_menuitem") as ImageMenuItem;
         p_menuitem.activate.connect(show_config_dialog);
         
-        
-        
+        //File menu
+        var save_menuitem = builder.get_object("save_menuitem") as ImageMenuItem;
+        save_menuitem.activate.connect(save_file_cb);
+        var open_menuitem = builder.get_object("open_menuitem") as ImageMenuItem;
+        open_menuitem.activate.connect(open_file_cb);
+        var new_menuitem = builder.get_object("imagemenuitem1") as ImageMenuItem;
+        new_menuitem.activate.connect(on_new_cb);
+        var quit_menuitem = builder.get_object("imagemenuitem5") as ImageMenuItem;
+        quit_menuitem.activate.connect(quit);        
         
         //ALl menuitems under HTML Tags
         var blockquote_menuitem = builder.get_object("blockquote_menuitem") as MenuItem;
@@ -193,8 +208,28 @@ public class LekhoneeMain: GLib.Object {
         
         var last_entry_menuitem = builder.get_object("last_entry") as MenuItem;
         last_entry_menuitem.activate.connect(on_last_entry_cb);    
-
+        var upload_menuitem = builder.get_object("upload_menuitem") as MenuItem;
+        upload_menuitem.activate.connect(on_upload_cb); 
         
+        //Connected all upload file stuff
+        var cancel_bttn = builder.get_object("file_cancel_bttn") as Button;
+        cancel_bttn.clicked.connect(on_cancel_cb);
+        var file_select_bttn = builder.get_object("file_select_bttn") as Button;
+        file_select_bttn.clicked.connect(on_select_cb);
+        var file_upload_bttn = builder.get_object("file_upload_bttn") as Button;
+        file_upload_bttn.clicked.connect(on_uploadfile_cb);
+
+        var publish_bttn = builder.get_object("publish_bttn") as Button;
+        publish_bttn.clicked.connect(on_publish_cb);
+        
+        var draft_bttn = builder.get_object("draft_bttn") as Button;
+        draft_bttn.clicked.connect(on_draft_cb);
+        
+        var old_posts_menuitem = builder.get_object("old_posts_menuitem") as MenuItem;
+        old_posts_menuitem.activate.connect(on_old_posts_menuitem_cb);
+        //Get if user is pressing Escape in the old posts view
+        entries_list.key_press_event.connect(on_oldposts_key_cb);
+        entries_list.button_press_event.connect(on_oldposts_button_cb);
         
         var source_bttn = builder.get_object("source_bttn") as ToggleButton;
         source_bttn.toggled.connect(change_view);
@@ -208,7 +243,8 @@ public class LekhoneeMain: GLib.Object {
         refresh_bttn.clicked.connect(get_categories);
         show_config_dialog(p_menuitem);
         //Errors
-        wp.password_error.connect(show_error);
+
+        wp.get_old_posts.connect(populate_posts);
         
     }
     
@@ -269,6 +305,9 @@ public class LekhoneeMain: GLib.Object {
     
     public void get_categories(Button b){
         liststore.clear();
+        vid = Timeout.add(100,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching categories from server");
+        
         string[] result = wp.get_categories();
         
         foreach(string val in result){
@@ -276,7 +315,11 @@ public class LekhoneeMain: GLib.Object {
             liststore.append(out iter);
             liststore.set(iter,0,val);
         }
-
+        
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        
     }
     
     public void bold_bttn_cb(){
@@ -391,7 +434,20 @@ public class LekhoneeMain: GLib.Object {
     }
     
     public void on_last_entry_cb(MenuItem i){
-        HashTable<string,Value?> hash = wp.get_last_post();
+    
+        vid = Timeout.add(100,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching the last post from server");
+        
+        entry = wp.get_last_post();
+        
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        load_post_details();
+    }
+    
+    public void load_post_details(){
+        HashTable<string,Value?> hash = (HashTable<string,Value?>)entry; 
         if ((int)hash.size() == 0)
             return;
             
@@ -429,6 +485,64 @@ public class LekhoneeMain: GLib.Object {
         publish_bttn.set_label("Update");
         
         
+    }
+
+    public void on_old_posts_menuitem_cb(MenuItem i){
+        //Gets the details from the server
+        liststore2.clear();
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("Fetching posts from server");
+        wp.get_posts();
+        
+        scw3.show_all();
+        entries_list.grab_focus();
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        
+    }
+    
+    public bool update_bar(){
+        progressbar.pulse();
+        return true;
+    }
+    
+    public bool on_oldposts_key_cb(Gdk.EventKey event){
+        if (event.keyval == 65307)
+            scw3.hide_all();
+        
+        return true;
+    
+    }
+    
+    public bool on_oldposts_button_cb(Gdk.EventButton event){
+        //Load the selected entry
+        if (event.type == Gdk.EventType.2BUTTON_PRESS){
+            TreeSelection sect = entries_list.get_selection();
+            TreeModel model;
+            TreeIter iter;
+            sect.get_selected(out model, out iter);
+            
+            model.get_value(iter,1,out entry);
+            load_post_details();
+            scw3.hide_all();
+        }
+        return false;
+    
+    }
+    
+    public void populate_posts(ValueArray values){
+        // Connected with the server and gets the details from there
+        for(int i=0;i<values.n_values;i++){
+            var hash = (HashTable<string,Value?>)values.get_nth(i);
+            var val = hash.lookup("title");
+            TreeIter iter = {};
+            liststore2.append(out iter);
+            liststore2.set(iter,0,val.get_string());
+            liststore2.set(iter,1,hash);
+        }
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
     }
     
     public bool check_exit(){
@@ -477,10 +591,229 @@ public class LekhoneeMain: GLib.Object {
             publish_bttn.set_label("Publish");
             draft_bttn.set_sensitive(true);
         }
-        get_categories(refresh_bttn);
+        //Not refreshing the categories, if required user will click refresh
+        //get_categories(refresh_bttn);
     }
     
+    public void on_upload_cb(MenuItem i){
+        vbox3.show_all();
+    }
 
+    public void on_cancel_cb(Button b){
+        vbox3.hide_all();
+    }
+    
+    public void on_select_cb(Button b){
+        FileChooserDialog chooser = new Gtk.FileChooserDialog(("Select File"),
+        window, Gtk.FileChooserAction.OPEN, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT, null);
+        
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) {
+            string name = chooser.get_filename();
+            file_txt.set_text(name);
+        }
+        chooser.destroy();
+    }
+    
+    public void on_uploadfile_cb(Button b){
+        File file = File.new_for_path(file_txt.get_text());
+        if (!file.query_exists (null)) 
+            return;
+        string raw_data;
+        size_t l;
+        try{
+            FileUtils.get_contents(file_txt.get_text(),out raw_data, out l);
+        }catch(FileError e){
+            debug(e.message);
+            return;
+        }
+        //string datum = Base64.encode((uchar[])raw_data.to_utf8());
+        bool t;
+        string content_type = g_content_type_guess(file_txt.get_text(),(uchar[])raw_data.to_utf8(),out t);
+        HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
+        Value type = content_type;
+        Value name = GLib.Filename.display_basename(file_txt.get_text());
+        
+        string output;
+        string error;
+        int exit_status;
+        try{
+            Process.spawn_command_line_sync("base64" + " " + file_txt.get_text(), out output, out error, out exit_status);
+        }catch(SpawnError e){
+            debug(e.message);
+            vbox3.hide_all();
+            return;
+        }
+        
+        hash.insert("name",name);
+        hash.insert("type",type);
+        hash.insert("bits",output);
+        //debug(content_type);
+        
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("Uploading file to the server");
+        string mes = wp.upload_file(hash);
+        if (source_flag){
+            TextIter start={};
+            TextIter end={};
+            blog_txt.get_selection_bounds(out start, out end);
+            string text = blog_txt.get_text(start,end,false);
+            blog_txt.delete(start,end);
+            string result = @"<a href=\"$mes\">$text</a>";
+            blog_txt.insert_at_cursor(result,(int)result.size());
+        }
+        else{
+            string result = @"document.execCommand('createLink', true, '$mes');";
+            editor.execute_script(result);  
+        }
+        vbox3.hide_all();
+        Source.remove(vid);
+        progressbar.set_fraction(0.0);
+        progressbar.set_text("");
+        
+        
+    }
+    
+    public void on_publish_cb(Button b){
+        message_post(true);
+        return;
+    }
+    
+    public void on_draft_cb(Button b){
+        message_post(false);
+        return;
+    }
+    
+    public void message_post(bool publish){
+        Value desc;
+        if(source_flag){
+            TextIter start,end;
+            blog_txt.get_bounds(out start, out end);
+            desc = (string)blog_txt.get_text(start, end,false);
+        }else{
+            desc = (string)get_source()[0:-7];
+        }
+
+        Value title = (string)title_entry.get_text();
+        HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
+        string[] tags = tags_entry.get_text().split(",");
+        ValueArray mtags = new ValueArray(1);
+        foreach(string x in tags){
+            mtags.append(x.strip());
+        }
+        ValueArray cats = new ValueArray(1);
+        TreeSelection sect = category_list.get_selection();
+        
+        TreeModel model;
+        TreeIter iter;
+        
+        var slist = sect.get_selected_rows(out model);
+        foreach(var sec in slist){
+            model.get_iter(out iter, sec);
+            Value v = Value(typeof(string));
+            liststore.get_value(iter,0, out v);
+            cats.append(v.get_string());
+        
+        }
+        var comment_box = builder.get_object("comment_box") as CheckButton;
+        Value comments = comment_box.get_active();
+        hash.insert("title",title);
+        hash.insert("description",desc);
+        hash.insert("mt_keywords",mtags);
+        hash.insert("categories",cats);
+        hash.insert("mt_allow_comments",comments);
+        
+        vid = Timeout.add(200,update_bar,Priority.HIGH);
+        progressbar.set_text("posting to the server");
+        string pid;
+        if (edit_flag){
+            string postid;
+            HashTable<string,Value?> oldhash = (HashTable<string,Value?>)entry;
+            Value val = oldhash.lookup("postid");
+            postid= val.get_string();
+            pid = wp.update(postid,hash,publish);
+        }else
+            pid = wp.post(hash,publish);
+        if(pid != "None"){
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK,  pid);
+            dm.run();
+            dm.destroy();
+        }
+        Source.remove(vid);
+        progressbar.set_text("");
+        progressbar.set_fraction(0.0);
+        clear_it();
+        edit_flag = false;
+    }
+    
+    public void open_file_cb(MenuItem i) {
+        string title = "";
+        string desc = "";
+        string tags = "";
+        
+        Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog(("Open Post"),
+        window, Gtk.FileChooserAction.OPEN, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_OPEN, Gtk.ResponseType.ACCEPT, null);
+        chooser.set_do_overwrite_confirmation(true);
+        chooser.set_current_folder(Environment.get_home_dir());
+        var filter = new FileFilter();
+        filter.set_name("Lekhonee files");
+        filter.add_pattern("*.lekhonee");
+        chooser.add_filter(filter);
+        
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) { 
+            string filename = chooser.get_filename();
+            xml_open_file(filename, out title, out desc, out tags);
+        }
+        title_entry.set_text(title);
+        tags_entry.set_text(tags);
+        editor.load_string(desc,"text/html","utf-8","preview");
+        chooser.destroy();
+    }
+    
+    public void save_file_cb(MenuItem i){
+         Gtk.FileChooserDialog chooser = new Gtk.FileChooserDialog(("Save Post"),
+        window, Gtk.FileChooserAction.SAVE, Gtk.STOCK_CANCEL, 
+        Gtk.ResponseType.CANCEL, Gtk.STOCK_SAVE, Gtk.ResponseType.ACCEPT, null);
+        chooser.set_do_overwrite_confirmation(true);
+        chooser.set_current_folder(Environment.get_home_dir());
+        var filter = new FileFilter();
+        filter.set_name("Lekhonee files");
+        filter.add_pattern("*.lekhonee");
+        chooser.add_filter(filter);
+        
+
+        if (chooser.run() == Gtk.ResponseType.ACCEPT) {      
+        
+            string title = title_entry.get_text();
+            string desc;
+            if(source_flag){
+                TextIter start,end;
+                blog_txt.get_bounds(out start, out end);
+                desc = blog_txt.get_text(start, end,false);
+            }else
+                desc = get_source()[0:-7];
+            
+            string tags = tags_entry.get_text();
+            string filename;
+            string? oldname; 
+            oldname = chooser.get_filename();
+            if(oldname != null){
+                filename = (!) oldname;
+                if(!filename.has_suffix(".lekhonee"))
+                    filename = filename + ".lekhonee";
+                
+            }else{
+                chooser.destroy();
+                return;
+            }
+
+            xml_save_file(filename,title,desc,tags);
+        }
+        chooser.destroy();
+    }
+    
+    
     public bool navigation_requested(WebFrame p0, NetworkRequest p1, WebNavigationAction p2, WebPolicyDecision p3) {
         string uri = p1.get_uri();
         if (uri == "preview")
