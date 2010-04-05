@@ -3,7 +3,7 @@ VALAC = valac
 
 SOURCES = LekhoneeMain.vala Wordpress.vala LekhoneeDialogs.vala LekhoneeOperations.vala
  
-PACKAGES =  --pkg libxml-2.0 --pkg gtk+-2.0 --pkg gmodule-2.0 --pkg gtksourceview-2.0 --pkg webkit-1.0 --pkg gio-2.0 --thread
+PACKAGES =  --pkg libxml-2.0 --pkg gtk+-2.0 --pkg gmodule-2.0 --pkg gtksourceview-2.0 --pkg webkit-1.0 --pkg gio-2.0  --pkg gtkspell-2.0 --thread --vapidir vapi
 
 OUTPUTS = lekhonee-gnome
 

@@ -1,3 +1,5 @@
-lekhonee-gnome.glade
-lekhonee-gnome.py
-
+ui/new.ui
+src/LekhoneeMain.vala
+src/LekhoneeDialogs.vala
+src/LekhoneeOperations.vala
+src/Wordpress.vala

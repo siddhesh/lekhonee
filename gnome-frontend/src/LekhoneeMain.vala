@@ -67,7 +67,7 @@ public class LekhoneeMain: GLib.Object {
         wp = new Wordpress();
         wp.password_error.connect(show_error);
         builder = new Builder ();
-        builder.add_from_file ("/home/kdas/code/git/lekhonee/gnome-frontend/new.ui");
+        builder.add_from_file (Config.PKGDATADIR + "/new.ui");
         //builder.connect_signals (null);
         window = builder.get_object ("MainWindow") as Window;
         category_list = builder.get_object("category_list") as TreeView;
@@ -327,7 +327,7 @@ public class LekhoneeMain: GLib.Object {
     public void get_categories(Button b){
         liststore.clear();
         vid = Timeout.add(100,update_bar,Priority.HIGH);
-        progressbar.set_text("Fetching categories from server");
+        progressbar.set_text(_("Fetching categories from server"));
         
         string[] result = wp.get_categories();
         

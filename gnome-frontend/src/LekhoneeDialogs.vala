@@ -86,7 +86,7 @@ public class ConfigDialog: Dialog {
     public signal void config_done(string ss, string uu, string pp, bool aa);
     
     public ConfigDialog() {
-        this.title = "Preferences";
+        this.title = _("Preferences");
         this.border_width = 5;
         set_default_size (350, 150);
         server = "";
