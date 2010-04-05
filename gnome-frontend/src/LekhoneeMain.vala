@@ -478,6 +478,7 @@ public class LekhoneeMain: GLib.Object {
         
         var desc = hash.lookup("description");
         string s_desc = desc.get_string();
+        s_desc.replace("\n","<br>");
         if(source_flag){
             blog_txt.set_text(s_desc,(int)s_desc.size());;        
         }
