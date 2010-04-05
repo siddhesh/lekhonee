@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Lekhonee Gnome
+GenericName=A Wordpress blog client
+Comment=A Wordpress blog client
+Icon=lekhonee-gnome
+TryExec=lekhonee-gnome
+Exec=lekhonee-gnome
+Terminal=false
+Categories=Application;Network;
