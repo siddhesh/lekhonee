@@ -17,6 +17,39 @@ AM_PROG_VALAC([0.7.10])
 AC_PROG_INSTALL
 AC_PROG_INTLTOOL([0.35])
 
+# check for LIBXML2
+pkg_modules="libxml-2.0 >= 2.4.0"
+PKG_CHECK_MODULES(LIBXML2, [$pkg_modules])
+AC_SUBST(LIBXML2_CFLAGS)
+AC_SUBST(LIBXML2_LIBS)
+
+# check for GTKSOURCEVIEW
+pkg_modules="gtksourceview-2.0"
+PKG_CHECK_MODULES(GTKSOURCEVIEW, [$pkg_modules])
+AC_SUBST(GTKSOURCEVIEW_CFLAGS)
+AC_SUBST(GTKSOURCEVIEW_LIBS)
+
+# check for WEBKIT
+pkg_modules="webkit-1.0 >= 1.0"
+PKG_CHECK_MODULES(WEBKIT, [$pkg_modules])
+AC_SUBST(WEBKIT_CFLAGS)
+AC_SUBST(WEBKIT_LIBS)
+
+# check for WEBKIT
+pkg_modules="gtkspell-2.0 >= 2.0"
+PKG_CHECK_MODULES(GTKSPELL, [$pkg_modules])
+AC_SUBST(GTKSPELL_CFLAGS)
+AC_SUBST(GTKSPELL_LIBS)
+
+# check for Libsoup
+pkg_modules="libsoup-2.4 >= 2.4"
+PKG_CHECK_MODULES(LIBSOUP, [$pkg_modules])
+AC_SUBST(LIBSOUP_CFLAGS)
+AC_SUBST(LIBSOUP_LIBS)
+
+
+
+
 pkg_modules="gtk+-2.0 >= 2.14.0"
 LEKHONEE_PACKAGES="--pkg libxml-2.0 --pkg gtk+-2.0 --pkg gmodule-2.0 --pkg gtksourceview-2.0 --pkg webkit-1.0 --pkg gio-2.0 --thread "
 LEKHONEE_CFLAGS="`pkg-config --cflags libxml-2.0 gtk+-2.0 gmodule-2.0 gtksourceview-2.0 webkit-1.0 gio-2.0 gtkspell-2.0`"
