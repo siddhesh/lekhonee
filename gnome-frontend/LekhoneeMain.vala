@@ -248,7 +248,7 @@ public class LekhoneeMain: GLib.Object {
         //For spell check
         spell_box = builder.get_object("spell_box") as CheckButton;
         spell_box.toggled.connect(on_spell_cb);
-        spell_box.set_active(false);
+        spell_box.set_sensitive(false);
 
         refresh_bttn.clicked.connect(get_categories);
         show_config_dialog(p_menuitem);
@@ -307,7 +307,7 @@ public class LekhoneeMain: GLib.Object {
             scw.show_all();
             source_flag = true;
             htmltags.set_sensitive(true);
-            spell_box.set_active(true);
+            spell_box.set_sensitive(true);
         }
         else{
             scw.hide_all();
@@ -320,7 +320,7 @@ public class LekhoneeMain: GLib.Object {
             editor.load_string(html,"text/html","utf-8","preview");
             source_flag = false;
             htmltags.set_sensitive(false);
-            spell_box.set_active(false);
+            spell_box.set_sensitive(false);
         }
     }
     
