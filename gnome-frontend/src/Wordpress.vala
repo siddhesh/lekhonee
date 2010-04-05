@@ -124,7 +124,8 @@ public class Wordpress: Object {
 ;
         }
         v3 = (ValueArray)v;
-        get_old_posts(v3);
+        if (v3 != null)
+            get_old_posts(v3);
         //return v3;
         //var hash = (HashTable<string,Value?>)v3.get_nth(0);
 
