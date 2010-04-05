@@ -301,7 +301,7 @@ public class LekhoneeMain: GLib.Object {
     public void change_view(ToggleButton button){
         if (button.get_active()) {
             string blog = get_source()[0:-7];
-            
+            blog = blog.replace("<br>","\n");
             blog_txt.set_text(blog,(int)blog.size());
             scw2.hide_all();
             scw.show_all();
@@ -478,13 +478,15 @@ public class LekhoneeMain: GLib.Object {
         
         var desc = hash.lookup("description");
         string s_desc = desc.get_string();
-        s_desc.replace("\n","<br>");
+        
         if(source_flag){
             blog_txt.set_text(s_desc,(int)s_desc.size());;        
         }
-        else
-            editor.load_string(s_desc,"text/html","utf-8","preview");
-            
+        else {
+            s_desc = s_desc.replace("\n","<br>");
+            string html = @"<html><title></title><body>$s_desc</body</html>";
+            editor.load_string(html,"text/html","utf-8","preview");
+        }     
         var tags = hash.lookup("mt_keywords");
         string s_tags = tags.get_string();
         tags_entry.set_text(s_tags);
