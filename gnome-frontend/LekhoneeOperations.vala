@@ -60,10 +60,6 @@ public void xml_open_file(string path, out string title, out string desc, out st
                 desc = node_content;
             if(node_name == "tags")
                 tags = node_content;                
-
-            debug(node_name);
-            debug(node_content);
-
         }
         
         

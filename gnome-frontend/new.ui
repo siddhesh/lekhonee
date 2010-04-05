@@ -451,7 +451,7 @@
                   <object class="GtkHBox" id="hbox6">
                     <property name="visible">True</property>
                     <child>
-                      <object class="GtkCheckButton" id="spel_check_box">
+                      <object class="GtkCheckButton" id="spell_box">
                         <property name="label">gtk-spell-check</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
