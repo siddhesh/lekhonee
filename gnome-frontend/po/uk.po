@@ -7,20 +7,19 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-06 14:36+0530\n"
-"PO-Revision-Date: 2010-03-16 21:34+0200\n"
+"PO-Revision-Date: 2010-04-06 21:06+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../ui/new.ui.h:1
-#, fuzzy
 msgid "Add Category"
-msgstr "Додати категорії"
+msgstr "Додати категорію"
 
 #: ../ui/new.ui.h:2
 msgid "Cancel"
@@ -31,32 +30,28 @@ msgid "Comments Allowed"
 msgstr "Дозволені коментарі"
 
 #: ../ui/new.ui.h:4
-#, fuzzy
 msgid "Draft"
-msgstr "Зберегти як чернетку"
+msgstr "Чернетка"
 
 #: ../ui/new.ui.h:5
 msgid "Edit HTML"
-msgstr ""
+msgstr "Редагувати HTML"
 
 #: ../ui/new.ui.h:6
-#, fuzzy
 msgid "HTML _Tags"
 msgstr "_Теґи HTML"
 
 #: ../ui/new.ui.h:7
-#, fuzzy
 msgid "Insert Link"
-msgstr "Вставити зображення"
+msgstr "Вставити посилання"
 
 #: ../ui/new.ui.h:8
-#, fuzzy
 msgid "Insert an Image"
 msgstr "Вставити зображення"
 
 #: ../ui/new.ui.h:9
 msgid "Insert unordered list"
-msgstr ""
+msgstr "Вставити невпорядкований список"
 
 #: ../ui/new.ui.h:10
 msgid "Last Post"
@@ -72,11 +67,11 @@ msgstr "Оприлюднити"
 
 #: ../ui/new.ui.h:13
 msgid "Publish the post in the server"
-msgstr ""
+msgstr "Оприлюднити допис на сервері"
 
 #: ../ui/new.ui.h:14
 msgid "Save the post as draft in the server"
-msgstr ""
+msgstr "Зберегти допис як чернетку на сервері"
 
 #: ../ui/new.ui.h:15
 msgid "Select File to Upload"
@@ -104,47 +99,43 @@ msgstr "_Довідка"
 
 #: ../ui/new.ui.h:21
 msgid "blockquote"
-msgstr ""
+msgstr "blockquote"
 
 #: ../ui/new.ui.h:22
 msgid "code"
-msgstr ""
+msgstr "code"
 
 #: ../ui/new.ui.h:23
 msgid "pre"
-msgstr ""
+msgstr "pre"
 
 #: ../ui/new.ui.h:24
 msgid "toolbutton1"
-msgstr ""
+msgstr "toolbutton1"
 
 #: ../ui/new.ui.h:25
-#, fuzzy
 msgid "upload"
-msgstr "Вивантажити"
+msgstr "вивантажити"
 
 #: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Категорії"
 
 #: ../src/LekhoneeMain.vala:116
-#, fuzzy
 msgid "Post Title"
-msgstr "Заголовки допису"
+msgstr "Заголовок допису"
 
 #: ../src/LekhoneeMain.vala:342
 msgid "Fetching categories from server"
-msgstr ""
+msgstr "Отримання списку категорій з сервера"
 
 #: ../src/LekhoneeMain.vala:389
-#, fuzzy
 msgid "Insert URL of the image"
-msgstr "Вставити зображення"
+msgstr "Вставити адресу зображення"
 
 #: ../src/LekhoneeMain.vala:411
-#, fuzzy
 msgid "Insert URL"
-msgstr "Вставити зображення"
+msgstr "Вставити адресу"
 
 #: ../src/LekhoneeMain.vala:521
 msgid "Update"
@@ -152,27 +143,29 @@ msgstr "Оновити"
 
 #: ../src/LekhoneeMain.vala:530
 msgid "Fetching posts from server"
-msgstr ""
+msgstr "Отримання дописів з сервера"
 
 #: ../src/LekhoneeMain.vala:602
 msgid "Are you sure to clear the currect post?"
-msgstr ""
+msgstr "Ви справді бажаєте спорожнити поточний допис?"
 
 #: ../src/LekhoneeMain.vala:690
 msgid "Uploading file to the server"
-msgstr ""
+msgstr "Вивантаження файла на сервер"
 
 #: ../src/LekhoneeMain.vala:770
 msgid "posting to the server"
-msgstr ""
+msgstr "надсилання допису на сервер"
 
 #: ../src/LekhoneeMain.vala:870
 msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
 msgstr ""
+"Ви справді бажаєте завершити роботу lekhonee-gnome без надсилання "
+"поточного допису?"
 
 #: ../src/LekhoneeDialogs.vala:89
 msgid "Preferences"
-msgstr ""
+msgstr "Параметри"
 
 #~ msgid ""
 #~ "-- Not Set --\n"
