@@ -18,9 +18,8 @@ msgstr ""
 "X-Poedit-Country: ARGENTINA\n"
 
 #: ../ui/new.ui.h:1
-#, fuzzy
 msgid "Add Category"
-msgstr "Agregar Categorías"
+msgstr "Agregar categoría"
 
 #: ../ui/new.ui.h:2
 msgid "Cancel"
@@ -31,32 +30,28 @@ msgid "Comments Allowed"
 msgstr "Comentarios Permitido"
 
 #: ../ui/new.ui.h:4
-#, fuzzy
 msgid "Draft"
-msgstr "Guardar Borrador"
+msgstr "Borrador"
 
 #: ../ui/new.ui.h:5
 msgid "Edit HTML"
-msgstr ""
+msgstr "Editar HTML"
 
 #: ../ui/new.ui.h:6
-#, fuzzy
 msgid "HTML _Tags"
-msgstr "Etiquetas _Html"
+msgstr "Etiquetas _HTML"
 
 #: ../ui/new.ui.h:7
-#, fuzzy
 msgid "Insert Link"
-msgstr "Insertar Imagen"
+msgstr "Insertar enlace"
 
 #: ../ui/new.ui.h:8
-#, fuzzy
 msgid "Insert an Image"
-msgstr "Insertar Imagen"
+msgstr "Insertar una imagen"
 
 #: ../ui/new.ui.h:9
 msgid "Insert unordered list"
-msgstr ""
+msgstr "Insertar lista no ordenada"
 
 #: ../ui/new.ui.h:10
 msgid "Last Post"
@@ -72,11 +67,11 @@ msgstr "Publicar"
 
 #: ../ui/new.ui.h:13
 msgid "Publish the post in the server"
-msgstr ""
+msgstr "Publicar el mensaje en el servidor"
 
 #: ../ui/new.ui.h:14
 msgid "Save the post as draft in the server"
-msgstr ""
+msgstr "Guardar el mensaje como borrador en el servidor"
 
 #: ../ui/new.ui.h:15
 msgid "Select File to Upload"
@@ -104,47 +99,43 @@ msgstr "Ay_uda"
 
 #: ../ui/new.ui.h:21
 msgid "blockquote"
-msgstr ""
+msgstr "blockquote"
 
 #: ../ui/new.ui.h:22
 msgid "code"
-msgstr ""
+msgstr "code"
 
 #: ../ui/new.ui.h:23
 msgid "pre"
-msgstr ""
+msgstr "pre"
 
 #: ../ui/new.ui.h:24
 msgid "toolbutton1"
-msgstr ""
+msgstr "toolbutton1"
 
 #: ../ui/new.ui.h:25
-#, fuzzy
 msgid "upload"
-msgstr "Subir"
+msgstr "subir"
 
 #: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Categorías"
 
 #: ../src/LekhoneeMain.vala:116
-#, fuzzy
 msgid "Post Title"
-msgstr "Publicar Títulos"
+msgstr "Título del mensaje"
 
 #: ../src/LekhoneeMain.vala:342
 msgid "Fetching categories from server"
-msgstr ""
+msgstr "Obteniendo categorías del servidor "
 
 #: ../src/LekhoneeMain.vala:389
-#, fuzzy
 msgid "Insert URL of the image"
-msgstr "Insertar Imagen"
+msgstr "Insertar URL de la imagen"
 
 #: ../src/LekhoneeMain.vala:411
-#, fuzzy
 msgid "Insert URL"
-msgstr "Insertar Imagen"
+msgstr "Insertar URL"
 
 #: ../src/LekhoneeMain.vala:521
 msgid "Update"
@@ -152,27 +143,27 @@ msgstr "Actualizar"
 
 #: ../src/LekhoneeMain.vala:530
 msgid "Fetching posts from server"
-msgstr ""
+msgstr "Obteniendo mensajes del servidor"
 
 #: ../src/LekhoneeMain.vala:602
 msgid "Are you sure to clear the currect post?"
-msgstr ""
+msgstr "¿Está seguro de querer limpiar el mensaje actual?"
 
 #: ../src/LekhoneeMain.vala:690
 msgid "Uploading file to the server"
-msgstr ""
+msgstr "Subiendo archivo al servidor"
 
 #: ../src/LekhoneeMain.vala:770
 msgid "posting to the server"
-msgstr ""
+msgstr "enviando al servidor"
 
 #: ../src/LekhoneeMain.vala:870
 msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
-msgstr ""
+msgstr "¿Está seguro de querer finalizar lekhonee-gnome sin enviar el mensaje actual?"
 
 #: ../src/LekhoneeDialogs.vala:89
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #~ msgid ""
 #~ "-- Not Set --\n"
@@ -196,93 +187,64 @@ msgstr ""
 #~ "Abajo Absoluto\n"
 #~ "Izquierda\n"
 #~ "Derecha"
-
 #~ msgid "Alignment"
 #~ msgstr "Alineación"
-
 #~ msgid "Bold"
 #~ msgstr "Negrita"
-
 #~ msgid "Configure"
 #~ msgstr "Configurar"
-
 #~ msgid "Dimentions\n"
 #~ msgstr "Dimenciones\n"
-
 #~ msgid "For Future Use"
 #~ msgstr "Para uso futuro"
-
 #~ msgid "Image"
 #~ msgstr "Imagen"
-
 #~ msgid "Image Description"
 #~ msgstr "Descripción de la Imagen"
-
 #~ msgid "Image URL"
 #~ msgstr "URL de la Imágen"
-
 #~ msgid "Link"
 #~ msgstr "Enlace"
-
 #~ msgid "Password"
 #~ msgstr "Contraseña"
-
 #~ msgid "Refresh"
 #~ msgstr "Actualizar"
-
 #~ msgid "Server"
 #~ msgstr "Servidor"
-
 #~ msgid "Spell Check"
 #~ msgstr "Comprobar ortografía"
-
 #~ msgid "Tags"
 #~ msgstr "Etiquetas"
-
 #~ msgid "Tags separated by commas"
 #~ msgstr "Etiquetas separadas por comas"
-
 #~ msgid "Underline"
 #~ msgstr "Subrayado"
-
 #~ msgid "Username"
 #~ msgstr "Nombre de Usuario"
-
 #~ msgid "View Source"
 #~ msgstr "Ver fuente"
-
 #~ msgid "Wordpress"
 #~ msgstr "Wordpress"
-
 #~ msgid "X"
 #~ msgstr "X"
-
 #~ msgid "_About"
 #~ msgstr "_Acerca de"
-
 #~ msgid "http://yourserver.com/xmlrpc.php"
 #~ msgstr "http://suservidor.com/xmlrpc.php"
-
 #~ msgid "italic"
 #~ msgstr "itálica"
-
 #~ msgid "lekhonee"
 #~ msgstr "lekhonee"
-
 #~ msgid "lekhonee msg"
 #~ msgstr "msj de lekhonee"
-
 #~ msgid "(c) 2009 Kushal Das"
 #~ msgstr "(c) 2009 Kushal Das"
-
 #~ msgid "Save Blog"
 #~ msgstr "Guardar Blog"
-
 #~ msgid "Lekhonee files"
 #~ msgstr "Archivos de Lekhonee"
-
 #~ msgid "Open Blog"
 #~ msgstr "Abrir Blog"
-
 #~ msgid "Preview"
 #~ msgstr "Vista previa"
+
