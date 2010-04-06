@@ -112,7 +112,10 @@ public class ConfigDialog: Dialog {
         
         var link_label = new Label.with_mnemonic ("Server");
         server_entry = new Entry();
-        server_entry.set_text(s);
+        if(s!="")
+            server_entry.set_text(s);
+        else
+            server_entry.set_text("http://userserver.org/xmlrpc.php");
         link_label.mnemonic_widget = server_entry;
         
         var hbox = new HBox (false, 20);
