@@ -123,6 +123,7 @@ public class LekhoneeMain: GLib.Object {
         //Show/hide correct things
         window.show_all ();
         scw.hide_all();
+        progressbar.hide_all();
 
         //For the upload file area in the UI
         vbox3 = builder.get_object("vbox3") as VBox;
@@ -338,6 +339,7 @@ public class LekhoneeMain: GLib.Object {
     
     public void get_categories(Button b){
         liststore.clear();
+        progressbar.show_all();
         vid = Timeout.add(100,update_bar,Priority.HIGH);
         progressbar.set_text(_("Fetching categories from server"));
         
@@ -352,6 +354,7 @@ public class LekhoneeMain: GLib.Object {
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.set_text("");
+        progressbar.hide_all();
         
     }
     
@@ -468,6 +471,7 @@ public class LekhoneeMain: GLib.Object {
     
     public void on_last_entry_cb(MenuItem i){
     
+        progressbar.show_all();
         vid = Timeout.add(100,update_bar,Priority.HIGH);
         progressbar.set_text("Fetching the last post from server");
         
@@ -476,6 +480,7 @@ public class LekhoneeMain: GLib.Object {
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.set_text("");
+        progressbar.hide_all();
         load_post_details();
     }
     
@@ -526,14 +531,17 @@ public class LekhoneeMain: GLib.Object {
     public void on_old_posts_menuitem_cb(MenuItem i){
         //Gets the details from the server
         liststore2.clear();
+        progressbar.show_all();
         vid = Timeout.add(200,update_bar,Priority.HIGH);
         progressbar.set_text(_("Fetching posts from server"));
-        wp.get_posts();
-        
-        scw3.show_all();
-        entries_list.grab_focus();
+        bool ret = wp.get_posts();
+        if(ret){
+            scw3.show_all();
+            entries_list.grab_focus();
+        }
         Source.remove(vid);
         progressbar.set_fraction(0.0);
+        progressbar.hide_all();
         
     }
     
@@ -579,6 +587,7 @@ public class LekhoneeMain: GLib.Object {
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.set_text("");
+        progressbar.hide_all();
     }
     
     public bool check_exit(){
@@ -686,6 +695,7 @@ public class LekhoneeMain: GLib.Object {
         hash.insert("bits",output);
         //debug(content_type);
         
+        progressbar.show_all();
         vid = Timeout.add(200,update_bar,Priority.HIGH);
         progressbar.set_text(_("Uploading file to the server"));
         string mes = wp.upload_file(hash);
@@ -706,6 +716,7 @@ public class LekhoneeMain: GLib.Object {
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.set_text("");
+        progressbar.hide_all();
         
         
     }
@@ -766,6 +777,7 @@ public class LekhoneeMain: GLib.Object {
         hash.insert("categories",cats);
         hash.insert("mt_allow_comments",comments);
         
+        progressbar.show_all();
         vid = Timeout.add(200,update_bar,Priority.HIGH);
         progressbar.set_text(_("posting to the server"));
         string pid;
@@ -785,6 +797,7 @@ public class LekhoneeMain: GLib.Object {
         Source.remove(vid);
         progressbar.set_text("");
         progressbar.set_fraction(0.0);
+        progressbar.hide_all();
         clear_it();
         edit_flag = false;
     }
