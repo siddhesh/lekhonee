@@ -105,7 +105,7 @@ public class LekhoneeMain: GLib.Object {
         
         liststore = new ListStore(1, typeof(string));
         category_list = builder.get_object("category_list") as TreeView;
-        category_list.insert_column_with_attributes (-1, "Categories", new CellRendererText (), "text", 0);
+        category_list.insert_column_with_attributes (-1, _("Categories"), new CellRendererText (), "text", 0);
         category_list.set_model(liststore);
         var selection = category_list.get_selection();
         selection.set_mode(Gtk.SelectionMode.MULTIPLE);
@@ -113,7 +113,7 @@ public class LekhoneeMain: GLib.Object {
         
         liststore2 = new ListStore(2, typeof(string),typeof(HashTable));
         entries_list = builder.get_object("entries_list") as TreeView;
-        entries_list.insert_column_with_attributes (-1, "Post Title", new CellRendererText (), "text", 0);
+        entries_list.insert_column_with_attributes (-1, _("Post Title"), new CellRendererText (), "text", 0);
         entries_list.set_model(liststore2);
         var selection2 = entries_list.get_selection();
         selection2.set_mode(Gtk.SelectionMode.SINGLE);
@@ -386,7 +386,7 @@ public class LekhoneeMain: GLib.Object {
     }
     
     public void image_bttn_cb(ToolButton b){
-        GenericDialog d = new GenericDialog("Insert URL of the image");
+        GenericDialog d = new GenericDialog(_("Insert URL of the image"));
         d.show_all();
         d.send_link.connect(insert_image);
     }
@@ -408,7 +408,7 @@ public class LekhoneeMain: GLib.Object {
     }
 
     public void link_bttn_cb(ToolButton b){
-        GenericDialog d = new GenericDialog("Insert URL");
+        GenericDialog d = new GenericDialog(_("Insert URL"));
         d.show_all();
         d.send_link.connect(insert_link);
     }
@@ -518,7 +518,7 @@ public class LekhoneeMain: GLib.Object {
         }
         edit_flag = true;
         draft_bttn.set_sensitive(false);
-        publish_bttn.set_label("Update");
+        publish_bttn.set_label(_("Update"));
         
         
     }
@@ -527,7 +527,7 @@ public class LekhoneeMain: GLib.Object {
         //Gets the details from the server
         liststore2.clear();
         vid = Timeout.add(200,update_bar,Priority.HIGH);
-        progressbar.set_text("Fetching posts from server");
+        progressbar.set_text(_("Fetching posts from server"));
         wp.get_posts();
         
         scw3.show_all();
@@ -599,7 +599,7 @@ public class LekhoneeMain: GLib.Object {
 
     public void on_new_cb(MenuItem i){
         if(check_exit()){
-            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to clear the currect post?");
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, _("Are you sure to clear the currect post?"));
             dm.response.connect (on_newcb_response);
             dm.run();
             dm.destroy();
@@ -687,7 +687,7 @@ public class LekhoneeMain: GLib.Object {
         //debug(content_type);
         
         vid = Timeout.add(200,update_bar,Priority.HIGH);
-        progressbar.set_text("Uploading file to the server");
+        progressbar.set_text(_("Uploading file to the server"));
         string mes = wp.upload_file(hash);
         if (source_flag){
             TextIter start={};
@@ -767,7 +767,7 @@ public class LekhoneeMain: GLib.Object {
         hash.insert("mt_allow_comments",comments);
         
         vid = Timeout.add(200,update_bar,Priority.HIGH);
-        progressbar.set_text("posting to the server");
+        progressbar.set_text(_("posting to the server"));
         string pid;
         if (edit_flag){
             string postid;
@@ -867,7 +867,7 @@ public class LekhoneeMain: GLib.Object {
 
     public void quit(Gtk.Object o){
         if(check_exit()){
-            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, "Are you sure to quit lekhonee-gnome without posting the current post?");
+            MessageDialog dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.INFO, Gtk.ButtonsType.OK_CANCEL, _("Are you sure to quit lekhonee-gnome without posting the current post?"));
             dm.response.connect (on_quit_response);
             dm.run();
             dm.destroy();
