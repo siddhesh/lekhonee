@@ -537,10 +537,10 @@ public class LekhoneeMain: GLib.Object {
         vid = Timeout.add(200,update_bar,Priority.HIGH);
         progressbar.set_text(_("Fetching posts from server"));
         bool ret = wp.get_posts();
-        if(ret){
+        
             scw3.show_all();
             entries_list.grab_focus();
-        }
+        
         Source.remove(vid);
         progressbar.set_fraction(0.0);
         progressbar.hide_all();
