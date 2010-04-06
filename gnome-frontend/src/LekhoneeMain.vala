@@ -273,6 +273,8 @@ public class LekhoneeMain: GLib.Object {
         var dm = new MessageDialog(window, Gtk.DialogFlags.MODAL, Gtk.MessageType.ERROR, Gtk.ButtonsType.OK, message);
         dm.run();
         dm.destroy();
+        show_config_dialog(htmltags);
+        
     }
 
     public void on_action(ToolButton button){

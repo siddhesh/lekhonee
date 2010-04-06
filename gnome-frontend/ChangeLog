@@ -1,5 +1,9 @@
 2010-04-06  Kushal Das <kushal@fedoraproject.org>
 
+  * gnome-frontend/src/LekhoneeDialogs.vala: Show a default server address
+
+  * gnome-frontend/ChangeLog: Changelog updated
+
   * gnome-frontend/src/LekhoneeMain.vala: show/hide progressbar as required and
   also checking return value from wp.get_posts
 
