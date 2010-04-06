@@ -168,39 +168,3 @@ public class Wordpress: Object {
 
 
 
-//public class Mxml: Object {
-
-    
-//    public static int main(string[] args){
-        //var message = xmlrpc_request_new("http://kushaldas.in/xmlrpc.php","wp.getCategories",typeof(int),1,typeof(string),"kd",typeof(string),"babma");
-        //var session = new SessionSync();
-        //session.send_message(message);
-        
-        //string data = message.response_body.flatten().data;
-        
-        //Value v = Value(typeof(string[]));
-        //xmlrpc_parse_method_response(data,-1,v);
-        //stdout.printf(data);
-//        var wp = new Wordpress();
-        
-        //wp.get_categories();
-        //wp.get_last_post();
-//        
-        //HashTable<string,Value?> hash = new HashTable<string, Value?>.full (str_hash, str_equal, g_free, g_free);
-        //Value title = "A title";
-        //Value desc = "A big test of description";
-        //hash.insert("title",title);
-        //hash.insert("description",desc);
-        //ValueArray mtags = new ValueArray(1);
-        //mtags.append("India");
-        //mtags.append("Vala");
-        //hash.insert("mt_keywords",mtags);
-        //Value v = true;
-        //hash.insert("mt_allow_comments",v);
-        //debug(wp.post(hash, true));
-//        wp.add_category("Vala");
-    
-//        return 0;
-//    }
-
-//}
