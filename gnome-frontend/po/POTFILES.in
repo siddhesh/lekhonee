@@ -1,4 +1,5 @@
-ui/new.ui
+[encoding: utf-8]
+[type: gettext/glade]ui/new.ui
 src/LekhoneeMain.vala
 src/LekhoneeDialogs.vala
 src/LekhoneeOperations.vala

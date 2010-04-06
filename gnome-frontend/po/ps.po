@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lekhonee\n"
-"Report-Msgid-Bugs-To: zabeehkhan@gmail.com\n"
-"POT-Creation-Date: 2009-09-23 13:48+0530\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-06 14:36+0530\n"
 "PO-Revision-Date: 2009-09-25 09:17+0500\n"
 "Last-Translator: Zabeeh Khan <zabeehkhan@gmail.com>\n"
 "Language-Team: Pashto <pathanisation@googlegroups.com>\n"
@@ -18,212 +18,246 @@ msgstr ""
 "X-Poedit-Country: PAKISTAN\n"
 "X-Language: ps_AF\n"
 
-#: ../lekhonee-gnome.glade.h:1
+#: ../ui/new.ui.h:1
 #, fuzzy
-msgid ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"Right"
-msgstr ""
-
-#: ../lekhonee-gnome.glade.h:11
-msgid "Add Categories"
+msgid "Add Category"
 msgstr "ډلې ډېرول"
 
-#: ../lekhonee-gnome.glade.h:12
-msgid "Alignment"
-msgstr "لورموندنه"
-
-#: ../lekhonee-gnome.glade.h:13
-msgid "Bold"
-msgstr "ډبل"
-
-#: ../lekhonee-gnome.glade.h:14
+#: ../ui/new.ui.h:2
 msgid "Cancel"
 msgstr "بندول"
 
-#: ../lekhonee-gnome.glade.h:15
+#: ../ui/new.ui.h:3
 msgid "Comments Allowed"
 msgstr "د څرګندونو د ليکلو اجازه شته"
 
-#: ../lekhonee-gnome.glade.h:16
-msgid "Configure"
-msgstr "سازول"
+#: ../ui/new.ui.h:4
+#, fuzzy
+msgid "Draft"
+msgstr "ليکنه ساتل"
 
-#: ../lekhonee-gnome.glade.h:17
-msgid "Dimentions\n"
-msgstr "ډډې\n"
+#: ../ui/new.ui.h:5
+msgid "Edit HTML"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:19
-msgid "For Future Use"
-msgstr "د وروسته کارولو دپاره"
+#: ../ui/new.ui.h:6
+#, fuzzy
+msgid "HTML _Tags"
+msgstr "نښې Html_"
 
-#: ../lekhonee-gnome.glade.h:20
-msgid "Image"
-msgstr "انځور"
-
-#: ../lekhonee-gnome.glade.h:21
-msgid "Image Description"
-msgstr "د انځور سپړاوی"
-
-#: ../lekhonee-gnome.glade.h:22
-msgid "Image URL"
-msgstr "URLد انځور"
-
-#: ../lekhonee-gnome.glade.h:23
-msgid "Insert Image"
+#: ../ui/new.ui.h:7
+#, fuzzy
+msgid "Insert Link"
 msgstr "انځور ننويستل"
 
-#: ../lekhonee-gnome.glade.h:24
+#: ../ui/new.ui.h:8
+#, fuzzy
+msgid "Insert an Image"
+msgstr "انځور ننويستل"
+
+#: ../ui/new.ui.h:9
+msgid "Insert unordered list"
+msgstr ""
+
+#: ../ui/new.ui.h:10
 msgid "Last Post"
 msgstr "وروستۍ ليکنه"
 
-#: ../lekhonee-gnome.glade.h:25
-msgid "Link"
-msgstr "تړنه"
-
-#: ../lekhonee-gnome.glade.h:26
+#: ../ui/new.ui.h:11
 msgid "Old Posts"
 msgstr "زړې ليکنې"
 
-#: ../lekhonee-gnome.glade.h:27
-msgid "Password"
-msgstr "تېرنويې"
-
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "مخکوت"
-
-#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:607
+#: ../ui/new.ui.h:12
 msgid "Publish"
 msgstr "خپرول"
 
-#: ../lekhonee-gnome.glade.h:30
-msgid "Refresh"
-msgstr "تاندول"
+#: ../ui/new.ui.h:13
+msgid "Publish the post in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:31
-msgid "Save Draft"
-msgstr "ليکنه ساتل"
+#: ../ui/new.ui.h:14
+msgid "Save the post as draft in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../ui/new.ui.h:15
 msgid "Select File to Upload"
 msgstr "د ورلېښلو دپاره دوتنه وټاکﺉ"
 
-#: ../lekhonee-gnome.glade.h:33
-msgid "Server"
-msgstr "پالنګر"
-
-#: ../lekhonee-gnome.glade.h:34
-msgid "Spell Check"
-msgstr "لیکدود کتل"
-
-#: ../lekhonee-gnome.glade.h:35
-msgid "Tags"
-msgstr "نښې"
-
-#: ../lekhonee-gnome.glade.h:36
-msgid "Tags separated by commas"
-msgstr "نښې په ويرګول سره بېليږي"
-
-#: ../lekhonee-gnome.glade.h:37
+#: ../ui/new.ui.h:16
 msgid "Title"
 msgstr "سرليک"
 
-#: ../lekhonee-gnome.glade.h:38
-msgid "Underline"
-msgstr "لاندکرښه"
-
-#: ../lekhonee-gnome.glade.h:39
-msgid "Upload"
-msgstr "ورلېښل"
-
-#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+#: ../ui/new.ui.h:17
 msgid "Upload File"
 msgstr "دوتنه ورلېښل"
 
-#: ../lekhonee-gnome.glade.h:41
-msgid "Username"
-msgstr "کاروونکي نوم"
-
-#: ../lekhonee-gnome.glade.h:42
-msgid "Wordpress"
-msgstr "ورډپرېس"
-
-#: ../lekhonee-gnome.glade.h:43
-msgid "X"
-msgstr "X"
-
-#: ../lekhonee-gnome.glade.h:44
-msgid "_About"
-msgstr "په اړه_"
-
-#: ../lekhonee-gnome.glade.h:45
+#: ../ui/new.ui.h:18
 msgid "_Edit"
 msgstr "سمون_"
 
-#: ../lekhonee-gnome.glade.h:46
+#: ../ui/new.ui.h:19
 msgid "_File"
 msgstr "دوتنه_"
 
-#: ../lekhonee-gnome.glade.h:47
+#: ../ui/new.ui.h:20
 msgid "_Help"
 msgstr "مرسته_"
 
-#: ../lekhonee-gnome.glade.h:48
-msgid "_Html Tags"
-msgstr "نښې Html_"
+#: ../ui/new.ui.h:21
+msgid "blockquote"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:49
-msgid "http://yourserver.com/xmlrpc.php"
-msgstr "http://yourserver.com/xmlrpc.php"
+#: ../ui/new.ui.h:22
+msgid "code"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:50
-msgid "italic"
-msgstr "کوږ"
+#: ../ui/new.ui.h:23
+msgid "pre"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:51
-msgid "lekhonee"
-msgstr "ليکوني"
+#: ../ui/new.ui.h:24
+msgid "toolbutton1"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:52
-msgid "lekhonee msg"
-msgstr "ليکوني استوزه"
+#: ../ui/new.ui.h:25
+#, fuzzy
+msgid "upload"
+msgstr "ورلېښل"
 
-#: ../lekhonee-gnome.py:111
+#: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "ډلې"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
-#. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
-msgid "Post Titles"
+#: ../src/LekhoneeMain.vala:116
+#, fuzzy
+msgid "Post Title"
 msgstr "د ليکنې سرليکونه"
 
-#: ../lekhonee-gnome.py:188
-msgid "(c) 2009 Kushal Das"
-msgstr "چاپرښتې ۲۰۰۹ - کوشال داس"
+#: ../src/LekhoneeMain.vala:342
+msgid "Fetching categories from server"
+msgstr ""
 
-#: ../lekhonee-gnome.py:267
-msgid "Save Blog"
-msgstr "بلاګ ساتل"
+#: ../src/LekhoneeMain.vala:389
+#, fuzzy
+msgid "Insert URL of the image"
+msgstr "انځور ننويستل"
 
-#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
-msgid "Lekhonee files"
-msgstr "د ليکوني دوتنې"
+#: ../src/LekhoneeMain.vala:411
+#, fuzzy
+msgid "Insert URL"
+msgstr "انځور ننويستل"
 
-#: ../lekhonee-gnome.py:295
-msgid "Open Blog"
-msgstr "بلاګ پرانيستل"
-
-#: ../lekhonee-gnome.py:368
+#: ../src/LekhoneeMain.vala:521
 msgid "Update"
 msgstr "اوسمهالول"
+
+#: ../src/LekhoneeMain.vala:530
+msgid "Fetching posts from server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:602
+msgid "Are you sure to clear the currect post?"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:690
+msgid "Uploading file to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:770
+msgid "posting to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:870
+msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
+msgstr ""
+
+#: ../src/LekhoneeDialogs.vala:89
+msgid "Preferences"
+msgstr ""
+
+#~ msgid "Alignment"
+#~ msgstr "لورموندنه"
+
+#~ msgid "Bold"
+#~ msgstr "ډبل"
+
+#~ msgid "Configure"
+#~ msgstr "سازول"
+
+#~ msgid "Dimentions\n"
+#~ msgstr "ډډې\n"
+
+#~ msgid "For Future Use"
+#~ msgstr "د وروسته کارولو دپاره"
+
+#~ msgid "Image"
+#~ msgstr "انځور"
+
+#~ msgid "Image Description"
+#~ msgstr "د انځور سپړاوی"
+
+#~ msgid "Image URL"
+#~ msgstr "URLد انځور"
+
+#~ msgid "Link"
+#~ msgstr "تړنه"
+
+#~ msgid "Password"
+#~ msgstr "تېرنويې"
+
+#~ msgid "Preview"
+#~ msgstr "مخکوت"
+
+#~ msgid "Refresh"
+#~ msgstr "تاندول"
+
+#~ msgid "Server"
+#~ msgstr "پالنګر"
+
+#~ msgid "Spell Check"
+#~ msgstr "لیکدود کتل"
+
+#~ msgid "Tags"
+#~ msgstr "نښې"
+
+#~ msgid "Tags separated by commas"
+#~ msgstr "نښې په ويرګول سره بېليږي"
+
+#~ msgid "Underline"
+#~ msgstr "لاندکرښه"
+
+#~ msgid "Username"
+#~ msgstr "کاروونکي نوم"
+
+#~ msgid "Wordpress"
+#~ msgstr "ورډپرېس"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "_About"
+#~ msgstr "په اړه_"
+
+#~ msgid "http://yourserver.com/xmlrpc.php"
+#~ msgstr "http://yourserver.com/xmlrpc.php"
+
+#~ msgid "italic"
+#~ msgstr "کوږ"
+
+#~ msgid "lekhonee"
+#~ msgstr "ليکوني"
+
+#~ msgid "lekhonee msg"
+#~ msgstr "ليکوني استوزه"
+
+#~ msgid "(c) 2009 Kushal Das"
+#~ msgstr "چاپرښتې ۲۰۰۹ - کوشال داس"
+
+#~ msgid "Save Blog"
+#~ msgstr "بلاګ ساتل"
+
+#~ msgid "Lekhonee files"
+#~ msgstr "د ليکوني دوتنې"
+
+#~ msgid "Open Blog"
+#~ msgstr "بلاګ پرانيستل"

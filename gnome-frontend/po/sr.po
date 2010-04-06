@@ -2,239 +2,287 @@
 # Copyright (C) 2009 Kushal Das
 # This file is distributed under the same license as the lekhonee package.
 # Miloš Komarčević <kmilos@gmail.com>, 2010.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lekhonee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-11 11:33+0530\n"
+"POT-Creation-Date: 2010-04-06 14:36+0530\n"
 "PO-Revision-Date: 2010-02-18 21:59+0100\n"
 "Last-Translator: Miloš Komarčević <kmilos@gmail.com>\n"
 "Language-Team: Serbian <trans-sr@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: ../lekhonee-gnome.glade.h:1
-msgid ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"Right"
-msgstr ""
-"-- Није постављено --\n"
-"Основна линија\n"
-"Врх\n"
-"Средина\n"
-"Дно\n"
-"Врх текста\n"
-"Апсолутна средина\n"
-"Апсолутно дно\n"
-"Лево\n"
-"Десно"
-
-#: ../lekhonee-gnome.glade.h:11
-msgid "Add Categories"
+#: ../ui/new.ui.h:1
+#, fuzzy
+msgid "Add Category"
 msgstr "Додај категорије"
 
-#: ../lekhonee-gnome.glade.h:12
-msgid "Alignment"
-msgstr "Поравнање"
-
-#: ../lekhonee-gnome.glade.h:13
-msgid "Bold"
-msgstr "Подебљано"
-
-#: ../lekhonee-gnome.glade.h:14
+#: ../ui/new.ui.h:2
 msgid "Cancel"
 msgstr "Откажи"
 
-#: ../lekhonee-gnome.glade.h:15
+#: ../ui/new.ui.h:3
 msgid "Comments Allowed"
 msgstr "Коментари су дозвољени"
 
-#: ../lekhonee-gnome.glade.h:16
-msgid "Configure"
-msgstr "Подеси"
+#: ../ui/new.ui.h:4
+#, fuzzy
+msgid "Draft"
+msgstr "Сачувај нацрт"
 
-#: ../lekhonee-gnome.glade.h:17
-msgid "Dimentions\n"
-msgstr "Димензије\n"
+#: ../ui/new.ui.h:5
+msgid "Edit HTML"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:19
-msgid "For Future Use"
-msgstr "За будућу употребу"
+#: ../ui/new.ui.h:6
+#, fuzzy
+msgid "HTML _Tags"
+msgstr "_Html ознаке"
 
-#: ../lekhonee-gnome.glade.h:20
-msgid "Image"
-msgstr "Слика"
-
-#: ../lekhonee-gnome.glade.h:21
-msgid "Image Description"
-msgstr "Опис слике"
-
-#: ../lekhonee-gnome.glade.h:22
-msgid "Image URL"
-msgstr "УРЛ слике"
-
-#: ../lekhonee-gnome.glade.h:23
-msgid "Insert Image"
+#: ../ui/new.ui.h:7
+#, fuzzy
+msgid "Insert Link"
 msgstr "Уметни слику"
 
-#: ../lekhonee-gnome.glade.h:24
+#: ../ui/new.ui.h:8
+#, fuzzy
+msgid "Insert an Image"
+msgstr "Уметни слику"
+
+#: ../ui/new.ui.h:9
+msgid "Insert unordered list"
+msgstr ""
+
+#: ../ui/new.ui.h:10
 msgid "Last Post"
 msgstr "Последња порука"
 
-#: ../lekhonee-gnome.glade.h:25
-msgid "Link"
-msgstr "Веза"
-
-#: ../lekhonee-gnome.glade.h:26
+#: ../ui/new.ui.h:11
 msgid "Old Posts"
 msgstr "Старе поруке"
 
-#: ../lekhonee-gnome.glade.h:27
-msgid "Password"
-msgstr "Лозинка"
-
-#: ../lekhonee-gnome.glade.h:28 ../lekhonee-gnome.py:419
-#: ../lekhonee-gnome.py:654
+#: ../ui/new.ui.h:12
 msgid "Publish"
 msgstr "Објави"
 
-#: ../lekhonee-gnome.glade.h:29
-msgid "Refresh"
-msgstr "Освежи"
+#: ../ui/new.ui.h:13
+msgid "Publish the post in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:30
-msgid "Save Draft"
-msgstr "Сачувај нацрт"
+#: ../ui/new.ui.h:14
+msgid "Save the post as draft in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:31
+#: ../ui/new.ui.h:15
 msgid "Select File to Upload"
 msgstr "Изаберите датотеку за отпремање"
 
-#: ../lekhonee-gnome.glade.h:32
-msgid "Server"
-msgstr "Сервер"
-
-#: ../lekhonee-gnome.glade.h:33
-msgid "Spell Check"
-msgstr "Провера писања"
-
-#: ../lekhonee-gnome.glade.h:34
-msgid "Tags"
-msgstr "Ознаке"
-
-#: ../lekhonee-gnome.glade.h:35
-msgid "Tags separated by commas"
-msgstr "Ознаке раздвојене зарезима"
-
-#: ../lekhonee-gnome.glade.h:36
+#: ../ui/new.ui.h:16
 msgid "Title"
 msgstr "Наслов"
 
-#: ../lekhonee-gnome.glade.h:37
-msgid "Underline"
-msgstr "Подвучено"
-
-#: ../lekhonee-gnome.glade.h:38
-msgid "Upload"
-msgstr "Отпремање"
-
-#: ../lekhonee-gnome.glade.h:39 ../lekhonee-gnome.py:231
+#: ../ui/new.ui.h:17
 msgid "Upload File"
 msgstr "Отпреми датотеку"
 
-#: ../lekhonee-gnome.glade.h:40
-msgid "Username"
-msgstr "Корисничко име"
-
-#: ../lekhonee-gnome.glade.h:42
-msgid "Wordpress"
-msgstr "Wordpress"
-
-#: ../lekhonee-gnome.glade.h:43
-msgid "X"
-msgstr "X"
-
-#: ../lekhonee-gnome.glade.h:44
-msgid "_About"
-msgstr "_О програму"
-
-#: ../lekhonee-gnome.glade.h:45
+#: ../ui/new.ui.h:18
 msgid "_Edit"
 msgstr "_Уређивање"
 
-#: ../lekhonee-gnome.glade.h:46
+#: ../ui/new.ui.h:19
 msgid "_File"
 msgstr "_Датотека"
 
-#: ../lekhonee-gnome.glade.h:47
+#: ../ui/new.ui.h:20
 msgid "_Help"
 msgstr "_Помоћ"
 
-#: ../lekhonee-gnome.glade.h:48
-msgid "_Html Tags"
-msgstr "_Html ознаке"
+#: ../ui/new.ui.h:21
+msgid "blockquote"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:49
-msgid "http://yourserver.com/xmlrpc.php"
-msgstr "http://vasserver.com/xmlrpc.php"
+#: ../ui/new.ui.h:22
+msgid "code"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:50
-msgid "italic"
-msgstr "Курзив"
+#: ../ui/new.ui.h:23
+msgid "pre"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:51
-msgid "lekhonee"
-msgstr "lekhonee"
+#: ../ui/new.ui.h:24
+msgid "toolbutton1"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:52
-msgid "lekhonee msg"
-msgstr "lekhonee порука"
+#: ../ui/new.ui.h:25
+#, fuzzy
+msgid "upload"
+msgstr "Отпремање"
 
-#: ../lekhonee-gnome.py:117
+#: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Категорије"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(),
-#. text=0)
-#. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:127
-msgid "Post Titles"
+#: ../src/LekhoneeMain.vala:116
+#, fuzzy
+msgid "Post Title"
 msgstr "Наслови порука"
 
-#: ../lekhonee-gnome.py:200
-msgid "(c) 2009 Kushal Das"
-msgstr "Ауторска права 2009 Kushal Das"
+#: ../src/LekhoneeMain.vala:342
+msgid "Fetching categories from server"
+msgstr ""
 
-#: ../lekhonee-gnome.py:282
-msgid "Save Blog"
-msgstr "Сачувај блог"
+#: ../src/LekhoneeMain.vala:389
+#, fuzzy
+msgid "Insert URL of the image"
+msgstr "Уметни слику"
 
-#: ../lekhonee-gnome.py:285 ../lekhonee-gnome.py:319
-msgid "Lekhonee files"
-msgstr "Lekhonee датотеке"
+#: ../src/LekhoneeMain.vala:411
+#, fuzzy
+msgid "Insert URL"
+msgstr "Уметни слику"
 
-#: ../lekhonee-gnome.py:316
-msgid "Open Blog"
-msgstr "Отвори блог"
-
-#: ../lekhonee-gnome.py:389
+#: ../src/LekhoneeMain.vala:521
 msgid "Update"
 msgstr "Освежи"
 
-#: ../lekhonee-gnome.glade.h:41
-msgid "View Source"
-msgstr "Погледај извор"
+#: ../src/LekhoneeMain.vala:530
+msgid "Fetching posts from server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:602
+msgid "Are you sure to clear the currect post?"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:690
+msgid "Uploading file to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:770
+msgid "posting to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:870
+msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
+msgstr ""
+
+#: ../src/LekhoneeDialogs.vala:89
+msgid "Preferences"
+msgstr ""
+
+#~ msgid ""
+#~ "-- Not Set --\n"
+#~ "Baseline\n"
+#~ "Top\n"
+#~ "Middle\n"
+#~ "Bottom\n"
+#~ "Text Top\n"
+#~ "Absolute Middle\n"
+#~ "Absolute bottom\n"
+#~ "Left\n"
+#~ "Right"
+#~ msgstr ""
+#~ "-- Није постављено --\n"
+#~ "Основна линија\n"
+#~ "Врх\n"
+#~ "Средина\n"
+#~ "Дно\n"
+#~ "Врх текста\n"
+#~ "Апсолутна средина\n"
+#~ "Апсолутно дно\n"
+#~ "Лево\n"
+#~ "Десно"
+
+#~ msgid "Alignment"
+#~ msgstr "Поравнање"
+
+#~ msgid "Bold"
+#~ msgstr "Подебљано"
+
+#~ msgid "Configure"
+#~ msgstr "Подеси"
+
+#~ msgid "Dimentions\n"
+#~ msgstr "Димензије\n"
+
+#~ msgid "For Future Use"
+#~ msgstr "За будућу употребу"
+
+#~ msgid "Image"
+#~ msgstr "Слика"
+
+#~ msgid "Image Description"
+#~ msgstr "Опис слике"
+
+#~ msgid "Image URL"
+#~ msgstr "УРЛ слике"
+
+#~ msgid "Link"
+#~ msgstr "Веза"
+
+#~ msgid "Password"
+#~ msgstr "Лозинка"
+
+#~ msgid "Refresh"
+#~ msgstr "Освежи"
+
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Spell Check"
+#~ msgstr "Провера писања"
+
+#~ msgid "Tags"
+#~ msgstr "Ознаке"
+
+#~ msgid "Tags separated by commas"
+#~ msgstr "Ознаке раздвојене зарезима"
+
+#~ msgid "Underline"
+#~ msgstr "Подвучено"
+
+#~ msgid "Username"
+#~ msgstr "Корисничко име"
+
+#~ msgid "Wordpress"
+#~ msgstr "Wordpress"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "_About"
+#~ msgstr "_О програму"
+
+#~ msgid "http://yourserver.com/xmlrpc.php"
+#~ msgstr "http://vasserver.com/xmlrpc.php"
+
+#~ msgid "italic"
+#~ msgstr "Курзив"
+
+#~ msgid "lekhonee"
+#~ msgstr "lekhonee"
+
+#~ msgid "lekhonee msg"
+#~ msgstr "lekhonee порука"
+
+#~ msgid "(c) 2009 Kushal Das"
+#~ msgstr "Ауторска права 2009 Kushal Das"
+
+#~ msgid "Save Blog"
+#~ msgstr "Сачувај блог"
+
+#~ msgid "Lekhonee files"
+#~ msgstr "Lekhonee датотеке"
+
+#~ msgid "Open Blog"
+#~ msgstr "Отвори блог"
+
+#~ msgid "View Source"
+#~ msgstr "Погледај извор"
 
 #~ msgid "Preview"
 #~ msgstr "Преглед"

@@ -7,10 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lekhonee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 10:14+0530\n"
+"POT-Creation-Date: 2010-04-06 14:36+0530\n"
 "PO-Revision-Date: 2010-02-25 20:33+0100\n"
 "Last-Translator: Nikolas Slivka <snicore@gmail.com>\n"
-"Language-Team: Hungarian Fedora Translation Team <fedora-trans-hu@redhat.org>\n"
+"Language-Team: Hungarian Fedora Translation Team <fedora-trans-hu@redhat."
+"org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,228 +20,272 @@ msgstr ""
 "X-Poedit-Country: HUNGARY\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
-#: ../lekhonee-gnome.glade.h:1
+#: ../ui/new.ui.h:1
 #, fuzzy
-msgid ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"Right"
-msgstr ""
-"-- Nincs megadva --\n"
-"Alapvonalon\n"
-"Felül\n"
-"Középen\n"
-"Alul\n"
-"Szöveg tetejére\n"
-"Teljesen középen\n"
-"Legalul\n"
-"Bal\n"
-"Jobb"
-
-#: ../lekhonee-gnome.glade.h:11
-msgid "Add Categories"
+msgid "Add Category"
 msgstr "Kategóriák hozzáadása"
 
-#: ../lekhonee-gnome.glade.h:12
-#, fuzzy
-msgid "Alignment"
-msgstr "Besorolás"
-
-#: ../lekhonee-gnome.glade.h:13
-msgid "Bold"
-msgstr "Kövér"
-
-#: ../lekhonee-gnome.glade.h:14
+#: ../ui/new.ui.h:2
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../lekhonee-gnome.glade.h:15
+#: ../ui/new.ui.h:3
 msgid "Comments Allowed"
 msgstr "Hozzászólások engedélyezve"
 
-#: ../lekhonee-gnome.glade.h:16
-msgid "Configure"
-msgstr "Beállítások"
-
-#: ../lekhonee-gnome.glade.h:17
+#: ../ui/new.ui.h:4
 #, fuzzy
-msgid "Dimentions\n"
-msgstr "Méretek\n"
+msgid "Draft"
+msgstr "Piszkozat mentése"
 
-#: ../lekhonee-gnome.glade.h:19
-msgid "For Future Use"
-msgstr "Későbbi felhasználás céljából"
+#: ../ui/new.ui.h:5
+msgid "Edit HTML"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:20
-msgid "Image"
-msgstr "Kép"
+#: ../ui/new.ui.h:6
+#, fuzzy
+msgid "HTML _Tags"
+msgstr "_Html címkék"
 
-#: ../lekhonee-gnome.glade.h:21
-msgid "Image Description"
-msgstr "Kép leírása"
-
-#: ../lekhonee-gnome.glade.h:22
-msgid "Image URL"
-msgstr "Kép URL"
-
-#: ../lekhonee-gnome.glade.h:23
-msgid "Insert Image"
+#: ../ui/new.ui.h:7
+#, fuzzy
+msgid "Insert Link"
 msgstr "Kép beillesztése"
 
-#: ../lekhonee-gnome.glade.h:24
+#: ../ui/new.ui.h:8
+#, fuzzy
+msgid "Insert an Image"
+msgstr "Kép beillesztése"
+
+#: ../ui/new.ui.h:9
+msgid "Insert unordered list"
+msgstr ""
+
+#: ../ui/new.ui.h:10
 msgid "Last Post"
 msgstr "Utolsó bejegyzés"
 
-#: ../lekhonee-gnome.glade.h:25
-msgid "Link"
-msgstr "Link"
-
-#: ../lekhonee-gnome.glade.h:26
+#: ../ui/new.ui.h:11
 msgid "Old Posts"
 msgstr "Régi bejegyzések"
 
-#: ../lekhonee-gnome.glade.h:27
-msgid "Password"
-msgstr "Jelszó"
-
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "Előnézet"
-
-#: ../lekhonee-gnome.glade.h:29
-#: ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:612
+#: ../ui/new.ui.h:12
 msgid "Publish"
 msgstr "Közzétesz"
 
-#: ../lekhonee-gnome.glade.h:30
-msgid "Refresh"
-msgstr "Frissít"
+#: ../ui/new.ui.h:13
+msgid "Publish the post in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:31
-msgid "Save Draft"
-msgstr "Piszkozat mentése"
+#: ../ui/new.ui.h:14
+msgid "Save the post as draft in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../ui/new.ui.h:15
 msgid "Select File to Upload"
 msgstr "Válassza ki a feltöltendő fájlt"
 
-#: ../lekhonee-gnome.glade.h:33
-msgid "Server"
-msgstr "Kiszolgáló"
-
-#: ../lekhonee-gnome.glade.h:34
-msgid "Spell Check"
-msgstr "Helyesírás-ellenőrzés"
-
-#: ../lekhonee-gnome.glade.h:35
-msgid "Tags"
-msgstr "Címkék"
-
-#: ../lekhonee-gnome.glade.h:36
-msgid "Tags separated by commas"
-msgstr "Címkék vesszővel elválasztva"
-
-#: ../lekhonee-gnome.glade.h:37
+#: ../ui/new.ui.h:16
 msgid "Title"
 msgstr "Cím"
 
-#: ../lekhonee-gnome.glade.h:38
-msgid "Underline"
-msgstr "Aláhúzott"
-
-#: ../lekhonee-gnome.glade.h:39
-msgid "Upload"
-msgstr "Feltöltés"
-
-#: ../lekhonee-gnome.glade.h:40
-#: ../lekhonee-gnome.py:219
+#: ../ui/new.ui.h:17
 msgid "Upload File"
 msgstr "Fájl feltöltése"
 
-#: ../lekhonee-gnome.glade.h:41
-msgid "Username"
-msgstr "Felhasználónév"
-
-#: ../lekhonee-gnome.glade.h:42
-msgid "Wordpress"
-msgstr "Wordpress"
-
-#: ../lekhonee-gnome.glade.h:43
-msgid "X"
-msgstr "X"
-
-#: ../lekhonee-gnome.glade.h:44
-msgid "_About"
-msgstr "_Névjegy"
-
-#: ../lekhonee-gnome.glade.h:45
+#: ../ui/new.ui.h:18
 msgid "_Edit"
 msgstr "S_zerkesztés"
 
-#: ../lekhonee-gnome.glade.h:46
+#: ../ui/new.ui.h:19
 msgid "_File"
 msgstr "_Fájl"
 
-#: ../lekhonee-gnome.glade.h:47
+#: ../ui/new.ui.h:20
 msgid "_Help"
 msgstr "_Súgó"
 
-#: ../lekhonee-gnome.glade.h:48
-msgid "_Html Tags"
-msgstr "_Html címkék"
+#: ../ui/new.ui.h:21
+msgid "blockquote"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:49
-msgid "http://yourserver.com/xmlrpc.php"
-msgstr "http://yourserver.com/xmlrpc.php"
+#: ../ui/new.ui.h:22
+msgid "code"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:50
-msgid "italic"
-msgstr "dőlt"
+#: ../ui/new.ui.h:23
+msgid "pre"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:51
-msgid "lekhonee"
-msgstr "lekhonee"
+#: ../ui/new.ui.h:24
+msgid "toolbutton1"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:52
-msgid "lekhonee msg"
-msgstr "lekhonee msg"
+#: ../ui/new.ui.h:25
+#, fuzzy
+msgid "upload"
+msgstr "Feltöltés"
 
-#: ../lekhonee-gnome.py:111
+#: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Kategóriák"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
-#. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
-msgid "Post Titles"
+#: ../src/LekhoneeMain.vala:116
+#, fuzzy
+msgid "Post Title"
 msgstr "Bejegyzés címe"
 
-#: ../lekhonee-gnome.py:188
-msgid "(c) 2009 Kushal Das"
-msgstr "(c) 2009 Kushal Das"
+#: ../src/LekhoneeMain.vala:342
+msgid "Fetching categories from server"
+msgstr ""
 
-#: ../lekhonee-gnome.py:267
-msgid "Save Blog"
-msgstr "Blog elmentése"
+#: ../src/LekhoneeMain.vala:389
+#, fuzzy
+msgid "Insert URL of the image"
+msgstr "Kép beillesztése"
 
-#: ../lekhonee-gnome.py:270
-#: ../lekhonee-gnome.py:298
-msgid "Lekhonee files"
-msgstr "Lekhonee fájlok"
+#: ../src/LekhoneeMain.vala:411
+#, fuzzy
+msgid "Insert URL"
+msgstr "Kép beillesztése"
 
-#: ../lekhonee-gnome.py:295
-msgid "Open Blog"
-msgstr "Blog megnyitása"
-
-#: ../lekhonee-gnome.py:368
+#: ../src/LekhoneeMain.vala:521
 msgid "Update"
 msgstr "Frissítés"
 
+#: ../src/LekhoneeMain.vala:530
+msgid "Fetching posts from server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:602
+msgid "Are you sure to clear the currect post?"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:690
+msgid "Uploading file to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:770
+msgid "posting to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:870
+msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
+msgstr ""
+
+#: ../src/LekhoneeDialogs.vala:89
+msgid "Preferences"
+msgstr ""
+
+#, fuzzy
+#~ msgid ""
+#~ "-- Not Set --\n"
+#~ "Baseline\n"
+#~ "Top\n"
+#~ "Middle\n"
+#~ "Bottom\n"
+#~ "Text Top\n"
+#~ "Absolute Middle\n"
+#~ "Absolute bottom\n"
+#~ "Left\n"
+#~ "Right"
+#~ msgstr ""
+#~ "-- Nincs megadva --\n"
+#~ "Alapvonalon\n"
+#~ "Felül\n"
+#~ "Középen\n"
+#~ "Alul\n"
+#~ "Szöveg tetejére\n"
+#~ "Teljesen középen\n"
+#~ "Legalul\n"
+#~ "Bal\n"
+#~ "Jobb"
+
+#, fuzzy
+#~ msgid "Alignment"
+#~ msgstr "Besorolás"
+
+#~ msgid "Bold"
+#~ msgstr "Kövér"
+
+#~ msgid "Configure"
+#~ msgstr "Beállítások"
+
+#, fuzzy
+#~ msgid "Dimentions\n"
+#~ msgstr "Méretek\n"
+
+#~ msgid "For Future Use"
+#~ msgstr "Későbbi felhasználás céljából"
+
+#~ msgid "Image"
+#~ msgstr "Kép"
+
+#~ msgid "Image Description"
+#~ msgstr "Kép leírása"
+
+#~ msgid "Image URL"
+#~ msgstr "Kép URL"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Password"
+#~ msgstr "Jelszó"
+
+#~ msgid "Preview"
+#~ msgstr "Előnézet"
+
+#~ msgid "Refresh"
+#~ msgstr "Frissít"
+
+#~ msgid "Server"
+#~ msgstr "Kiszolgáló"
+
+#~ msgid "Spell Check"
+#~ msgstr "Helyesírás-ellenőrzés"
+
+#~ msgid "Tags"
+#~ msgstr "Címkék"
+
+#~ msgid "Tags separated by commas"
+#~ msgstr "Címkék vesszővel elválasztva"
+
+#~ msgid "Underline"
+#~ msgstr "Aláhúzott"
+
+#~ msgid "Username"
+#~ msgstr "Felhasználónév"
+
+#~ msgid "Wordpress"
+#~ msgstr "Wordpress"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "_About"
+#~ msgstr "_Névjegy"
+
+#~ msgid "http://yourserver.com/xmlrpc.php"
+#~ msgstr "http://yourserver.com/xmlrpc.php"
+
+#~ msgid "italic"
+#~ msgstr "dőlt"
+
+#~ msgid "lekhonee"
+#~ msgstr "lekhonee"
+
+#~ msgid "lekhonee msg"
+#~ msgstr "lekhonee msg"
+
+#~ msgid "(c) 2009 Kushal Das"
+#~ msgstr "(c) 2009 Kushal Das"
+
+#~ msgid "Save Blog"
+#~ msgstr "Blog elmentése"
+
+#~ msgid "Lekhonee files"
+#~ msgstr "Lekhonee fájlok"
+
+#~ msgid "Open Blog"
+#~ msgstr "Blog megnyitása"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-23 13:48+0530\n"
+"POT-Creation-Date: 2010-04-06 14:36+0530\n"
 "PO-Revision-Date: 2009-09-25 22:41+0800\n"
 "Last-Translator: Tom K. C. Chiu <tomchiukc@gmail.com>\n"
 "Language-Team: Chinese <fedora-trans-zh@redhat.com>\n"
@@ -16,225 +16,269 @@ msgstr ""
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-Country: CHINA\n"
 
-#: ../lekhonee-gnome.glade.h:1
-msgid ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"Right"
-msgstr ""
-"-- 未有设置 --\n"
-"下划线\n"
-"置顶\n"
-"置中\n"
-"置底\n"
-"文字置顶\n"
-"绝对中间\n"
-"绝对底部\n"
-"左边\n"
-"右边"
-
-#: ../lekhonee-gnome.glade.h:11
-msgid "Add Categories"
+#: ../ui/new.ui.h:1
+#, fuzzy
+msgid "Add Category"
 msgstr "增加分类"
 
-#: ../lekhonee-gnome.glade.h:12
-msgid "Alignment"
-msgstr "对齐"
-
-#: ../lekhonee-gnome.glade.h:13
-msgid "Bold"
-msgstr "黑体"
-
-#: ../lekhonee-gnome.glade.h:14
+#: ../ui/new.ui.h:2
 msgid "Cancel"
 msgstr "取销"
 
-#: ../lekhonee-gnome.glade.h:15
+#: ../ui/new.ui.h:3
 msgid "Comments Allowed"
 msgstr "允许留言"
 
-#: ../lekhonee-gnome.glade.h:16
-msgid "Configure"
-msgstr "设置"
+#: ../ui/new.ui.h:4
+#, fuzzy
+msgid "Draft"
+msgstr "存储草稿"
 
-#: ../lekhonee-gnome.glade.h:17
-msgid "Dimentions\n"
-msgstr "Dimentions\n"
+#: ../ui/new.ui.h:5
+msgid "Edit HTML"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:19
-msgid "For Future Use"
-msgstr "留待将来使用"
+#: ../ui/new.ui.h:6
+#, fuzzy
+msgid "HTML _Tags"
+msgstr "_HTML标签"
 
-#: ../lekhonee-gnome.glade.h:20
-msgid "Image"
-msgstr "图片"
-
-#: ../lekhonee-gnome.glade.h:21
-msgid "Image Description"
-msgstr "图片描述"
-
-#: ../lekhonee-gnome.glade.h:22
-msgid "Image URL"
-msgstr "图片连结"
-
-#: ../lekhonee-gnome.glade.h:23
-msgid "Insert Image"
+#: ../ui/new.ui.h:7
+#, fuzzy
+msgid "Insert Link"
 msgstr "插入图片"
 
-#: ../lekhonee-gnome.glade.h:24
+#: ../ui/new.ui.h:8
+#, fuzzy
+msgid "Insert an Image"
+msgstr "插入图片"
+
+#: ../ui/new.ui.h:9
+msgid "Insert unordered list"
+msgstr ""
+
+#: ../ui/new.ui.h:10
 msgid "Last Post"
 msgstr "上个贴文"
 
-#: ../lekhonee-gnome.glade.h:25
-msgid "Link"
-msgstr "连结"
-
-#: ../lekhonee-gnome.glade.h:26
+#: ../ui/new.ui.h:11
 msgid "Old Posts"
 msgstr "旧的贴文"
 
-#: ../lekhonee-gnome.glade.h:27
-msgid "Password"
-msgstr "口令"
-
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "预览"
-
-#: ../lekhonee-gnome.glade.h:29
-#: ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:607
+#: ../ui/new.ui.h:12
 msgid "Publish"
 msgstr "出版"
 
-#: ../lekhonee-gnome.glade.h:30
-msgid "Refresh"
-msgstr "更新"
+#: ../ui/new.ui.h:13
+msgid "Publish the post in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:31
-msgid "Save Draft"
-msgstr "存储草稿"
+#: ../ui/new.ui.h:14
+msgid "Save the post as draft in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../ui/new.ui.h:15
 msgid "Select File to Upload"
 msgstr "选择要上载的文件"
 
-#: ../lekhonee-gnome.glade.h:33
-msgid "Server"
-msgstr "服务器"
-
-#: ../lekhonee-gnome.glade.h:34
-msgid "Spell Check"
-msgstr "拼写检查"
-
-#: ../lekhonee-gnome.glade.h:35
-msgid "Tags"
-msgstr "标签"
-
-#: ../lekhonee-gnome.glade.h:36
-msgid "Tags separated by commas"
-msgstr "以半型逗号分隔标签"
-
-#: ../lekhonee-gnome.glade.h:37
+#: ../ui/new.ui.h:16
 msgid "Title"
 msgstr "标题"
 
-#: ../lekhonee-gnome.glade.h:38
-msgid "Underline"
-msgstr "加下划线"
-
-#: ../lekhonee-gnome.glade.h:39
-msgid "Upload"
-msgstr "上载"
-
-#: ../lekhonee-gnome.glade.h:40
-#: ../lekhonee-gnome.py:219
+#: ../ui/new.ui.h:17
 msgid "Upload File"
 msgstr "上载文件"
 
-#: ../lekhonee-gnome.glade.h:41
-msgid "Username"
-msgstr "用户名"
-
-#: ../lekhonee-gnome.glade.h:42
-msgid "Wordpress"
-msgstr "Wordpress"
-
-#: ../lekhonee-gnome.glade.h:43
-msgid "X"
-msgstr "X"
-
-#: ../lekhonee-gnome.glade.h:44
-msgid "_About"
-msgstr "关于 (_A)"
-
-#: ../lekhonee-gnome.glade.h:45
+#: ../ui/new.ui.h:18
 msgid "_Edit"
 msgstr "编辑 (_E)"
 
-#: ../lekhonee-gnome.glade.h:46
+#: ../ui/new.ui.h:19
 msgid "_File"
 msgstr "文件 (_F)"
 
-#: ../lekhonee-gnome.glade.h:47
+#: ../ui/new.ui.h:20
 msgid "_Help"
 msgstr "说明 (_H)"
 
-#: ../lekhonee-gnome.glade.h:48
-msgid "_Html Tags"
-msgstr "_HTML标签"
+#: ../ui/new.ui.h:21
+msgid "blockquote"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:49
-msgid "http://yourserver.com/xmlrpc.php"
-msgstr "http://yourserver.com/xmlrpc.php"
+#: ../ui/new.ui.h:22
+msgid "code"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:50
-msgid "italic"
-msgstr "斜体"
+#: ../ui/new.ui.h:23
+msgid "pre"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:51
-msgid "lekhonee"
-msgstr "lekhonee"
+#: ../ui/new.ui.h:24
+msgid "toolbutton1"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:52
-msgid "lekhonee msg"
-msgstr "lekhonee信息"
+#: ../ui/new.ui.h:25
+#, fuzzy
+msgid "upload"
+msgstr "上载"
 
-#: ../lekhonee-gnome.py:111
+#: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "分类"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
-#. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
-msgid "Post Titles"
+#: ../src/LekhoneeMain.vala:116
+#, fuzzy
+msgid "Post Title"
 msgstr "贴文标题"
 
-#: ../lekhonee-gnome.py:188
-msgid "(c) 2009 Kushal Das"
-msgstr "(c) 2009 Kushal Das"
+#: ../src/LekhoneeMain.vala:342
+msgid "Fetching categories from server"
+msgstr ""
 
-#: ../lekhonee-gnome.py:267
-msgid "Save Blog"
-msgstr "存储博客"
+#: ../src/LekhoneeMain.vala:389
+#, fuzzy
+msgid "Insert URL of the image"
+msgstr "插入图片"
 
-#: ../lekhonee-gnome.py:270
-#: ../lekhonee-gnome.py:298
-msgid "Lekhonee files"
-msgstr "Lekhonee文件"
+#: ../src/LekhoneeMain.vala:411
+#, fuzzy
+msgid "Insert URL"
+msgstr "插入图片"
 
-#: ../lekhonee-gnome.py:295
-msgid "Open Blog"
-msgstr "打开博客"
-
-#: ../lekhonee-gnome.py:368
+#: ../src/LekhoneeMain.vala:521
 msgid "Update"
 msgstr "更新"
 
+#: ../src/LekhoneeMain.vala:530
+msgid "Fetching posts from server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:602
+msgid "Are you sure to clear the currect post?"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:690
+msgid "Uploading file to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:770
+msgid "posting to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:870
+msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
+msgstr ""
+
+#: ../src/LekhoneeDialogs.vala:89
+msgid "Preferences"
+msgstr ""
+
+#~ msgid ""
+#~ "-- Not Set --\n"
+#~ "Baseline\n"
+#~ "Top\n"
+#~ "Middle\n"
+#~ "Bottom\n"
+#~ "Text Top\n"
+#~ "Absolute Middle\n"
+#~ "Absolute bottom\n"
+#~ "Left\n"
+#~ "Right"
+#~ msgstr ""
+#~ "-- 未有设置 --\n"
+#~ "下划线\n"
+#~ "置顶\n"
+#~ "置中\n"
+#~ "置底\n"
+#~ "文字置顶\n"
+#~ "绝对中间\n"
+#~ "绝对底部\n"
+#~ "左边\n"
+#~ "右边"
+
+#~ msgid "Alignment"
+#~ msgstr "对齐"
+
+#~ msgid "Bold"
+#~ msgstr "黑体"
+
+#~ msgid "Configure"
+#~ msgstr "设置"
+
+#~ msgid "Dimentions\n"
+#~ msgstr "Dimentions\n"
+
+#~ msgid "For Future Use"
+#~ msgstr "留待将来使用"
+
+#~ msgid "Image"
+#~ msgstr "图片"
+
+#~ msgid "Image Description"
+#~ msgstr "图片描述"
+
+#~ msgid "Image URL"
+#~ msgstr "图片连结"
+
+#~ msgid "Link"
+#~ msgstr "连结"
+
+#~ msgid "Password"
+#~ msgstr "口令"
+
+#~ msgid "Preview"
+#~ msgstr "预览"
+
+#~ msgid "Refresh"
+#~ msgstr "更新"
+
+#~ msgid "Server"
+#~ msgstr "服务器"
+
+#~ msgid "Spell Check"
+#~ msgstr "拼写检查"
+
+#~ msgid "Tags"
+#~ msgstr "标签"
+
+#~ msgid "Tags separated by commas"
+#~ msgstr "以半型逗号分隔标签"
+
+#~ msgid "Underline"
+#~ msgstr "加下划线"
+
+#~ msgid "Username"
+#~ msgstr "用户名"
+
+#~ msgid "Wordpress"
+#~ msgstr "Wordpress"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "_About"
+#~ msgstr "关于 (_A)"
+
+#~ msgid "http://yourserver.com/xmlrpc.php"
+#~ msgstr "http://yourserver.com/xmlrpc.php"
+
+#~ msgid "italic"
+#~ msgstr "斜体"
+
+#~ msgid "lekhonee"
+#~ msgstr "lekhonee"
+
+#~ msgid "lekhonee msg"
+#~ msgstr "lekhonee信息"
+
+#~ msgid "(c) 2009 Kushal Das"
+#~ msgstr "(c) 2009 Kushal Das"
+
+#~ msgid "Save Blog"
+#~ msgstr "存储博客"
+
+#~ msgid "Lekhonee files"
+#~ msgstr "Lekhonee文件"
+
+#~ msgid "Open Blog"
+#~ msgstr "打开博客"

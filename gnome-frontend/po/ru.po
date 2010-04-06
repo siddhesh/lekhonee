@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-29 10:14+0530\n"
+"POT-Creation-Date: 2010-04-06 14:36+0530\n"
 "PO-Revision-Date: 2010-02-18 18:06+0300\n"
 "Last-Translator: Andrew Zaytsev <andzaytsev@gmail.com>\n"
 "Language-Team: Russian <fedora-trans-ru@redhat.com>\n"
@@ -14,221 +14,269 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#: ../lekhonee-gnome.glade.h:1
-msgid ""
-"-- Not Set --\n"
-"Baseline\n"
-"Top\n"
-"Middle\n"
-"Bottom\n"
-"Text Top\n"
-"Absolute Middle\n"
-"Absolute bottom\n"
-"Left\n"
-"Right"
-msgstr ""
-"-- Не установлено --\n"
-"Основание\n"
-"Верх\n"
-"Середина\n"
-"Низ\n"
-"Верх текста\n"
-"Абсолютная середина\n"
-"Абсолютный низ\n"
-"Лево\n"
-"Право"
-
-#: ../lekhonee-gnome.glade.h:11
-msgid "Add Categories"
+#: ../ui/new.ui.h:1
+#, fuzzy
+msgid "Add Category"
 msgstr "Добавить категории"
 
-#: ../lekhonee-gnome.glade.h:12
-msgid "Alignment"
-msgstr "Выравнивание"
-
-#: ../lekhonee-gnome.glade.h:13
-msgid "Bold"
-msgstr "Полужирный"
-
-#: ../lekhonee-gnome.glade.h:14
+#: ../ui/new.ui.h:2
 msgid "Cancel"
 msgstr "Отмена"
 
-#: ../lekhonee-gnome.glade.h:15
+#: ../ui/new.ui.h:3
 msgid "Comments Allowed"
 msgstr "Коментарии разрешены"
 
-#: ../lekhonee-gnome.glade.h:16
-msgid "Configure"
-msgstr "Настроить"
+#: ../ui/new.ui.h:4
+#, fuzzy
+msgid "Draft"
+msgstr "Сохранить набросок"
 
-#: ../lekhonee-gnome.glade.h:17
-msgid "Dimentions\n"
-msgstr "Измерения\n"
+#: ../ui/new.ui.h:5
+msgid "Edit HTML"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:19
-msgid "For Future Use"
-msgstr "Для использования в будущем"
+#: ../ui/new.ui.h:6
+#, fuzzy
+msgid "HTML _Tags"
+msgstr "_Html теги"
 
-#: ../lekhonee-gnome.glade.h:20
-msgid "Image"
-msgstr "Изображение"
-
-#: ../lekhonee-gnome.glade.h:21
-msgid "Image Description"
-msgstr "Описание изображения"
-
-#: ../lekhonee-gnome.glade.h:22
-msgid "Image URL"
-msgstr "URL изображения"
-
-#: ../lekhonee-gnome.glade.h:23
-msgid "Insert Image"
+#: ../ui/new.ui.h:7
+#, fuzzy
+msgid "Insert Link"
 msgstr "Вставить изображение"
 
-#: ../lekhonee-gnome.glade.h:24
+#: ../ui/new.ui.h:8
+#, fuzzy
+msgid "Insert an Image"
+msgstr "Вставить изображение"
+
+#: ../ui/new.ui.h:9
+msgid "Insert unordered list"
+msgstr ""
+
+#: ../ui/new.ui.h:10
 msgid "Last Post"
 msgstr "Последняя публикация"
 
-#: ../lekhonee-gnome.glade.h:25
-msgid "Link"
-msgstr "Ссылка"
-
-#: ../lekhonee-gnome.glade.h:26
+#: ../ui/new.ui.h:11
 msgid "Old Posts"
 msgstr "Старые публикации"
 
-#: ../lekhonee-gnome.glade.h:27
-msgid "Password"
-msgstr "Пароль"
-
-#: ../lekhonee-gnome.glade.h:28
-msgid "Preview"
-msgstr "Предварительный просмотр"
-
-#: ../lekhonee-gnome.glade.h:29 ../lekhonee-gnome.py:398
-#: ../lekhonee-gnome.py:612
+#: ../ui/new.ui.h:12
 msgid "Publish"
 msgstr "Опубликовать"
 
-#: ../lekhonee-gnome.glade.h:30
-msgid "Refresh"
-msgstr "Обновить"
+#: ../ui/new.ui.h:13
+msgid "Publish the post in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:31
-msgid "Save Draft"
-msgstr "Сохранить набросок"
+#: ../ui/new.ui.h:14
+msgid "Save the post as draft in the server"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:32
+#: ../ui/new.ui.h:15
 msgid "Select File to Upload"
 msgstr "Выберите файл для загрузки"
 
-#: ../lekhonee-gnome.glade.h:33
-msgid "Server"
-msgstr "Сервер"
-
-#: ../lekhonee-gnome.glade.h:34
-msgid "Spell Check"
-msgstr "Проверка орфографии"
-
-#: ../lekhonee-gnome.glade.h:35
-msgid "Tags"
-msgstr "Теги"
-
-#: ../lekhonee-gnome.glade.h:36
-msgid "Tags separated by commas"
-msgstr "Теги, разделенные запятыми"
-
-#: ../lekhonee-gnome.glade.h:37
+#: ../ui/new.ui.h:16
 msgid "Title"
 msgstr "Заголовок"
 
-#: ../lekhonee-gnome.glade.h:38
-msgid "Underline"
-msgstr "Подчеркнуть"
-
-#: ../lekhonee-gnome.glade.h:39
-msgid "Upload"
-msgstr "Загрузить"
-
-#: ../lekhonee-gnome.glade.h:40 ../lekhonee-gnome.py:219
+#: ../ui/new.ui.h:17
 msgid "Upload File"
 msgstr "Загрузить файл"
 
-#: ../lekhonee-gnome.glade.h:41
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: ../lekhonee-gnome.glade.h:42
-msgid "Wordpress"
-msgstr "Wordpress"
-
-#: ../lekhonee-gnome.glade.h:43
-msgid "X"
-msgstr "X"
-
-#: ../lekhonee-gnome.glade.h:44
-msgid "_About"
-msgstr "О п_рограмме"
-
-#: ../lekhonee-gnome.glade.h:45
+#: ../ui/new.ui.h:18
 msgid "_Edit"
 msgstr "_Правка"
 
-#: ../lekhonee-gnome.glade.h:46
+#: ../ui/new.ui.h:19
 msgid "_File"
 msgstr "_Файл"
 
-#: ../lekhonee-gnome.glade.h:47
+#: ../ui/new.ui.h:20
 msgid "_Help"
 msgstr "_Справка"
 
-#: ../lekhonee-gnome.glade.h:48
-msgid "_Html Tags"
-msgstr "_Html теги"
+#: ../ui/new.ui.h:21
+msgid "blockquote"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:49
-msgid "http://yourserver.com/xmlrpc.php"
-msgstr "http://yourserver.com/xmlrpc.php"
+#: ../ui/new.ui.h:22
+msgid "code"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:50
-msgid "italic"
-msgstr "курсив"
+#: ../ui/new.ui.h:23
+msgid "pre"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:51
-msgid "lekhonee"
-msgstr "lekhonee"
+#: ../ui/new.ui.h:24
+msgid "toolbutton1"
+msgstr ""
 
-#: ../lekhonee-gnome.glade.h:52
-msgid "lekhonee msg"
-msgstr "lekhonee msg"
+#: ../ui/new.ui.h:25
+#, fuzzy
+msgid "upload"
+msgstr "Загрузить"
 
-#: ../lekhonee-gnome.py:111
+#: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Категории"
 
-#. self.id_column = gtk.TreeViewColumn("Post ID", gtk.CellRendererText(), text=0)
-#. self.entriesList.append_column(self.id_column)
-#: ../lekhonee-gnome.py:121
-msgid "Post Titles"
+#: ../src/LekhoneeMain.vala:116
+#, fuzzy
+msgid "Post Title"
 msgstr "Отправить заголовки"
 
-#: ../lekhonee-gnome.py:188
-msgid "(c) 2009 Kushal Das"
-msgstr "(c) 2009 Kushal Das"
+#: ../src/LekhoneeMain.vala:342
+msgid "Fetching categories from server"
+msgstr ""
 
-#: ../lekhonee-gnome.py:267
-msgid "Save Blog"
-msgstr "Сохранить Блог"
+#: ../src/LekhoneeMain.vala:389
+#, fuzzy
+msgid "Insert URL of the image"
+msgstr "Вставить изображение"
 
-#: ../lekhonee-gnome.py:270 ../lekhonee-gnome.py:298
-msgid "Lekhonee files"
-msgstr "Файлы Lekhonee"
+#: ../src/LekhoneeMain.vala:411
+#, fuzzy
+msgid "Insert URL"
+msgstr "Вставить изображение"
 
-#: ../lekhonee-gnome.py:295
-msgid "Open Blog"
-msgstr "Открыть Блог"
-
-#: ../lekhonee-gnome.py:368
+#: ../src/LekhoneeMain.vala:521
 msgid "Update"
 msgstr "Обновить"
+
+#: ../src/LekhoneeMain.vala:530
+msgid "Fetching posts from server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:602
+msgid "Are you sure to clear the currect post?"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:690
+msgid "Uploading file to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:770
+msgid "posting to the server"
+msgstr ""
+
+#: ../src/LekhoneeMain.vala:870
+msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
+msgstr ""
+
+#: ../src/LekhoneeDialogs.vala:89
+msgid "Preferences"
+msgstr ""
+
+#~ msgid ""
+#~ "-- Not Set --\n"
+#~ "Baseline\n"
+#~ "Top\n"
+#~ "Middle\n"
+#~ "Bottom\n"
+#~ "Text Top\n"
+#~ "Absolute Middle\n"
+#~ "Absolute bottom\n"
+#~ "Left\n"
+#~ "Right"
+#~ msgstr ""
+#~ "-- Не установлено --\n"
+#~ "Основание\n"
+#~ "Верх\n"
+#~ "Середина\n"
+#~ "Низ\n"
+#~ "Верх текста\n"
+#~ "Абсолютная середина\n"
+#~ "Абсолютный низ\n"
+#~ "Лево\n"
+#~ "Право"
+
+#~ msgid "Alignment"
+#~ msgstr "Выравнивание"
+
+#~ msgid "Bold"
+#~ msgstr "Полужирный"
+
+#~ msgid "Configure"
+#~ msgstr "Настроить"
+
+#~ msgid "Dimentions\n"
+#~ msgstr "Измерения\n"
+
+#~ msgid "For Future Use"
+#~ msgstr "Для использования в будущем"
+
+#~ msgid "Image"
+#~ msgstr "Изображение"
+
+#~ msgid "Image Description"
+#~ msgstr "Описание изображения"
+
+#~ msgid "Image URL"
+#~ msgstr "URL изображения"
+
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgid "Password"
+#~ msgstr "Пароль"
+
+#~ msgid "Preview"
+#~ msgstr "Предварительный просмотр"
+
+#~ msgid "Refresh"
+#~ msgstr "Обновить"
+
+#~ msgid "Server"
+#~ msgstr "Сервер"
+
+#~ msgid "Spell Check"
+#~ msgstr "Проверка орфографии"
+
+#~ msgid "Tags"
+#~ msgstr "Теги"
+
+#~ msgid "Tags separated by commas"
+#~ msgstr "Теги, разделенные запятыми"
+
+#~ msgid "Underline"
+#~ msgstr "Подчеркнуть"
+
+#~ msgid "Username"
+#~ msgstr "Имя пользователя"
+
+#~ msgid "Wordpress"
+#~ msgstr "Wordpress"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#~ msgid "_About"
+#~ msgstr "О п_рограмме"
+
+#~ msgid "http://yourserver.com/xmlrpc.php"
+#~ msgstr "http://yourserver.com/xmlrpc.php"
+
+#~ msgid "italic"
+#~ msgstr "курсив"
+
+#~ msgid "lekhonee"
+#~ msgstr "lekhonee"
+
+#~ msgid "lekhonee msg"
+#~ msgstr "lekhonee msg"
+
+#~ msgid "(c) 2009 Kushal Das"
+#~ msgstr "(c) 2009 Kushal Das"
+
+#~ msgid "Save Blog"
+#~ msgstr "Сохранить Блог"
+
+#~ msgid "Lekhonee files"
+#~ msgstr "Файлы Lekhonee"
+
+#~ msgid "Open Blog"
+#~ msgstr "Открыть Блог"
