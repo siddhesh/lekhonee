@@ -6,7 +6,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-04-06 14:36+0530\n"
-"PO-Revision-Date: 2010-03-11 12:30+0100\n"
+"PO-Revision-Date: 2010-04-06 14:44+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,9 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../ui/new.ui.h:1
-#, fuzzy
 msgid "Add Category"
-msgstr "Dodaj kategorie"
+msgstr "Dodaj kategorię"
 
 #: ../ui/new.ui.h:2
 msgid "Cancel"
@@ -27,32 +26,28 @@ msgid "Comments Allowed"
 msgstr "Komentarze zezwolone"
 
 #: ../ui/new.ui.h:4
-#, fuzzy
 msgid "Draft"
-msgstr "Zapisz szkic"
+msgstr "Szkic"
 
 #: ../ui/new.ui.h:5
 msgid "Edit HTML"
-msgstr ""
+msgstr "Zmodyfikuj HTML"
 
 #: ../ui/new.ui.h:6
-#, fuzzy
 msgid "HTML _Tags"
 msgstr "Znaczniki _HTML"
 
 #: ../ui/new.ui.h:7
-#, fuzzy
 msgid "Insert Link"
-msgstr "Umieść obraz"
+msgstr "Wstaw odnośnik"
 
 #: ../ui/new.ui.h:8
-#, fuzzy
 msgid "Insert an Image"
-msgstr "Umieść obraz"
+msgstr "Wstaw obraz"
 
 #: ../ui/new.ui.h:9
 msgid "Insert unordered list"
-msgstr ""
+msgstr "Wstaw nieuporządkowaną listę"
 
 #: ../ui/new.ui.h:10
 msgid "Last Post"
@@ -68,11 +63,11 @@ msgstr "Opublikuj"
 
 #: ../ui/new.ui.h:13
 msgid "Publish the post in the server"
-msgstr ""
+msgstr "Publikuje post na serwerze"
 
 #: ../ui/new.ui.h:14
 msgid "Save the post as draft in the server"
-msgstr ""
+msgstr "Zapisuje post jako szkic na serwerze"
 
 #: ../ui/new.ui.h:15
 msgid "Select File to Upload"
@@ -100,47 +95,43 @@ msgstr "Pomo_c"
 
 #: ../ui/new.ui.h:21
 msgid "blockquote"
-msgstr ""
+msgstr "cytat"
 
 #: ../ui/new.ui.h:22
 msgid "code"
-msgstr ""
+msgstr "kod"
 
 #: ../ui/new.ui.h:23
 msgid "pre"
-msgstr ""
+msgstr "pre"
 
 #: ../ui/new.ui.h:24
 msgid "toolbutton1"
-msgstr ""
+msgstr "przycisk narzędziowy 1"
 
 #: ../ui/new.ui.h:25
-#, fuzzy
 msgid "upload"
-msgstr "Wyślij"
+msgstr "wyślij"
 
 #: ../src/LekhoneeMain.vala:108
 msgid "Categories"
 msgstr "Kategorie"
 
 #: ../src/LekhoneeMain.vala:116
-#, fuzzy
 msgid "Post Title"
-msgstr "Tytuły postu"
+msgstr "Tytuł postu"
 
 #: ../src/LekhoneeMain.vala:342
 msgid "Fetching categories from server"
-msgstr ""
+msgstr "Pobieranie kategorii z serwera"
 
 #: ../src/LekhoneeMain.vala:389
-#, fuzzy
 msgid "Insert URL of the image"
-msgstr "Umieść obraz"
+msgstr "Wstaw adres URL obrazu"
 
 #: ../src/LekhoneeMain.vala:411
-#, fuzzy
 msgid "Insert URL"
-msgstr "Umieść obraz"
+msgstr "Wstaw adres URL"
 
 #: ../src/LekhoneeMain.vala:521
 msgid "Update"
@@ -148,134 +139,25 @@ msgstr "Zaktualizuj"
 
 #: ../src/LekhoneeMain.vala:530
 msgid "Fetching posts from server"
-msgstr ""
+msgstr "Pobieranie postów z serwera"
 
 #: ../src/LekhoneeMain.vala:602
 msgid "Are you sure to clear the currect post?"
-msgstr ""
+msgstr "Na pewno wyczyścić bieżący post?"
 
 #: ../src/LekhoneeMain.vala:690
 msgid "Uploading file to the server"
-msgstr ""
+msgstr "Wysyłanie pliku na serwer"
 
 #: ../src/LekhoneeMain.vala:770
 msgid "posting to the server"
-msgstr ""
+msgstr "wysyłanie postu na serwer"
 
 #: ../src/LekhoneeMain.vala:870
 msgid "Are you sure to quit lekhonee-gnome without posting the current post?"
 msgstr ""
+"Na pewno zakończyć program lekhonee-gnome bez wysłania bieżącego postu?"
 
 #: ../src/LekhoneeDialogs.vala:89
 msgid "Preferences"
-msgstr ""
-
-#~ msgid ""
-#~ "-- Not Set --\n"
-#~ "Baseline\n"
-#~ "Top\n"
-#~ "Middle\n"
-#~ "Bottom\n"
-#~ "Text Top\n"
-#~ "Absolute Middle\n"
-#~ "Absolute bottom\n"
-#~ "Left\n"
-#~ "Right"
-#~ msgstr ""
-#~ "-- Nie ustawione --\n"
-#~ "Podstawowe\n"
-#~ "Górne\n"
-#~ "Środkowe\n"
-#~ "Dolne\n"
-#~ "Tekst na górze\n"
-#~ "Absolutny środek\n"
-#~ "Absolutny doł\n"
-#~ "Lewo\n"
-#~ "Prawo"
-
-#~ msgid "Alignment"
-#~ msgstr "Wyrównanie"
-
-#~ msgid "Bold"
-#~ msgstr "Pogrubienie"
-
-#~ msgid "Configure"
-#~ msgstr "Skonfiguruj"
-
-#~ msgid "Dimentions\n"
-#~ msgstr "Wymiary\n"
-
-#~ msgid "For Future Use"
-#~ msgstr "Do użycia w przyszłości"
-
-#~ msgid "Image"
-#~ msgstr "Obraz"
-
-#~ msgid "Image Description"
-#~ msgstr "Opis obrazu"
-
-#~ msgid "Image URL"
-#~ msgstr "Adres URL obrazu"
-
-#~ msgid "Link"
-#~ msgstr "Odnośnik"
-
-#~ msgid "Password"
-#~ msgstr "Hasło"
-
-#~ msgid "Refresh"
-#~ msgstr "Odśwież"
-
-#~ msgid "Server"
-#~ msgstr "Serwer"
-
-#~ msgid "Spell Check"
-#~ msgstr "Sprawdzanie pisowni"
-
-#~ msgid "Tags"
-#~ msgstr "Znaczniki"
-
-#~ msgid "Tags separated by commas"
-#~ msgstr "Znaczniki oddzielone przecinkami"
-
-#~ msgid "Underline"
-#~ msgstr "Podkreślenie"
-
-#~ msgid "Username"
-#~ msgstr "Nazwa użytkownika"
-
-#~ msgid "View Source"
-#~ msgstr "Wyświetl źródło"
-
-#~ msgid "Wordpress"
-#~ msgstr "Wordpress"
-
-#~ msgid "X"
-#~ msgstr "X"
-
-#~ msgid "_About"
-#~ msgstr "_O programie"
-
-#~ msgid "http://yourserver.com/xmlrpc.php"
-#~ msgstr "http://twój_serwer.pl/xmlrpc.php"
-
-#~ msgid "italic"
-#~ msgstr "kursywa"
-
-#~ msgid "lekhonee"
-#~ msgstr "Lekhonee"
-
-#~ msgid "lekhonee msg"
-#~ msgstr "komunikat programu Lekhonee"
-
-#~ msgid "(c) 2009 Kushal Das"
-#~ msgstr "(c) 2009 Kushal Das"
-
-#~ msgid "Save Blog"
-#~ msgstr "Zapisz blog"
-
-#~ msgid "Lekhonee files"
-#~ msgstr "Pliki programu Lekhonee"
-
-#~ msgid "Open Blog"
-#~ msgstr "Otwórz blog"
+msgstr "Preferencje"
