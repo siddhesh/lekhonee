@@ -1,5 +1,37 @@
 2010-04-06  Kushal Das <kushal@fedoraproject.org>
 
+  * gnome-frontend/src/LekhoneeMain.vala: show/hide progressbar as required and
+  also checking return value from wp.get_posts
+
+  * gnome-frontend/src/Wordpress.vala: get_posts now returns bool value
+
+  * gnome-frontend/LekhoneeDialogs.vala, gnome-frontend/LekhoneeMain.vala,
+  gnome-frontend/LekhoneeOperations.vala, gnome-frontend/Wordpress.vala,
+  gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.gladep:
+  removed files not required
+
+  * gnome-frontend/po/POTFILES.in, gnome-frontend/po/bb.po,
+  gnome-frontend/po/bn_IN.po, gnome-frontend/po/da.po, gnome-frontend/po/de.po,
+  gnome-frontend/po/es.po, gnome-frontend/po/fr.po, gnome-frontend/po/hi.po,
+  gnome-frontend/po/hu.po, gnome-frontend/po/it.po,
+  gnome-frontend/po/lekhonee-gnome.pot, gnome-frontend/po/nl.po,
+  gnome-frontend/po/pl.po, gnome-frontend/po/ps.po, gnome-frontend/po/pt_BR.po,
+  gnome-frontend/po/ru.po, gnome-frontend/po/sr.po,
+  gnome-frontend/po/sr@latin.po, gnome-frontend/po/uk.po,
+  gnome-frontend/po/zh_CN.po, gnome-frontend/po/zh_TW.po: updated pot and po
+  files
+
+  * gnome-frontend/src/Wordpress.vala: Removed comments
+
+  * gnome-frontend/Makefile, gnome-frontend/src/LekhoneeMain.vala: marked
+  strings for translation
+
+  * gnome-frontend/src/LekhoneeDialogs.vala: Fixed crash on empty server or
+  user strings
+
+  * gnome-frontend/AUTHORS, gnome-frontend/COPYING, gnome-frontend/ChangeLog,
+  gnome-frontend/INSTALL: added new files
+
   * gnome-frontend/README: README updated
 
   * gnome-frontend/src/LekhoneeMain.vala: unorderedlist will work in HTML mode
