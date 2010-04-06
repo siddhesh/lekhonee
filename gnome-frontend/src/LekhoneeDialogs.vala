@@ -162,6 +162,10 @@ public class ConfigDialog: Dialog {
         case ResponseType.OK:
             server = server_entry.get_text();
             username = user_entry.get_text();
+            if((server == "") | (username == "")) {
+                return;
+            }  
+            
             ad = advert.get_active();
             keyf.set_string("details","server",server);
             keyf.set_string("details","username",username);
