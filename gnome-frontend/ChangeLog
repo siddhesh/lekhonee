@@ -1,0 +1,707 @@
+2010-04-06  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/README: README updated
+
+  * gnome-frontend/src/LekhoneeMain.vala: unorderedlist will work in HTML mode
+
+2010-04-05  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/src/Wordpress.vala: checking if the valuearray is null
+
+  * gnome-frontend/src/LekhoneeMain.vala: Now new lines show as <br> tag
+
+  * gnome-frontend/configure.ac: checked for requirements
+
+  * gnome-frontend/src/LekhoneeMain.vala: fixed New line issues in UI
+
+  * gnome-frontend/Makefile.am, gnome-frontend/autogen.sh,
+  gnome-frontend/configure.ac, gnome-frontend/data/Makefile.am,
+  gnome-frontend/data/icons/Makefile.am,
+  gnome-frontend/data/icons/lekhonee-gnome.png,
+  gnome-frontend/data/lekhonee-gnome.desktop.in.in,
+  gnome-frontend/po/POTFILES.in, gnome-frontend/src/LekhoneeDialogs.vala,
+  gnome-frontend/src/LekhoneeMain.vala,
+  gnome-frontend/src/LekhoneeOperations.vala, gnome-frontend/src/Makefile.am,
+  gnome-frontend/src/Wordpress.vala, gnome-frontend/ui/Makefile.am,
+  gnome-frontend/ui/draft.png, gnome-frontend/ui/insert-image.png,
+  gnome-frontend/ui/internet.png, gnome-frontend/ui/link.png,
+  gnome-frontend/ui/list.png, gnome-frontend/ui/new.ui,
+  gnome-frontend/vapi/Makefile.am, gnome-frontend/vapi/config.vapi: trying to
+  convert to autotools/autoconf
+
+  * gnome-frontend/LekhoneeOperations.vala, gnome-frontend/new.ui: changed name
+  of spell_box
+
+  * gnome-frontend/LekhoneeMain.vala: fixed spell check enable/disable
+
+  * gnome-frontend/LekhoneeMain.vala, gnome-frontend/Makefile,
+  gnome-frontend/vapi/gtkspell-2.0.vapi: somewhat working gtkspell
+
+  * gnome-frontend/LekhoneeDialogs.vala, gnome-frontend/LekhoneeMain.vala:
+  showing the advertisement
+
+  * gnome-frontend/LekhoneeMain.vala: File open and save is done in xml format
+
+  * gnome-frontend/LekhoneeOperations.vala, gnome-frontend/Makefile: New file
+  to handle file saving or opening
+
+  * gnome-frontend/new.ui: Changed file menuitem names
+
+  * gnome-frontend/LekhoneeDialogs.vala: remove the confif file only if exists
+
+2010-04-04  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: Now we can update old posts
+
+  * gnome-frontend/Wordpress.vala: New method to do post updates
+
+  * gnome-frontend/LekhoneeMain.vala: now we can do proper message post
+
+  * gnome-frontend/Wordpress.vala: updated message post method
+
+  * gnome-frontend/LekhoneeMain.vala: first part of the code to do message post
+
+  * gnome-frontend/Wordpress.vala: Async message posts
+
+  * gnome-frontend/new.ui: fixed typo
+
+2010-04-03  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: upload file is now working
+
+  * gnome-frontend/Wordpress.vala: new method to upload file
+
+  * gnome-frontend/new.ui: Added menuitem for upload file
+
+  * gnome-frontend/LekhoneeMain.vala: Loading the old post according to the
+  user click
+
+  * gnome-frontend/Wordpress.vala: Added error signals
+
+  * gnome-frontend/LekhoneeMain.vala, gnome-frontend/Wordpress.vala: more
+  feedback to the user
+
+  * gnome-frontend/LekhoneeMain.vala: showing progressbar while fetching
+  categories
+
+  * gnome-frontend/LekhoneeDialogs.vala: Hiding the config dialog after the
+  press ok
+
+  * gnome-frontend/Wordpress.vala: Now fetching categories is async operation
+
+  * gnome-frontend/LekhoneeMain.vala: Showing a nice progressbar :)
+
+  * gnome-frontend/new.ui: Added status bar
+
+  * gnome-frontend/Wordpress.vala: Doing async xmlrpc calls
+
+  * gnome-frontend/LekhoneeMain.vala: now showing old posts entries and hiding
+  if the user press escape
+
+  * gnome-frontend/Wordpress.vala: Now we are getting the last 10 old posts
+
+  * gnome-frontend/new.ui: added new menuitem to show old posts
+
+  * gnome-frontend/LekhoneeDialogs.vala: removed cancel button from the config
+  dialog
+
+  * gnome-frontend/lekhonee-gnome.py: deleted old file
+
+2010-04-02  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: slowing moving towards the entries list
+
+  * gnome-frontend/LekhoneeDialogs.vala: added copyright notice
+
+  * gnome-frontend/LekhoneeDialogs.vala, gnome-frontend/Makefile: Now we save
+  the configuration details
+
+2010-03-31  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/new.ui: New menuitem for preferences and editor now having a
+  visible border
+
+  * gnome-frontend/LekhoneeDialogs.vala, gnome-frontend/LekhoneeMain.vala:
+  Somewhat working preferences dialog
+
+  * gnome-frontend/LekhoneeMain.vala: Fixed the messages and tried to grab
+  focus in editor
+
+2010-03-29  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/new.ui: Changed the label to Edit HTML
+
+  * gnome-frontend/LekhoneeMain.vala: Fixed window closing issue with proper
+  method arguments
+
+  * gnome-frontend/LekhoneeMain.vala: removed spaces
+
+  * gnome-frontend/LekhoneeMain.vala: Still broken code :( on window closing
+
+2010-03-28  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: Trying to check before quiting the main
+  app
+
+  * gnome-frontend/LekhoneeDialogs.vala: Another dialog , may be we will use it
+  later
+
+  * gnome-frontend/Wordpress.vala: Now taking server address in set_details
+
+  * gnome-frontend/LekhoneeMain.vala: New menuitem works, also One can get the
+  last entry from the server
+
+2010-03-27  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: Showing error box on get_categories
+
+  * gnome-frontend/new.ui: removing formatting buttons
+
+  * gnome-frontend/new.ui: pre menu added
+
+  * gnome-frontend/LekhoneeMain.vala: Now simple toolbar will work with both
+  the views
+
+2010-03-26  sebastien <sebastien@fedoraproject.org>
+
+  * gnome-frontend/po/fr.po: l10n: Updates to French (fr) translation 
+  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+2010-03-26  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeDialogs.vala, gnome-frontend/LekhoneeMain.vala,
+  gnome-frontend/new.ui: just pushing all code to git
+
+  * gnome-frontend/Makefile: updated makefile
+
+2010-03-24  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/LekhoneeMain.vala: Showing categories in the main view
+
+  * gnome-frontend/Makefile: Updated Makefile to have new sources
+
+  * gnome-frontend/Wordpress.vala: Addimg xmlrpc details
+
+  * gnome-frontend/LekhoneeMain.vala: Changing views is now working properly :)
+
+  * gnome-frontend/LekhoneeMain.vala: Now all toolbar buttons for webkit works
+
+  * gnome-frontend/LekhoneeMain.vala, gnome-frontend/Makefile,
+  gnome-frontend/new.ui: all files together, .vala and new ui file and the
+  Makefile
+
+2010-03-23  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome: removing the shell script
+
+2010-03-16  kmilos <kmilos@fedoraproject.org>
+
+  * gnome-frontend/po/sr@latin.po: l10n: Updates to Serbian (Latin) (sr@latin)
+  translation  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+  * gnome-frontend/po/sr.po: l10n: Updates to Serbian (sr) translation 
+  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+2010-03-16  yurchor <yurchor@fedoraproject.org>
+
+  * gnome-frontend/po/uk.po: l10n: Initial Ukrainian translation 
+  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+2010-03-15  kristho <kristho@fedoraproject.org>
+
+  * gnome-frontend/po/da.po: l10n: Danish translation of lekhonee. 
+  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+2010-03-15  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: showing old entry in proper widget
+
+2010-03-13  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: While doing a new post the main editor
+  should also clear
+
+2010-03-13  fab <fab@fedoraproject.org>
+
+  * gnome-frontend/po/de.po: l10n: Updates to German (de) translation 
+  Transmitted-via: Transifex (translate.fedoraproject.org)
+
+2010-03-13  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: updated copyright info
+
+  * gnome-frontend/setup.py: updating the setup.py file with new files and
+  version and fixed url
+
+2010-03-12  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Updated the version 0.8.1
+
+2010-03-11  warrink <warrink@fedoraproject.org>
+
+  * gnome-frontend/po/nl.po: Sending translation for Dutch
+
+2010-03-11  taylon <taylon@fedoraproject.org>
+
+  * gnome-frontend/po/pt_BR.po: Sending translation for Brazilian Portuguese
+
+2010-03-11  logan <logan@fedoraproject.org>
+
+  * gnome-frontend/po/es.po: Sending translation for Spanish
+
+2010-03-11  raven <raven@fedoraproject.org>
+
+  * gnome-frontend/po/pl.po: Sending translation for Polish
+
+2010-03-11  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/po/lekhonee-gnome.pot: Updated the pot file for translation
+
+2010-03-03  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Get the text from source view while
+  saving the post or while publishing in the server
+
+  * gnome-frontend/MANIFEST: added the README file
+
+  * gnome-frontend/README: Added a small README file
+
+  * gnome-frontend/MANIFEST: Added the link icon and the source SVG to the
+  MANIFEST file
+
+  * gnome-frontend/lekhonee-gnome.glade: Showing the proper link icon from now
+  on
+
+  * gnome-frontend/link.png: Created the .png icon from the svg file
+
+  * gnome-frontend/Gnome-insert-link.svg: Adding link icon from Gnome
+
+2010-02-27  sebastien <sebastien@fedoraproject.org>
+
+  * gnome-frontend/po/fr.po: Sending translation for French
+
+2010-02-26  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/MANIFEST: Updated MANIFEST file with list.png
+
+  * gnome-frontend/lekhonee-gnome.py: Updated the copyright year
+
+  * gnome-frontend/list.png: Adding the icon for lists
+
+2010-02-25  snicore <snicore@fedoraproject.org>
+
+  * gnome-frontend/po/hu.po: Sending translation for gnome-frontend/po/hu.po
+
+2010-02-18  kmilos <kmilos@fedoraproject.org>
+
+  * gnome-frontend/po/sr@latin.po: Sending translation for
+  gnome-frontend/po/sr@latin.po
+
+  * gnome-frontend/po/sr.po: Sending translation for gnome-frontend/po/sr.po
+
+2010-02-18  andzaytsev <andzaytsev@fedoraproject.org>
+
+  * gnome-frontend/po/ru.po: Sending translation for Russian
+
+2010-02-01  ulissisgc <ulissisgc@fedoraproject.org>
+
+  * gnome-frontend/po/pt_BR.po: Sending translation for Brazilian Portuguese
+
+  * gnome-frontend/po/pt_BR.po: Sending translation for
+  gnome-frontend/po/pt_BR.po
+
+2010-01-28  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.glade: glade file with changes for webkit UI
+
+  * gnome-frontend/lekhonee-gnome.py: New link button
+
+2010-01-27  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Now shows the correct portion of the HTML
+  in the source view
+
+2010-01-19  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Empty string for a new post
+
+2010-01-17  guidograzioli <guidograzioli@fedoraproject.org>
+
+  * gnome-frontend/po/it.po: Sending translation for Italian
+
+2010-01-16  guidograzioli <guidograzioli@fedoraproject.org>
+
+  * gnome-frontend/po/it.po: Sending translation for gnome-frontend/po/it.po
+
+2009-12-15  mrtom <mrtom@fedoraproject.org>
+
+  * gnome-frontend/po/fr.po: Sending translation for gnome-frontend/po/fr.po
+
+2009-12-04  ypoyarko <ypoyarko@fedoraproject.org>
+
+  * gnome-frontend/po/ru.po: Sending translation for gnome-frontend/po/ru.po
+
+2009-10-29  sankarshan <sankarshan@fedoraproject.org>
+
+  * gnome-frontend/po/bn_IN.po: Sending translation for
+  gnome-frontend/po/bn_IN.po
+
+2009-10-29  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/MANIFEST: LICENSE file added to the MANIFEST
+
+  * gnome-frontend/LICENSE: New LICENSE file added
+
+  * gnome-frontend/setup.py: updated with new file paths
+
+  * gnome-frontend/lekhonee-gnome: Updating the directory path for
+  lekhonee-gnome
+
+  * gnome-frontend/po/lekhonee-gnome.pot: pot file
+
+  * gnome-frontend/MANIFEST: New translations added to the MANIFEST file
+
+  * gnome-frontend/lekhonee-gnome.py, gnome-frontend/setup.py: Bumping the
+  release
+
+  * gnome-frontend/po/ps.po: ps translation added
+
+  * gnome-frontend/po/bn_IN.po, gnome-frontend/po/hi.po,
+  gnome-frontend/po/hi_IN.po: Bengali translation added
+
+2009-10-27  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Now it shows a proper error message box
+  for wrong password or such issues
+
+  * gnome-frontend/lekhonee-gnome.py: Fixed image insertion issue due to l10n,
+  now having better i18n based code
+
+2009-09-29  beckerde <beckerde@fedoraproject.org>
+
+  * gnome-frontend/po/es.po: Sending translation for Spanish
+
+  * gnome-frontend/po/es.po: Sending translation for gnome-frontend/po/es.po
+
+2009-09-29  fab <fab@fedoraproject.org>
+
+  * gnome-frontend/po/de.po: Sending translation for gnome-frontend/po/de.po
+
+2009-09-25  tomchiukc <tomchiukc@fedoraproject.org>
+
+  * gnome-frontend/po/bb.po: Sending translation for gnome-frontend/po/bb.po
+
+  * gnome-frontend/po/zh_CN.po: Sending translation for
+  gnome-frontend/po/zh_CN.po
+
+  * gnome-frontend/po/zh_TW.po: Sending translation for Chinese (Traditional)
+
+  * gnome-frontend/po/zh_TW.po: Sending translation for
+  gnome-frontend/po/zh_TW.po
+
+2009-09-24  warrink <warrink@fedoraproject.org>
+
+  * gnome-frontend/po/nl.po: Sending translation for gnome-frontend/po/nl.po
+
+2009-09-24  raven <raven@fedoraproject.org>
+
+  * gnome-frontend/po/pl.po: Sending translation for gnome-frontend/po/pl.po
+
+2009-09-24  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/po/hi_IN.po: hi_IN translation added
+
+2009-09-23  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee-gnome: removed gnome frontend from here
+
+  * gnome-frontend/po/bn_IN.po, gnome-frontend/po/bn_IN.po~,
+  gnome-frontend/po/lekhonee-gnome.pot, gnome-frontend/po/messages.mo: fixing
+  l10n files
+
+  * gnome-frontend/po/bn.po, gnome-frontend/po/bn.po~,
+  gnome-frontend/po/lekhonee.pot: removed files
+
+  * gnome-frontend/lekhonee-gnome.py: i18n is done properly now
+
+  * gnome-frontend/po/bn_IN.po, gnome-frontend/po/bn_IN.po~,
+  gnome-frontend/po/lekhonee-gnome.pot: fixing l10n tests
+
+2009-09-18  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/MANIFEST, gnome-frontend/lekhonee-gnome,
+  gnome-frontend/lekhonee-gnome.py,
+  gnome-frontend/pixmaps/lekhonee-gnome.desktop,
+  gnome-frontend/pixmaps/lekhonee-gnome.png, gnome-frontend/po/POTFILES.in,
+  gnome-frontend/po/bn.po, gnome-frontend/po/bn.po~,
+  gnome-frontend/po/bn_IN.po, gnome-frontend/po/bn_IN.po~,
+  gnome-frontend/po/lekhonee-gnome.pot, gnome-frontend/po/lekhonee.pot,
+  gnome-frontend/po/messages.mo, gnome-frontend/setup.py: moving to a complete
+  different source and i10n
+
+2009-07-22  Kushal Das <kushal@fedoraproject.org>
+
+  * docs/ChangeLog: updating the changelog
+
+  * pixmaps/lekhonee-gnome.desktop, pixmaps/lekhonee.desktop: removing Encoding
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee: writing things I forgot to
+  write
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee, setup.py: updating the version
+
+  * lekhoneeblog/Wordpress.py: Not much
+
+  * gnome-frontend/lekhonee-gnome.py: exception handling
+
+  * lekhonee: upload file is implemented, also new dependency on python-magic
+
+  * Chotha/LekhoneeUI.py, ui/Lekhonee.ui: New UI for uploading images
+
+2009-07-21  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Uploading files working properly now
+
+2009-07-14  Kushal Das <kushal@fedoraproject.org>
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+  * docs/README: updated README file
+
+2009-07-10  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.py:
+  upload file is working
+
+2009-07-03  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee, setup.py: getting ready for new
+  release
+
+  * gnome-frontend/lekhonee-gnome.py: addcategory is now working
+
+  * gnome-frontend/lekhonee-gnome.glade: updated glade file
+
+  * lekhonee: New UI and editing old posts enabled
+
+  * Chotha/LekhoneeUI.py, ui/Lekhonee.ui: New UI
+
+2009-07-02  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: Fixing add links issue
+
+  * Chotha/LekhoneeUI.py, lekhonee, ui/Lekhonee.ui: Now preview is with webkit
+
+  * gnome-frontend/lekhonee-gnome.py: after posting details get entries again
+
+  * gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.py: edit
+  option for the last 10 posts
+
+  * lekhoneeblog/Wordpress.py: Get only last 10 posts
+
+2009-06-30  Kushal Das <kushal@fedoraproject.org>
+
+  * MANIFEST, setup.py: removed screen
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee: bumping the version
+
+  * MANIFEST, setup.py: going for the new release
+
+  * : adding missing init file
+
+  * Chotha/BlogServer.py, Chotha/ServerFactory.py, Chotha/Wordpress.py,
+  lekhoneeblog/BlogServer.py, lekhoneeblog/ServerFactory.py,
+  lekhoneeblog/Wordpress.py, setup.py: changing to new package
+
+  * gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.py: tag
+  support added
+
+  * Chotha/LekhoneeUI.py, gnome-frontend/lekhonee-gnome.glade,
+  gnome-frontend/lekhonee-gnome.py, lekhonee, ui/Lekhonee.ui: tag support added
+
+  * pixmaps/lekhonee-gnome.desktop: Now it should show lekhonee-gnome
+
+  * gnome-frontend/lekhonee-gnome.py: Now while editing the button label
+  changes
+
+  * lekhonee: while editing the button text is now changed
+
+2009-06-24  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: No more showing the old link again in the
+  box
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee: showing version information
+  properly
+
+2009-06-23  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee: Fixed  Bug 507518 - 
+  Typographical error in lekhonee 'advertisement' message
+
+2009-06-17  Kushal Das <kushal@fedoraproject.org>
+
+  * pixmaps/lekhonee-gnome.desktop: fixing typo
+
+  * MANIFEST, setup.py: new gnome icon
+
+  * pixmaps/lekhonee-gnome.png: new icon
+
+  * gnome-frontend/lekhonee-gnome.py: removed extra print messages
+
+  * lekhonee: an odd fix to fix sankarshan's error
+
+  * gnome-frontend/lekhonee-gnome.py, lekhonee: changing advertisement message
+
+  * gnome-frontend/lekhonee-gnome.py: Add advertisement not for edits, only for
+  new messages
+
+  * Chotha/ConfigureWinUI.py: new authentication system
+
+  * lekhonee: New authentication system and advertisement message
+
+  * Chotha/LekhoneeUI.py, ui/Lekhonee.ui: Lekhonee msg checkbox added in edit
+  menu
+
+2009-06-16  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.py: having wordwrap
+
+2009-06-15  Kushal Das <kushal@fedoraproject.org>
+
+  * gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.py:
+  Added about dialog
+
+  * gnome-frontend/lekhonee-gnome.glade, gnome-frontend/lekhonee-gnome.py:
+  Fixed spellcheck spell and added errorbox while fetching last enrty
+
+  * MANIFEST, setup.py: Adding the gnome frontend command
+
+  * lekhonee-gnome: command to run the gnome frontend
+
+  * MANIFEST, gnome-frontend/draft.png, gnome-frontend/insert-image.png,
+  gnome-frontend/internet.png, gnome-frontend/lekhonee-gnome.glade,
+  gnome-frontend/lekhonee-gnome.gladep, gnome-frontend/lekhonee-gnome.py,
+  gnome-frontend/pixmaps/draft.png, gnome-frontend/pixmaps/insert-image.png,
+  gnome-frontend/pixmaps/internet.png, lekhonee-gnome/draft.png,
+  lekhonee-gnome/insert-image.png, lekhonee-gnome/internet.png,
+  lekhonee-gnome/lekhonee-gnome.glade, lekhonee-gnome/lekhonee-gnome.gladep,
+  lekhonee-gnome/lekhonee-gnome.py, lekhonee-gnome/pixmaps/draft.png,
+  lekhonee-gnome/pixmaps/insert-image.png, lekhonee-gnome/pixmaps/internet.png,
+  setup.py: renaming for lekhonee-gnome folder to gnome-frontend
+
+  * setup.py: adding the new gnome .desktop file
+
+  * MANIFEST, pixmaps/lekhonee-gnome.desktop, setup.py: gnome .desktop file
+
+  * lekhonee: Fixed new blog bug
+
+  * lekhonee-gnome/lekhonee-gnome.glade, lekhonee-gnome/lekhonee-gnome.py:
+  almost ready for the release.
+
+2009-06-12  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee-gnome/draft.png, lekhonee-gnome/insert-image.png,
+  lekhonee-gnome/internet.png, lekhonee-gnome/lekhonee-gnome.glade,
+  lekhonee-gnome/lekhonee-gnome.gladep, lekhonee-gnome/lekhonee-gnome.py,
+  lekhonee-gnome/pixmaps/draft.png, lekhonee-gnome/pixmaps/insert-image.png,
+  lekhonee-gnome/pixmaps/internet.png: Gnome frontend based on PyGtk, work
+  started
+
+2009-06-06  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee: Fixing default message
+
+2009-06-04  Kushal Das <kushal@fedoraproject.org>
+
+  * Chotha/Wordpress.py, lekhonee: Draft messages will return text as 'Draft
+  Saved' and you can edit the last saved draft as well
+
+  * Chotha/ConfigureWinUI.py, lekhonee: Fixed KWallet bug, now changing
+  configuration , reloads all information properly
+
+2009-05-13  Kushal Das <kushal@fedoraproject.org>
+
+  * docs/ChangeLog, setup.py: Getting ready for the new release
+
+  * Chotha/LekhoneeUI.py: no comments
+
+  * Chotha/LekhoneeUI.py, Chotha/Wordpress.py, ui/Lekhonee.ui: UI and Wordpress
+  class changed to support editing
+
+  * lekhonee: Editing last blog entry is working
+
+  * lekhonee: Fetching the last blog entry
+
+  * setup.py: Updated setup
+
+  * docs/ChangeLog, docs/README, pixmaps/lekhonee.desktop: Updated doc
+
+  * lekhonee: use kwallet or it will ask details everytime it runs
+
+  * Chotha/ConfigureWinUI.py, Chotha/LekhoneeUI.py: use kwallet or it will ask
+  details everytime it runs
+
+2009-05-12  Kushal Das <kushal@fedoraproject.org>
+
+  * setup.py: getting ready for new release, bumped release number
+
+  * lekhonee: getting ready for new release
+
+2009-05-05  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee: Adding new categories are working now
+
+2009-05-03  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee: Moving KWallet work in a method
+
+  * Chotha/ConfigureWinUI.py: reloading username,password,server details after
+  user saves
+
+  * MANIFEST: Fixing MANIFEST
+
+  * Chotha/ImageDialogUI.py, Chotha/ImageDialogui.py: Moving ImageDialog into a
+  python class
+
+  * Chotha/Wordpress.py: addCategory method added
+
+2009-05-01  Kushal Das <kushal@fedoraproject.org>
+
+  * Chotha/ConfigureWinUI.py, Chotha/LekhoneeUI.py, lekhonee, ui/Lekhonee.ui:
+  New UI design and fixed password issue
+
+2009-04-29  Kushal Das <kushal@fedoraproject.org>
+
+  * Chotha/ConfigureWinUI.py, Chotha/ConfigureWinui.py, Chotha/LekhoneeUI.py,
+  lekhonee, ui/ConfigureWin.ui: removed Livejournal support and moved
+  authentication information to KWallet
+
+2009-04-25  Kushal Das <kushal@fedoraproject.org>
+
+  * lekhonee: Now using resource_rc for the splashscreen
+
+  * lekhonee: Changed KAboutData details
+
+  * Chotha/ConfigureWinUI.py: hide the configuartion dialog when the user saves
+  it
+
+2009-04-24  Kushal Das <kushal@fedoraproject.org>
+
+  * Chotha/resource.qrc, ui/Lekhonee.ui: Now using resource file for the icons
+
+  * lekhonee: Deleted commented lines
+
+  * lekhonee: Fixed preview in firefox, need to do that same for konqueror
+
+  * lekhonee: New KDE4 based code, also fixed file open dialog issue
