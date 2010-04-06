@@ -286,8 +286,20 @@ public class LekhoneeMain: GLib.Object {
                 italic_bttn_cb();
             else if(name == "underline")
                 underline_bttn_cb();
+            else if(name == "insertunorderedlist")
+                unorderedlist_cb();
         }
         
+    }
+    
+    public void unorderedlist_cb(){
+        TextIter start={};
+        TextIter end={};
+        blog_txt.get_selection_bounds(out start, out end);
+        string text = blog_txt.get_text(start,end,false);
+        blog_txt.delete(start,end);
+        string result = @"<ul><li>$text</li></ul>";
+        blog_txt.insert_at_cursor(result,(int)result.size());
     }
 
     public string get_source(){
