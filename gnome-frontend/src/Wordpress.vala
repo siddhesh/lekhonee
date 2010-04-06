@@ -102,14 +102,14 @@ public class Wordpress: Object {
 
     }
 
-    public void get_posts(){
+    public bool get_posts(){
         var message = xmlrpc_request_new(server,"metaWeblog.getRecentPosts",typeof(int),1,typeof(string),this.username,typeof(string),this.password,typeof(int),10);
         var session = new SessionAsync();
         var return_code = session.send_message(message);
         
         if (return_code == 2){
             password_error("Please check your network");
-            
+            return false;
         }
         
         string data =message.response_body.flatten().data;
@@ -120,15 +120,15 @@ public class Wordpress: Object {
             xmlrpc_parse_method_response(data, -1,v);
         }catch (Error e){ 
             password_error(e.message);
-            return;
+            return false;
 ;
         }
         v3 = (ValueArray)v;
-        if (v3 != null)
+        if (v3 != null){
             get_old_posts(v3);
-        //return v3;
-        //var hash = (HashTable<string,Value?>)v3.get_nth(0);
-
+            return false;
+        }
+        return true;
     }
 
     public string[] get_categories(){
