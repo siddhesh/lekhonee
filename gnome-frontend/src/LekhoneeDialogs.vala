@@ -109,47 +109,57 @@ public class ConfigDialog: Dialog {
     private void create_widgets(string s, string u){
     
         //setup widgets
+        var box = new HBox(false, 0);
         
-        var link_label = new Label.with_mnemonic ("Server");
+        var link_label = new Label.with_mnemonic ("Server: ");
         server_entry = new Entry();
         if(s!="")
             server_entry.set_text(s);
         else
             server_entry.set_text("http://userserver.org/xmlrpc.php");
         link_label.mnemonic_widget = server_entry;
-        
-        var hbox = new HBox (false, 20);
-        hbox.pack_start (link_label, false, true, 0);
-        hbox.pack_start (server_entry, true, true, 0);
 
-        var user_label = new Label.with_mnemonic ("Username");
+        var table = new Table(3, 2, false);
+
+        table.set_row_spacings(5);
+        table.set_col_spacings(5);
+
+        box.pack_end(link_label, false, false, 5);
+        table.attach(box, 0, 1, 0, 1, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
+        table.attach(server_entry, 1, 2, 0, 1, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
+        
+        var user_label = new Label.with_mnemonic ("Username: ");
         user_entry = new Entry();
         user_entry.set_text(u);
         user_label.mnemonic_widget = user_entry;
         
-        var hbox1 = new HBox (false, 20);
-        hbox1.pack_start (user_label, false, true, 0);
-        hbox1.pack_start (user_entry, true, true, 0);
-
+        box = new HBox(false, 0);
+        box.pack_end(user_label, false, false, 5);
+        table.attach(box, 0, 1, 1, 2, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
+        table.attach(user_entry, 1, 2, 1, 2, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
         
-        var pass_label = new Label.with_mnemonic ("Password");
+        var pass_label = new Label.with_mnemonic ("Password: ");
         pass_entry = new Entry();
         pass_entry.set_invisible_char('*');
         pass_entry.set_visibility(false);
         
         pass_label.mnemonic_widget = pass_entry;
         
-        var hbox2 = new HBox (false, 20);
-        hbox2.pack_start (pass_label, false, true, 0);
-        hbox2.pack_start (pass_entry, true, true, 0);
+        box = new HBox(false, 0);
+        box.pack_end(pass_label, false, false, 5);
+        table.attach(box, 0, 1, 2, 3, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
+        table.attach(pass_entry, 1, 2, 2, 3, AttachOptions.FILL, AttachOptions.FILL, 0, 0);
 
+        // HACK! For some reason, without the two lines below the entry boxes above just
+        // don't expand
+        box = new HBox(false, 0);
+        table.attach(box, 1, 2, 3, 4, AttachOptions.EXPAND, AttachOptions.EXPAND, 0, 0);
+        
         advert = new CheckButton();
         advert.set_label("Show the lekhonee message in the posts");
         advert.set_active(true);
         
-        this.vbox.pack_start (hbox, false, true, 0);
-        this.vbox.pack_start (hbox1, false, true, 0);
-        this.vbox.pack_start (hbox2, false, true, 0);
+        this.vbox.pack_start (table, false, true, 0);
         this.vbox.pack_start (advert, false, true, 0);
         this.vbox.spacing = 10;
         
