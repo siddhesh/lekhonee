@@ -14,6 +14,11 @@ AM_MAINTAINER_MODE
 AC_PROG_CC
 AC_PROG_CC_STDC
 AM_PROG_VALAC([0.7.10])
+
+if test "$VALAC" = ""; then
+	AC_MSG_ERROR([Configure failed: No vala compiler found!])
+fi
+
 AC_PROG_INSTALL
 AC_PROG_INTLTOOL([0.35])
 
